@@ -77,7 +77,46 @@
                                 
 							</div>
 						</div>	
-
+						{% if matching_jobs %}
+						<!-- Start post Area -->
+						<section class="post-area section-gap">
+								<div id='company-job-list' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+										
+										<h4 class="single-title"> Recommended Jobs</h4>
+											<div class="row">
+											{% for matching_job in matching_jobs %}
+												<div style="margin-bottom : 20px" class="col-sm-6 single-rated">
+														<img class="img-fluid" src="{{ matching_job.company.profile_pic.url }}" alt="">
+														<hr />
+														<a href="/jobs/job-{{ matching_job.pk }}"><h4>{{ matching_job.title }}</h4></a>
+														<hr />
+														<h6> <a href='/companies/company-{{ matching_job.company.id }}/'>{{ matching_job.company.name }} </a></h6>
+														<hr />
+														<p>
+																{{ matching_job.summary|truncatechars:100}}
+														</p>
+														<p class="address">Job Nature: {{ matching_job.employement_type.name }}</p>
+														<p class="address"><span class="lnr lnr-map"></span> Position : {{ matching_job.position }} </p>
+														<p class="address"><span class="lnr lnr-database"></span> Region :  {{ matching_job.region }}</p>
+														<a href="/jobs/job-{{ matching_job.pk }}/" class="genric-btn primary  text-uppercase">View Detail</a>
+												</div>
+												{% empty %}
+												<div class="h3">
+													No Jobs Found
+												</div>
+												{% endfor %}
+											</div>
+										
+										
+					
+										
+									</div>
+								</div>	
+							</section>
+							<!-- End post Area -->
+							{% endif %}
 
 						<!-- Start post Area -->
 						<section class="post-area section-gap">
@@ -154,46 +193,7 @@
 
 		<!-- End calto-action Area -->
 
-		<!-- start footer Area -->		
-		<footer class="footer-area section-gap">
-			<div class="container">
-				<div class="row">
-					<
-					
-											
-				</div>
-
-				<div class="row footer-bottom d-flex justify-content-between">
-					<p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy; 2019 Ican. All rigths reserved. <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
-					<div class="col-lg-4 col-sm-12 footer-social">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-dribbble"></i></a>
-						<a href="#"><i class="fa fa-behance"></i></a>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- End footer Area -->		
-
-		<script src="/static/js/vendor/jquery-2.2.4.min.js"></script>
-		<script src="/static/https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="/static/js/vendor/bootstrap.min.js"></script>			
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-		  <script src="/static/js/easing.min.js"></script>			
-		<script src="/static/js/hoverIntent.js"></script>
-		<script src="/static/js/superfish.min.js"></script>	
-		<script src="/static/js/jquery.ajaxchimp.min.js"></script>
-		<script src="/static/js/jquery.magnific-popup.min.js"></script>	
-		<script src="/static/js/owl.carousel.min.js"></script>			
-		<script src="/static/js/jquery.sticky.js"></script>
-		<script src="/static/js/jquery.nice-select.min.js"></script>			
-		<script src="/static/js/parallax.min.js"></script>		
-		<script src="/static/js/mail-script.js"></script>	
-		<script src="/static/js/main.js"></script>	
+	{% include 'footer.tmp' %}	
 	</body>
 </html>
 

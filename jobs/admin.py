@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 from jobs import models 
-
+from django.contrib.auth.models import User
 # Register your models here.
 
 class CategoryModelAdmin(admin.ModelAdmin):
@@ -16,6 +16,7 @@ class JobModelAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     list_display = ('title', 'region', 'company')
     exclude = ('views',)
+
     def formfield_for_foreignkey(self, db_field, request=None, **kwargs):
         if db_field.name == 'company':
             kwargs['queryset'] = models.Company.objects.filter(pk = request.user.company.pk)
@@ -44,6 +45,16 @@ class EmployeeModelAdmin(admin.ModelAdmin):
     
     def username_view(self, employee):
         return "%s" % (employee.user.username)
+class EmployeeJobInterestModelAdmin(admin.ModelAdmin):
+    list_display = ("user",)
+    filter_horizontal = ('job_category', 'job_region', 'employement_type', 'job_level')
+    
+    def formfield_for_foreignkey(self, db_field, request=None, **kwargs):
+        if db_field.name == 'user':
+            kwargs['queryset'] = User.objects.filter(pk = request.user.company.pk)
+        
+        return super(EmployeeJobInterestModelAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+
 
 admin.site.register(models.Category, CategoryModelAdmin)
 admin.site.register(models.Job, JobModelAdmin)
@@ -55,4 +66,5 @@ admin.site.register(models.SchoolLevel, SchoolLevelModelAdmin)
 admin.site.register(models.Employee, EmployeeModelAdmin)
 admin.site.register(models.Blog, BlogModelAdmin)
 admin.site.register(models.PostCategories)
+admin.site.register(models.EmployeeJobInterest, EmployeeJobInterestModelAdmin)
 

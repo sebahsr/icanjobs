@@ -52,6 +52,8 @@ def jobView(request, **kwargs):
     featured_categories = categories[:6]
     recent_jobs = models.Job.objects.order_by('created_at')[:5]
     job_statuses = constants.JOB_STATUS
+    recent_blogs = models.Blog.objects.all().order_by('-created_at')[:3]
+
     return render(request, template_name, locals())
 
 #view helper functions for job 
@@ -195,12 +197,23 @@ def employeeView(request, employeeID=None):
         employee = get_object_or_404(models.Employee, pk=employeeID)
     else:
         employee = request.user.employee
+        level_jobs = models.Job.objects.filter(level__in = request.user.employeejobinterest.job_level.all())
+        type_jobs = models.Job.objects.filter(employement_type__in = request.user.employeejobinterest.employement_type.all())
+        region_jobs = models.Job.objects.filter(region__in = request.user.employeejobinterest.job_region.all())
+        matching_jobs_ = level_jobs.union(type_jobs).union(region_jobs).filter(status=constants.JOB_STATUS_OPEN)[:4]
+        employee_applications = employee.applications.all()
+        matching_jobs = []
+        for matching_job in matching_jobs_:
+            if matching_job not in employee_applications:
+                matching_jobs.append(matching_job)
+
     categories = models.Category.objects.all()
     employement_types = models.EmployementType.objects.all()
     job_statuses = constants.JOB_STATUS
     recent_jobs = models.Job.objects.order_by('created_at')[:5]
     open_applied_jobs = employee.applications.filter(status=constants.JOB_STATUS_OPEN)
     return render(request, "employee_profile.tmp", locals())
+
 
 @login_required
 def employeeJobApply(request, jobID):
@@ -215,7 +228,7 @@ def blogListView(request, categoryID=None):
         blogs = models.Blog.objects.filter(categories__id__contains = categoryID)
     else:
         blogs = models.Blog.objects.all() 
-        
+
     paginator = Paginator(blogs, 4)
 
     page_number = request.GET.get('page', 1)

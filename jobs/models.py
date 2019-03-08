@@ -133,3 +133,10 @@ class PostCategories(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class EmployeeJobInterest(models.Model):
+    job_level = models.ManyToManyField('JobLevel')
+    job_category = models.ManyToManyField('Category')
+    job_region = models.ManyToManyField('Region')
+    employement_type = models.ManyToManyField('EmployementType')
+    user = models.OneToOneField(User)

@@ -54,6 +54,9 @@ class CompanyForm(forms.ModelForm):
     class Meta:
         model = models.Company
         exclude = ('id', 'user')
+
+
+
 class EmployeeForm(forms.ModelForm):
     
     phone = forms.CharField(widget = forms.TextInput(attrs={

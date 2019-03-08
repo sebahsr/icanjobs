@@ -18,6 +18,8 @@ from django.contrib import admin
 import views as job_views
 
 urlpatterns = [
+    
+    url(r'^/?$', job_views.jobView),
     url(r'^jobs/(?:job-(?P<jobID>\d+)/)?$', job_views.jobView),
     url(r'^jobs/(?:category-(?P<categoryID>\d+)/)$', job_views.jobView),
     url(r'^jobs/(?:region-(?P<regionID>\d+)/)$', job_views.jobView),

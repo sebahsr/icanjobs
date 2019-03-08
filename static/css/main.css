@@ -2298,12 +2298,22 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-area {
-  background: url(../img/header-bg.jpg) center;
+  background: url(../img/header-bg.jpg) center ;
   background-size: cover;
 }
 
+
+.banner-area-blog {
+  background: url(../img/mainpic.jpg) center !important;
+}
+
+
 .banner-area .overlay-bg {
-  opacity: .95;
+  opacity: .8;
+}
+
+.banner-area .overlay-bg-blog {
+  opacity: .4 !important;
 }
 
 .banner-content {
@@ -3432,6 +3442,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .about-content {
   padding: 150px 0px;
+  text-align: center;
+}
+
+.blog-content {
+  padding: 300px 0px !important;
   text-align: center;
 }
 
