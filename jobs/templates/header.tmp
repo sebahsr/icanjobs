@@ -6,21 +6,32 @@
               </div>
               <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                  <li class="menu-active"><a href="index.html">Home</a></li>
-                  <li><a href="about-us.html">About Us</a></li>
-                  <li><a href="category.html">Category</a></li>
-                  <li><a href="price.html">Price</a></li>
+                  <li class="menu-active"><a href="/jobs/">Home</a></li>
+                  
+                  <li><a href="/companies/">Companies</a></li>
                   <li><a href="blog-home.html">Blog</a></li>
-                  <li><a href="contact.html">Contact</a></li>
-                  <li class="menu-has-children"><a href="">Pages</a>
+                  {% if not request.user.is_authenticated %}
+                  <li class="menu-has-children"><a href="">Sing Up</a>
                     <ul>
-                        <li><a href="elements.html">elements</a></li>
-                        <li><a href="search.html">search</a></li>
-                        <li><a href="single.html">single</a></li>
+                        <li><a href="/signup/">Employee Sign Up</a></li>
+                        <li><a href="/company-signup/">Company Sign Up</a></li>
                     </ul>
                   </li>
-                  <li><a class="ticker-btn" href="#">Signup</a></li>
-                  <li><a class="ticker-btn" href="#">Login</a></li>				          				          
+                  <li class="menu-has-children"><a href="">Login</a>
+                    <ul>
+                        <li><a href="/login/">Employee Login</a></li>
+                        <li><a href="/admin/login/">Company Login</a></li>
+                    </ul>
+                  </li> 
+                  {% else %}
+
+                    <li class="menu-has-children"><a href="">{{ request.user.username }}</a>
+                    <ul>
+                        <li><a href="/employee/"><i class='fa fa-user'></i> profile</a></li>
+                        <li><a href="/logout/">Logout</a></li>
+                    </ul>
+                    </li>
+                  {% endif %}    
                 </ul>
               </nav><!-- #nav-menu-container -->		    		
             </div>

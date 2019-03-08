@@ -3627,6 +3627,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 .search-page-top a, .search-page-top .lnr {
   color: #fff;
 }
+.company-profile-pic{
+  max-width: 100px;
+}
 
 .search-page-top .lnr {
   font-weight: 700;

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from jobs import constants, functions
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 #supporting models 
@@ -41,6 +41,7 @@ class Category(models.Model):
         verbose_name_plural = 'categories'
 
 class Entity(models.Model):
+    user =  models.OneToOneField(User, on_delete=models.CASCADE)
     class Meta:
         abstract = True
     
@@ -49,10 +50,10 @@ class Company(Entity):
     name = models.CharField(max_length=100)
     profile_pic = models.FileField(upload_to=functions.getFileName)
     brief_description = models.TextField()
-    country = models.CharField(max_length=10, choices=constants.COUNTRIES)
+    region = models.ForeignKey('Region', related_name='companies')
+    city = models.CharField(max_length=100)
     website = models.URLField()
     phone = models.CharField(max_length=25)
-    email = models.EmailField()
     joined_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
@@ -62,25 +63,29 @@ class Company(Entity):
         return self.name 
 
 class Employee(Entity):
-
-    full_name = models.CharField(max_length=100)
     profile_pic = models.FileField(upload_to=functions.getFileName)
     age = models.IntegerField()
-    regiion = models.ForeignKey('Region')
+    region = models.ForeignKey('Region')
     phone = models.CharField(max_length=15)
-    email = models.EmailField()
     city = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
-    intersted_in = models.ManyToManyField('Category', related_name='interested_employees')
+    intersted_in = models.ManyToManyField('Category', blank=True, null=True, related_name='interested_employees')
     school_level = models.ForeignKey('SchoolLevel')
     joined_at = models.DateTimeField(auto_now_add=True)
     applications = models.ManyToManyField('Job', 
+                                        blank=True, null=True,
                                         related_name='applicants',
                                         through='JobApplication',
                                         through_fields=('applicant', 'job'))
     
     def __unicode__(self):
-        return self.full_name
+        return self.user.first_name
+
+    def apply(self, job):
+        if not self.applications.filter(pk = job.pk):
+            application = JobApplication.objects.create(applicant=self, job=job, status='Pe')
+            return application
+        return False
 
     def jobMatches(self):
         pass
@@ -103,6 +108,8 @@ class Job(models.Model):
     categories = models.ManyToManyField('Category', related_name='jobs')
     views = models.IntegerField(default=0)
 
+   
+
 class JobApplication(models.Model):
     applicant = models.ForeignKey('Employee')
     job = models.ForeignKey('Job', related_name='applications')
@@ -113,3 +120,16 @@ class JobApplication(models.Model):
                             )
     )
     applied_on = models.DateTimeField(auto_now_add=True)
+
+class Blog(models.Model):
+    title = models.CharField(max_length=150)
+    content = models.TextField()
+    categories = models.ManyToManyField('PostCategories', related_name='blogs')
+    image = models.FileField(upload_to=functions.getFileName)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+class PostCategories(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return self.name

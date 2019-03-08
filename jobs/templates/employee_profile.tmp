@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="codepixer">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Job Listing</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+		<!--
+		CSS
+		============================================= -->
+		<link rel="stylesheet" href="/static/css/linearicons.css">
+		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/css/bootstrap.css">
+		<link rel="stylesheet" href="/static/css/magnific-popup.css">
+		<link rel="stylesheet" href="/static/css/nice-select.css">					
+		<link rel="stylesheet" href="/static/css/animate.min.css">
+		<link rel="stylesheet" href="/static/css/owl.carousel.css">
+		<link rel="stylesheet" href="/static/css/main.css">
+	</head>
+	<body>
+
+		{% include 'header.tmp' %}
+
+		<!-- start banner Area -->
+		<section class="banner-area relative" id="home">	
+			<div class="overlay overlay-bg"></div>
+			<div class="container">
+				<div class="row d-flex align-items-center justify-content-center">
+					<div class="about-content col-lg-12">
+						<h1 class="text-white">
+							{{ employee.user.first_name }} {{ employee.user.last_name }}				
+						</h1>	
+						<p class="text-white link-nav"><a href="/jobs/">Home </a>  <span class="lnr lnr-arrow-right"></span>  {{ employee.user.first_name|title }} {{ employee.user.last_name|title }}</a></p>
+					</div>											
+				</div>
+			</div>
+		</section>
+		<!-- End banner Area -->	
+			
+		<!-- Start post Area -->
+		<section class="post-area section-gap">
+			<div class="container">
+				<div class="row justify-content-center d-flex">
+					<div class="col-lg-8 post-list">
+						<div class="single-post d-flex flex-row">
+							<div class="thumb col-sm-4">
+								<img style="max-width:100px" src="{{ employee.profile_pic.url }}" alt="">
+								<br /><br />
+								<h5>{{ employee.user.first_name|title}} {{ employee.user.last_name|title}}</h5>
+								<p class="address"><span class="fa fa-envelope"></span> {{ employee.user.email }}</p>
+								<p class="address"><span class="fa fa-phone"></span> {{ employee.phone }}</p>
+
+							</div>
+							<div class="details col-sm-8">
+								<div class="title d-flex flex-row justify-content-between">
+									<div class="titles">
+										<a href="#"><h4>Employee Profile</h4></a>					
+									</div>
+									
+								</div>
+
+                                <p>Region : {{ employee.region.name }}</p>
+                                <p>City : {{ employee.city }}</p>
+                                <p>School Level : {{ employee.school_level }}</p>
+                                
+							</div>
+						</div>	
+
+
+						<!-- Start post Area -->
+						<section class="post-area section-gap">
+								<div id='company-job-list' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+										<h4 class="single-title"> Jobs Applied To</h4>
+										
+											{% for applied_Job in open_applied_jobs %}
+												<div class="single-post d-flex flex-row">
+													
+													<div class="details col-sm-12 col-sm-offset-1">
+														<div class="title d-flex flex-row justify-content-between">
+															<div class="titles">
+																<a href="/jobs/job-{{ applied_Job.id }}/"><h4>{{ applied_Job.title }}</h4></a>
+																<h6> <a href='/companies/company-{{ applied_Job.company.pk }}/'>{{ applied_Job.company.name }} </a></h6>					
+															</div>
+															<ul class="btns">
+																
+																<li><a href="/jobs/job-{{ applied_Job.id }}/"> <span class="lnr lnr-eye"></span> View Detail</a></li>
+															</ul>
+														</div>
+														<p>
+															<span class="fa fa-star"></span> Region : <a href='/jobs/region-{{ job.region.id }}/'>{{ applied_Job.region.name }}</a>
+														</p>
+														
+														<p class="address"><span class="fa fa-user-plus"></span> {{ applied_Job.position}}</p>
+														<p class="address"> {{ applied_Job.summary|truncatechars:300 }}</p>
+														<div class="thumb">
+															<ul class="tags">
+																{% for category in job.categories.all %}
+																	<li>
+																		<a href="/jobs/category-{{ job.id }}/">{{ category.name }}</a>
+																	</li>
+																{% endfor %}
+															</ul>
+														</div>
+													</div>
+												</div>	
+											{% empty %}
+											<div class="h3">
+												No Jobs Found
+											</div>
+											{% endfor %}
+											{% if current_page.has_previous %}
+											<a href="?page={{ current_page.previous_page_number }}" class="genric-btn info-border circle arrow">Previous<span class="lnr lnr-arrow-left"></span></a>
+											{% endif %}
+					
+											{% if current_page.has_next %}
+												<a href="?page={{ current_page.next_page_number }}" class="genric-btn info-border circle arrow">Next<span class="lnr lnr-arrow-right"></span></a>
+											{% endif %}
+											</div>
+										
+					
+										
+									</div>
+								</div>	
+							</section>
+							<!-- End post Area -->
+																				
+					</div>
+					<!-- sidebar -->
+						{% include 'company_sidebar.tmp' %}
+					<!-- End side bar -->
+				</div>
+			</div>	
+		</section>
+		<!-- End post Area -->
+
+
+        <!-- Start callto-action Area -->
+        {%  include 'join_us_section.tmp' %}
+
+		<!-- End calto-action Area -->
+
+		<!-- start footer Area -->		
+		<footer class="footer-area section-gap">
+			<div class="container">
+				<div class="row">
+					<
+					
+											
+				</div>
+
+				<div class="row footer-bottom d-flex justify-content-between">
+					<p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy; 2019 Ican. All rigths reserved. <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+					<div class="col-lg-4 col-sm-12 footer-social">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-dribbble"></i></a>
+						<a href="#"><i class="fa fa-behance"></i></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- End footer Area -->		
+
+		<script src="/static/js/vendor/jquery-2.2.4.min.js"></script>
+		<script src="/static/https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="/static/js/vendor/bootstrap.min.js"></script>			
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+		  <script src="/static/js/easing.min.js"></script>			
+		<script src="/static/js/hoverIntent.js"></script>
+		<script src="/static/js/superfish.min.js"></script>	
+		<script src="/static/js/jquery.ajaxchimp.min.js"></script>
+		<script src="/static/js/jquery.magnific-popup.min.js"></script>	
+		<script src="/static/js/owl.carousel.min.js"></script>			
+		<script src="/static/js/jquery.sticky.js"></script>
+		<script src="/static/js/jquery.nice-select.min.js"></script>			
+		<script src="/static/js/parallax.min.js"></script>		
+		<script src="/static/js/mail-script.js"></script>	
+		<script src="/static/js/main.js"></script>	
+	</body>
+</html>
+
+
+

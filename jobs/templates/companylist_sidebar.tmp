@@ -1,0 +1,33 @@
+
+					<div class="col-lg-4 sidebar">
+                            <div class="single-slidebar">
+                                <h4>Companies by Region</h4>
+                                <ul class="cat-list">
+                                    {% for region in regions  %}
+                                        <li><a class="justify-content-between d-flex" href="/companies/region-{{ region.pk}}/"><p>{{ region.name }}</p><span>{{region.companies.count }}</span></a></li>
+                                    
+                                    {% endfor %}
+                                   </ul>
+                            </div>
+    
+                            <div class="single-slidebar">
+                                <h4>Recent Jobs</h4>
+                                <div class="active-relatedjob-carusel">
+                                    {% for recent_job in recent_jobs %}
+                                    <div class="single-rated">
+                                        <img class="img-fluid" src="img/r1.jpg" alt="">
+                                        <a href="single.html"><h4>{{ job.title }}</h4></a>
+                                        <h6> <a href='/companies/company-{{ recent_job.company.id }}'>{{ recent_job.company.name }} </a></h6>
+                                        <p>
+                                            {{ recent_job.summary|truncatechars:300}}
+                                        </p>
+                                        <p class="address">Job Nature: Full time</p>
+                                        <p class="address"><span class="lnr lnr-map"></span> Position : {{ recent_job.position }} </p>
+                                        <p class="address"><span class="lnr lnr-database"></span> Region :  {{ recent_job.region }}</p>
+                                        <a href="#" class="btns text-uppercase">View Detail</a>
+                                    </div>
+                                    {% endfor %}																	
+                                </div>
+                            </div>													
+    
+                        </div>
