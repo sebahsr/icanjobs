@@ -98,16 +98,16 @@ class UserForm(forms.ModelForm):
         fields=('first_name', 'last_name', 'email')
         widgets = {
             'email' : forms.TextInput(attrs={
-                "placeholder" : "Email address","class" : "form-control"}),
+                "placeholder" : "Email address","class" : "single-input form-control"}),
             
             'first_name' : forms.TextInput(attrs={
-                "placeholder" : "First Name","class" : "form-control"}),
+                "placeholder" : "First Name","class" : "single-input form-control"}),
             
             'last_name' : forms.TextInput(attrs={
-                "placeholder" : "Last Name","class" : "form-control"}),
+                "placeholder" : "Last Name","class" : "single-input form-control"}),
             
             'username' : forms.TextInput(attrs={
-                "placeholder" : "Username","class" : "form-control"}),
+                "placeholder" : "Username","class" : "single-input form-control"}),
             
 
         }
@@ -119,7 +119,7 @@ class UserNameForm(forms.ModelForm):
         fields=('username', )
         widgets = {
             'username' : forms.TextInput(attrs={
-                "placeholder" : "Username","class" : "form-control"}),    
+                "placeholder" : "Username","class" : "single-input form-control"}),    
         }
 
 class CompanyForm(forms.ModelForm):

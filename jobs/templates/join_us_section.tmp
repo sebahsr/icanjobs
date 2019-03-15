@@ -5,8 +5,8 @@
 					<div class="menu-content col-lg-9">
 						<div class="title text-center">
 							<h1 class="mb-10 text-white">Join us today without any hesitation</h1>
-							<a class="primary-btn" href="/company-signup/">I am an Employe</a>
-							<a class="primary-btn" href="/signup/">We are an Employer</a>
+							<a class="primary-btn" href="/company/admin/signup/">We are an Employer</a>
+							<a class="primary-btn" href="/signup/">I am an employee</a>
 						</div>
 					</div>
 				</div>	

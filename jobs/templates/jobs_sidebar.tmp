@@ -2,7 +2,11 @@
 					<div class="col-lg-4 sidebar">
                             <div class="single-slidebar">
                                 <h4>Recent Jobs</h4>
-                                <div class="active-relatedjob-carusel">
+                                {% if recent_jobs.count > 1 %}
+                                    <div class="active-relatedjob-carusel">
+                                {% else %}
+                                    <div>
+                                {% endif %}
                                     {% for recent_job in recent_jobs %}
                                     <div class="single-rated">
                                         <img class="img-fluid" src="{{ recent_job.company.profile_pic.url }}" alt="">

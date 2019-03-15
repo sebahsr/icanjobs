@@ -184,18 +184,24 @@ def companyListView(request, regionID=None):
 def employeeSignupView(request):
     user_form = forms.UserForm()
     employee_form = forms.EmployeeForm()
-
+    userNameForm = forms.UserNameForm()
     if request.method == "POST":
         import datetime
         userData = request.POST.copy()
-        userData['date_joined'] = datetime.date.today()
-        userData['last_login'] = datetime.datetime.now()
-
         user_form = forms.UserForm(userData)
+        userNameForm = forms.UserNameForm(userData)
         employee_form = forms.EmployeeForm(request.POST, request.FILES)
-        if employee_form.is_valid() and user_form.is_valid():
-            user = user_form.save()
-            user.is_active = True
+
+        newPassword = request.POST.get('pwd')
+        newPasswordRepeat = request.POST.get('repeat_pwd')
+        
+        if newPassword != newPasswordRepeat:
+            passerr = "The new password doesnt match. Please provide matching password"
+        
+        elif userNameForm.is_valid() and employee_form.is_valid() and user_form.is_valid():
+            user = user_form.save(commit=False)
+            user.set_password(newPassword)
+            user.username = userNameForm.cleaned_data.get('username')
             user.save()
             employee = employee_form.save(commit=False)
             employee.user = user
@@ -404,14 +410,17 @@ def employeePreferenceView(request, employeeID=None):
 def employeeMatchedJobView(request):
     is_logged_in_as_emp =request.user.is_authenticated and hasattr(request.user, 'employee')
     mat_active_tab = 'profile-tab-active'
-    emp_pref = request.user.employee.preference
-    query_condition = Q(region = emp_pref.job_region) |  Q(employement_type = emp_pref.employement_type) | (Q(salary__gte = emp_pref.salary_start) & Q(salary__lte = emp_pref.salary_end))
+    emp_pref = request.user.employee.preference if hasattr(request.user.employee, 'preference') else None
+    matching_jobs = []
+
+    if emp_pref:
+        query_condition = Q(region = emp_pref.job_region) |  Q(employement_type = emp_pref.employement_type) | (Q(salary__gte = emp_pref.salary_start) & Q(salary__lte = emp_pref.salary_end))
     #query_condition |= Q(categories__contains = emp_pref.job_category)
-    employee = request.user.employee
-    matching_jobs = models.Job.objects.filter( query_condition )
-    matching_jobs_percented = {}
-    count_matches = 0
-    comparing_factors = 5.0
+        employee = request.user.employee
+        matching_jobs = models.Job.objects.filter( query_condition )
+        matching_jobs_percented = {}
+        count_matches = 0
+        comparing_factors = 5.0
 
     for matching_job in matching_jobs:
         if matching_job.region == emp_pref.job_region:
@@ -454,8 +463,8 @@ def employeeMatchedJobView(request):
 def employeeAppliedJobs(request):
     is_logged_in_as_emp =request.user.is_authenticated and hasattr(request.user, 'employee')
     app_active_tab = 'profile-tab-active'
-    emp_pref = request.user.employee.preference
-    query_condition = Q(region = emp_pref.job_region) |  Q(employement_type = emp_pref.employement_type) | (Q(salary__gte = emp_pref.salary_start) & Q(salary__lte = emp_pref.salary_end))
+    #emp_pref = request.user.employee.preference
+    #query_condition = Q(region = emp_pref.job_region) |  Q(employement_type = emp_pref.employement_type) | (Q(salary__gte = emp_pref.salary_start) & Q(salary__lte = emp_pref.salary_end))
     #query_condition |= Q(categories__contains = emp_pref.job_category)
     print("user applY", request.user.employee.applications.all())
     applied_jobs = request.user.employee.applications.all()
