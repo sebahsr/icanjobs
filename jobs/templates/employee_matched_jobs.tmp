@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="codepixer">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Job Listing</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+		<!--
+		CSS
+		============================================= -->
+		<link rel="stylesheet" href="/static/css/linearicons.css">
+		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/css/fontawesome.pro.css">
+
+		<link rel="stylesheet" href="/static/css/bootstrap.css">
+		<link rel="stylesheet" href="/static/css/magnific-popup.css">
+		<link rel="stylesheet" href="/static/css/nice-select.css">					
+		<link rel="stylesheet" href="/static/css/animate.min.css">
+		<link rel="stylesheet" href="/static/css/owl.carousel.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/jquery-ui.css">
+        <link rel="stylesheet" href="/static/css/revisited.css">
+        
+	</head>
+	<body>
+
+		{% include 'header.tmp' %}
+
+		<!-- start banner Area -->
+		<section class="banner-area relative" id="home">	
+			<div class="overlay overlay-bg"></div>
+			<div class="container">
+				<div class="row d-flex align-items-center justify-content-center">
+					<div class="about-content col-lg-12">
+						<h1 class="text-white">
+							{{ employee.user.first_name }} {{ employee.user.last_name }}				
+						</h1>	
+						<p class="text-white link-nav"><a href="/jobs/">Home </a>  <span class="lnr lnr-arrow-right"></span>  {{ employee.user.first_name|title }} {{ employee.user.last_name|title }}</a></p>
+					</div>											
+				</div>
+			</div>
+		</section>
+		<!-- End banner Area -->	
+			
+		<!-- Start post Area -->
+		<section class="post-area section-gap-med">
+			<div class="container">
+				<div class="row  d-flex">
+                    <div class="col-lg-8 post-list">
+                        <div class="single-post-tabs d-flex flex-row">
+                            {% include 'profile_tabs.tmp' %}
+                        </div>	
+                    </div>
+					<div class="justify-content-center col-lg-8 post-list">
+                            <section class="post-area section-gap">
+                                    <div class="container">
+                                        <div class="row justify-content-center d-flex">
+                                            <div class="post-list">
+                                                {% for matching_job in matching_jobs %}
+                                                    <div class="single-post d-flex flex-row">
+                                                        <div class="thumb col-sm-4">
+                                                            <img style="max-width: 100px" src="{{ matching_job.company.profile_pic.url }}" alt="">
+                                                            
+                                                            <ul class="tags">
+                                                                {% for category in matching_job.categories.all %}
+                                                                    <li>
+                                                                        <a href="/jobs/category-{{ job.id }}/">{{ category.name }}</a>
+                                                                    </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                        <div class="details col-sm-7 col-sm-offset-1">
+                                                            <div class="title d-flex flex-row justify-content-between">
+                                                                <div class="titles">
+                                                                    <a href="/jobs/job-{{ matching_job.pk }}/"><h4>{{ matching_job.title }}</h4></a>
+                                                                    <h6> <a href='/companies/company-{{ matching_job.company.pk }}/'>{{ matching_job.company.name }} </a></h6>					
+                                                                </div>
+                                                                <ul class="btns">
+                                                                    
+                                                                    <li><a href="/jobs/job-{{ matching_job.id }}/"> <span class="lnr lnr-eye"></span> View Detail</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <p>
+                                                                <span class="fa fa-star"></span> Region : <a href='/jobs/region-{{ matching_job.region.id }}/'>{{ matching_job.region.name }}</a>
+                                                            </p>
+                                                            
+                                                            <p>
+                                                                <span class="fa fa-dollar-sign"></span> Salary : <a href='/jobs/region-{{ matching_job.region.id }}/'>{{ matching_job.salary }}</a>
+                                                            </p>
+
+                                                            <p class="address"><span class="fa fa-user-plus"></span> {{ matching_job.position}}</p>
+                                                            <p class="address"> {{ matching_job.summary|truncatechars:100 }}</p>
+                                                            
+                                                            <div class="percentage">
+                                                                <div class="progress">
+                                                                    <div class="progress-bar {{ matching_job.match_color }}" role="progressbar" style="width: {{ matching_job.match_percent }}%" aria-valuenow="{{ matching_job.match_percent }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>>
+                                                    </div>	
+                                                {% empty %}
+                                                    <div class="h3"> 
+                                                        No jobs Found 
+                                                    </div>
+                                                {% endfor %}
+                        
+                                                {% if current_page.has_previous %}
+                                                <a href="?page={{ current_page.previous_page_number }}" class="genric-btn info-border circle arrow">Previous<span class="lnr lnr-arrow-left"></span></a>
+                                                {% endif %}
+                        
+                                                {% if current_page.has_next %}
+                                                    <a href="?page={{ current_page.next_page_number }}" class="genric-btn info-border circle arrow">Next<span class="lnr lnr-arrow-right"></span></a>
+                                                {% endif %}
+                                                </div>
+                                            
+                                            
+                                        </div>
+                                    </div>	
+                                </section>
+					</div>
+                    <!-- sidebar -->
+                    
+                    {% include 'jobs_sidebar.tmp' %}
+
+					<!-- End side bar -->
+				</div>
+			</div>	
+		</section>
+		<!-- End post Area -->
+
+
+        <!-- Start callto-action Area -->
+        {%  include 'join_us_section.tmp' %}
+
+		<!-- End calto-action Area -->
+
+    {% include 'footer.tmp' %}	
+    
+	</body>
+</html>
+
+
+

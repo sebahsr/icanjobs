@@ -1,0 +1,50 @@
+
+<form method='POST' action="/employee/edit/experience/">
+    {% csrf_token %}
+    <div class="mt-10">
+        {{ experienceForm.job_title }}
+    </div>
+
+    <div class="mt-10">
+        {{ experienceForm.company_name }}
+    </div>
+    
+    <div class="mt-10">
+        {{ experienceForm.city }}
+    </div>
+    
+    <div class="input-group-icon mt-10">
+        <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+        <div class="form-select" id="default-select">
+            {{ experienceForm.region }}
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <hr />
+        <label>Start Month</label>
+        {{ experienceForm.start_month}} 
+
+        {{ experienceForm.start_year}}
+    </div>
+    <div class="mt-10">
+        <hr />
+        <label>Start Month</label>
+            {{ experienceForm.end_month}} {{ experienceForm.end_year}} 
+    </div>
+
+    <div class="mt-10">
+        <hr />
+        I currently work here {{ experienceForm.is_currently}}
+    </div>
+    <div class="mt-10">
+        <hr />
+        {{ experienceForm.description }}
+    </div>
+
+    <div class='form-group'>
+        <hr />
+        <button type="submit" class="genric-btn primary-border">Save Changes</button>
+    </div>
+</form>

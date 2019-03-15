@@ -21,7 +21,11 @@
 		CSS
 		============================================= -->
 		<link rel="stylesheet" href="/static/css/linearicons.css">
-		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+
+		
+		<link rel="stylesheet" href="/static/css/fontawesome.min.css">
+		<link rel="stylesheet" href="/static/css/fontawesome.pro.css">
+
 		<link rel="stylesheet" href="/static/css/bootstrap.css">
 		<link rel="stylesheet" href="/static/css/magnific-popup.css">
 		<link rel="stylesheet" href="/static/css/nice-select.css">					
@@ -43,6 +47,7 @@
 							{{ employee.user.first_name }} {{ employee.user.last_name }}				
 						</h1>	
 						<p class="text-white link-nav"><a href="/jobs/">Home </a>  <span class="lnr lnr-arrow-right"></span>  {{ employee.user.first_name|title }} {{ employee.user.last_name|title }}</a></p>
+						
 					</div>											
 				</div>
 			</div>
@@ -52,135 +57,225 @@
 		<!-- Start post Area -->
 		<section class="post-area section-gap">
 			<div class="container">
-				<div class="row justify-content-center d-flex">
-					<div class="col-lg-8 post-list">
+				<div class="row justify-content-left d-flex">
+					<div class="col-lg-9 post-list">
+					<div class="single-post-tabs d-flex flex-row">
+						{% include 'profile_tabs.tmp' %}
+					</div>	
+					{% if employeeForm and userForm %}
+
+						{% include 'edit_employee.tmp' %}
+					{% else %}
+						
 						<div class="single-post d-flex flex-row">
 							<div class="thumb col-sm-4">
+								{% if employee.profile_pic %}
 								<img style="max-width:100px" src="{{ employee.profile_pic.url }}" alt="">
+								{% else %}
+								<img style="max-width:100px" src="/static/img/default.png" alt="">
+								{% endif %}
+
 								<br /><br />
-								<h5>{{ employee.user.first_name|title}} {{ employee.user.last_name|title}}</h5>
-								<p class="address"><span class="fa fa-envelope"></span> {{ employee.user.email }}</p>
-								<p class="address"><span class="fa fa-phone"></span> {{ employee.phone }}</p>
 
 							</div>
 							<div class="details col-sm-8">
 								<div class="title d-flex flex-row justify-content-between">
-									<div class="titles">
-										<a href="#"><h4>Employee Profile</h4></a>					
+									<div class="titles title-gap">
+										<div class='h4'>{{ employee.user.first_name|title}} {{ employee.user.last_name|title}}</div>					
 									</div>
+									
 									
 								</div>
 
-                                <p>Region : {{ employee.region.name }}</p>
-                                <p>City : {{ employee.city }}</p>
-                                <p>School Level : {{ employee.school_level }}</p>
-                                
+                                <p><span class='fa fa-map-marker '></span> Region : {{ employee.region.name |default:"Not specified" }}</p>
+                                <p><span class='fa fa-envelope'></span> City : {{ employee.city|default:"Not specified"  }}</p>
+								
+								<div class='h5'>
+										
+										{% if is_logged_in_as_emp %}
+											
+									<a href='/employee/edit/general/'> <i class="fa fa-user-edit"></i> Edit General information</a>
+										{% endif %}
+								</div>
+
 							</div>
 						</div>	
-						{% if matching_jobs %}
-						<!-- Start post Area -->
+						
+						<!--  About me -->
 						<section class="post-area section-gap">
 								<div id='company-job-list' class="container">
-									<div class="row justify-content-center d-flex">
-										<div class="col-lg-12 post-list">
+									<div class="single-post row justify-content-center d-flex">
 										
-										<h4 class="single-title"> Recommended Jobs</h4>
-											<div class="row">
-											{% for matching_job in matching_jobs %}
-												<div style="margin-bottom : 20px" class="col-sm-6 single-rated">
-														<img class="img-fluid" src="{{ matching_job.company.profile_pic.url }}" alt="">
-														<hr />
-														<a href="/jobs/job-{{ matching_job.pk }}"><h4>{{ matching_job.title }}</h4></a>
-														<hr />
-														<h6> <a href='/companies/company-{{ matching_job.company.id }}/'>{{ matching_job.company.name }} </a></h6>
-														<hr />
-														<p>
-																{{ matching_job.summary|truncatechars:100}}
-														</p>
-														<p class="address">Job Nature: {{ matching_job.employement_type.name }}</p>
-														<p class="address"><span class="lnr lnr-map"></span> Position : {{ matching_job.position }} </p>
-														<p class="address"><span class="lnr lnr-database"></span> Region :  {{ matching_job.region }}</p>
-														<a href="/jobs/job-{{ matching_job.pk }}/" class="genric-btn primary  text-uppercase">View Detail</a>
-												</div>
-												{% empty %}
-												<div class="h3">
-													No Jobs Found
-												</div>
-												{% endfor %}
-											</div>
+										<div class="col-lg-4">
+											<h4>Contact Information</h4>
+											<hr />
+											<p class="address"><span class="fa fa-envelope"></span> {{ employee.user.email | default:"Not specified"  }}</p>
+											<p class="address"><span class="fa fa-phone"></span> {{ employee.phone | default:"Not specified"  }}</p>
+											<p>
+											{% if employee.facebook_url %}
+												<a href='{{ employee.facebook_url }}'><span style="font-size:2.5em" class="fa fa-facebook"></span></a>
+											{% endif %}
+
+											{% if employee.linkedin_url %}
+												<a href='{{ employee.linkedin_url }}'><span style="font-size:2.5em" class="fa fa-linkedin-square"></span></a>
+											{% endif %}
+
+											{% if employee.twitter_url %}
+												<a href='{{ employee.twitter_url }}'><span style="font-size:2.5em" class="fa fa-twitter-square"></span></a>
+											{% endif %}
+											</p>
+											
+										</div>
 										
-										
-					
-										
+										<div class="col-lg-8 post-list">
+
+												<h4 class="single-title"> About Me </h4>
+												<hr />
+	
+												{% if employee.about_me %}
+												{{ employee.about_me }}
+												{% else %}
+												+ Add an introduction about yourself with a brief summary of your experience.
+												{% endif %}
+										</div>
+
 									</div>
 								</div>	
-							</section>
-							<!-- End post Area -->
-							{% endif %}
-
+						</section>
+						<!-- End about me -->
+					{% endif %}
 						<!-- Start post Area -->
-						<section class="post-area section-gap">
+						<section class="single-post post-area section-gap">
 								<div id='company-job-list' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-										<h4 class="single-title"> Jobs Applied To</h4>
-										
-											{% for applied_Job in open_applied_jobs %}
-												<div class="single-post d-flex flex-row">
-													
-													<div class="details col-sm-12 col-sm-offset-1">
-														<div class="title d-flex flex-row justify-content-between">
-															<div class="titles">
-																<a href="/jobs/job-{{ applied_Job.id }}/"><h4>{{ applied_Job.title }}</h4></a>
-																<h6> <a href='/companies/company-{{ applied_Job.company.pk }}/'>{{ applied_Job.company.name }} </a></h6>					
-															</div>
-															<ul class="btns">
-																
-																<li><a href="/jobs/job-{{ applied_Job.id }}/"> <span class="lnr lnr-eye"></span> View Detail</a></li>
-															</ul>
-														</div>
-														<p>
-															<span class="fa fa-star"></span> Region : <a href='/jobs/region-{{ job.region.id }}/'>{{ applied_Job.region.name }}</a>
-														</p>
+											<h4 class="single-title"> Experience 
+												{% if is_logged_in_as_emp %}
+													<span style='float:right'><a href='/employee/edit/experience/'><i class='fa fa-plus-square'></i></a></span>
+												{% endif %}
+											
+											</h4>
+											<hr />
+
+											{% for experience in employee.experiences.all %}
+												<div class='row'>
+													<div class='col-sm-7'>
+														<div class='h5'>{{ experience.job_title }} </div>
+														<div class='h5'>{{ experience.company_name }} </div>
+														<div><i class='fa fa-map-marker-alt'></i> {{ experience.city }}, {{ experience.region.name }} </div>
 														
-														<p class="address"><span class="fa fa-user-plus"></span> {{ applied_Job.position}}</p>
-														<p class="address"> {{ applied_Job.summary|truncatechars:300 }}</p>
-														<div class="thumb">
-															<ul class="tags">
-																{% for category in job.categories.all %}
-																	<li>
-																		<a href="/jobs/category-{{ job.id }}/">{{ category.name }}</a>
-																	</li>
-																{% endfor %}
-															</ul>
-														</div>
+														<br />
+														<p>{{ experience.description}}</p>
 													</div>
-												</div>	
+
+													<div class='col-sm-4'>
+															<div><i class='fa fa-calendar-alt'></i> {{ experience.start_month|title }}, {{ experience.start_year }} - {{ experience.end_month|title }}, {{ experience.end_year }} </div>
+													</div>
+												</div>
+												<hr />
 											{% empty %}
-											<div class="h3">
-												No Jobs Found
-											</div>
+											+ Add Experience information about yourself
 											{% endfor %}
-											{% if current_page.has_previous %}
-											<a href="?page={{ current_page.previous_page_number }}" class="genric-btn info-border circle arrow">Previous<span class="lnr lnr-arrow-left"></span></a>
-											{% endif %}
-					
-											{% if current_page.has_next %}
-												<a href="?page={{ current_page.next_page_number }}" class="genric-btn info-border circle arrow">Next<span class="lnr lnr-arrow-right"></span></a>
-											{% endif %}
-											</div>
+											
+										{% if experienceForm %}	
+											{% include 'add_experience.tmp' %}
+										{% endif %}
+
+										</div>
+
 										
 					
 										
 									</div>
 								</div>	
-							</section>
-							<!-- End post Area -->
-																				
+						</section>
+						<!-- End post Area -->
+						
+						
+						<section class="single-post post-area section-gap">
+								<div id='employee-skill' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title"> Skills 
+
+												{% if is_logged_in_as_emp %}
+													<span style='float:right'><a href='/employee/edit/skill/'><i class='fa fa-plus-square'></i></a></span>
+												{% endif %}
+											</h4>
+											<hr />
+
+											{% for skill in employee.skills.all %}
+											<span class='genric-btn success'>{{ skill.name |title }}</span>
+											{% empty %}
+											+ Add Skill set information about yourself
+											{% endfor %}
+
+
+											{% if skillForm %}	
+												{% include 'add_skill.tmp' %}
+											{% endif %}
+											
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+						
+
+						<section class="single-post post-area section-gap">
+								<div id='company-job-list' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title"> Educations 
+												
+												{% if is_logged_in_as_emp %}
+													<span style='float:right'><a href='/employee/edit/education/'><i class='fa fa-plus-square'></i></a></span>
+												{% endif %}
+												</h4>
+											<hr />
+
+											{% for education in employee.educations.all %}
+											<div class='row'>
+												<div class='col-sm-7'>
+													<div class='h5'>{{ education.school }} </div>
+													<div class='h5'>{{ education.field_of_study }} </div>
+													<div class='h5'>{{ education.degree.name }} </div>
+													<div><i class='fa fa-map-marker-alt'></i> {{ education.city }}, {{ education.region.name }} </div>
+													
+													<br />
+													<p>{{ education.description}}</p>
+												</div>
+
+												<div class='col-sm-4'>
+														<div><i class='fa fa-calendar-alt'></i> {{ education.start_month|title }}, {{ education.start_year }} - {{ education.end_month|title }}, {{ education.end_year }} </div>
+												</div>
+											</div>
+											<hr />
+											{% empty %}
+											+ Add Education information about yourself
+											{% endfor %}
+											{% if educationForm %}	
+												{% include 'add_education.tmp' %}
+											{% endif %}
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+
+
 					</div>
 					<!-- sidebar -->
-						{% include 'company_sidebar.tmp' %}
+						{% comment %}
+						{% include 'employee_sidebar.tmp' %}
+						{% endcomment %}
 					<!-- End side bar -->
 				</div>
 			</div>	

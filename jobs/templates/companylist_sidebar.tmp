@@ -15,18 +15,20 @@
                                 <div class="active-relatedjob-carusel">
                                     {% for recent_job in recent_jobs %}
                                     <div class="single-rated">
-                                        <img class="img-fluid" src="img/r1.jpg" alt="">
+
+                                        <img class="img-fluid" src='{{ recent_job.company.profile_pic.url }}' alt="" />
                                         <a href="single.html"><h4>{{ job.title }}</h4></a>
                                         <h6> <a href='/companies/company-{{ recent_job.company.id }}'>{{ recent_job.company.name }} </a></h6>
                                         <p>
                                             {{ recent_job.summary|truncatechars:300}}
                                         </p>
-                                        <p class="address">Job Nature: Full time</p>
+                                        <p class="address">Job Nature: {{ recent_job.employement_type}}</p>
                                         <p class="address"><span class="lnr lnr-map"></span> Position : {{ recent_job.position }} </p>
                                         <p class="address"><span class="lnr lnr-database"></span> Region :  {{ recent_job.region }}</p>
                                         <a href="#" class="btns text-uppercase">View Detail</a>
                                     </div>
-                                    {% endfor %}																	
+                                    {% endfor %}	
+                                    																
                                 </div>
                             </div>													
     

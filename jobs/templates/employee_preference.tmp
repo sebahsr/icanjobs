@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="codepixer">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Job Listing</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+		<!--
+		CSS
+		============================================= -->
+		<link rel="stylesheet" href="/static/css/linearicons.css">
+		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/css/fontawesome.pro.css">
+
+		<link rel="stylesheet" href="/static/css/bootstrap.css">
+		<link rel="stylesheet" href="/static/css/magnific-popup.css">
+		<link rel="stylesheet" href="/static/css/nice-select.css">					
+		<link rel="stylesheet" href="/static/css/animate.min.css">
+		<link rel="stylesheet" href="/static/css/owl.carousel.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/jquery-ui.css">
+        <link rel="stylesheet" href="/static/css/revisited.css">
+        
+	</head>
+	<body>
+
+		{% include 'header.tmp' %}
+
+		<!-- start banner Area -->
+		<section class="banner-area relative" id="home">	
+			<div class="overlay overlay-bg"></div>
+			<div class="container">
+				<div class="row d-flex align-items-center justify-content-center">
+					<div class="about-content col-lg-12">
+						<h1 class="text-white">
+							{{ employee.user.first_name }} {{ employee.user.last_name }}				
+						</h1>	
+						<p class="text-white link-nav"><a href="/jobs/">Home </a>  <span class="lnr lnr-arrow-right"></span>  {{ employee.user.first_name|title }} {{ employee.user.last_name|title }}</a></p>
+					</div>											
+				</div>
+			</div>
+		</section>
+		<!-- End banner Area -->	
+			
+		<!-- Start post Area -->
+		<section class="post-area section-gap-med">
+			<div class="container">
+				<div class="row  d-flex">
+                    <div class="col-lg-8 post-list">
+                        <div class="single-post-tabs d-flex flex-row">
+                            {% include 'profile_tabs.tmp' %}
+                        </div>	
+                    </div>
+					<div class="justify-content-center col-lg-8 post-list">
+
+					<form method='POST' action='/employee/preference/'>
+						<!-- Start post Area -->
+						<section class="post-area section-gap">
+								<div id='company-job-list' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title"> Job Levesl </h4>
+											<hr />
+
+											{% for experience in employee.preference.job_levels.all %}
+											{% empty %}
+											+ Add the level of the job you are looking for
+                                            {% endfor %}
+											{% csrf_token %}
+											{% if is_logged_in_as_emp %}
+											{{ preferenceForm.job_level }}
+											{% endif %}
+											
+										</div>
+										
+					
+										
+                                    </div>
+                                    
+					        	   
+                                </div>	
+						</section>
+						<!-- End post Area -->
+						
+						
+						<section class="post-area section">
+								<div id='company-job-list' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title"> Sector </h4>
+											<hr />
+
+											{% if employee.preference.job_category %}
+												{{employee.preference.job_category}}
+											{% else %}
+												+ Select the sector you want to work in 
+                                            {% endif %}
+											{% if is_logged_in_as_emp %}
+											{{ preferenceForm.job_category }}
+                                            {% endif %}
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+						
+
+						<section class="post-area section-gap">
+								<div id='company-job-list' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title"> Region </h4>
+											<hr />
+
+											{% if employee.preference.job_region %}
+											 {{ employee.preference.job_region }}
+											{% else %}
+											+ Provide your region preference
+                                            {% endif %}
+											{% csrf_token %}
+											
+											{% if is_logged_in_as_emp %}
+												{{ preferenceForm.job_region }}
+											{% endif %}
+										
+										</div>
+										
+									</div>
+								</div>	
+						</section>
+
+                        <section class="post-area section">
+								<div id='company-job-list' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title"> Employement Type </h4>
+											<hr />
+
+												{% if employee.preference.employement_type %}
+													{{employee.preference.employement_type}}
+												{% else %}
+													+ Add the type of employment that best suit you 
+												{% endif %}
+												
+												{% csrf_token %}
+												
+												{% if is_logged_in_as_emp %}
+													{{ preferenceForm.employement_type }}
+												{% endif %}
+												{% if is_logged_in_as_emp %}
+                                                <br /><br /><br />
+                                        		<div>
+													<button class='genric-btn primary' type='submit'>Save Changes</button>
+												
+												</div>
+												{% endif %}
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+					</div>
+                    <!-- sidebar -->
+                    
+					
+					{% if is_logged_in_as_emp %}
+					<div class="col-lg-4 sidebar">
+                            
+    
+                            <div class="single-slidebar">
+                                <h4><i class='fa fa-dollar-sign'></i> Salary Range</h4>
+                                <hr />
+                                <div class="">
+                                        <div class="input-group-icon mt-10">
+                                            <div class="icon">
+                                            <i class="fa fa-info-square" aria-hidden="true"></i>
+                                        </div>
+                                            {{ preferenceForm.salary_start }}		
+                                            
+                                        </div>
+
+                                        <div class="input-group-icon mt-10">
+                                            <div class="icon">
+                                            <i class="fa fa-info-square" aria-hidden="true"></i></div>
+                                            {{ preferenceForm.salary_end }}			
+                                            
+                                        </div>
+
+                                        <div class="input-group-icon mt-10">
+                                            <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
+                                            <div class="form-select" id="default-select">
+                                            {{ preferenceForm.pay_period }}		
+                                            </div>
+                                        </div>
+                                        
+                                    </form>
+
+                                </div>
+                            </div>												
+    
+                        </div>
+					{% endif %}
+					<!-- End side bar -->
+				</div>
+			</div>	
+		</section>
+		<!-- End post Area -->
+
+
+        <!-- Start callto-action Area -->
+        {%  include 'join_us_section.tmp' %}
+
+		<!-- End calto-action Area -->
+
+    {% include 'footer.tmp' %}	
+    <script>
+            $('#example').tagsInput({
+                'autocomplete': {
+                    source: [
+                        'jQuery',
+                        'Script',
+                        'Net',
+                        'Demo'
+                        ]
+                }
+            });
+            </script>
+	</body>
+</html>
+
+
+

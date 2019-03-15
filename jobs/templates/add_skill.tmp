@@ -1,0 +1,12 @@
+
+<form method='POST' action="/employee/edit/skill/">
+    {% csrf_token %}
+    <div class="mt-10">
+        {{ skillForm.name }}
+    </div>
+
+    <div class='form-group'>
+        <hr />
+        <button type="submit" class="genric-btn primary-border">Save Changes</button>
+    </div>
+</form>

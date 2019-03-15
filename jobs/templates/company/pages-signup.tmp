@@ -1,0 +1,145 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'company/admin.header.tmp' %}
+	<body>
+		<!-- start: page -->
+		<section class="body-sign">
+			<div class="center-sign">
+				<a href="/" class="logo pull-left">
+					<img src="/static/img/logo.png" height="54" alt="Porto Admin" />
+				</a>
+
+				<div class="panel panel-sign">
+					<div class="panel-title-sign mt-xl text-right">
+						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign Up</h2>
+					</div>
+					
+					<div class="panel-body">
+						
+						
+						<form action="/company/admin/signup/" method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="form-group mb-lg">
+								{%  if company_form.name.errors %}
+									<div class="text-danger">{{ company_form.name.errors.0 }}</div>
+								{% endif %}
+
+								<label>Name</label>
+								{{ company_form.name }}
+
+							</div>
+							<div class="form-group mb-lg">
+								{%  if company_form.username.errors %}
+									<div class="text-danger">{{ company_form.username.errors.0 }}</div>
+								{% endif %}
+								<label>Username</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-user"></i>
+									</span>
+									{{ username_form.username }}
+								</div>
+							</div>
+							
+							<div class="form-group mb-lg">
+								{%  if company_form.email.errors %}
+									<div class="text-danger">{{ company_form.email.errors.0 }}</div>
+								{% endif %}
+
+								<label>E-mail Address</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-envelope"></i>
+									</span>
+									{{ user_form.email }}
+								</div>
+							</div>
+
+							<div class="form-group mb-lg">
+								{%  if company_form.phone.errors %}
+									<div class="text-danger">{{ company_form.phone.errors.0 }}</div>
+								{% endif %}
+
+								<label>Phone Number</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-phone"></i>
+									</span>
+									{{ company_form.phone }}
+								</div>
+							</div>
+							<div class="form-group mb-none">
+								{%  if company_form.profile_pic.errors %}
+									<div class="text-danger">{{ company_form.profile_pic.errors.0 }}</div>
+								{% endif %}
+
+								<label>Company Logo</label>
+								
+								{{ company_form.profile_pic }}
+							</div>
+
+							<div class="form-group mb-none">
+								<div class="row">
+									<div class="col-sm-6 mb-lg">
+										<div class="form-group mb-lg">
+											{%  if company_form.city.errors %}
+												<div class="text-danger">{{ company_form.city.errors.0 }}</div>
+											{% endif %}
+											<label>City</label>
+											{{ company_form.city }}
+										</div>
+									</div>
+									<div class="col-sm-6 mb-lg">
+										<div class="form-group mb-lg">
+											{%  if company_form.region.errors %}
+												<div class="text-danger">{{ company_form.region.errors.0 }}</div>
+											{% endif %}
+											<label>Region</label><br />
+											
+											{{ company_form.region }}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group mb-none">
+								<div class="row">
+									<div class="col-sm-6 mb-lg">
+										<label>Password</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-key"></i>
+											</span>
+											<input name="pwd" type="password" class="form-control" />
+										</div>
+									</div>
+									<div class="col-sm-6 mb-lg">
+										<label>Password Confirmation</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-key"></i>
+											</span>
+											<input name="pwd_confirm" type="password" class="form-control" />
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								
+								<div class="col-sm-offset-8 col-sm-4 text-right">
+									<button type="submit" class="btn btn-primary hidden-xs">Sign Up</button>
+									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign Up</button>
+								</div>
+							</div>
+
+							
+						</form>
+					</div>
+				</div>
+
+				<p class="text-center text-muted mt-md mb-md">iCAN &copy; Copyright 2018. All rights reserved.
+		</section>
+		<!-- end: page -->
+		{% include 'company/admin.footer.tmp' %}

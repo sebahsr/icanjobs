@@ -1,0 +1,35 @@
+
+					<div class="col-lg-4 sidebar">
+                            
+    
+                            <div class="single-slidebar">
+                                <h4>Website Informations
+                                    
+									{% if is_logged_in_as_emp %}
+                                        <span style='float:right'><a href='/employee/edit/website/'><i class='fa fa-plus-square'></i></a></span>
+                                    {% endif %}
+                                </h4>
+                                <hr />
+                                <div class="">
+                                    {% for website in employee.websites.all %}
+                                       <div class='genric-btn default-border'><span class='fa fa-link'></span><a href='{{ website.adress}}'> {{ website.adress }}</a></div>
+                                    
+                                    {% empty %}
+                                    + Add your Facebook, Linkedin or anyother website
+                                    {% endfor %}														
+                                </div>
+
+                                {% if websiteForm %}
+                                {% include 'add_website.tmp' %}		
+                            {% endif %}	
+                            </div>							
+    
+                            <div class="single-slidebar">
+                                <h4>Contact Information</h4>
+                                <hr />
+                                <p class="address"><span class="fa fa-envelope"></span> {{ employee.user.email | default:"Not specified"  }}</p>
+								<p class="address"><span class="fa fa-phone"></span> {{ employee.phone | default:"Not specified"  }}</p>
+
+                            </div>						
+    
+                        </div>

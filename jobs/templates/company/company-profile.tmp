@@ -1,0 +1,209 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'company/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'company/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				{% include 'company/company.admin.sidebar.tmp' %}
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>Company Profile</h2>
+					
+						
+					</header>
+
+					<!-- start: page -->
+
+					<div class="row">
+						<div class="col-md-4 col-lg-3">
+
+							<section class="panel">
+								<div class="panel-body">
+									<div class="thumb-info mb-md">
+										<img src="{{ company.profile_pic.url }}" class="rounded img-responsive" alt="John Doe">
+										<div class="thumb-info-title">
+											<span class="thumb-info-inner">{{ company.name | title }}</span>
+										</div>
+									</div>
+									<hr class="dotted short">
+
+									<div class="social-icons-list">
+										{% if company.facebook is not None %}
+										<a rel="tooltip" data-placement="bottom" target="_blank" href="{{ company.facebook }}" data-original-title="Facebook"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+										{% endif %}
+										
+										{% if company.twitter is not None %}
+										<a rel="tooltip" data-placement="bottom" target="_blank"  href="{{ company.twitter }}" data-original-title="Twitter"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+										{% endif %}
+										
+										{% if company.linkedin is not None %}
+										<a rel="tooltip" data-placement="bottom" target="_blank"  href="{{ company.linkedin }}" data-original-title="Linkedin"><i class="fa fa-linkedin"></i><span>Linkedin</span></a>
+										{% endif %}
+									</div>
+
+									<div class="widget-toggle-expand mb-md">
+										<div class="widget-header">
+											<h6>Company Informatoin</h6>
+											<div class="widget-toggle">+</div>
+										</div>
+										<div class="widget-content-expanded">
+											<ul class="">
+												<li> <span class="fa fa-external-link"></span> <a href='{{company.website}}'>{{ company.website }}</a></li>
+												<li class="completed"><span class="fa fa-envelope"></span><a href="malto:{{company.user.email}}">{{ company.user.email }}</a></li>
+												<li class="completed"><span class="fa fa-phone"></span> {{ company.phone }}</li>
+												<li class="completed"><span class="fa  fa-map-marker"></span> {{ company.city|title }}, {{ company.region.name|title}}</li>
+												
+											</ul>
+										</div>
+									</div>
+
+									<hr class="dotted short">
+
+									<h6 class="text-muted">About</h6>
+									<p>
+										{{ company.brief_description|linebreaksbr }}
+									</p>
+
+									
+
+								</div>
+							</section>
+
+
+						</div>
+						<div class="col-md-8 col-lg-6">
+
+							<div class="tabs">
+								<ul class="nav nav-tabs tabs-primary">
+									<li class="{{ profile_overview_active }}">
+										<a href="#overview" data-toggle="tab"><i class='fa fa-user'></i> Profile Overview</a>
+									</li>
+									<li class=" {{ profile_edit_active }}">
+										<a href="#edit" data-toggle="tab"><i class='fa fa-edit'></i>Edit Profile</a>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div id="overview" class="tab-pane {{ profile_overview_active }}">
+									
+										<h4 class="mb-xlg">List of your most recent jobs</h4>
+
+										<div class="timeline timeline-simple mt-xlg mb-md">
+											<div class="tm-body">
+												<div class="tm-title">
+													<h3 class="h5 text-uppercase">Recent Jobs</h3>
+												</div>
+												<ol class="tm-items">
+													{% for recent_job in recent_jobs %}
+													<li>
+														<div class="tm-box">
+															<div class="text-muted h5"><a href='/jobs/job-{{recent_job.pk}}/'>{{ recent_job.title }}</a></div>
+															<p>
+																{{ recent_job.summary | truncatechars:300}}
+															</p>
+														</div>
+													</li>
+													{% endfor %}
+													
+												</ol>
+											</div>
+										</div>
+									</div>
+									{% include 'company/company-edit.tmp' %}
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 col-lg-3">
+
+							<h4 class="mb-md">Sale Stats</h4>
+							<ul class="simple-card-list mb-xlg">
+								<li class="primary">
+									<h3>{{fact_total_jobs}}</h3>
+									<p>Total Jobs</p>
+								</li>
+								<li class="primary">
+									<h3>{{ fact_open_jobs }}</h3>
+									<p>Open Jobs</p>
+								</li>
+								<li class="primary">
+									<h3>{{ fact_total_applications.company_total_applications }}</h3>
+									<p>Total Applications</p>
+								</li>
+							</ul>
+								
+							{% if recent_blogs %}
+								<section class="panel">
+									<header class="panel-heading">
+										<div class="panel-actions">
+											<a href="#" class="fa fa-caret-down"></a>
+										</div>
+	
+										<h2 class="panel-title">Recent Career Advices</h2>
+									</header>
+									<div class="panel-body">
+										<ul class="simple-post-list">
+											{% for recent_blog in recent_blogs %}
+											<li>
+												<div class="post-image">
+													<div class="img-thumbnail">
+														<a href="#">
+															<img src="{{ recent_blog.image.url }}" alt="">
+														</a>
+													</div>
+												</div>
+												<div class="post-info">
+													<a href="#">{{ recent_blog.title }}</a>
+													<div class="post-meta">
+														 {{ recent_blog.created_at }}
+													</div>
+												</div>
+											</li>
+										{% endfor %}
+										</ul>
+									</div>
+								
+								</section>
+							{% endif %}
+							
+						</div>
+
+					</div>
+					<!-- end: page -->
+				</section>
+			</div>
+
+			<aside id="sidebar-right" class="sidebar-right">
+				<div class="nano">
+					<div class="nano-content">
+						<a href="#" class="mobile-close visible-xs">
+							Collapse <i class="fa fa-chevron-right"></i>
+						</a>
+			
+						<div class="sidebar-right-wrapper">
+			
+							<div class="sidebar-widget widget-calendar">
+								<h6>Upcoming Tasks</h6>
+								<div data-plugin-datepicker data-plugin-skin="dark" ></div>
+			
+								<ul>
+									<li>
+										<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
+										<span>Company Meeting</span>
+									</li>
+								</ul>
+							</div>
+			
+			
+						</div>
+					</div>
+				</div>
+			</aside>
+		</section>
+
+
+		{% include 'company/admin.footer.tmp' %}

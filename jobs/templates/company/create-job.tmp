@@ -1,0 +1,346 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'company/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'company/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				{% include 'company/company.admin.sidebar.tmp' %}
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>Create Jobs</h2>
+						<br />
+					</header>
+
+					<!-- start: page -->
+						
+						<div class="row">
+							<div class="col-xs-12">
+								<section class="panel form-wizard" id="w4">
+									<header class="panel-heading">
+										
+										<h2 class="panel-title">Create New Job</h2>
+									</header>
+								
+								<form class="form-horizontal" method="POST" action="/company/admin/create-job/" novalidate="novalidate">
+									{% csrf_token %}
+									<div class="panel-body">
+										<div class="wizard-progress wizard-progress-lg">
+											<div class="steps-progress">
+												<div class="progress-indicator"></div>
+											</div>
+											<ul class="wizard-steps">
+												<li class="active">
+													<a href="#w4-account" data-toggle="tab"><span>1</span>Basic Info</a>
+												</li>
+												<li>
+													<a href="#w4-profile" data-toggle="tab"><span>2</span>Summary Info</a>
+												</li>
+												<li>
+													<a href="#w4-billing" data-toggle="tab"><span>3</span>Skill Info </a>
+												</li>
+												<li>
+													<a href="#w4-confirm" data-toggle="tab"><span>4</span>How to apply</a>
+												</li>
+											</ul>
+										</div>
+											<div class="tab-content">
+												<div id="w4-account" class="tab-pane active">
+													
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.title.errors.0 }}</div>
+														<label class="col-sm-3 control-label" for="w4-username">Job Title</label>
+														<div class="col-sm-6">
+															{{ jobForm.title }}
+														</div>
+													</div>
+
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.level.errors.0 }}</div>
+														<label class="col-md-3 control-label">Job Level</label>
+														<div class="col-md-6">
+															{{ jobForm.level }}
+															
+														</div>
+													</div>
+
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.department.errors.0 }}</div>
+														<label class="col-md-3 control-label">Department</label>
+														<div class="col-md-6">
+															{{ jobForm.department }}
+															
+														</div>
+													</div>
+
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.report_to.errors.0 }}</div>
+														<label class="col-md-3 control-label">Report to</label>
+														<div class="col-md-6">
+															{{ jobForm.report_to }}
+															
+														</div>
+													</div>
+	
+
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.salary.errors.0 }}</div>
+														<label class="col-md-3 control-label">Salary</label>
+														<div class="col-md-6">
+															{{ jobForm.salary }}
+															
+														</div>
+													</div>
+
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.position.errors.0 }}</div>
+														<label class="col-md-3 control-label">Position</label>
+														<div class="col-md-6">
+															{{ jobForm.position }}
+															
+														</div>
+													</div>
+
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.number_of_candidates.errors.0 }}</div>
+														<label class="col-md-3 control-label">Number of Positions</label>
+														<div class="col-md-6">
+															{{ jobForm.number_of_candidates }}
+															
+														</div>
+													</div>
+													
+													
+
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.deadline.errors.0 }}</div>
+															<label class="col-md-3 control-label">Deadline date</label>
+															<div class="col-md-6">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<i class="fa fa-calendar"></i>
+																	</span>
+																	{{ jobForm.deadline}}
+																</div>
+															</div>
+
+														</div>
+			
+													
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.employement_type.errors.0 }}</div>
+														<label class="col-md-3 control-label">Employement Type</label>
+														<div class="col-md-6">
+															{{ jobForm.employement_type }}
+															
+														</div>
+													</div>
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.city.errors.0 }}</div>
+															<label class="col-md-3 control-label">City</label>
+															<div class="col-md-6">
+																{{ jobForm.city }}
+																
+															</div>
+														</div>
+														
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.region.errors.0 }}</div>
+														<label class="col-md-3 control-label">Region</label>
+														<div class="col-md-6">
+															{{ jobForm.region }}
+															
+														</div>
+													</div>
+
+													
+													
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.categories.errors.0 }}</div>
+														<label class="col-md-3 control-label">Categories</label>
+														<div class="col-md-9">
+															{{ jobForm.categories }}
+															
+														</div>
+													</div>
+
+													
+			
+
+												</div>
+												<div id="w4-profile" class="tab-pane">
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.summary.errors.0 }}</div>
+														<label class="col-sm-3 control-label" for="w4-first-name">Role overview/about the positon</label>
+														<div class="col-sm-9">
+															{{ jobForm.summary }}
+														</div>
+													</div>
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.requirements.errors.0 }}</div>
+														<label class="col-sm-3 control-label" for="w4-last-name">Key Requirements</label>
+														<div class="col-sm-9">
+															{{ jobForm.requirements }}
+														</div>
+													</div>
+												</div>
+												<div id="w4-billing" class="tab-pane">
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.knowledge_skills.errors.0 }}</div>
+														<label class="col-sm-3 control-label" for="w4-cc">Knowledge And Skills</label>
+														<div class="col-sm-9">
+															{{ jobForm.knowledge_skills}}
+														</div>
+													</div>
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.responsibilities.errors.0 }}</div>
+														<label class="col-sm-3 control-label" for="w4-cc">Job duties and responsibilities</label>
+														<div class="col-sm-9">
+															{{ jobForm.responsibilities}}
+														</div>
+													</div>
+													
+												</div>
+												<div id="w4-confirm" class="tab-pane">
+														
+													<div class="form-group">
+													
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.education_experience.errors.0 }}</div>
+														<label class="col-sm-3 control-label" for="w4-email">Education And Experience</label>
+														<div class="col-sm-9">
+															{{ jobForm.education_experience }}
+														</div>
+													</div>
+													<div class="form-group">
+														
+														<label class="col-sm-3 control-label" for="w4-email">How to Apply</label>
+														<div class="col-sm-9">
+															{{ jobForm.how_to_apply }}
+														</div>
+													</div>
+													<div class="form-group">
+														
+														<label class="col-sm-3 control-label" for="w4-email">Take applications through the portal</label>
+														<div class="col-sm-4">
+															{{ jobForm.apply_through_portal }}
+														</div>
+													</div>
+													
+													<div class="from-group">
+														<div class="col-sm-4 col-sm-offset-5">
+															<button class='btn btn-primary' type="submit"> Create </button>
+														</div>
+													</div>
+												</div>
+											</div>
+									</div>
+									<div class="panel-footer">
+										<ul class="pager">
+											<li class="previous disabled">
+												<a><i class="fa fa-angle-left"></i> Previous</a>
+											</li>
+											<li class="next">
+												<a>Next <i class="fa fa-angle-right"></i></a>
+											</li>
+										</ul>
+									</div>
+									
+								</form>
+								</section>
+							</div>
+						</div>
+					<!-- end: page -->
+				</section>
+			</div>
+
+			<aside id="sidebar-right" class="sidebar-right">
+				<div class="nano">
+					<div class="nano-content">
+						<a href="#" class="mobile-close visible-xs">
+							Collapse <i class="fa fa-chevron-right"></i>
+						</a>
+			
+						<div class="sidebar-right-wrapper">
+			
+							<div class="sidebar-widget widget-calendar">
+								<h6>Upcoming Tasks</h6>
+								<div data-plugin-datepicker data-plugin-skin="dark" ></div>
+			
+								<ul>
+									<li>
+										<time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
+										<span>Company Meeting</span>
+									</li>
+								</ul>
+							</div>
+			
+							<div class="sidebar-widget widget-friends">
+								<h6>Friends</h6>
+								<ul>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-online">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+									<li class="status-offline">
+										<figure class="profile-picture">
+											<img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+										</figure>
+										<div class="profile-info">
+											<span class="name">Joseph Doe Junior</span>
+											<span class="title">Hey, how are you?</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+			
+						</div>
+					</div>
+				</div>
+			</aside>
+		</section>
+
+{% include 'company/admin.footer.tmp' %}

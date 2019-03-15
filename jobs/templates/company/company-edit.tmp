@@ -1,0 +1,196 @@
+
+									<div id="edit" class="tab-pane {{ profile_edit_active }}">
+
+                                            <form class="form-horizontal" method="POST" action="/company/admin/edit/">
+                                                {% csrf_token %}
+                                                <h4 class="mb-xlg">Personal Information</h4>
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label" for="profileFirstName">Company Name</label>
+                                                        <div class="col-md-8">
+                                                            {{ companyForm.name}}
+                                                        </div>
+                                                    </div>
+
+                                                    
+                                                    
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label">Phone</label>
+                                                        <div class="col-md-8 control-label">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-phone"></i>
+                                                                </span>
+                                                                {{ companyForm.phone}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label" for="profileAddress">Email</label>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-envelope"></i>
+                                                                </span>
+                    
+                                                                {{ userForm.email }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label" for="profileAddress">City</label>
+                                                        <div class="col-md-8">
+                                                            {{ companyForm.city }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label" for="profileAddress">Region</label>
+                                                        <div class="col-md-8">
+                                                            {{ companyForm.region }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label class="col-md-3 control-label" for="profileCompany">Website Address</label>
+                                                            <div class="col-md-8">
+                                                                <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-facebook"></i>
+                                                                        </span>
+                            
+                                                                        {{ companyForm.website }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-md-3 control-label" for="profileCompany">Facebook Address</label>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group">
+                                                                    <span class="input-group-addon">
+                                                                        <i class="fa fa-facebook"></i>
+                                                                    </span>
+                        
+                                                                    {{ companyForm.facebook }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                            <label class="col-md-3 control-label" for="profileCompany">Twitter Address</label>
+                                                            <div class="col-md-8">
+                                                                <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-twitter"></i>
+                                                                        </span>
+                            
+                                                                        {{ companyForm.twitter }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label" for="profileCompany">Linkedin Address</label>
+                                                            <div class="col-md-8">
+                                                                <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-linkedin"></i>
+                                                                        </span>
+                            
+                                                                        {{ companyForm.linkedin }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </fieldset>
+                                                <hr class="dotted tall">
+                                                <h4 class="mb-xlg">Company Brief Description</h4>
+                                                <fieldset>
+                                                    <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            {{ companyForm.brief_description}}
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
+                                                <div class="panel-footer">
+                                                    <div class="row">
+                                                        <div class="col-md-9 ">
+                                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+    
+                                            </form>
+                                            <form method="post" action="/company/edit/username/">
+                                                {% csrf_token %}
+                                                    <hr class="dotted tall">
+                                                    <h4 class="mb-xlg">Change Username</h4>
+                                                    <fieldset class="mb-xl">
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label" for="profileLastName">Username </label>
+                                                            <div class="col-md-8">
+                                                                <div class="input-group">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-user"></i>
+                                                                        </span>
+                                                                       {{ userNameForm.username }}
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="panel-footer">
+                                                            <div class="row">
+                                                                <div class="col-md-9 ">
+                                                                    <button type="submit" class="btn btn-primary">Change Username</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </fieldset>
+                                            </form>
+
+                                        <form method="post" action="/company/edit/password/">
+                                            {% csrf_token %}
+
+                                            <hr class="dotted tall">
+                                            <h4 class="mb-xlg">Change Password</h4>
+                                            <p> If you change your username the system automatically logs you out of the system</p>
+                                            {% if passerr %}
+                                                <div class="alert alert-danger">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                    {{passerr}}
+                                                </div>
+                                            {% endif %}
+                                            <fieldset class="mb-xl">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label" for="profileNewPassword">Old Password</label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" placeholder="Old Password" name='oldPassword' id="profileNewPassword">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label" for="profileNewPasswordRepeat">New Password</label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" placeholder="New Password" name='newPassword' id="profileNewPasswordRepeat">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label" for="profileNewPasswordRepeat">Repeat New Password</label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" placeholder="Repeat New Password" name='newPasswordRepeat' id="profileNewPasswordRepeat">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="panel-footer">
+                                                    <div class="row">
+                                                        <div class="col-md-9 ">
+                                                            <button type="submit" class="btn btn-primary">Change Password</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </fieldset>
+                                        </form>
+                                        
+                                        </div>

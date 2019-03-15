@@ -77,12 +77,11 @@
 								
 								<blockquote class="generic-blockquote">
 									
-								{{ company.brief_description }}		
+								{{ company.brief_description|linebreaksbr }}		
 								</blockquote>
 							
 							</div>
 						</div>	
-
 						<section class="feature-cat-area pt-100" id="company-facts">
 								<div class="container">
 									<div class="row d-flex justify-content-center">
@@ -142,9 +141,7 @@
 												{% for job_status in job_statuses %}
 													<li class='info'><a href="/companies/company-{{company.pk}}/jobstatus-{{ job_status.0}}/#company-facts">{{ job_status.1 }}</a></li>
 												{% endfor %}
-												{% for employement_type in employement_types %}
-													<li><a href="/companies/company-{{company.pk}}/jobemptype-{{employement_type.pk}}/#company-facts">{{ employement_type.name }}</a></li>
-												{% endfor %}
+												
 											</ul>
 											{% for job in jobs %}
 												<div class="single-post d-flex flex-row">
@@ -153,7 +150,7 @@
 														<div class="title d-flex flex-row justify-content-between">
 															<div class="titles">
 																<a href="/jobs/job-{{ job.id }}/"><h4>{{ job.title }}</h4></a>
-																<h6> <a href='/companies/company-id/'>{{ job.company.name }} </a></h6>					
+																<h6> <a href='/companies/company-{{ job.company.pk }}/'>{{ job.company.name }} </a></h6>					
 															</div>
 															<ul class="btns">
 																

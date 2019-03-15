@@ -1,0 +1,59 @@
+<form method='POST' action="/employee/edit/education/">
+    {% csrf_token %}
+
+    <div class="mt-10">
+        {{ educationForm.school }}
+    </div>
+
+    <div class="mt-10">
+        {{ educationForm.field_of_study }}
+    </div>
+    
+
+    <div class="input-group-icon mt-10">
+        <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+        <div class="form-select" id="default-select">
+            {{ educationForm.degree }}
+        </div>
+    </div>
+
+    
+    <div class="mt-10">
+        {{ educationForm.city }}
+    </div>
+    
+    <div class="input-group-icon mt-10">
+        <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+        <div class="form-select" id="default-select">
+            {{ educationForm.region }}
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <hr />
+        <label>Start Month</label>
+        {{ educationForm.start_month}} 
+
+        {{ educationForm.start_year}}
+    </div>
+    <div class="mt-10">
+        <hr />
+        <label>Start Month</label>
+            {{ educationForm.end_month}} {{ educationForm.end_year}} 
+    </div>
+
+    <div class="mt-10">
+        <hr />
+        I currently study here {{ educationForm.is_currently}}
+    </div>
+    <div class="mt-10">
+        <hr />
+        {{ educationForm.description }}
+    </div>
+
+    <div class='form-group'>
+        <hr />
+        <button type="submit" class="genric-btn primary-border">Save Changes</button>
+    </div>
+</form>

@@ -36,22 +36,33 @@
 		<!-- header temp END -->
 
 		<!-- start banner Area -->
-		<section class="banner-area relative" id="home">	
+		<section class="banner-area-home banner-area relative" id="home">	
 				<div class="overlay overlay-bg"></div>
 				<div class="container">
 					<div class="row search-page-top d-flex align-items-center justify-content-center">
 						<div class="banner-content col-lg-12">
 							<h1 class="text-white">
-								Search Jobs				
+								iCAN Jobs				
 							</h1>
 							<p class="text-white link-nav">
 								<a href="index.html">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/jobs/"> Jobs</a>
 							</p>	
 							<form class="serach-form-area" action="/jobs/search/" method="GET">
 								<div class="row justify-content-center form-wrap">
-									<div class="col-lg-4 form-cols">
+									<div class="col-lg-3 form-cols">
 										<input type="text" class="form-control" name="q" placeholder="what are you looking for?">
 									</div>
+									<div class="col-lg-3 form-cols">
+											<div class="default-select" id="default-selects2">
+												<select name='employement_type'>
+													<option value="all">All Employement types</option>
+													{% for employement_type in employement_types %}
+														<option value="{{ employement_type.pk}}">{{ employement_type.name }}</option>
+													{% endfor %}
+												</select>
+											</div>										
+									</div>
+
 									<div class="col-lg-2 form-cols">
 										<div class="default-select" id="default-selects"">
 											<select name='reg'>
@@ -65,7 +76,7 @@
 									<div class="col-lg-2 form-cols">
 										<div class="default-select" id="default-selects2">
 											<select name='cat'>
-												<option value="all">All Category</option>
+												<option value="all">All Sectors</option>
 												{% for category in categories %}
 													<option value="{{ category.pk }}">{{ category.name }}</option>
 												{% endfor %}
@@ -73,16 +84,7 @@
 										</div>										
 									</div>
 
-									<div class="col-lg-2 form-cols">
-											<div class="default-select" id="default-selects2">
-												<select name='status'>
-													<option value="all">All Status</option>
-													{% for job_status in job_statuses %}
-														<option value="{{ job_status.0}}">{{ job_status.1 }}</option>
-													{% endfor %}
-												</select>
-											</div>										
-									</div>
+									
 									<div class="col-lg-2 form-cols">
 									    <button type="submit" class="btn btn-info">
 									      <span class="lnr lnr-magnifier"></span> Search
@@ -103,8 +105,8 @@
 						<div class="row d-flex justify-content-center">
 							<div class="menu-content pb-60 col-lg-10">
 								<div class="title text-center">
-									<h1 class="mb-10">Featured Job Categories</h1>
-									<p>Categories with the most open jobs.</p>
+									<h1 class="mb-10">Featured Sectors</h1>
+									<p>Sectors with the most open jobs.</p>
 								</div>
 							</div>
 						</div>						

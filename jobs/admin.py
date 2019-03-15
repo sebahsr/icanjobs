@@ -46,15 +46,11 @@ class EmployeeModelAdmin(admin.ModelAdmin):
     def username_view(self, employee):
         return "%s" % (employee.user.username)
 class EmployeeJobInterestModelAdmin(admin.ModelAdmin):
-    list_display = ("user",)
-    filter_horizontal = ('job_category', 'job_region', 'employement_type', 'job_level')
+    list_display = ("employee", 'job_category', 'job_region', 'employement_type')
     
-    def formfield_for_foreignkey(self, db_field, request=None, **kwargs):
-        if db_field.name == 'user':
-            kwargs['queryset'] = User.objects.filter(pk = request.user.company.pk)
-        
-        return super(EmployeeJobInterestModelAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 
+class DegreeModelAdmin(admin.ModelAdmin):
+    list_display = ('name', )
 
 admin.site.register(models.Category, CategoryModelAdmin)
 admin.site.register(models.Job, JobModelAdmin)
@@ -67,4 +63,5 @@ admin.site.register(models.Employee, EmployeeModelAdmin)
 admin.site.register(models.Blog, BlogModelAdmin)
 admin.site.register(models.PostCategories)
 admin.site.register(models.EmployeeJobInterest, EmployeeJobInterestModelAdmin)
+admin.site.register(models.Degree, DegreeModelAdmin)
 

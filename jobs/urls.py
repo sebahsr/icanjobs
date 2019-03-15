@@ -19,29 +19,49 @@ import views as job_views
 
 urlpatterns = [
     
-    url(r'^/?$', job_views.jobView),
+    url(r'^$', job_views.jobView),
     url(r'^jobs/(?:job-(?P<jobID>\d+)/)?$', job_views.jobView),
     url(r'^jobs/(?:category-(?P<categoryID>\d+)/)$', job_views.jobView),
     url(r'^jobs/(?:region-(?P<regionID>\d+)/)$', job_views.jobView),
     url(r'^jobs/(?:(?P<search>search)/)$', job_views.jobView),
 
     url(r'^companies/$', job_views.companyListView),
-    url(r'^companies/(?:company-(?P<companyID>\d+)/)$', job_views.companyView),
+    url(r'^companies/(?:region-(?P<regionID>\d+)/)$', job_views.companyListView),
+    url(r'^company/create-job/$', job_views.companyCreateJobView),
+    url(r'^(companies|company)/(?:company-(?P<companyID>\d+)/)?$', job_views.companyView),
+    url(r'^company/$', job_views.companyDetailView),
     url(r'^companies/(?:company-(?P<companyID>\d+)/jobstatus-(?P<jobStatus>\d+)/)?$', job_views.companyView),
     url(r'^companies/(?:company-(?P<companyID>\d+)/jobemptype-(?P<jobEmpType>\d+)/)?$', job_views.companyView),
     url(r'^companies/(?:company-(?P<companyID>\d+)/category-(?P<categoryID>\d+)/)?$', job_views.companyView),
 
     url(r'^signup/$',job_views.employeeSignupView),
-    url(r'^company-signup/$',job_views.companySignupView),
-    url(r'login/$', job_views.employeeLoginView),
-
-
-    url(r'^employee/(?:employee-(?P<employeeID>\d+))/$',job_views.employeeView),
+    url(r'^login/$', job_views.employeeLoginView),
+    url(r'^logout/$', job_views.logoutView),
     url(r'^employee/$',job_views.employeeView),
+    url(r'^employee/(?:employee-(?P<employeeID>\d+))/$',job_views.employeeOtherView),
+    url(r'employee/((?:employee-(?P<employeeID>\d+))/)?preference/$', job_views.employeePreferenceView),
+    url(r'employee/matched-jobs/$', job_views.employeeMatchedJobView),
+    url(r'employee/applied-jobs/$', job_views.employeeAppliedJobs),
+    
+    
+    url(r'employee/edit/(?P<section>(skill|experience|general|education|website))/$', job_views.employeeProfileEditView),
     url(r'^jobs/applly/job-(?P<jobID>\d+)?/$', job_views.employeeJobApply),
 
     url(r'^blogs/(?:category-(?P<categoryID>\d+)/)?$', job_views.blogListView),
     url(r'^blogs/blog-(?P<blogID>\d+)/$', job_views.blogDetailView),
-
     url(r'^test/$', job_views.testView),
+
+    url(r'^company/admin/$', job_views.adminCompanyView),
+    url(r'^company/admin/edit/$', job_views.adminCompanyView),
+    url(r'^company/edit/username/$', job_views.adminCompanyEditUsernameView),
+    url(r'^company/edit/password/$', job_views.adminCompanyChangePasswordView),
+    url(r'^company/admin/jobs/$', job_views.companyJobListView),
+    url(r'^company/admin/applications/$', job_views.applications),
+    url(r'^company/admin/applications/(?P<filter>(read|unread|today|yesterday|last7))/$', job_views.applications),
+
+    url(r'^company/admin/login/$', job_views.loginCompanyView),
+    url(r'^company/admin/signup/$', job_views.signUpCompanyView),
+    url(r'^company/admin/create-job/$', job_views.createJobView),
+
+    url(r'^applications/applicationID-(?P<applicationID>\d+)/$', job_views.applicationRead),
 ]

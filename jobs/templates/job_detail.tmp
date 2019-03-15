@@ -22,6 +22,7 @@
 		============================================= -->
 		<link rel="stylesheet" href="/static/css/linearicons.css">
 		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/css/fontawesome.pro.css">
 		<link rel="stylesheet" href="/static/css/bootstrap.css">
 		<link rel="stylesheet" href="/static/css/magnific-popup.css">
 		<link rel="stylesheet" href="/static/css/nice-select.css">					
@@ -59,24 +60,23 @@
 							<div class="thumb col-sm-4">
 								<img style="max-width: 100px" src="{{ job.company.profile_pic.url }}" alt="">
 								<br /><br />
-								<h5><a href='/companies/company-{{job.company.pk}}/'><u>{{ job.company.name|title}}</u></a></h5>
-
+								
 								<p class="address"><span class="fa fa-external-link"></span> <a href='{{ job.company.website }}'>{{ job.company.website }}</a></p>
-								<p class="address"><span class="fa fa-envelope"></span> {{ job.company.user.email }}</p>
+								<p class="address"><span class="fa fa-envelope"></span> <a href='mailto:{{ job.company.user.email }}'>{{ job.company.user.email }}</a></p>
 								<p class="address"><span class="fa fa-phone"></span> {{ job.company.phone }}</p>
 
 							</div>
 							<div class="details col-sm-8">
 								<div class="title d-flex flex-row justify-content-between">
 									<div class="titles">
-										<a href="#"><h4>Company Profile</h4></a>					
+										<a href="/companies/company-{{job.company.pk}}/"><h4>{{ job.company.name | title }}</h4></a>					
 									</div>
 									
 								</div>
 
-								<p class="address"><span class="lnr lnr-map"></span> {{ job.company.city }}, {{ job.company.region.name }}</p>
+								<p class="address"><span class="fa fa-map-marker"></span> {{ job.company.city }}, {{ job.company.region.name }}</p>
 								<p>
-									{{ job.company.brief_description }}
+									{{ job.company.brief_description|truncatechars:400 }}
 								</p>
 							</div>
 						</div>	
@@ -94,9 +94,9 @@
 								<div class="details col-sm-8">
 									<div class="title d-flex flex-row justify-content-between">
 										<div class="titles">
-											<a href="#"><h4>{{ job.title }}</h4></a>
-											<h6>{{ job.company.name|title}}</h6>					
+											<a href="#"><h4>{{ job.title }}</h4></a>					
 										</div>
+										{% if job.eligible_to_apply %}
 										<ul class="btns">
 											{% if job.applied_already %}
 
@@ -105,49 +105,126 @@
 											<li><a href="/jobs/applly/job-{{ job.pk }}/"><span class="lnr lnr-send"></span>Apply</a></li>
 											{% endif %}
 										</ul>
+										{% endif %}
 									</div>
-									<p>
-										{{ job.company.brief_description }}
-									</p>
-									<h5>Job Nature: {{ job.employement_type.name }}</h5>
-									<p class="address"><span class="lnr lnr-envelope"></span> Salary : {{ job.salary }} ETB</p>
-									<p class="address"><span class="lnr lnr-database"></span> Position : {{ job.position }}</p>
-									<p class="address"><span class="lnr lnr-calendar-full"></span> Deadline : {{ job.deadline }}</p>
-									<p class="address"><span class="lnr lnr-database"></span> Number Of Candidates : {{ job.status }} candiates</p>
-									<p class="address"><span class="lnr lnr-location"></span> Location :  {{ job.city }}, {{ job.region.name }}</p>
+									
+									<h5></h5>
+									
+									<table class="table">
+										<tr><th><span class="text-info fa fa-project-diagram"></span>Employement Type </th><td> {{ job.employement_type.name }}</td></td></tr>
+										<tr><th><span class="text-info fa fa-dollar-sign"></span> Salary  </th><td> 
+										{% if job.salary %}
+											{{ job.salary }} ETB
+										{% else %}
+											Unpaid
+										{% endif %}
+										
+										</td></td></tr>
+										<tr><th><span class="text-info fa fa-desktop-alt"></span> Position Title </th><td> 
+											
+											{% if job.position %}
+												{{ job.position }}
+											{% else %}
+												Not Specified
+											{% endif %}
+										</td></td></tr>
+										<tr><th><span class="text-info fa fa-desktop-alt"></span> Career Level </th><td> {{ job.level }}</td></td></tr>
+										<tr><th><span class="text-info fa fa-desktop-alt"></span> Department </th><td> 
+										{% if job.department %}
+											{{ job.department }}
+										{% else %}
+											Not Specified
+										{% endif %}
+										</td></td></tr>
+										{% if job.deadline %}
+										<tr><th><span class="text-info fa fa-calendar-check"></span> Deadline  </th><td> {{ job.deadline }}</td></td></tr>
+										{% else %}
+											Not Specified
+										{% endif %}
+										<tr><th><span class="text-info fa fa-users-class"></span> Number Of Positions  </th><td> 
+										{% if job.number_of_candidates %}
+											{{ job.number_of_candidates }} candiates
+										{% else %}
+											No Specified
+										{% endif %}
+
+										</td></td></tr>
+										<tr><th><span class="text-info fa fa-map-marker"></span> Duty Station (Location)  </th><td>  {{ job.city }}, {{ job.region.name }}</td></td></tr>
+									</table>
 								</div>
 						</div>	
-
+						{% if job.summary %}
 						<div class="single-post job-details">
-							<h4 class="single-title">Job Summary</h4>
+							<h4 class="single-title">Role Overview/Job Duties</h4>
 							<p>
 								{{ job.summary|linebreaksbr }}
 							</p>
 						</div>
+						{% endif %}
+
+						{% if job.responsibilities %}
+						<div class="single-post job-details">
+								<h4 class="single-title">Job Duties and Responsibilities</h4>
+								<p>
+									{{ job.responsibilities|linebreaksbr }}
+								</p>
+						</div>
+						{% endif %}
+						{% if job.experience %}
+						<div class="single-post job-details">
+							<h4 class="single-title">Education And Experience</h4>
+							<p>
+								{{ job.experience|linebreaksbr }}
+							</p>
+						</div>
+						{% endif %}
+						{% if job.requirements %}
 						<div class="single-post job-experience">
-							<h4 class="single-title">Experience Requirements</h4>
+							<h4 class="single-title">Key Requirements</h4>
 							<p>
 								{{ job.requirements|linebreaksbr }}
 							</p>
 						</div>
-						
+						{% endif %}
+
+						{% if job.knowledge_skills %}
 						<div class="single-post job-experience">
-								<h4 class="single-title">Applicants</h4>
-								<p>
-									{% for applicant in job.applicants.all %}
-										<div class=''>
-											<div class='h5'>
-												<img src="/static/img/pages/list.jpg" alt="">
-												<a href='/employee/employee-{{ applicant.pk}}/'>{{ applicant.user.first_name }} {{ applicant.user.last_name }}</a>
+							<h4 class="single-title">Knowledge And Skills</h4>
+							<p>
+								{{ job.knowledge_skills|linebreaksbr }}
+							</p>
+						</div>
+						{% endif %}
+
+						{% if job.how_to_apply %}
+						<div class="single-post job-experience">
+							<h4 class="single-title">How To Apply</h4>
+							<p>
+								{{ job.how_to_apply|linebreaksbr }}
+							</p>
+						</div>
+						{% endif %}
+
+						{% if job.eligible_to_apply %}
+							{% if not job.applied_already %}
+								<div class="single-post job-experience">
+									<div class="row d-flex justify-content-center">
+										<div class="menu-content col-lg-9">
+											<div class="title text-center">
+												<h1 class="mb-10 text-black">Apply through iCAN jobs</h1>
+												<a class="btn btn-info" href="/jobs/applly/job-{{ job.pk }}/"><i class='fa fa-send'></i> Apply Now</a>
 											</div>
 										</div>
-									{% endfor %}
-								</p>
-						</div>
+									</div>	
+								</div>	
+							{% endif %}
+						{% endif %}
+
 
 					</div>
+
 					<!-- sidebar -->
-						{% include 'jobs_sidebar.tmp' %}
+					{% include 'jobs_sidebar.tmp' %}
 					<!-- End side bar -->
 				</div>
 			</div>	
