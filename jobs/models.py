@@ -46,7 +46,8 @@ class Category(models.Model):
         return self.name 
     
     class Meta:
-        verbose_name_plural = 'categories'
+        verbose_name_plural = 'Sectors'
+        verbose_name = 'Sector'
 
 class Entity(models.Model):
     user =  models.OneToOneField(User, on_delete=models.CASCADE)

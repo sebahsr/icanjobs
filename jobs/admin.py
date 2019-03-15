@@ -17,12 +17,6 @@ class JobModelAdmin(admin.ModelAdmin):
     list_display = ('title', 'region', 'company')
     exclude = ('views',)
 
-    def formfield_for_foreignkey(self, db_field, request=None, **kwargs):
-        if db_field.name == 'company':
-            kwargs['queryset'] = models.Company.objects.filter(pk = request.user.company.pk)
-        
-        return super(JobModelAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
-
 class CompanyModelAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     list_display = ('name', 'region', 'city')

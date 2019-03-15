@@ -639,7 +639,7 @@ def createJobView(request):
             job.company = company
             job.save()
             jobForm.save_m2m()
-            return redirect('company/admin/jobs/')
+            return redirect('/company/admin/jobs/')
     print jobForm.errors
     applications = models.JobApplication.objects.filter(job__in = company.jobs.all())
     unread_applications_count = applications.filter(status='unread').count()
