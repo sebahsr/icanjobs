@@ -105,7 +105,7 @@
 										
 										<div class="input-group-icon mt-10">
 											<div class="icon"><i class="fa fa-key" aria-hidden="true"></i></div>
-											<input type="text" name="pwd" placeholder="New Password" required="" class="single-input">
+											<input type="password" name="pwd" placeholder="New Password" required="" class="single-input">
 										</div>
 										
 									</div>
@@ -117,7 +117,7 @@
 										
 										<div class="input-group-icon mt-10">
 											<div class="icon"><i class="fa fa-key" aria-hidden="true"></i></div>
-											<input type="text" name="repeat_pwd" placeholder="Repeat New Password" required="" class="single-input">
+											<input type="password" name="repeat_pwd" placeholder="Repeat New Password" required="" class="single-input">
 										</div>
 										
 									</div>
