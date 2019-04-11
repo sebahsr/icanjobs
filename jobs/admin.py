@@ -42,20 +42,19 @@ class EmployeeModelAdmin(admin.ModelAdmin):
 class EmployeeJobInterestModelAdmin(admin.ModelAdmin):
     list_display = ("employee", 'job_category', 'job_region', 'employement_type')
     
-
+  
 class DegreeModelAdmin(admin.ModelAdmin):
     list_display = ('name', )
 
 admin.site.register(models.Category, CategoryModelAdmin)
-admin.site.register(models.Job, JobModelAdmin)
-admin.site.register(models.Company, CompanyModelAdmin)
+#admin.site.register(models.Job, JobModelAdmin)
+#admin.site.register(models.Company, CompanyModelAdmin)
 admin.site.register(models.Region, RegionModelAdmin)
 admin.site.register(models.EmployementType, EmployementTypeModelAdmin)
 admin.site.register(models.JobLevel, JobLevelModelAdmin)
 admin.site.register(models.SchoolLevel, SchoolLevelModelAdmin)
 admin.site.register(models.Employee, EmployeeModelAdmin)
-admin.site.register(models.Blog, BlogModelAdmin)
-admin.site.register(models.PostCategories)
+#admin.site.register(models.Blog, BlogModelAdmin)
 admin.site.register(models.EmployeeJobInterest, EmployeeJobInterestModelAdmin)
 admin.site.register(models.Degree, DegreeModelAdmin)
 

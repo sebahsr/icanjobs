@@ -1,3 +1,4 @@
+
 def getFileName(instance, fileName):
         import random
         file_extension = fileName.rsplit(".", 1)[-1]
@@ -8,3 +9,11 @@ def is_employee(user):
 
 def is_company(user):
         return hasattr(user, 'company')
+
+def create_employee(strategy, details, backend, user=None, *args, **kwargs):
+        print "I am here"
+        from jobs import models
+        if user and not hasattr(user, 'employee'):
+                user.employee = models.Employee.objects.create(user=user)
+                user.save()
+                return

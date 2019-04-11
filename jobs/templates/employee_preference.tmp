@@ -21,8 +21,9 @@
 		CSS
 		============================================= -->
 		<link rel="stylesheet" href="/static/css/linearicons.css">
-		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/static/css/fontawesome.pro.css">
+
+		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
 
 		<link rel="stylesheet" href="/static/css/bootstrap.css">
 		<link rel="stylesheet" href="/static/css/magnific-popup.css">
@@ -193,7 +194,7 @@
                                 <div class="">
                                         <div class="input-group-icon mt-10">
                                             <div class="icon">
-                                            <i class="fa fa-info-square" aria-hidden="true"></i>
+                                            <i class="fa fa-dollar-sign" aria-hidden="true"></i>
                                         </div>
                                             {{ preferenceForm.salary_start }}		
                                             
@@ -201,13 +202,13 @@
 
                                         <div class="input-group-icon mt-10">
                                             <div class="icon">
-                                            <i class="fa fa-info-square" aria-hidden="true"></i></div>
+                                            <i class="fa fa-dollar-sign" aria-hidden="true"></i></div>
                                             {{ preferenceForm.salary_end }}			
                                             
                                         </div>
 
                                         <div class="input-group-icon mt-10">
-                                            <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
+                                            <div class="icon"><i class="fa fa-info" aria-hidden="true"></i></div>
                                             <div class="form-select" id="default-select">
                                             {{ preferenceForm.pay_period }}		
                                             </div>

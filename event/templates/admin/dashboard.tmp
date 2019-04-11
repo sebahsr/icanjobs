@@ -1,0 +1,211 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'admin/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'admin/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+					<!-- start: sidebar -->
+					{% include 'admin/admin.sidebar.tmp' %}
+					<!-- end: sidebar -->
+	
+					<section role="main" class="content-body">
+						<header class="page-header">
+							<h2>Dashboard</h2>
+						
+						</header>
+	
+							
+	
+						<!-- start: page -->
+						<div class="row">
+							<div class="col-md-6 col-lg-12 col-xl-6">
+								<div class="row">
+									<div class="col-md-12 col-lg-6 col-xl-6">
+										<section class="panel panel-featured-left panel-featured-primary">
+											<div class="panel-body">
+												<div class="widget-summary">
+													<div class="widget-summary-col widget-summary-col-icon">
+														<div class="summary-icon bg-primary">
+															<i class="fa fa-home"></i>
+														</div>
+													</div>
+													<div class="widget-summary-col">
+														<div class="summary">
+															<h4 class="title">Companies</h4>
+															<div class="info">
+																<strong class="amount">{{ total_employers}}</strong>															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</section>
+									</div>
+									<div class="col-md-12 col-lg-6 col-xl-6">
+										<section class="panel panel-featured-left panel-featured-secondary">
+											<div class="panel-body">
+												<div class="widget-summary">
+													<div class="widget-summary-col widget-summary-col-icon">
+														<div class="summary-icon bg-secondary">
+															<i class="fa fa-users"></i>
+														</div>
+													</div>
+													<div class="widget-summary-col">
+														<div class="summary">
+															<h4 class="title">Job Seekers</h4>
+															<div class="info">
+																<strong class="amount">{{ total_employees }}</strong>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</section>
+									</div>
+									<div class="col-md-12 col-lg-6 col-xl-6">
+										<section class="panel panel-featured-left panel-featured-tertiary">
+											<div class="panel-body">
+												<div class="widget-summary">
+													<div class="widget-summary-col widget-summary-col-icon">
+														<div class="summary-icon bg-tertiary">
+															<i class="fa fa-calendar"></i>
+														</div>
+													</div>
+													<div class="widget-summary-col">
+														<div class="summary">
+															<h4 class="title">Total Events</h4>
+															<div class="info">
+																<strong class="amount">{{ total_events}}</strong>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</section>
+									</div>
+									<div class="col-md-12 col-lg-6 col-xl-6">
+										<section class="panel panel-featured-left panel-featured-quartenary">
+											<div class="panel-body">
+												<div class="widget-summary">
+													<div class="widget-summary-col widget-summary-col-icon">
+														<div class="summary-icon bg-quartenary">
+															<i class="fa fa-desktop"></i>
+														</div>
+													</div>
+													<div class="widget-summary-col">
+														<div class="summary">
+															<h4 class="title">Total Jobs</h4>
+															<div class="info">
+																<strong class="amount">{{ total_jobs }}</strong>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</section>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						
+	
+						<div class="row">
+							<div class="col-xl-6 col-lg-6">
+								<section class="panel panel-transparent">
+									
+									<div class="panel-body">
+										<section class="panel panel-group">
+											<header class="panel-heading bg-primary">
+	
+												<div class="widget-profile-info">
+													<div class="profile-info">
+														<h4 class="name text-semibold">Recent Companies</h4>
+														<h5 class="role">List of recently registered companies</h5>
+													</div>
+												</div>
+	
+											</header>
+											<div id="accordion">
+												<div class="panel panel-accordion panel-accordion-first">
+													
+													<div id="collapse1One" class="accordion-body collapse in">
+														<div class="panel-body">
+															
+															<hr class="solid mt-sm mb-lg">
+															{% for recent_company in recent_companies %}
+															<header>
+															<div class="widget-profile-info">
+																	<div class="profile-picture">
+																		<img src="{{ recent_company.profile_pic.url }}">
+																	</div>
+																	<div class="profile-info">
+																		<h4 class="name text-semibold"><a href='/companies/company-{{recent_company.pk}}/'>{{ recent_company.name }}</a></h4>
+																		<p class="role">{{ recent_company.brief_description | truncatechars:100 }}</p>
+																	</div>
+															</div>
+															<hr />
+															{% endfor %}
+														</div>
+													</div>
+												</div>
+											</div>
+										</section>
+	
+									</div>
+								</section>
+							</div>
+							<div class='col-xs-6 col-lg-6'>
+								<!-- list of jobs -->
+								<section class="panel panel-group">
+										<header class="panel-heading bg-info">
+
+											<div class="widget-profile-info">
+												<div class="profile-info">
+													<h4 class="name text-semibold">Recent Jobs</h4>
+													<h5 class="role">List of recently posted jobs</h5>
+												</div>
+											</div>
+
+										</header>
+								{% for recent_job in recent_jobs %}
+									<section class="panel">
+											<div class="panel-body panel-body-nopadding">
+												<div class="owl-carousel mb-md owl-theme owl-carousel-init" data-plugin-carousel="" data-plugin-options="{ &quot;items&quot;: 1, &quot;autoHeight&quot;: true }" style="display: block; opacity: 1;">
+													
+													
+													
+													<div class="owl-controls clickable">
+														<div class="owl-pagination"><div class="owl-page"><span class=""></span></div>
+															<div class="owl-page"><span class=""></span></div>
+															<div class="owl-page active"><span class=""></span></div>
+														</div>
+													</div>
+												</div>
+		
+												<div class="p-md">
+													<h4 class="text-semibold mt-none"><a href='/jobs/job-{{recent_job.pk}}/'>{{ recent_job.title | title }}</a></h4>
+													<p>{{ recent_job.summary|truncatechars:300 }}</p>
+												</div>
+											</div>
+											<div class="panel-footer panel-footer-btn-group">
+												<a href="#"><i class="fa fa-project-diagram mr-xs"></i> {{ recent_job.employement_type.name }}</a>
+												<a href="#"><i class="fa fa-desktop-alt mr-xs"></i> {{ recent_job.position }}</a>
+												<a href="#"><i class="fa fa-map-marker mr-xs"></i> {{ recent_job.city }}, {{ job.region.name }}</a>
+											</div>
+									</section>
+								{% endfor %}
+							
+								<!-- End of list jobs -->
+							</div>
+							
+						</div>
+						<!-- end: page -->
+					</section>
+				</div>
+
+		</section>
+
+	{% include 'admin/admin.footer.tmp' %}

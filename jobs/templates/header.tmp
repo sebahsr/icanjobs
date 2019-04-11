@@ -8,19 +8,30 @@
                 <ul class="nav-menu">
                   <li class="menu-active"><a href="/jobs/">Jobs</a></li>
                   
-                  <li><a href="/companies/">Companies</a></li>
+                  <li><a href="/companies/">Employers</a></li>
+                  <li class="menu-active"><a href="/events/">Events</a></li>
+
                   <li><a href="/blogs/">Blog</a></li>
+                  
+                  {% if request.user.employee %}
+                  <li class="menu-has-children"><a href="">Appointment</a>
+                    <ul>
+                      <li><a href="/appointmnet/make/">Make Appointment</a></li>
+                      <li><a href="/appointmnets/">View Appointments</a></li>
+                    </ul>
+                  {% endif %}
+
                   {% if not request.user.is_authenticated %}
                   <li class="menu-has-children"><a href="">Sing Up</a>
                     <ul>
-                        <li><a href="/signup/">Employee Sign Up</a></li>
-                        <li><a href="/company/admin/signup/">Company Sign Up</a></li>
+                        <li><a href="/signup/">Job Seeker Sign Up</a></li>
+                        <li><a href="/company/admin/signup/">Employer Sign Up</a></li>
                     </ul>
                   </li>
                   <li class="menu-has-children"><a href="">Login</a>
                     <ul>
-                        <li><a href="/login/">Employee Login</a></li>
-                        <li><a href="/company/admin/login/">Company Login</a></li>
+                        <li><a href="/login/">Job Seeker Login</a></li>
+                        <li><a href="/company/admin/login/">Employer Login</a></li>
                     </ul>
                   </li> 
                   {% else %}
@@ -29,12 +40,21 @@
                     <ul>
                         {% if request.user.employee %}
                         <li><a href="/employee/"><i class='fa fa-user'></i> profile</a></li>
-                        {% else %}
+                        {% endif %}
+
+                        {% if request.user.company %}
                         <li><a href="/company/admin/"><i class='fa fa-user'></i> profile</a></li>
                         <li><a href="/company/admin/create-job/"><i class='fa fa-plus-square'></i> Create Job</a></li>
                         
                         {% endif %}
+
+                        {% if request.user.is_staff %}
+                        <li><a href="/ican/admin/"><i class='fa fa-home-heart'></i> Dashboard</a></li>
+                        <li><a href="/admin/"><i class='fa fa-gear'></i> Settings</a></li>
+                        {% endif %}
+
                         <li><a href="/logout/">Logout</a></li>
+
                     </ul>
                     </li>
                   {% endif %}    

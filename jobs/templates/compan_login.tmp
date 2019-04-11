@@ -76,6 +76,7 @@
                                 <div class="mt-10">
                                     <button type="submit" class="genric-btn info">Login</button>
                                 </div>
+                                
                             </form>
                         </div>
                     </div>

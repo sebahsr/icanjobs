@@ -1,0 +1,37 @@
+<div class="col-12 col-md-4">
+                <div class="sidebar">
+                    
+
+                    <div class="widget widget_latest_post">
+                        <h4 class="widget-title">
+                            Recent Events
+                        </h4>
+                        <ul>
+                            {% for recent_event in recent_events %}
+                            <li>
+                                <div class="widget_recent_posts">
+                                    <img src="{{ recent_event.image.url }}" alt="{{  recent_event.title }}">
+                                    <div class="content">
+                                        <a href="/event/event-{{recent_event.pk}}/">{{ recent_event.title }}</a>
+                                        <div><i class="fa fa-marker"></i> {{ recent_event.address }},{{ recent_event.city }}, {{ recent_event.region }}</div>
+                                        <div><i class="fa fa-calendar"></i> {{ recent_event.event_start_date }} - {{ recent_event.event_end_date}}</div>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="widget widget_tags">
+                        <h4 class="widget-title">
+                            Tags
+                        </h4>
+                        <ul>
+                            {% for tag in tags %}
+                            <li><a href="/events/tag-{{ tag.pk }}/">{{ tag.name }}</a></li>
+                            {% endfor %}
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>

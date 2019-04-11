@@ -1,0 +1,63 @@
+<aside id="sidebar-left" class="sidebar-left">
+					
+						<div class="sidebar-header">
+							<div class="sidebar-title">
+								Navigation
+							</div>
+							<div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+								<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+							</div>
+						</div>
+					
+						<div class="nano">
+								<div class="nano-content">
+									<nav id="menu" class="nav-main" role="navigation">
+										<ul class="nav nav-main">
+											<li class="{{ sidebar_dashboard_active  }}">
+												<a href="/ican/admin/">
+													<i class="fa fa-home" aria-hidden="true"></i>
+													<span>Dashboard</span>
+												</a>
+											</li>
+											<li class="{{ sidebar_create_event_active }}">
+                                                <a href="/ican/event/">
+                                                        <i class="fa fa-plus" aria-hidden="true"></i> Create Event
+                                                </a>
+                                            </li>
+                                            
+                                            <li class="{{ sidebar_event_listing_active }}">
+                                                <a href="/ican/events/">
+                                                    <i class="fa fa-list" aria-hidden="true"></i>Event Listing
+                                                </a>
+                                            </li>
+											<li class="{{ sidebar_create_blog_active }}">
+                                                <a href="/ican/blog/">
+                                                        <i class="fa fa-plus" aria-hidden="true"></i> Create Blog
+                                                </a>
+                                            </li>
+                                            
+                                            <li class="{{ sidebar_job_listing_active }}">
+                                                <a href="/ican/blogs/">
+                                                    <i class="fa fa-list" aria-hidden="true"></i>Blog Listing
+                                                </a>
+											</li>
+											<li class="{{ sidebar_setting_active }}">
+												<a href="/ican/appointmnets/">
+													<i class="fa fa-clock-o" aria-hidden="true"></i>Appointments
+												</a>
+											</li>
+
+											<li class="{{ sidebar_setting_active }}">
+                                                <a href="/admin/" _new>
+                                                    <i class="fa fa-gear" aria-hidden="true"></i>Setting
+                                                </a>
+											</li>
+											
+										</ul>
+									</nav>
+						
+								</div>
+						
+						</div>
+					
+					</aside>

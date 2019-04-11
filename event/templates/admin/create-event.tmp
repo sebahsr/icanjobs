@@ -1,0 +1,192 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'admin/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'admin/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				{% include 'admin/admin.sidebar.tmp' %}
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>Create Event</h2>
+						<br />
+					</header>
+
+					<!-- start: page -->
+						
+						<div class="row">
+							<div class="col-xs-12">
+								<section class="panel form-wizard" id="w4">
+									<header class="panel-heading">
+										
+										<h2 class="panel-title">Create New Event</h2>
+									</header>
+								{% if eventID  %}
+									<form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/ican/event/event-{{ eventID }}/" novalidate="novalidate">
+								{% else %}
+									<form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/ican/event/" novalidate="novalidate">
+								{% endif %}
+
+									{% csrf_token %}
+									<div class="panel-body">
+										
+										<div id="w4-account" class="tab-pane active">
+											
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.title.errors.0 }}</div>
+												<label class="col-sm-3 control-label" for="w4-username">Event Title</label>
+												<div class="col-sm-6">
+													{{ createEventForm.title }}
+												</div>
+											</div>
+
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.description.errors.0 }}</div>
+												<label class="col-md-3 control-label">Event Description</label>
+												<div class="col-md-6">
+													{{ createEventForm.description }}
+													
+												</div>
+											</div>
+
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.address.errors.0 }}</div>
+												<label class="col-md-3 control-label">Address</label>
+												<div class="col-md-6">
+													{{ createEventForm.address }}
+													
+												</div>
+											</div>
+
+											<div class="form-group">
+												
+											<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.city.errors.0 }}</div>
+												<label class="col-md-3 control-label">City</label>
+												<div class="col-md-6">
+													{{ createEventForm.city }}
+													
+												</div>
+											</div>
+
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.region.errors.0 }}</div>
+												<label class="col-md-3 control-label">Region</label>
+												<div class="col-md-6">
+													{{ createEventForm.region }}
+													
+												</div>
+											</div>
+
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.event_start_date.errors.0 }}</div>
+												<label class="col-md-3 control-label">Event Start Date</label>
+												<div class="col-md-6">
+													{{ createEventForm.event_start_date }}
+													
+												</div>
+											</div>
+
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.start_time.errors.0 }}</div>
+												<label class="col-md-3 control-label">Event Start Time</label>
+												<div class="col-md-6">
+													{{ createEventForm.start_time }}
+													
+												</div>
+											</div>
+
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.event_end_date.errors.0 }}</div>
+												<label class="col-md-3 control-label">Event End Date</label>
+												<div class="col-md-6">
+													{{ createEventForm.event_end_date }}
+													
+												</div>
+											</div>
+
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.end_time.errors.0 }}</div>
+												<label class="col-md-3 control-label">Event Start Time</label>
+												<div class="col-md-6">
+													{{ createEventForm.end_time }}
+													
+												</div>
+											</div>
+
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.latitude.errors.0 }}</div>
+												<label class="col-md-3 control-label">Latitude</label>
+												<div class="col-md-6">
+													{{ createEventForm.latitude }}
+													
+												</div>
+											</div>
+											
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.longitude.errors.0 }}</div>
+												<label class="col-md-3 control-label">Longitude</label>
+												<div class="col-md-6">
+													{{ createEventForm.longitude }}
+													
+												</div>
+											</div>
+									
+											
+											
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.tags.errors.0 }}</div>
+												<label class="col-md-3 control-label">Tags</label>
+												<div class="col-md-9">
+													{{ createEventForm.tags }}
+													
+												</div>
+											</div>
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.image.errors.0 }}</div>
+												<label class="col-md-3 control-label">Event Image</label>
+												<div class="col-md-9">
+													{{ createEventForm.image }}
+													
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-offset-2">
+
+												<Button type="submit" class="btn btn-primary">Create </Button>
+												</div>
+											</div>
+	
+
+										</div>
+											
+									</div>
+									
+								</form>
+								</section>
+							</div>
+						</div>
+					<!-- end: page -->
+				</section>
+			</div>
+
+		</section>
+
+{% include 'admin/admin.footer.tmp' %}

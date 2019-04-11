@@ -64,4 +64,10 @@ urlpatterns = [
     url(r'^company/admin/create-job/$', job_views.createJobView),
 
     url(r'^applications/applicationID-(?P<applicationID>\d+)/$', job_views.applicationRead),
+    
+    url(r'^events/(?:tag-(?P<tagID>\d+)/)?', job_views.events),
+    url(r'^event/(?:event-(?P<eventID>\d+))/$', job_views.eventDetail),
+    url(r'^appointmnet/make/$', job_views.makeAppointment),
+    url(r'^appointmnets/$', job_views.appointments)
+
 ]

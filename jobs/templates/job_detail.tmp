@@ -120,35 +120,33 @@
 										{% endif %}
 										
 										</td></td></tr>
-										<tr><th><span class="text-info fa fa-desktop-alt"></span> Position Title </th><td> 
+										{% if job.position %}
 											
-											{% if job.position %}
-												{{ job.position }}
-											{% else %}
-												Not Specified
-											{% endif %}
+										<tr><th><span class="text-info fa fa-desktop-alt"></span> Position Title </th><td> 
+											{{ job.position }}
 										</td></td></tr>
+										{% endif %}
 										<tr><th><span class="text-info fa fa-desktop-alt"></span> Career Level </th><td> {{ job.level }}</td></td></tr>
-										<tr><th><span class="text-info fa fa-desktop-alt"></span> Department </th><td> 
 										{% if job.department %}
-											{{ job.department }}
-										{% else %}
-											Not Specified
-										{% endif %}
+										<tr><th><span class="text-info fa fa-desktop-alt"></span> Department </th><td> 
+										
+										{{ job.department }}
+										
 										</td></td></tr>
-										{% if job.deadline %}
-										<tr><th><span class="text-info fa fa-calendar-check"></span> Deadline  </th><td> {{ job.deadline }}</td></td></tr>
-										{% else %}
-											Not Specified
-										{% endif %}
-										<tr><th><span class="text-info fa fa-users-class"></span> Number Of Positions  </th><td> 
-										{% if job.number_of_candidates %}
-											{{ job.number_of_candidates }} candiates
-										{% else %}
-											No Specified
 										{% endif %}
 
+										{% if job.deadline %}
+										<tr><th><span class="text-info fa fa-calendar-check"></span> Deadline  </th><td> {{ job.deadline }}</td></td></tr>
+										
+										{% endif %}
+
+										{% if job.number_of_candidates %}
+										<tr><th><span class="text-info fa fa-users-class"></span> Number Of Positions  </th><td> 
+										
+											{{ job.number_of_candidates }} candiates
+									
 										</td></td></tr>
+										{% endif %}
 										<tr><th><span class="text-info fa fa-map-marker"></span> Duty Station (Location)  </th><td>  {{ job.city }}, {{ job.region.name }}</td></td></tr>
 									</table>
 								</div>

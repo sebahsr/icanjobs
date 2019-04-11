@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'admin/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'admin/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+					<!-- start: sidebar -->
+					{% include 'admin/admin.sidebar.tmp' %}
+					<!-- end: sidebar -->
+	
+					<section role="main" class="content-body">
+						<header class="page-header">
+							<h2>Blogs</h2>
+						
+						</header>
+	
+							
+	
+						<!-- start: page -->
+						
+	
+						
+	
+						<div class="row">
+							
+							<div class='col-lg-8'>
+								
+								{% for blog in blogs %}
+									<section class="panel">
+											<div class="panel-body panel-body-nopadding">
+												<div class="owl-carousel mb-md owl-theme owl-carousel-init" data-plugin-carousel="" data-plugin-options="{ &quot;items&quot;: 1, &quot;autoHeight&quot;: true }" style="display: block; opacity: 1;">
+													
+													
+													
+													<div class="owl-controls clickable">
+														<div class="owl-pagination"><div class="owl-page"><span class=""></span></div>
+															<div class="owl-page"><span class=""></span></div>
+															<div class="owl-page active"><span class=""></span></div>
+														</div>
+													</div>
+												</div>
+		
+												<div class="p-md">
+													<h4 class="text-semibold mt-none"><a href='/ican/blog/blog-{{blog.pk}}/'>{{ blog.title|title }}</a></h4>
+													<p>{{ blog.content | truncatechars:300 }}</p>
+												</div>
+											</div>
+											<div class="panel-footer panel-footer-btn-group">
+												<a href="#"><i class="fa fa-calendar mr-xs"></i> {{ blog.created_at }}</a>
+												<a href="/ican/blog/blog-{{blog.pk}}/"><i class="fa fa-edit mr-xs"></i> Edit </a>
+												<a href="/blogs/blog-{{ blog.pk }}/"><i class="fa fa-eye mr-xs"></i> View </a>
+											</div>
+									</section>
+									{% empty %}
+									<section class="panel">
+										No Post Found
+									</section>
+									{% endfor %}
+
+									{% if current_page.has_previous %}
+									<a href="?page={{ current_page.previous_page_number }}" class="btn btn-default fa  fa-long-arrow-left"> Previous<span class="lnr lnr-arrow-left"></span></a>
+									{% endif %}
+			
+									{% if current_page.has_next %}
+										<a href="?page={{ current_page.next_page_number }}" class="btn btn-default fa  fa-long-arrow-right"> Next<span class="lnr lnr-arrow-right"></span></a>
+									{% endif %}
+
+									</div>
+									
+							<!-- End of list blogs -->
+							</div>
+							
+						</div>
+						<!-- end: page -->
+					</section>
+				</div>
+
+		</section>
+
+	{% include 'admin/admin.footer.tmp' %}

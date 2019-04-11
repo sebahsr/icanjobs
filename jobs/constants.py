@@ -58,6 +58,6 @@ PAG_JOB_NUMBER = 10
 PAG_BLOG_NUMBER = 6
 RECENT_JOBS_NUMBER = 5
 SEEN_UNSEEN_STATUS = (
-    ('read', 'Read'),
-    ('unread', 'Unread')
+    ('read', 'Seen'),
+    ('unread', 'Not Seen')
 )

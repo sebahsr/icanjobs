@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="codepixer">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Job Listing</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+		<!--
+		CSS
+		============================================= -->
+		<link rel="stylesheet" href="/static/css/linearicons.css">
+		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/css/bootstrap.css">
+		<link rel="stylesheet" href="/static/css/magnific-popup.css">
+		<link rel="stylesheet" href="/static/css/nice-select.css">					
+		<link rel="stylesheet" href="/static/css/animate.min.css">
+        <link rel="stylesheet" href="/static/css/owl.carousel.css">
+        
+		<link rel="stylesheet" href="/static/css/main-events.css">
+		<link rel="stylesheet" href="/static/css/main.css">
+	</head>
+	<body>
+
+		<!-- header temp -->
+			{% include 'header.tmp' %}
+		<!-- header temp END -->
+
+		<!--header end here-->
+
+<!--page title section-->
+<section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="{{ event.image.url }}">
+    <div class="overlay_dark"></div>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12">
+                <div class="inner_cover_content">
+                    <h3>
+                        {{ event.title }}
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--page title section end-->
+
+
+<!--events section -->
+<section class="pt100 pb100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!--blog section start -->
+            <div class="col-12 col-md-8">
+                <div class="row">
+                    <div class="col-sm-7 text-justify">
+                        {{ event.description }}
+                    </div>
+                    <div style="padding-top:3px; background-color:bisque; border-left:solid 1px black;border-right:solid 1px black" class="col-sm-4">
+                        <div class="h3">Date Information</div>
+                        <hr />
+
+                        <p><i class="fa fa-calendar"></i> {{ event.event_start_date}} - {{ event.event_end_date }}</p>
+                        <p><i class="fa fa-clock"></i> {{ event.start_time}} - {{ event.end_time }}</p>
+                        <div class="h3"><i class="fa fa-address-card"></i> Event Address</div>
+                        <hr />
+                        <p> {{ event.address}}</p>
+                        <p>{{ event.city}}, {{ event.region}}</p>
+                        <div class="widget widget_tags">
+                            <h4 class="widget-title">
+                                Tags
+                            </h4>
+                            <ul>
+                                {% for tag in event.tags.all %}
+                                <li><a href="/events/tag-{{ ta.pk }}">{{ tag.name }}</a></li>
+                                {% endfor %}
+                                
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                <br /> 
+                {% if event.latitude and event.longitude %}
+                <div class="row">
+                    <div class="h3">Map Information</div>
+                    <hr />
+                    <div class="col-sm-12" style="height:400px" id="map"></div>
+                </div>
+                {% endif %}
+
+
+            </div>
+            <!--blog section end-->
+
+            <!--sidebar section -->
+            {% include 'event/event.sidebar.tmp' %}
+            <!--sidebar section end -->
+
+        </div>
+    </div>
+</section>
+<!--event section end -->
+
+
+
+<!--get tickets section -->
+<section class="bg-img pt100 pb100" style="background-image: url('/static/img/bg/tickets.png');">
+    <div class="container">
+        <div class="section_title mb30">
+            <h3 class="title justify-content-center color-light">
+                Make sure you dont miss events
+            </h3>
+        </div>
+    </div>
+</section>
+<!--get tickets section end-->
+
+<!--footer start -->
+<script>
+        // Initialize and add the map
+        function initMap() {
+        // The location of Uluru
+        var uluru = {lat: -25.344, lng: 131.036};
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 4, center: uluru});
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+    </script>
+        {% if event.latitude and event.longitude %}
+
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUQ5w4o8rRzuWe1wmnVDGXwffSERbm4wo&callback=initMap">
+        </script>
+   
+        {% endif %}
+
+
+		{% include 'join_us_section.tmp' %}		
+	
+		<!-- start footer Area -->		
+	{% include 'footer.tmp' %}	
+	</body>
+</html>
+
+
+

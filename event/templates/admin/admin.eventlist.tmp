@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'admin/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'admin/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+					<!-- start: sidebar -->
+					{% include 'admin/admin.sidebar.tmp' %}
+					<!-- end: sidebar -->
+	
+					<section role="main" class="content-body">
+						<header class="page-header">
+							<h2>Events</h2>
+						
+						</header>
+	
+							
+	
+						<!-- start: page -->
+						
+	
+						
+	
+						<div class="row">
+							
+							<div class='col-lg-8'>
+								
+								{% for event in events %}
+									<section class="panel">
+											<div class="panel-body panel-body-nopadding">
+												<div class="owl-carousel mb-md owl-theme owl-carousel-init" data-plugin-carousel="" data-plugin-options="{ &quot;items&quot;: 1, &quot;autoHeight&quot;: true }" style="display: block; opacity: 1;">
+													
+													
+													
+													<div class="owl-controls clickable">
+														<div class="owl-pagination"><div class="owl-page"><span class=""></span></div>
+															<div class="owl-page"><span class=""></span></div>
+															<div class="owl-page active"><span class=""></span></div>
+														</div>
+													</div>
+												</div>
+		
+												<div class="p-md">
+													<h4 class="text-semibold mt-none"><a href='/ican/event/event-{{event.pk}}/'>{{ event.title|title }}</a></h4>
+													<p>{{ event.description | truncatechars:300 }}</p>
+												</div>
+											</div>
+											<div class="panel-footer panel-footer-btn-group">
+												<a href="#"><i class="fa fa-calendar mr-xs"></i> {{ event.event_start_date }} - {{ event.event_end_date }}</a>
+												<a href="#"><i class="fa fa-map-marker mr-xs"></i> {{ event.address }}, {{ event.city }}, {{ event.region.name }}</a>
+											</div>
+									</section>
+									{% endfor %}
+
+									{% if current_page.has_previous %}
+									<a href="?page={{ current_page.previous_page_number }}" class="btn btn-default fa  fa-long-arrow-left"> Previous<span class="lnr lnr-arrow-left"></span></a>
+									{% endif %}
+			
+									{% if current_page.has_next %}
+										<a href="?page={{ current_page.next_page_number }}" class="btn btn-default fa  fa-long-arrow-right"> Next<span class="lnr lnr-arrow-right"></span></a>
+									{% endif %}
+
+									</div>
+									
+							<!-- End of list events -->
+							</div>
+							
+						</div>
+						<!-- end: page -->
+					</section>
+				</div>
+
+		</section>
+
+	{% include 'admin/admin.footer.tmp' %}

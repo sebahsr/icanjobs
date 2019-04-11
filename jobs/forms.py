@@ -87,8 +87,6 @@ class JobForm(forms.ModelForm):
                 "placeholder" : "Knowledge and Skills" , "class" : "form-control"
             })
             
-            
-
         }
 
 class UserForm(forms.ModelForm):
@@ -179,6 +177,8 @@ class EmployeeForm(forms.ModelForm):
             'about_me' : forms.Textarea(attrs={
                 "placeholder" : "About Me","onfocus" : "this.placeholder = ''",  
                 "onblur" : "this.placeholder = 'About Me'" ,'class' : "single-textarea"}),
+            'volunteer_experience' : forms.Textarea(attrs={
+                "placeholder" : "Volunteer Experience/Memberships/Affilations" ,'class' : "single-textarea"}),
 
             'city' : forms.TextInput(attrs={
                 "placeholder" : "City","onfocus" : "this.placeholder = ''",  "onblur" : "this.placeholder = 'City'" ,
@@ -252,8 +252,8 @@ class ExperienceForm(UserBackgroundForm):
 
             'company_name' : forms.TextInput(
                 attrs={
-                    "placeholder" : "Company Name","onfocus" : "this.placeholder = ''",  
-                    "onblur" : "this.placeholder = 'Company Name'" ,"class" : "single-input"})
+                    "placeholder" : "Employer","onfocus" : "this.placeholder = ''",  
+                    "onblur" : "this.placeholder = 'Employer'" ,"class" : "single-input"})
         }
 
 
@@ -284,40 +284,32 @@ class EducationForm(forms.ModelForm):
         exclude = ('id', 'employee')
         widgets = {
             'city' : forms.TextInput(attrs={
-                "placeholder" : "City","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'City'" ,"class" : "single-input"}),
+                "placeholder" : "City" ,"class" : "single-input"}),
             'region' : forms.Select(),
             'start_year' : forms.TextInput(attrs={
-                "placeholder" : "Start Year","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'Start Year'" ,"class" : "single-input"}),
+                "placeholder" : "Start Year" ,"class" : "single-input"}),
 
             'start_month' : forms.Select(attrs={
-                "placeholder" : "Start Month","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'Start Month'" ,"class" : "single-input"}),
+                "placeholder" : "Start Month","class" : "single-input"}),
 
             'end_month' : forms.Select(attrs={
-                "placeholder" : "End Month","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'End Month'" ,"class" : "single-input"}),
+                "placeholder" : "End Month" ,"class" : "single-input"}),
 
             'end_year' : forms.TextInput(attrs={
-                "placeholder" : "End Year","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'End Year'" ,"class" : "single-input"}),
+                "placeholder" : "End Year","class" : "single-input"}),
 
             'description' : forms.Textarea(attrs={
-                "placeholder" : "Description","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'Description'" ,'class' : "single-textarea"}),
+                "placeholder" : "Description" ,'class' : "single-textarea"}),
 
             'is_currently' : forms.CheckboxInput(attrs={}),
 
             'school' : forms.TextInput(
                 attrs={
-                    "placeholder" : "School","onfocus" : "this.placeholder = ''",  
-                    "onblur" : "this.placeholder = 'Salary End'" ,"class" : "single-input"}),
+                    "placeholder" : "School","class" : "single-input"}),
 
             'field_of_study' : forms.TextInput(
                 attrs={
-                    "placeholder" : "Field Of Study","onfocus" : "this.placeholder = ''",  
-                    "onblur" : "this.placeholder = 'Salary End'" ,"class" : "single-input"}),
+                    "placeholder" : "Field Of Study","class" : "single-input"}),
             
             'degree' : forms.Select(attrs={}),
 

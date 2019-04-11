@@ -4,12 +4,15 @@ from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from jobs import models, forms
-from django.db.models import Q,Count, Sum
+from django.db.models import Q,Count, Sum, F
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login, logout
 from jobs import constants, functions
+from event import models as eventModels
+from event import forms as eventForms
 from django.contrib.auth.decorators import login_required,user_passes_test
 
+import datetime
 # Create your views here.
 def jobView(request, **kwargs):
 
@@ -52,7 +55,7 @@ def jobView(request, **kwargs):
     featured_categories = categories[:6]
     recent_jobs = models.Job.objects.all()[:5]
     employement_types = models.EmployementType.objects.all()
-    recent_blogs = models.Blog.objects.all().order_by('-created_at')[:3]
+    recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:3]
 
     return render(request, template_name, locals())
 
@@ -259,6 +262,7 @@ def employeeView(request):
 
 @login_required
 def employeeOtherView(request, employeeID):
+    print employeeID, "EMPL ID"
     employee = get_object_or_404(models.Employee, pk=employeeID)    
     pro_active_tab = 'profile-tab-active'
     return render(request, "employee_profile.tmp", locals())
@@ -303,6 +307,7 @@ def employeeProfileEditView(request, section):
         skillForm = forms.SkillForm()
         if request.method == 'POST':
             return employeSkillView(request)
+    
 
     pro_active_tab = 'profile-tab-active'
     return render(request, "employee_profile.tmp", locals())
@@ -376,6 +381,7 @@ def employeeJobApply(request, jobID):
         return redirect('/jobs/job-%s/' % (str(jobID)))
     return redirect('/jobs/job-%s/' %(str(jobID)) )
 
+@login_required
 def applicationRead(request, applicationID):
     application = get_object_or_404(models.JobApplication, pk=applicationID)
     application.status = 'read'
@@ -475,7 +481,7 @@ def employeeAppliedJobs(request):
     job_statuses = constants.JOB_STATUS
     regions = models.Region.objects.all()
 
-    recent_blogs = models.Blog.objects.all().order_by('-created_at')[:3]
+    recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:3]
 
 
     return render(request, 'emplooyee_applied_jobs.tmp', locals())
@@ -484,9 +490,9 @@ def employeeAppliedJobs(request):
 def blogListView(request, categoryID=None):
     
     if categoryID:
-        blogs = models.Blog.objects.filter(categories__id__contains = categoryID)
+        blogs = eventModels.Blog.objects.filter(categories__id__contains = categoryID)
     else:
-        blogs = models.Blog.objects.all() 
+        blogs = eventModels.Blog.objects.all() 
 
     paginator = Paginator(blogs, constants.PAG_BLOG_NUMBER)
 
@@ -494,14 +500,14 @@ def blogListView(request, categoryID=None):
     current_page = paginator.page(page_number)
     blogs = current_page.object_list
 
-    postcategories = models.PostCategories.objects.all()
-    recent_blogs = models.Blog.objects.all().order_by('-created_at')[:5]
+    postcategories = eventModels.PostCategories.objects.all()
+    recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:5]
 
     return render(request, 'blogs.tmp', locals())
 def blogDetailView(request, blogID):
-    blog = get_object_or_404(models.Blog, pk=blogID)
-    postcategories = models.PostCategories.objects.all()
-    recent_blogs = models.Blog.objects.all().order_by('-created_at')[:5]
+    blog = get_object_or_404(eventModels.Blog, pk=blogID)
+    postcategories = eventModels.PostCategories.objects.all()
+    recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:5]
     return render(request, 'blog-detail.tmp', locals())
 
 #// Admin views 
@@ -694,4 +700,44 @@ def logoutView(request):
 def testView(request):
     return HttpResponse('test')
 
+def events(request, tagID=None):
+    events = eventModels.Event.objects.all()
+    recent_events = events[:5]
+    if tagID:
+        events = events.filter(tags__pk__contains = tagID)
+
+    page_number = request.GET.get('page', 1)
+    paginator = Paginator(events, constants.PAG_JOB_NUMBER)
+    current_page = paginator.page(page_number)
+    events = current_page.object_list
+    tags = eventModels.EventTag.objects.all()
+    events = events.annotate(upcoming=F('event_start_date') - datetime.date.today())
     
+    return render(request, "event/events.tmp", locals())
+
+def eventDetail(request, eventID):
+    event = get_object_or_404(eventModels.Event, pk=eventID)
+    tags = eventModels.EventTag.objects.all()
+    recent_events = eventModels.Event.objects.all()[:5]
+    return render(request, "event/event.detail.tmp", locals())
+
+@login_required
+@user_passes_test(functions.is_employee)
+def makeAppointment(request):
+    appointmentForm = eventForms.AppointmentForm()
+    if request.method == "POST":
+        appointmentForm = eventForms.AppointmentForm(request.POST)
+
+        if appointmentForm.is_valid():
+            appointment = appointmentForm.save(commit=False)
+            appointment.user = request.user.employee
+            appointment.save()
+        
+    return render(request, 'event/make-appointment.tmp', locals())
+
+@login_required
+@user_passes_test(functions.is_employee)
+def appointments(request):
+    appointments = request.user.employee.appointments.all()
+
+    return render(request, 'appointments.tmp', locals())

@@ -115,6 +115,7 @@ class Employee(Entity):
     region = models.ForeignKey('Region', blank=True, null=True)
     
     about_me = models.TextField(blank=True)
+    volunteer_experience = models.TextField(blank=True)
     phone = models.CharField(max_length=15, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     joined_at = models.DateTimeField(auto_now_add=True)
@@ -217,18 +218,4 @@ class JobApplication(models.Model):
         last7day_min = datetime.datetime.combine(last7day, datetime.time.min)
         today_max = datetime.datetime.combine(datetime.date.today(), datetime.time.max)
         return cls.objects.filter(applied_on__range=(last7day_min, today_max), job__in=jobs)
-
-class Blog(models.Model):
-    title = models.CharField(max_length=150)
-    content = models.TextField()
-    categories = models.ManyToManyField('PostCategories', related_name='blogs')
-    image = models.FileField(upload_to=functions.getFileName)
-    created_at = models.DateTimeField(auto_now_add=True)
-    
-class PostCategories(models.Model):
-    name = models.CharField(max_length=50)
-
-    def __unicode__(self):
-        return self.name
-
 
