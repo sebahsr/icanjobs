@@ -86,6 +86,6 @@
 			{% include 'footer.tmp' %}
 			
 			<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5cafd752918ee80012120691&product=inline-share-buttons' async='async'></script>
-				
+			
 		</body>
 	</html>
