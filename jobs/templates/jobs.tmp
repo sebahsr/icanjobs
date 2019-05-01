@@ -55,35 +55,36 @@
 									<div class="col-lg-3 form-cols">
 											<div class="default-select" id="default-selects2">
 												<select name='employement_type'>
-													<option value="all">All Employement types</option>
+													<option value="all">All Position  types</option>
 													{% for employement_type in employement_types %}
-														<option value="{{ employement_type.pk}}">{{ employement_type.name }}</option>
+														<option value="{{ employement_type.pk}}">{{ employement_type.name|upper }}</option>
 													{% endfor %}
 												</select>
 											</div>										
 									</div>
 
-									<div class="col-lg-2 form-cols">
-										<div class="default-select" id="default-selects"">
-											<select name='reg'>
-												<option value="all">All Regions</option>
-												{% for region in regions %}
-													<option value="{{ region.pk }}">{{ region.name }}</option>
-												{% endfor %}
-											</select>
-										</div>
-									</div>
+									
 									<div class="col-lg-2 form-cols">
 										<div class="default-select" id="default-selects2">
 											<select name='cat'>
 												<option value="all">All Sectors</option>
 												{% for category in categories %}
-													<option value="{{ category.pk }}">{{ category.name }}</option>
+													<option value="{{ category.pk }}">{{ category.name|upper }}</option>
 												{% endfor %}
 											</select>
 										</div>										
 									</div>
 
+									<div class="col-lg-2 form-cols">
+											<div class="default-select" id="default-selects"">
+												<select name='reg'>
+													<option value="all">All Regions</option>
+													{% for region in regions %}
+														<option value="{{ region.pk }}">{{ region.name|upper }}</option>
+													{% endfor %}
+												</select>
+											</div>
+										</div>
 									
 									<div class="col-lg-2 form-cols">
 									    <button type="submit" class="btn btn-info">
@@ -114,8 +115,8 @@
 							{% for featured_category in featured_categories %}
 								<div class="col-lg-2 col-md-4 col-sm-6">
 									<div class="single-fcat">
-										<div class='h5'> <a href='/jobs/category-{{ featured_category.pk }}/'>{{ featured_category.name|title }} </a></div>
-										<p>{{ featured_category.job_count }} Open Jobs</p>
+										<div class='h5'> <a href='/jobs/category-{{ featured_category.pk }}/'>{{ featured_category.name|upper }} </a></div>
+										<p>{{ featured_category.job_count }} Hiring Now</p>
 									</div>
 								</div>
 							{% endfor %}																											
@@ -130,34 +131,26 @@
 					<div class="col-lg-8 post-list">
 						{% for job in jobs %}
 							<div class="single-post d-flex flex-row">
-								<div class="thumb col-sm-4">
+								<div class="thumb col-sm-2">
 									<img style="max-width: 100px" src="{{ job.company.profile_pic.url }}" alt="">
 									
-									<ul class="tags">
-										{% for category in job.categories.all %}
-											<li>
-												<a href="/jobs/category-{{ job.id }}/">{{ category.name }}</a>
-											</li>
-										{% endfor %}
-									</ul>
 								</div>
-								<div class="details col-sm-7 col-sm-offset-1">
+								<div class="details col-sm-9 col-sm-offset-1">
 									<div class="title d-flex flex-row justify-content-between">
 										<div class="titles">
 											<a href="/jobs/job-{{ job.id }}/"><h4>{{ job.title }}</h4></a>
-											<h6> <a href='/companies/company-{{ job.company.pk }}/'>{{ job.company.name }} </a></h6>					
+													
 										</div>
-										<ul class="btns">
-											
-											<li><a href="/jobs/job-{{ job.id }}/"> <span class="lnr lnr-eye"></span> View Detail</a></li>
-										</ul>
+										
 									</div>
-									<p>
-										<span class="fa fa-star"></span> Region : <a href='/jobs/region-{{ job.region.id }}/'>{{ job.region.name }}</a>
-									</p>
-									
-									<p class="address"><span class="fa fa-user-plus"></span> {{ job.position}}</p>
 									<p class="address"> {{ job.summary|truncatechars:100 }}</p>
+
+									<p class="address">	
+											<h6> <a href='/companies/company-{{ job.company.pk }}/'>{{ job.company.name }} </a></h6>
+											{% if job.deadline %}
+											<h6> <span class="fa fa-clock-o"></span> Closing On {{ job.deadline }} </a></h6>
+											{% endif %}
+									</p>
 									
 								</div>
 							</div>	

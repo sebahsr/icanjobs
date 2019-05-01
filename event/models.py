@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from jobs import constants
 import datetime
 from jobs import models as jobModels
+from ckeditor_uploader.fields import  RichTextUploadingField
 
 # Create your models here.
 """
@@ -42,7 +43,7 @@ class PostCategories(models.Model):
 
 class Event(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    description = RichTextUploadingField()
     event_start_date = models.DateField()
     event_end_date = models.DateField()
     start_time = models.CharField(max_length=10)
@@ -60,7 +61,7 @@ class Event(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=150)
-    content = models.TextField()
+    content = RichTextUploadingField()
     categories = models.ManyToManyField('PostCategories', related_name='blogs')
     image = models.FileField(upload_to=functions.getFileName)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -85,6 +86,7 @@ class Appointment(models.Model):
     date = models.DateField()
     status = models.CharField(max_length = 10, default='unread', choices=(constants.SEEN_UNSEEN_STATUS))
     created_on = models.DateTimeField(auto_now_add=True)
+
     @classmethod
     def todays(cls):
         today_min = datetime.datetime.combine(datetime.date.today(), datetime.time.min)

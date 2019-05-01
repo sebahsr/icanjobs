@@ -49,6 +49,7 @@
 			</section>
 			<!-- End banner Area -->	
 			
+			
 			<!-- Start blog-posts Area -->
 			<section class="blog-posts-area section-gap">
 				<div class="container">
@@ -68,7 +69,7 @@
 									</h1>
 								</a>
 								<div class="content-wrap">
-									{{ blog.content|linebreaksbr}}
+									{{ blog.content|safe|linebreaksbr}}
 
 								</div>
 

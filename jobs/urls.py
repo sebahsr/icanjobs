@@ -39,12 +39,11 @@ urlpatterns = [
     url(r'^logout/$', job_views.logoutView),
     url(r'^employee/$',job_views.employeeView),
     url(r'^employee/(?:employee-(?P<employeeID>\d+))/$',job_views.employeeOtherView),
-    url(r'employee/((?:employee-(?P<employeeID>\d+))/)?preference/$', job_views.employeePreferenceView),
     url(r'employee/matched-jobs/$', job_views.employeeMatchedJobView),
     url(r'employee/applied-jobs/$', job_views.employeeAppliedJobs),
     
     
-    url(r'employee/edit/(?P<section>(skill|experience|general|education|website))/$', job_views.employeeProfileEditView),
+    url(r'employee/edit/(?P<section>(skill|experience|general|education|website|cv|reference|worklink|worksample|association))/$', job_views.employeeProfileEditView),
     url(r'^jobs/applly/job-(?P<jobID>\d+)?/$', job_views.employeeJobApply),
 
     url(r'^blogs/(?:category-(?P<categoryID>\d+)/)?$', job_views.blogListView),

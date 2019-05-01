@@ -1,49 +1,77 @@
 <form method="POST" enctype="multipart/form-data" action="/employee/edit/general/">
     {% csrf_token %}
     <div class="mt-10">
+        <label>First Name</label>
             {{ userForm.first_name }}
     </div>
 
     <div class="mt-10">
+            <label>Last Name</label>
+
             {{ userForm.last_name }}
     </div>
 
     <div class="mt-10">
+            <label>Username</label>
+
             {{ userForm.username }}
     </div>
 
 
     <div class="input-group-icon  mt-10">
-        <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+            <label>Email</label>
+
         {{ userForm.email }}
     </div>
 
 
 
     <div class="input-group-icon  mt-10">
-        <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+            <label>Phone</label>
+
         {{ employeeForm.phone }}
     </div>
 
 
     <div class="input-group-icon  mt-10">
-        <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-        
+        <label>City</label>        
         {{ employeeForm.city }}
     </div>    
     <div class="input-group-icon mt-10">
-        <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+        <label>Region</label>
         <div class="form-select" id="default-select">
             {{ employeeForm.region }}
         </div>
     </div>
 
-
+    <div class="input-group-icon mt-10">
+        <label>Facebook</label>
+        <div class="form-select" id="default-select">
+            {{ employeeForm.facebook_url }}
+        </div>
+    </div>
+    
+    <div class="input-group-icon mt-10">
+        <label>Linkedin</label>
+        <div class="form-select" id="default-select">
+            {{ employeeForm.linkedin_url }}
+        </div>
+    </div>
+    
+    <div class="input-group-icon mt-10">
+        <label>Twitter</label>
+        <div class="form-select" id="default-select">
+            {{ employeeForm.twitter_url }}
+        </div>
+    </div>
+    
     <div class="mt-10">
+        <label>Profile Summary </label>
         {{ employeeForm.about_me }}
     </div>
 
     <div class="mt-10">
+            <label>Volunteer Experience/Membership/Affilations</label>
             {{ employeeForm.volunteer_experience }}
     </div>
 

@@ -59,9 +59,11 @@
 					<div class="section-top-border">
 						<div class="row">
 							<div class="col-lg-12 col-md-8">
-								<h3 class="mb-30">Make Appointment </h3>
+								<h3 class="mb-30">Make Appointment</h3>
 								{% if suc %}
-									<div class='txt-succes'> {{ suc }} </div>
+									<div class='text-success'> {{ suc }} </div>
+								{% elif error %}
+								<div class='text-danger'> {{ error }} </div>
 								{% endif %}
 								<form action="/appointmnet/make/" enctype="multipart/form-data" method="POST">
 									{% csrf_token %}

@@ -173,7 +173,6 @@ class Job(models.Model):
     level = models.ForeignKey('JobLevel')
     company = models.ForeignKey('Company', related_name='jobs')
     salary = models.FloatField(blank=True, null=True) #0 means not determined 
-    position = models.CharField(max_length=100, null=True, blank=True)
     number_of_candidates = models.IntegerField(blank=True, null=True) #0 means not determined 
     deadline = models.DateField(blank=True, null=True)
     status = models.IntegerField(choices=constants.JOB_STATUS, default=constants.JOB_STATUS_OPEN)
@@ -218,4 +217,39 @@ class JobApplication(models.Model):
         last7day_min = datetime.datetime.combine(last7day, datetime.time.min)
         today_max = datetime.datetime.combine(datetime.date.today(), datetime.time.max)
         return cls.objects.filter(applied_on__range=(last7day_min, today_max), job__in=jobs)
+
+
+class CV(models.Model):
+    name = models.CharField(max_length=200)
+    document = models.FileField(upload_to=functions.getFileName)
+    employee = models.ForeignKey('Employee', related_name='cvs')
+
+class References(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    organization = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
+    phone = models.CharField(max_length=200)
+    email = models.EmailField()
+    employee = models.ForeignKey('Employee', related_name='references')
+
+
+
+class Association(models.Model):
+    name = models.CharField(max_length=200)
+    employee = models.ForeignKey('Employee', related_name='associations')
+
+class WorkSample(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    date = models.DateField()
+    document = models.FileField(upload_to=functions.getFileName)
+    employee = models.ForeignKey('Employee', related_name='worksamples')
+
+class WorkLink(models.Model):
+    name = models.CharField(max_length=200)
+    url = models.URLField()
+    description = models.TextField()
+    employee = models.ForeignKey('Employee', related_name='worklinks')
+
 

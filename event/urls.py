@@ -27,7 +27,11 @@ urlpatterns = [
     url(r'^ican/blogs/$', event_views.blogs),
     url(r'^ican/appointmnets/$', event_views.appointments),
     url(r'^ican/appointmnets/(?P<filter>(read|unread|today|yesterday|last7))/$', event_views.appointments),
-    url(r'^appointments/appointmentID-(?P<appointmentID>\d+)/$', event_views.appointmentRead),
+    url(r'^ican/appointmnets/json/$', event_views.appointmentsjson),
+    
+    url(r'^appointments/appointmentID-(?P<appointmentID>\d+)/$', event_views.appointmentRead, name='appointment-detail'),
+    url(r'^settings/jobs/$', event_views.settingJob),
+    url(r'^settings/events/$', event_views.settingEvent),
 
 
 ]

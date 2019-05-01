@@ -1,0 +1,43 @@
+
+<form method='POST' action="/employee/edit/reference/">
+    {% csrf_token %}
+    <div class="mt-10">
+            <label>First Name </label>
+        {{ referenceForm.first_name }}
+    </div>
+
+    <div class="mt-10">
+            <label>Last Name </label>
+        {{ referenceForm.last_name }}
+    </div>
+
+    <div class="mt-10">
+            <label>Organization </label>
+        {{ referenceForm.organization }}
+    </div>
+
+    <div class="mt-10">
+            <label>Title </label>
+        {{ referenceForm.title }}
+    </div>
+
+
+    <div class="mt-10">
+            <label>Phone </label>
+        {{ referenceForm.phone }}
+    </div>
+
+
+    <div class="mt-10">
+            <label>Email </label>
+        {{ referenceForm.email }}
+    </div>
+
+
+
+
+    <div class='form-group'>
+        <hr />
+        <button type="submit" class="genric-btn primary-border">Ad  Reference</button>
+    </div>
+</form>

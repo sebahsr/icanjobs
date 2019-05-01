@@ -39,13 +39,13 @@
 													<a href="#w4-account" data-toggle="tab"><span>1</span>Basic Info</a>
 												</li>
 												<li>
-													<a href="#w4-profile" data-toggle="tab"><span>2</span>Summary Info</a>
+													<a href="#w4-profile" data-toggle="tab"><span>2</span> Position Summary & Responsibilities</a>
 												</li>
 												<li>
-													<a href="#w4-billing" data-toggle="tab"><span>3</span>Skill Info </a>
+
 												</li>
 												<li>
-													<a href="#w4-confirm" data-toggle="tab"><span>4</span>How to apply</a>
+													<a href="#w4-confirm" data-toggle="tab"><span>3</span>Skill Info & How to apply</a>
 												</li>
 											</ul>
 										</div>
@@ -107,7 +107,7 @@
 													<div class="form-group">
 														
 															<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.city.errors.0 }}</div>
-																<label class="col-md-3 control-label">City</label>
+																<label class="col-md-3 control-label">Location</label>
 																<div class="col-md-6">
 																	{{ jobForm.city }}
 																	
@@ -141,23 +141,14 @@
 													<div class="form-group">
 														
 														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.categories.errors.0 }}</div>
-														<label class="col-md-3 control-label">Categories</label>
+														<label class="col-md-3 control-label">Sectors</label>
 														<div class="col-md-9">
 															{{ jobForm.categories }}
 															
 														</div>
 													</div>
 
-													<div class="form-group">
-														
-															<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.position.errors.0 }}</div>
-															<label class="col-md-3 control-label">Position</label>
-															<div class="col-md-6">
-																{{ jobForm.position }}
-																
-															</div>
-														</div>
-	
+													
 														<div class="form-group">
 															
 															<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.number_of_candidates.errors.0 }}</div>
@@ -172,7 +163,7 @@
 													<div class="form-group">
 														
 															<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.deadline.errors.0 }}</div>
-																<label class="col-md-3 control-label">Deadline date</label>
+																<label class="col-md-3 control-label">Closing On</label>
 																<div class="col-md-6">
 																	<div class="input-group">
 																		<span class="input-group-addon">
@@ -198,24 +189,6 @@
 													</div>
 													<div class="form-group">
 														
-														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.requirements.errors.0 }}</div>
-														<label class="col-sm-3 control-label" for="w4-last-name">Key Requirements</label>
-														<div class="col-sm-9">
-															{{ jobForm.requirements }}
-														</div>
-													</div>
-												</div>
-												<div id="w4-billing" class="tab-pane">
-													<div class="form-group">
-														
-														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.knowledge_skills.errors.0 }}</div>
-														<label class="col-sm-3 control-label" for="w4-cc">Knowledge And Skills</label>
-														<div class="col-sm-9">
-															{{ jobForm.knowledge_skills}}
-														</div>
-													</div>
-													<div class="form-group">
-														
 														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.responsibilities.errors.0 }}</div>
 														<label class="col-sm-3 control-label" for="w4-cc">Job duties and responsibilities</label>
 														<div class="col-sm-9">
@@ -223,7 +196,16 @@
 														</div>
 													</div>
 													
+													<div class="form-group">
+														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.requirements.errors.0 }}</div>
+														<label class="col-sm-3 control-label" for="w4-last-name">Key Requirements</label>
+														<div class="col-sm-9">
+															{{ jobForm.requirements }}
+														</div>
+													</div>
 												</div>
+												
 												<div id="w4-confirm" class="tab-pane">
 														
 													<div class="form-group">
@@ -248,6 +230,16 @@
 															{{ jobForm.apply_through_portal }}
 														</div>
 													</div>
+
+													<div class="form-group">
+														
+															<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.knowledge_skills.errors.0 }}</div>
+															<label class="col-sm-3 control-label" for="w4-cc">Knowledge And Skills</label>
+															<div class="col-sm-9">
+																{{ jobForm.knowledge_skills}}
+															</div>
+														</div>
+
 													
 													<div class="from-group">
 														<div class="col-sm-4 col-sm-offset-5">

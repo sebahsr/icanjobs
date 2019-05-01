@@ -25,7 +25,7 @@ class JobForm(forms.ModelForm):
                 "placeholder" : "Educations and Experiences","class" : "form-control"}),
 
             'deadline' : forms.TextInput(attrs={
-                "placeholder" : "Deadline Date",
+                "placeholder" : "Closing On",
                 "class" : "form-control",
                 "data-plugin-datepicker" : True}),
                 
@@ -54,7 +54,7 @@ class JobForm(forms.ModelForm):
                 "placeholder" : "Job Position","class" : "form-control"}),
             
             'number_of_candidates' : forms.TextInput(attrs={
-                "placeholder" : "Number of Candidates","class" : "form-control"}),
+                "placeholder" : "Number of Positions","class" : "form-control"}),
 
             'employement_type' : forms.Select(attrs={
                 "class" : "form-control", 
@@ -93,19 +93,19 @@ class UserForm(forms.ModelForm):
     
     class Meta:
         model = User
-        fields=('first_name', 'last_name', 'email')
+        fields=('first_name', 'last_name', 'email', 'username')
         widgets = {
             'email' : forms.TextInput(attrs={
-                "placeholder" : "Email address","class" : "single-input form-control"}),
+                "placeholder" : "Email address","class" : " form-control"}),
             
             'first_name' : forms.TextInput(attrs={
-                "placeholder" : "First Name","class" : "single-input form-control"}),
+                "placeholder" : "First Name","class" : " form-control"}),
             
             'last_name' : forms.TextInput(attrs={
-                "placeholder" : "Last Name","class" : "single-input form-control"}),
+                "placeholder" : "Last Name","class" : " form-control"}),
             
             'username' : forms.TextInput(attrs={
-                "placeholder" : "Username","class" : "single-input form-control"}),
+                "placeholder" : "Username","class" : " form-control"}),
             
 
         }
@@ -175,18 +175,31 @@ class EmployeeForm(forms.ModelForm):
         exclude = ('id','applications', 'joined_at', 'user') 
         widgets = {
             'about_me' : forms.Textarea(attrs={
-                "placeholder" : "About Me","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'About Me'" ,'class' : "single-textarea"}),
+                "placeholder" : "About Me" ,'class' : "form-control"}),
             'volunteer_experience' : forms.Textarea(attrs={
-                "placeholder" : "Volunteer Experience/Memberships/Affilations" ,'class' : "single-textarea"}),
+                "placeholder" : "Volunteer Experience/Memberships/Affilations" ,'class' : "form-control"}),
 
             'city' : forms.TextInput(attrs={
-                "placeholder" : "City","onfocus" : "this.placeholder = ''",  "onblur" : "this.placeholder = 'City'" ,
-                "class" : "single-input"}),
+                "placeholder" : "City" ,
+                "class" : "form-control"}),
             
             'phone' : forms.TextInput(attrs={
-                "placeholder" : "Phone","onfocus" : "this.placeholder = ''",  "onblur" : "this.placeholder = 'Phone'" ,
-                "class" : "single-input"}),
+                "placeholder" : "Phone" ,
+                "class" : "form-control"}),
+
+            'facebook_url' : forms.TextInput(attrs={
+                "placeholder" : "Facebook" ,
+                "class" : "form-control"}),
+
+            'twitter_url' : forms.TextInput(attrs={
+                "placeholder" : "Twitter" ,
+                "class" : "form-control"}),
+
+            'linkedin_url' : forms.TextInput(attrs={
+                "placeholder" : "Linkedin" ,
+                "class" : "form-control"}),
+
+
             'region' : forms.Select(),
             
         }
@@ -221,39 +234,31 @@ class ExperienceForm(UserBackgroundForm):
         exclude = ('id', 'employee')
         widgets = {
             'city' : forms.TextInput(attrs={
-                "placeholder" : "City","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'City'" ,"class" : "single-input"}),
+                "placeholder" : "City","class" : "form-control"}),
             'region' : forms.Select(),
             'start_year' : forms.TextInput(attrs={
-                "placeholder" : "Start Year","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'Start Year'" ,"class" : "single-input"}),
+                "placeholder" : "Start Year" ,"class" : "form-control"}),
 
             'start_month' : forms.Select(attrs={
-                "placeholder" : "Start Month","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'Start Month'" ,"class" : "single-input"}),
+                "placeholder" : "Start Month","class" : "single-input"}),
 
             'end_month' : forms.Select(attrs={
-                "placeholder" : "End Month","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'End Month'" ,"class" : "single-input"}),
+                "placeholder" : "End Month" ,"class" : "single-input"}),
 
             'end_year' : forms.TextInput(attrs={
-                "placeholder" : "End Year","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'End Year'" ,"class" : "single-input"}),
+                "placeholder" : "End Year" ,"class" : "form-control"}),
 
             'description' : forms.Textarea(attrs={
-                "placeholder" : "Description","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'Description'" ,'class' : "single-textarea"}),
+                "placeholder" : "Description" ,'class' : "form-control"}),
 
             'is_currently' : forms.CheckboxInput(attrs={}),
             'job_title' : forms.TextInput(
                 attrs={
-                    "placeholder" : "Job Title","onfocus" : "this.placeholder = ''",  
-                    "onblur" : "this.placeholder = 'Job Title'" ,"class" : "single-input"}),
+                    "placeholder" : "Job Title","class" : "form-control"}),
 
             'company_name' : forms.TextInput(
                 attrs={
-                    "placeholder" : "Employer","onfocus" : "this.placeholder = ''",  
-                    "onblur" : "this.placeholder = 'Employer'" ,"class" : "single-input"})
+                    "placeholder" : "Employer","class" : "form-control"})
         }
 
 
@@ -263,8 +268,7 @@ class SkillForm(forms.ModelForm):
         exclude = ('id', 'employee')
         widgets = {
             'name' : forms.TextInput(attrs={
-                "placeholder" : "Area of Expertise ","onfocus" : "this.placeholder = ''",  
-                "onblur" : "this.placeholder = 'Area of Expertise'" ,"class" : "single-input"}),
+                "placeholder" : "Area of Expertise ","class" : "form-control"}),
         }
 
 class WebisteInfoForm(forms.ModelForm):
@@ -315,6 +319,85 @@ class EducationForm(forms.ModelForm):
 
         }
 
+class CVForm(forms.ModelForm):
+    class Meta:
+        model = models.CV
+        exclude = ('employee', )
+        widgets = {
+            'name' : forms.TextInput(attrs={
+                "placeholder" : "Name","class" : "form-control"}),
+        }
+
+class ReferenceForm(forms.ModelForm):
+    class Meta:
+        model = models.References
+        exclude = ('employee', )
+        widgets = {
+            'first_name' : forms.TextInput(attrs={
+                "placeholder" : "First Name","class" : "form-control"}),
+            
+            'last_name' : forms.TextInput(attrs={
+                "placeholder" : "Last Name","class" : "form-control"}),
+            
+            'organization' : forms.TextInput(attrs={
+                "placeholder" : "Organization","class" : "form-control"}),
+            
+            'title' : forms.TextInput(attrs={
+                "placeholder" : "Title","class" : "form-control"}),
+            'phone' : forms.TextInput(attrs={
+                "placeholder" : "Phone","class" : "form-control"}),
+            
+            'email' : forms.TextInput(attrs={
+                "placeholder" : "Email","class" : "form-control"}),
+        }
+
+class AssociationForm(forms.ModelForm):
+    class Meta:
+        model = models.Association
+        exclude = ('employee', )
+        widgets = {
+            'name' : forms.TextInput(attrs={
+                "placeholder" : "name","class" : "form-control"}),
+        }
+
+class WorkSampleForm(forms.ModelForm):
+    class Meta:
+        model = models.WorkSample
+        exclude = ('employee', )
+        widgets = {
+            'name' : forms.TextInput(attrs={
+                "placeholder" : 'name',"class" : "form-control"}),
+            
+            'description' : forms.TextInput(attrs={
+                "placeholder" : "description","class" : "form-control"}),
+            
+            'date' : forms.DateInput(attrs={
+                "placeholder" : "Date","class" : "worksample-date form-control"}),
+
+        }
+
+class WorkLinkForm(forms.ModelForm):
+    class Meta:
+        model = models.WorkLink
+        exclude = ('employee', )
+        widgets = {
+            'name' : forms.TextInput(attrs={
+                "placeholder" : "Name","class" : "form-control"}),
+            
+            'url' : forms.TextInput(attrs={
+                "placeholder" : "url","class" : "form-control"}),
+            
+            'description' : forms.TextInput(attrs={
+                "placeholder" : "description","class" : "form-control"}),
+            
+            'title' : forms.TextInput(attrs={
+                "placeholder" : "Title","class" : "form-control"}),
+            'phone' : forms.TextInput(attrs={
+                "placeholder" : "Phone","class" : "form-control"}),
+            
+            'email' : forms.TextInput(attrs={
+                "placeholder" : "Email","class" : "form-control"}),
+        }
     
 
 

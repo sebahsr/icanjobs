@@ -13,7 +13,7 @@
 
                   <li><a href="/blogs/">Blog</a></li>
                   
-                  {% if request.user.employee %}
+                  {% if request.user.employee or not request.user.is_authenticated %}
                   <li class="menu-has-children"><a href="">Appointment</a>
                     <ul>
                       <li><a href="/appointmnet/make/">Make Appointment</a></li>

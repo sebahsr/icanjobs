@@ -50,7 +50,6 @@
 											</div>
 											<div class="panel-footer panel-footer-btn-group">
 												<a href="#"><i class="fa fa-project-diagram mr-xs"></i> {{ job.employement_type.name }}</a>
-												<a href="#"><i class="fa fa-desktop-alt mr-xs"></i> {{ job.position }}</a>
 												<a href="#"><i class="fa fa-map-marker mr-xs"></i> {{ job.city }}, {{ job.region.name }}</a>
 											</div>
 									</section>

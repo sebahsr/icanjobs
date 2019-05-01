@@ -12,6 +12,7 @@ from event import models as eventModels
 from event import forms as eventForms
 from django.contrib.auth.decorators import login_required,user_passes_test
 
+
 import datetime
 # Create your views here.
 def jobView(request, **kwargs):
@@ -272,6 +273,8 @@ def employeeOtherView(request, employeeID):
 @login_required
 @user_passes_test(functions.is_employee)
 def employeeProfileEditView(request, section):
+    is_logged_in_as_emp = True
+
     employee = request.user.employee
     if section == constants.EDIT_SEC_EXPR:
         experienceForm = forms.ExperienceForm()
@@ -298,10 +301,80 @@ def employeeProfileEditView(request, section):
                 userForm.save()
                 employeeForm.save()
                 return redirect('/employee/')
-            print userForm.errors
+
         else:
             employeeForm = forms.EmployeeForm(instance = request.user.employee)
             userForm = forms.UserForm(instance=request.user)
+
+    elif section == constants.EDIT_SEC_CV:
+        if request.method == "POST":
+            cvForm = forms.CVForm(request.POST, request.FILES)
+            
+            if cvForm.is_valid() :
+                cv = cvForm.save(commit=False)
+                cv.employee = request.user.employee
+                cv.save()
+                return redirect('/employee/')
+            else:
+                print cvForm.errors
+        else:
+            cvForm = forms.CVForm()
+    
+    elif section == constants.EDIT_SEC_REFER:
+        if request.method == "POST":
+            referenceForm = forms.ReferenceForm(request.POST)
+            
+            if referenceForm.is_valid() :
+                reference = referenceForm.save(commit=False)
+                reference.employee = request.user.employee
+                reference.save()
+                return redirect('/employee/')
+            else:
+                print referenceForm.errors
+        else:
+            referenceForm = forms.ReferenceForm()
+
+    elif section == constants.EDIT_SEC_LINK:
+        if request.method == "POST":
+            workLinkForm = forms.WorkLinkForm(request.POST)
+            
+            if workLinkForm.is_valid() :
+                workLink = workLinkForm.save(commit=False)
+                workLink.employee = request.user.employee
+                workLink.save()
+                return redirect('/employee/')
+            else:
+                print workLinkForm.errors
+        else:
+            workLinkForm = forms.WorkLinkForm()
+
+    elif section == constants.EDIT_SEC_SAMP:
+        if request.method == "POST":
+            workSampleForm = forms.WorkSampleForm(request.POST, request.FILES)
+            
+            if workSampleForm.is_valid() :
+                workSample = workSampleForm.save(commit=False)
+                workSample.employee = request.user.employee
+                workSample.save()
+                return redirect('/employee/')
+            else:
+                print workSampleForm.errors
+        else:
+            workSampleForm = forms.WorkSampleForm()
+    
+    elif section == constants.EDIT_SEC_ASSOC:
+        if request.method == "POST":
+            associationForm = forms.AssociationForm(request.POST)
+            
+            if associationForm.is_valid() :
+                association = associationForm.save(commit=False)
+                association.employee = request.user.employee
+                association.save()
+                return redirect('/employee/')
+            else:
+                print associationForm.errors
+        else:
+            associationForm = forms.AssociationForm()
 
     elif section == constants.EDIT_SEC_SKILL:
         skillForm = forms.SkillForm()
@@ -389,27 +462,7 @@ def applicationRead(request, applicationID):
 
     return redirect(request.GET.get('redirect_to', '/jobs/'))
 
-@login_required
-def employeePreferenceView(request, employeeID=None):
 
-    is_logged_in_as_emp = not employeeID and request.user.is_authenticated and hasattr(request.user, 'employee')
-    if is_logged_in_as_emp:
-        employee = request.user.employee
-    else:
-        employee = get_object_or_404(models.Employee, pk=employeeID)
-
-    pre_active_tab = 'profile-tab-active'
-    instance_object =  employee.preference if hasattr(employee, 'preference') else None
-    preferenceForm = forms.EmployeeJobInterestForm(instance= instance_object)
-    if request.method == "POST":
-        preferenceForm = forms.EmployeeJobInterestForm(request.POST, instance=instance_object)
-        if preferenceForm.is_valid():
-            preference = preferenceForm.save(commit=False)
-            preference.employee = employee
-            preference.save()
-        else:
-            print("PREF ERRORS", preferenceForm.errors)
-    return render(request, 'employee_preference.tmp', locals())
 
 @login_required
 @user_passes_test(functions.is_employee)
@@ -418,6 +471,15 @@ def employeeMatchedJobView(request):
     mat_active_tab = 'profile-tab-active'
     emp_pref = request.user.employee.preference if hasattr(request.user.employee, 'preference') else None
     matching_jobs = []
+
+    instance_object =  request.user.employee.preference if hasattr(request.user.employee, 'preference') else None
+    preferenceForm = forms.EmployeeJobInterestForm(instance= instance_object)
+    if request.method == "POST":
+        preferenceForm = forms.EmployeeJobInterestForm(request.POST, instance=instance_object)
+        if preferenceForm.is_valid():
+            preference = preferenceForm.save(commit=False)
+            preference.employee = request.user.employee
+            preference.save()
 
     if emp_pref:
         query_condition = Q(region = emp_pref.job_region) |  Q(employement_type = emp_pref.employement_type) | (Q(salary__gte = emp_pref.salary_start) & Q(salary__lte = emp_pref.salary_end))
@@ -727,17 +789,23 @@ def makeAppointment(request):
     appointmentForm = eventForms.AppointmentForm()
     if request.method == "POST":
         appointmentForm = eventForms.AppointmentForm(request.POST)
-
-        if appointmentForm.is_valid():
-            appointment = appointmentForm.save(commit=False)
-            appointment.user = request.user.employee
-            appointment.save()
         
+        if appointmentForm.is_valid():
+
+            appointment = appointmentForm.save(commit=False)
+            if not appointment.slot.appointments.filter(date=appointment.date):
+                appointment.user = request.user.employee
+                appointment.save()
+                suc = "Appoointment succesfully made!"
+            else:
+                error = "The slot you chose is occupied on the spcified date. Please try another time slot"
+        
+
     return render(request, 'event/make-appointment.tmp', locals())
 
 @login_required
 @user_passes_test(functions.is_employee)
 def appointments(request):
     appointments = request.user.employee.appointments.all()
-
+    
     return render(request, 'appointments.tmp', locals())

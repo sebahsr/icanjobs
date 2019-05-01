@@ -11,6 +11,5 @@ class EventTagModelAdmin(admin.ModelAdmin):
 
 admin.site.register(models.EventTag, EventTagModelAdmin)
 admin.site.register(models.PostCategories)
-admin.site.register(models.Event)
 admin.site.register(models.AppointmentNeed)
 admin.site.register(models.AppointmentSlot)

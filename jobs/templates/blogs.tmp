@@ -69,7 +69,7 @@
 									</h1>
 								</a>
 									<p>
-										{{ blog.content|truncatechars:300}}
+										{{ blog.content|safe|truncatechars:300}}
 									</p>
 							</div>	
 							{% endfor %}

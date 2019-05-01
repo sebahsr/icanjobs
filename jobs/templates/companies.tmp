@@ -86,28 +86,16 @@
 						{% for company in companies %}
 						<div class="single-post d-flex flex-row">
 								<div class="thumb col-sm-4">
-									<img style="max-width:100px" src="{{ company.profile_pic.url }}" alt="">
-									<br /><br />
-									<h5><a href="/companies/company-{{ company.pk }}">{{ company.name|title}}</a></h5>
-									<span class="fa fa-globe"></span> 
-											{{ company.city }},
-											<a href='/companies/region-{{ company.region.pk }}/'>{{ company.region.name }}</a>
-												
-									</p>
-									<p class="address"><span class="fa fa-external-link"></span> <a href='{{ company.website }}'>{{ company.website }}</a></p>
-									<p class="address"><span class="fa fa-envelope"></span> {{ company.user.email }}</p>
-									<p class="address"><span class="fa fa-phone"></span> {{ company.phone }}</p>
-									<p class="address">
-										
+
+								<img style="max-width:100px" src="{{ company.profile_pic.url }}" alt="">
 										
 								</div>
 								<div class="details col-sm-8">
-	
-									
 									
 									<blockquote class="generic-blockquote">
-										
-									{{ company.brief_description | truncatechars:300}}		
+											<h5><a href="/companies/company-{{ company.pk }}">{{ company.name|title}}</a></h5>
+
+									{{ company.brief_description | truncatechars:100}}		
 									</blockquote>
 								
 								</div>

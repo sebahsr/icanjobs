@@ -38,11 +38,10 @@
 			<div class="overlay overlay-bg"></div>
 			<div class="container">
 				<div class="row d-flex align-items-center justify-content-center">
-					<div class="about-content col-lg-12">
+					<div class="about-content-detail col-lg-12">
 						<h1 class="text-white">
 							{{ company.name }} - {{ company.city }}, {{ company.region }}				
 						</h1>	
-						<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span> <a href="/companies/">companies</a>  <span class="lnr lnr-arrow-right"></span>  <a href=""> {{ company.name }}</a></p>
 					</div>											
 				</div>
 			</div>
@@ -100,14 +99,14 @@
 											<div class="single-fcat">
 												<div class="h2"><span class="fa fa-send-o"></span></div>
 												<div class='h2'>{{fact_total_jobs}}</div>
-												<p>Jobs</p>
+												<p>JOBS</p>
 											</div>
 										</div>
 										<div class="col-lg-4 col-md-6 col-sm-6">
 												<div class="single-fcat">
 													<div class="h2"><span class="fa fa-envelope-open-o"></span></div>
 													<div class='h2'>{{fact_open_jobs}}</div>
-													<p>Open Jobs</p>
+													<p>HIRING NOW</p>
 												</div>
 										</div>
 
@@ -123,7 +122,7 @@
 											<div class="single-fcat">
 												<div class="h2"><span class="fa fa-handshake-o"></span></div>
 												<div class="h2">{{ fact_total_applications.company_total_applications }}</div>
-												<p>Applications</p>
+												<p>APPLICATIONS</p>
 											</div>
 										</div>																										
 									</div>
@@ -150,28 +149,13 @@
 														<div class="title d-flex flex-row justify-content-between">
 															<div class="titles">
 																<a href="/jobs/job-{{ job.id }}/"><h4>{{ job.title }}</h4></a>
-																<h6> <a href='/companies/company-{{ job.company.pk }}/'>{{ job.company.name }} </a></h6>					
 															</div>
-															<ul class="btns">
-																
-																<li><a href="/jobs/job-{{ job.id }}/"> <span class="lnr lnr-eye"></span> View Detail</a></li>
-															</ul>
 														</div>
-														<p>
-															<span class="fa fa-star"></span> Region : <a href='/jobs/region-{{ job.region.id }}/'>{{ job.region.name }}</a>
-														</p>
 														
-														<p class="address"><span class="fa fa-user-plus"></span> {{ job.position}}</p>
 														<p class="address"> {{ job.summary|truncatechars:300 }}</p>
-														<div class="thumb">
-															<ul class="tags">
-																{% for category in job.categories.all %}
-																	<li>
-																		<a href="/jobs/category-{{ job.id }}/">{{ category.name }}</a>
-																	</li>
-																{% endfor %}
-															</ul>
-														</div>
+														<h6> <span class="fa fa-clock-o"></span> Closing On {{ job.deadline }} </a></h6>
+
+														
 													</div>
 												</div>	
 											{% empty %}

@@ -67,19 +67,13 @@
                             <section class="post-area section-gap">
                                     <div class="container">
                                         <div class="row justify-content-center d-flex">
-                                            <div class="post-list">
+                                            <div class="post-list col-sm-12">
                                                 {% for applied_job in applied_jobs %}
                                                     <div class="single-post d-flex flex-row">
                                                         <div class="thumb col-sm-4">
                                                             <img style="max-width: 100px" src="{{ applied_job.company.profile_pic.url }}" alt="">
                                                             
-                                                            <ul class="tags">
-                                                                {% for category in applied_job.categories.all %}
-                                                                    <li>
-                                                                        <a href="/jobs/category-{{ job.id }}/">{{ category.name }}</a>
-                                                                    </li>
-                                                                {% endfor %}
-                                                            </ul>
+                                                            
                                                         </div>
                                                         <div class="details col-sm-7 col-sm-offset-1">
                                                             <div class="title d-flex flex-row justify-content-between">
@@ -87,24 +81,15 @@
                                                                     <a href="/jobs/job-{{ applied_job.pk }}/"><h4>{{ applied_job.title }}</h4></a>
                                                                     <h6> <a href='/companies/company-{{ applied_job.company.pk }}/'>{{ applied_job.company.name }} </a></h6>					
                                                                 </div>
-                                                                <ul class="btns">
-                                                                    
-                                                                    <li><a href="/jobs/job-{{ applied_job.id }}/"> <span class="lnr lnr-eye"></span> View Detail</a></li>
-                                                                </ul>
+                                                                
                                                             </div>
-                                                            <p>
-                                                                <span class="fa fa-star"></span> Region : <a href='/jobs/region-{{ applied_job.region.id }}/'>{{ applied_job.region.name }}</a>
-                                                            </p>
-                                                            
-                                                            <p>
-                                                                <span class="fa fa-dollar-sign"></span> Salary : <a href='/jobs/region-{{ applied_job.region.id }}/'>{{ applied_job.salary }}</a>
-                                                            </p>
 
-                                                            <p class="address"><span class="fa fa-user-plus"></span> {{ applied_job.position}}</p>
-                                                            <p class="address"> {{ applied_job.summary|truncatechars:100 }}</p>
-                                                            
+                                                            <p>
+                                                                    {{ applied_job.summary|truncatechars:50 }}
+                                                                </p>
+                                                    
 
-                                                        </div>>
+                                                        </div>
                                                     </div>	
                                                 {% empty %}
                                                     <div class="h3"> 

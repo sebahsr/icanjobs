@@ -2,19 +2,22 @@
 <form method='POST' action="/employee/edit/experience/">
     {% csrf_token %}
     <div class="mt-10">
+        <label>Job Title</label>
         {{ experienceForm.job_title }}
     </div>
 
     <div class="mt-10">
+        <label>Company Name</label>
         {{ experienceForm.company_name }}
     </div>
     
     <div class="mt-10">
+        <label>City</label>
         {{ experienceForm.city }}
     </div>
     
     <div class="input-group-icon mt-10">
-        <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+        <label>Region</label>
         <div class="form-select" id="default-select">
             {{ experienceForm.region }}
         </div>
@@ -22,16 +25,16 @@
 
     <div class="form-group">
 
-        <hr />
-        <label>Start Month</label>
+        <label>Start Date</label>
         {{ experienceForm.start_month}} 
+        
 
         {{ experienceForm.start_year}}
     </div>
     <div class="mt-10">
-        <hr />
-        <label>Start Month</label>
-            {{ experienceForm.end_month}} {{ experienceForm.end_year}} 
+        <label>End Date</label>
+            {{ experienceForm.end_month}} 
+            {{ experienceForm.end_year}} 
     </div>
 
     <div class="mt-10">

@@ -36,7 +36,6 @@
 									<div class="panel-body">
 										
 										<div id="w4-account" class="tab-pane active">
-											
 											<div class="form-group">
 												
 												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ createEventForm.title.errors.0 }}</div>
@@ -189,5 +188,10 @@
 			</div>
 
 		</section>
+
+		{% load static %}
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+	<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 
 {% include 'admin/admin.footer.tmp' %}

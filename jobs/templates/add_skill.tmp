@@ -2,6 +2,8 @@
 <form method='POST' action="/employee/edit/skill/">
     {% csrf_token %}
     <div class="mt-10">
+            <label>Add New Area of Expertise</label>
+
         {{ skillForm.name }}
     </div>
 

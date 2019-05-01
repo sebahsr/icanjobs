@@ -45,7 +45,7 @@
 		
 												<div class="p-md">
 													<h4 class="text-semibold mt-none"><a href='/ican/event/event-{{event.pk}}/'>{{ event.title|title }}</a></h4>
-													<p>{{ event.description | truncatechars:300 }}</p>
+													<p>{{ event.description|safe| truncatechars:300 }}</p>
 												</div>
 											</div>
 											<div class="panel-footer panel-footer-btn-group">

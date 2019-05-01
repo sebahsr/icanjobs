@@ -98,7 +98,6 @@
 														<div class="col-mail">
 															<p class="m-none mail-content">
 																<span class="subject"><a href='/applications/applicationID-{{ application.pk }}/?redirect_to=/jobs/job-{{application.job.pk}}'>{{ application.job.title | title }} </a> &nbsp;–&nbsp;</span>
-																<span class="mail-partial">{{ application.job.position }}</span>
 															</p>
 															<p class="m-none mail-date">{{ application.applied_on|date:"d M " }}</p>
 														</div>

@@ -2723,12 +2723,21 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .post-list .single-post {
-  padding: 30px;
+  padding-top: 10px;
   background-color: #f9f9ff;
-  margin-bottom: 30px;
+  margin-bottom: 1px;
+  border-left: solid 4px #f93;
+  border-bottom: solid 1px #ddd;
 }
 
-.post-list .single-post h6 {
+.post-list .single-post-detail-job {
+  padding-top: 10px;
+}
+
+.single-post .title h4:hover, .single-post-detail-job .title h4:hover{
+  color: #f93 !important;
+}
+.post-list .single-post h6, .post-list .single-post-detail-job h6 {
   margin-top: 10px;
   color: #222;
   font-size: 14px;
@@ -2740,6 +2749,16 @@ body.mobile-nav-active #mobile-nav-toggle {
   .post-list .single-post h6 {
     font-size: 10px;
   }
+}
+
+.profile-main-wrapper {
+  background: #f9f9ff;
+}
+
+.profile-main-wrapper  .single-post{
+  background-color: white !important;
+  margin-bottom: 0px !important;
+
 }
 
 .post-list .single-post h5 {
@@ -2784,12 +2803,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   }
 }
 
-.post-list .single-post .thumb .tags {
-  margin-top: 30px;
+.post-list .single-post .thumb .tags,.post-list .single-post-detail-job .thumb .tags {
+  margin-top: 10px;
 }
 
-.post-list .single-post .thumb .tags li {
-  margin-bottom: 5px;
+.post-list .single-post .thumb .tags li,.post-list .single-post-detail-job .thumb .tags li{
+  margin-bottom: 15px;
   display: inline-block;
   background: #fff;
   border: 1px solid #eee;
@@ -2800,7 +2819,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   transition: all 0.3s ease 0s;
 }
 
-.post-list .single-post .thumb .tags li a {
+.post-list .single-post .thumb .tags li a,.post-list .single-post-detail-job .thumb .tags li a {
   color: #777777;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -2808,11 +2827,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   transition: all 0.3s ease 0s;
 }
 
-.post-list .single-post .thumb .tags li:hover {
+.post-list .single-post .thumb .tags li:hover,.post-list .single-post-detail-job .thumb .tags li:hover {
   background-color: #036;
 }
 
-.post-list .single-post .thumb .tags li:hover a {
+.post-list .single-post .thumb .tags li:hover a ,.post-list .single-post-detail-job .thumb .tags li:hover a {
   color: #fff;
 }
 
@@ -3560,6 +3579,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
 }
 
+.about-content-detail {
+  padding-top: 100px;
+  text-align: center;
+}
+
 .blog-content {
   padding: 300px 0px !important;
   text-align: center;
@@ -3737,10 +3761,18 @@ body.mobile-nav-active #mobile-nav-toggle {
   opacity: 1;
 }
 
-.single-title {
+.single-title,.single-title-job-detail {
+  text-transform: uppercase;
   margin-bottom: 20px;
+  font-size: 30px;
+  width:auto;
+  font-weight: 200;
 }
 
+.single-title-job-detail{
+  padding-bottom: 7px;
+  border-bottom: solid #ddd 1px;
+}
 .job-experience ul li {
   color: #036;
   margin-bottom: 30px;
@@ -3751,7 +3783,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .search-page-top {
-  padding: 250px 0px;
+  padding-top: 250px;
 }
 
 .search-page-top a, .search-page-top .lnr {
@@ -3933,6 +3965,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .blog-banner-area {
   background: url(../img/elements/blog/blog-banner.jpg) center;
   background-size: cover;
+  height: 400px !important;
 }
 
 .blog-banner-area .overlay-bg {

@@ -1,0 +1,26 @@
+
+<form method='POST' action="/employee/edit/worklink/">
+    {% csrf_token %}
+    <div class="mt-10">
+            <label>Name </label>
+        {{ workLinkForm.name }}
+    </div>
+
+    <div class="mt-10">
+            <label>URL </label>
+        {{ workLinkForm.url }}
+    </div>
+
+
+    <div class="mt-10">
+            <label>Description </label>
+        {{ workLinkForm.description }}
+    </div>
+
+
+
+    <div class='form-group'>
+        <hr />
+        <button type="submit" class="genric-btn primary-border">Add  Work Link</button>
+    </div>
+</form>

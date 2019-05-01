@@ -34,7 +34,7 @@
 
 									{% csrf_token %}
 									<div class="panel-body">
-										
+										{{ createEventForm.media }}
 										<div id="w4-account" class="tab-pane active">
 											
 											<div class="form-group">

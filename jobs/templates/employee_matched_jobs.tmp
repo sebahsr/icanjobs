@@ -63,23 +63,16 @@
                             {% include 'profile_tabs.tmp' %}
                         </div>	
                     </div>
-					<div class="justify-content-center col-lg-8 post-list">
+					<div class="col-lg-8">
                             <section class="post-area section-gap">
                                     <div class="container">
-                                        <div class="row justify-content-center d-flex">
-                                            <div class="post-list">
+                                        <div class="row  d-flex">
+                                            <div class="post-list col-xs-12 col-sm-12">
                                                 {% for matching_job in matching_jobs %}
                                                     <div class="single-post d-flex flex-row">
                                                         <div class="thumb col-sm-4">
                                                             <img style="max-width: 100px" src="{{ matching_job.company.profile_pic.url }}" alt="">
                                                             
-                                                            <ul class="tags">
-                                                                {% for category in matching_job.categories.all %}
-                                                                    <li>
-                                                                        <a href="/jobs/category-{{ job.id }}/">{{ category.name }}</a>
-                                                                    </li>
-                                                                {% endfor %}
-                                                            </ul>
                                                         </div>
                                                         <div class="details col-sm-7 col-sm-offset-1">
                                                             <div class="title d-flex flex-row justify-content-between">
@@ -87,22 +80,8 @@
                                                                     <a href="/jobs/job-{{ matching_job.pk }}/"><h4>{{ matching_job.title }}</h4></a>
                                                                     <h6> <a href='/companies/company-{{ matching_job.company.pk }}/'>{{ matching_job.company.name }} </a></h6>					
                                                                 </div>
-                                                                <ul class="btns">
-                                                                    
-                                                                    <li><a href="/jobs/job-{{ matching_job.id }}/"> <span class="lnr lnr-eye"></span> View Detail</a></li>
-                                                                </ul>
                                                             </div>
-                                                            <p>
-                                                                <span class="fa fa-star"></span> Region : <a href='/jobs/region-{{ matching_job.region.id }}/'>{{ matching_job.region.name }}</a>
-                                                            </p>
-                                                            
-                                                            <p>
-                                                                <span class="fa fa-dollar-sign"></span> Salary : <a href='/jobs/region-{{ matching_job.region.id }}/'>{{ matching_job.salary }}</a>
-                                                            </p>
-
-                                                            <p class="address"><span class="fa fa-user-plus"></span> {{ matching_job.position}}</p>
-                                                            <p class="address"> {{ matching_job.summary|truncatechars:100 }}</p>
-                                                            
+                                       
                                                             <div class="percentage">
                                                                 <div class="progress">
                                                                     <div class="progress-bar {{ matching_job.match_color }}" role="progressbar" style="width: {{ matching_job.match_percent }}%" aria-valuenow="{{ matching_job.match_percent }}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -133,7 +112,7 @@
 					</div>
                     <!-- sidebar -->
                     
-                    {% include 'jobs_sidebar.tmp' %}
+                    {% include 'matched_sidebar.tmp' %}
 
 					<!-- End side bar -->
 				</div>

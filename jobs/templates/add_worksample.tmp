@@ -1,0 +1,30 @@
+
+<form method='POST' action="/employee/edit/worksample/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mt-10">
+            <label>Name </label>
+        {{ workSampleForm.name }}
+    </div>
+
+    <div class="mt-10">
+            <label>Description </label>
+        {{ workSampleForm.description }}
+    </div>
+
+    <div class="mt-10">
+            <label>Date </label>
+        {{ workSampleForm.date }}
+    </div>
+
+    <div class="mt-10">
+            <label>Document </label><br />
+        {{ workSampleForm.document }}
+    </div>
+
+
+    <div class='form-group'>
+        <hr />
+        <button type="submit" class="genric-btn primary-border">Add Work Sample</button>
+    </div>
+</form>
+

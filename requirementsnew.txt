@@ -1,0 +1,10 @@
+Collecting freeze
+  Downloading https://files.pythonhosted.org/packages/c2/16/ca9fcd75d8c958b2260d521f18d7e697de5d2133fc68fc968feef4a348b6/freeze-1.0.10.tar.gz
+Requirement already satisfied: six in /Users/mac/.virtualenvs/ican/lib/python2.7/site-packages (from freeze) (1.12.0)
+Building wheels for collected packages: freeze
+  Building wheel for freeze (setup.py): started
+  Building wheel for freeze (setup.py): finished with status 'done'
+  Stored in directory: /Users/mac/Library/Caches/pip/wheels/5a/01/6b/b8d944e726b251e0f68a8786a3d26193c16f2883ae6f19c71a
+Successfully built freeze
+Installing collected packages: freeze
+Successfully installed freeze-1.0.10

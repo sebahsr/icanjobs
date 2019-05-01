@@ -1,8 +1,12 @@
 from django import forms
 from event import models 
 from django.contrib.auth.models import User 
+from ckeditor_uploader.widgets import  CKEditorUploadingWidget
 
 class EventForm(forms.ModelForm):
+    description = forms.CharField(
+        widget=CKEditorUploadingWidget()
+    )
 
     class Meta:
         model = models.Event
@@ -10,10 +14,7 @@ class EventForm(forms.ModelForm):
         widgets = {
             'title' : forms.TextInput(attrs={
                 "placeholder" : "Event Title", "class" : "form-control"}),
-            
-            'description' : forms.Textarea(attrs={
-                "placeholder" : "Event Overview","class" : "form-control"}),
-            
+                        
             'event_start_date' : forms.TextInput(attrs={
                 "placeholder" : "Event Start Date",
                 "class" : "form-control",
@@ -63,19 +64,16 @@ class EventForm(forms.ModelForm):
         }
 
 class BlogForm(forms.ModelForm):
+    content = forms.CharField(
+        widget=CKEditorUploadingWidget()
+    )
     class Meta:
         model = models.Blog
         fields = '__all__'
         widgets = {
             'title' : forms.TextInput(attrs={
                 "placeholder" : "Blog Title", "class" : "form-control"}),
-            
-            'content' : forms.Textarea(attrs={
-                "placeholder" : "Blog content...","class" : "form-control"}),
 
-            'image' : forms.FileInput(attrs={
-                "placeholder" : "Blog thumbnai", 'class' : 'form-contro'
-            }),
 
             'categories' : forms.SelectMultiple(attrs={
                 "class" : "form-control", 
@@ -102,4 +100,6 @@ class AppointmentForm(forms.ModelForm):
         }
 
 
-
+class AppointmentFilterForm(forms.Form):
+    start = forms.DateTimeField()
+    end = forms.DateTimeField()

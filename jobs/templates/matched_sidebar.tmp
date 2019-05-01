@@ -1,0 +1,152 @@
+
+<div class="col-lg-4 sidebar">
+        
+        <h3 class="single-title">Job Preference</h3>
+        <hr />
+        <form method='POST' action='/employee/matched-jobs/'>
+            <!-- Start post Area -->
+            <section class="post-area ">
+                    <h5> Job Levels </h5>
+
+                    <div id='company-job-list' class="container">
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-lg-12 post-list">
+
+                                {% for experience in employee.preference.job_levels.all %}
+                                {% empty %}
+                                + Add the level of the job you are looking for
+                                {% endfor %}
+                                {% csrf_token %}
+                                {% if is_logged_in_as_emp %}
+                                {{ preferenceForm.job_level }}
+                                {% endif %}
+                                
+                            </div>
+                            
+        
+                            
+                        </div>
+                        
+                       
+                    </div>	
+            </section>
+            <!-- End post Area -->
+            
+            <hr />
+            <section class="post-area section">
+                    <h5> Sector </h5>
+
+                    <div id='company-job-list' class="container">
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-lg-12 post-list">
+
+
+                                {% if employee.preference.job_category %}
+                                    {{employee.preference.job_category}}
+                                {% else %}
+                                    + Select the sector you want to work in 
+                                {% endif %}
+                                {% if is_logged_in_as_emp %}
+                                {{ preferenceForm.job_category }}
+                                {% endif %}
+                            </div>
+                            
+        
+                            
+                        </div>
+                    </div>	
+            </section>
+            
+            <hr />
+            <section class="post-area ">
+                    <h5> Region </h5>
+
+                    <div id='company-job-list' class="container">
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-lg-12 post-list">
+
+
+                                {% if employee.preference.job_region %}
+                                 {{ employee.preference.job_region }}
+                                {% else %}
+                                + Provide your region preference
+                                {% endif %}
+                                {% csrf_token %}
+                                
+                                {% if is_logged_in_as_emp %}
+                                    {{ preferenceForm.job_region }}
+                                {% endif %}
+                            
+                            </div>
+                            
+                        </div>
+                    </div>	
+            </section>
+            <hr />
+            <section class="post-area section">
+                    <h5> Employement Type </h5>
+
+                    <div id='company-job-list' class="container">
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-lg-12 post-list">
+
+
+                                    {% if employee.preference.employement_type %}
+                                        {{employee.preference.employement_type}}
+                                    {% else %}
+                                        + Add the type of employment that best suit you 
+                                    {% endif %}
+                                    
+                                    {% csrf_token %}
+                                    
+                                    {% if is_logged_in_as_emp %}
+                                        {{ preferenceForm.employement_type }}
+                                    {% endif %}
+                            </div>
+                            
+        
+                            
+                        </div>
+                    </div>	
+            </section>
+            <hr />
+            <section class="post-area section">
+
+                <h5> Salary Range</h5>
+                <div class="">
+                        <div class="input-group-icon mt-10">
+                            <div class="icon">
+                            <i class="fa fa-dollar-sign" aria-hidden="true"></i>
+                        </div>
+                            {{ preferenceForm.salary_start }}		
+                            
+                        </div>
+
+                        <div class="input-group-icon mt-10">
+                            <div class="icon">
+                            <i class="fa fa-dollar-sign" aria-hidden="true"></i></div>
+                            {{ preferenceForm.salary_end }}			
+                            
+                        </div>
+
+                        <div class="input-group-icon mt-10">
+                            <div class="icon"><i class="fa fa-info" aria-hidden="true"></i></div>
+                            <div class="form-select" id="default-select">
+                            {{ preferenceForm.pay_period }}		
+                            </div>
+                        </div>
+                        
+                        <br />
+                        <div>
+                            <button class='genric-btn primary' type='submit'>Save Changes</button>
+                        
+                        </div>
+
+                    </form>
+
+                </div>
+            </section>
+
+
+
+    </div>

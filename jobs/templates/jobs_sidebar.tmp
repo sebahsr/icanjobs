@@ -16,7 +16,6 @@
                                             {{ recent_job.summary|truncatechars:300}}
                                         </p>
                                         <p class="address">Job Nature: {{ recent_job.employement_type.name }}</p>
-                                        <p class="address"><span class="lnr lnr-map"></span> Position : {{ recent_job.position }} </p>
                                         <p class="address"><span class="lnr lnr-database"></span> Region :  {{ recent_job.region }}</p>
                                         <a href="/jobs/job-{{ recent_job.pk }}" class="btns text-uppercase">View Detail</a>
                                     </div>

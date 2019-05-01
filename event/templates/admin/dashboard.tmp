@@ -192,7 +192,6 @@
 											</div>
 											<div class="panel-footer panel-footer-btn-group">
 												<a href="#"><i class="fa fa-project-diagram mr-xs"></i> {{ recent_job.employement_type.name }}</a>
-												<a href="#"><i class="fa fa-desktop-alt mr-xs"></i> {{ recent_job.position }}</a>
 												<a href="#"><i class="fa fa-map-marker mr-xs"></i> {{ recent_job.city }}, {{ job.region.name }}</a>
 											</div>
 									</section>

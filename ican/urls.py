@@ -23,7 +23,8 @@ from event.urls import urlpatterns as event_url_patterns
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),  # <--
 
 ]
 

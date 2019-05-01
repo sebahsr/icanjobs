@@ -71,23 +71,34 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-sm-7 text-justify">
-                        {{ event.description }}
-                    </div>
-                    <div style="padding-top:3px; background-color:bisque; border-left:solid 1px black;border-right:solid 1px black" class="col-sm-4">
-                        <div class="h3">Date Information</div>
-                        <hr />
+                        <div style="padding-top:3px; border-right:solid 1px black" class="col-sm-8">
+                            <div class="h3">Date Information</div>
+                            <hr />
 
-                        <p><i class="fa fa-calendar"></i> {{ event.event_start_date}} - {{ event.event_end_date }}</p>
-                        <p><i class="fa fa-clock"></i> {{ event.start_time}} - {{ event.end_time }}</p>
-                        <div class="h3"><i class="fa fa-address-card"></i> Event Address</div>
-                        <hr />
-                        <p> {{ event.address}}</p>
-                        <p>{{ event.city}}, {{ event.region}}</p>
-                        <div class="widget widget_tags">
-                            <h4 class="widget-title">
-                                Tags
-                            </h4>
+                            <p><i class="fa fa-calendar"></i> {{ event.event_start_date}} - {{ event.event_end_date }}</p>
+                            <p><i class="fa fa-clock"></i> {{ event.start_time}} - {{ event.end_time }}</p>
+                            
+                            
+                        </div>
+
+                        <div class="col-sm-4">
+                                <div class="h3"><i class="fa fa-address-card"></i> Event Address</div>
+                                <hr />
+                                <p> {{ event.address}}</p>
+                                <p>{{ event.city}}, {{ event.region}}</p>
+                               
+                        </div>
+                    </div>
+                <div class="row">
+                    
+                    
+                    <div class="col-sm-12 text-justify">
+                            <hr />
+                        {{ event.description|safe }}
+                    </div>
+                   
+                    <div class="widget widget_tags">
+                            
                             <ul>
                                 {% for tag in event.tags.all %}
                                 <li><a href="/events/tag-{{ ta.pk }}">{{ tag.name }}</a></li>
@@ -95,8 +106,7 @@
                                 
                             </ul>
                         </div>
-                        
-                    </div>
+                    
                 </div>
                 <br /> 
                 {% if event.latitude and event.longitude %}

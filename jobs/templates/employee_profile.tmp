@@ -32,6 +32,9 @@
 		<link rel="stylesheet" href="/static/css/animate.min.css">
 		<link rel="stylesheet" href="/static/css/owl.carousel.css">
 		<link rel="stylesheet" href="/static/css/main.css">
+		<link rel="stylesheet" href="/static/company/vendor/bootstrap-datepicker/css/datepicker3.css" />
+		<link rel="stylesheet" href="/static/company/vendor/bootstrap-datepicker/css/datepicker.css" />
+
 	</head>
 	<body>
 
@@ -42,11 +45,10 @@
 			<div class="overlay overlay-bg"></div>
 			<div class="container">
 				<div class="row d-flex align-items-center justify-content-center">
-					<div class="about-content col-lg-12">
+					<div class="about-content-detail col-lg-12">
 						<h1 class="text-white">
 							{{ employee.user.first_name|title }} {{ employee.user.last_name|title }}				
 						</h1>	
-						<p class="text-white link-nav"><a href="/jobs/">Home </a>  <span class="lnr lnr-arrow-right"></span>  {{ employee.user.first_name|title }} {{ employee.user.last_name|title }}</a></p>
 						
 					</div>											
 				</div>
@@ -58,7 +60,7 @@
 		<section class="post-area section-gap">
 			<div class="container">
 				<div class="row justify-content-left d-flex">
-					<div class="col-lg-9 post-list">
+					<div class="profile-main-wrapper col-lg-9 post-list">
 					<div class="single-post-tabs d-flex flex-row">
 						{% include 'profile_tabs.tmp' %}
 					</div>	
@@ -102,7 +104,7 @@
 						</div>	
 						
 						<!--  About me -->
-						<section class="post-area section-gap">
+						<section class="post-area ">
 								<div id='company-job-list' class="container">
 									<div class="single-post row justify-content-center d-flex">
 										
@@ -212,9 +214,12 @@
 											{% for skill in employee.skills.all %}
 											<span class='genric-btn success'>{{ skill.name |title }}</span>
 											{% empty %}
-											+ Enhance your summary and experience while highlighting specific qualifications that are either required for a particular job or are unique about you. Expand this section when posting your resume online to increase the keywords related to your field.
+											+ Enhance your summary and experience while highlighting specific qualifications that are either required for a particular job.
 											{% endfor %}
 
+											{% if skillForm %}	
+												{% include 'add_skill.tmp' %}
+											{% endif %}
 
 											
 										</div>
@@ -225,13 +230,188 @@
 								</div>	
 						</section>
 						
+						<section class="single-post post-area section-gap">
+								<div id='employee-skill' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title"> CV
+
+												{% if is_logged_in_as_emp %}
+													<span style='float:right'><a href='/employee/edit/cv/'><i class='fa fa-plus-square'></i></a></span>
+												{% endif %}
+											</h4>
+											<hr />
+
+											{% for cv in employee.cvs.all %}
+											<div class='h4'>{{ cv.name |title }} </div>
+											<a href='{{ cv.document.url }}'>
+												{{ cv.document.name }}</a>
+											<hr />
+											{% empty %}
+											{% endfor %}
+
+											{% if cvForm %}	
+												{% include 'add_cv.tmp' %}
+											{% endif %}
+
+											
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+
+						<section class="single-post post-area section-gap">
+								<div id='employee-skill' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title"> References
+
+												{% if is_logged_in_as_emp %}
+													<span style='float:right'><a href='/employee/edit/reference/'><i class='fa fa-plus-square'></i></a></span>
+												{% endif %}
+											</h4>
+											<hr />
+
+											{% for reference in employee.references.all %}
+											<div class='h4'>{{ reference.first_name |title }} {{ reference.last_name |title }} </div>
+											<span>{{ reference.organization |title }}  </span><br />
+											<span>{{ reference.phone }}  </span><br />
+											<span>{{ reference.email }}  </span><br />
+											
+											<hr />
+											{% empty %}
+											{% endfor %}
+
+											{% if referenceForm %}	
+												{% include 'add_reference.tmp' %}
+											{% endif %}
+
+											
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+
+						<section class="single-post post-area section-gap">
+								<div id='employee-skill' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title"> Work Samples
+
+												{% if is_logged_in_as_emp %}
+													<span style='float:right'><a href='/employee/edit/worksample/'><i class='fa fa-plus-square'></i></a></span>
+												{% endif %}
+											</h4>
+											<hr />
+
+											{% for worksample in employee.worksamples.all %}
+											<div class='h4'>{{ worksample.name }} </div>
+											<span>{{ worksample.description }}  </span> <br />
+											<a href='{{ worksample.document.url }}'>{{ worksample.document.name }}  </a> <br />
+											<span class="fa fa-calendar-o"></span> {{ worksample.date }}
+											
+											<hr />
+											{% empty %}
+											{% endfor %}
+
+											{% if workSampleForm %}	
+												{% include 'add_worksample.tmp' %}
+											{% endif %}
+
+											
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+
+						<section class="single-post post-area section-gap">
+								<div id='employee-skill' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title"> Association
+
+												{% if is_logged_in_as_emp %}
+													<span style='float:right'><a href='/employee/edit/association/'><i class='fa fa-plus-square'></i></a></span>
+												{% endif %}
+											</h4>
+											<hr />
+
+											{% for association in employee.associations.all %}
+											<div class='h6'>{{ association.name }} </div>
+											
+											<hr />
+											{% empty %}
+											{% endfor %}
+
+											{% if associationForm %}	
+												{% include 'add_association.tmp' %}
+											{% endif %}
+
+											
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+
+
+						<section class="single-post post-area section-gap">
+								<div id='employee-skill' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title"> Links to my Work
+
+												{% if is_logged_in_as_emp %}
+													<span style='float:right'><a href='/employee/edit/worklink/'><i class='fa fa-plus-square'></i></a></span>
+												{% endif %}
+											</h4>
+											<hr />
+
+											{% for worklink in employee.worklinks.all %}
+											<div class='h4'><a href='{{ worklink.url }}'>{{ worklink.name }} </a></div>
+											<p'>{{ worklink.description }}  </p>
+											
+											<hr />
+											{% empty %}
+											{% endfor %}
+
+											{% if workLinkForm %}	
+												{% include 'add_worklink.tmp' %}
+											{% endif %}
+
+											
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+
+
 
 						<section class="single-post post-area section-gap">
 								<div id='company-job-list' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> Education
+											<h4 class="single-title"> Education/Training
 												
 												{% if is_logged_in_as_emp %}
 													<span style='float:right'><a href='/employee/edit/education/'><i class='fa fa-plus-square'></i></a></span>
@@ -318,6 +498,11 @@
 		<!-- End calto-action Area -->
 
 	{% include 'footer.tmp' %}	
+	
+	<script src="/static/company/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script>
+		$('.worksample-date').datepicker({});
+	</script>
 	</body>
 </html>
 

@@ -1,0 +1,14 @@
+
+<form method='POST' action="/employee/edit/association/">
+    {% csrf_token %}
+    <div class="mt-10">
+            <label>Name </label>
+        {{ associationForm.name }}
+    </div>
+
+
+    <div class='form-group'>
+        <hr />
+        <button type="submit" class="genric-btn primary-border">Add Association</button>
+    </div>
+</form>
