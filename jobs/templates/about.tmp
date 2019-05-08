@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="codepixer">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Job Listing</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+		<!--
+		CSS
+		============================================= -->
+		<link rel="stylesheet" href="/static/css/linearicons.css">
+		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/css/bootstrap.css">
+		<link rel="stylesheet" href="/static/css/magnific-popup.css">
+		<link rel="stylesheet" href="/static/css/nice-select.css">					
+		<link rel="stylesheet" href="/static/css/animate.min.css">
+		<link rel="stylesheet" href="/static/css/owl.carousel.css">
+		<link rel="stylesheet" href="/static/css/main.css">
+	</head>
+	<body>
+
+		<!-- header temp -->
+			{% include 'header.tmp' %}
+		<!-- header temp END -->
+
+		<!-- start banner Area -->
+        <div class="page-section cs-page-sec about-header">
+                    <!-- Container Start -->
+            <div class="container "> 
+                <div class="row">
+                    <div class="section-fullwidth col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                
+                                <div class="cs-heading">
+                                    <h1 style="color:#ffffff !important; font-size: 50px !important; font-weight:  !important; letter-spacing: 2px !important; line-height: 80px !important; text-align:Center; font-style:normal;">
+                                        About Us
+                                    </h1>
+                                    
+                                    <div class="heading-description">
+                                            <span style="color:rgb(255,255,255);">
+                                                    iCAN is a an executive human capital search  & workforce development  firm well placed to 
+                                                    offer  talent  solutions to our clients, whilst maintaining focus on the needs of our candidates. 
+                                                     iCAN work across all industry sectors and brings over 10 years of international (US) and local experience in 
+                                                     employment and training before its establishment in 2018.
+
+                                            </span> 
+                                            
+                                    </div>
+                                    
+                                    <div class="spliter-medium"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>			    
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section cs-page-sec  ">
+
+            <div class="container "> 
+                <div class="row">
+                    <div class="section-fullwidth col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="cs-heading"><h3 class="cs-fancy">Our Services</h3>
+                                    <div class="heading-description">
+                                        When an unknown printer took a galley of type and scrambled it to make a type specimen
+                                        <br /> <br />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="cs-simple fancy-box">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div class="cs-icon-box left">
+                                                <div class="cs-media"><figure><a href="#">
+                                                    <i class="fa fa-paw" style="color:#55a747 !important;"></i>
+                                                            </a></figure>
+                                                </div>
+                                                
+                                                <div class="cs-text">
+                                                    <h4 style="color:#424242 !important;">
+                                                        <a style="color:#424242 !important;" href="#">RECRUITMENT</a>
+                                                    </h4><br />
+                                                    <p>
+                                                            iCAN assists businesses and organizations find  right  talent:  Complete recruitment  services ,  Executive Search,  Head Hunting, Mass Recruitment,  Assessment Centers, recruitment advisory and more 
+                                                    </p> 
+                                                </div>
+                                                        
+                                            </div>
+                                        
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div class="cs-icon-box left">
+                                                <div class="cs-media"><figure><a href="#"><i class="fa fa-desktop" style="color:#55a747 !important;"></i></a></figure></div>
+                                                <div class="cs-text"><h4 style="color:#424242 !important;"><a style="color:#424242 !important;" href="#">JOB POSTING & ONLINE JOB MATCHING</a></h4>
+                                                    
+                                                    <br />
+                                                    <p>
+                                                        Our Online job portal platform provides you with real-time job matching, resumes, company profiling and applicant tracking system that best matches your needs and interests.
+                                                </p> </div>
+                                            
+                                            </div>
+                                        
+                                        </div>
+                                        
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            
+                                                <div class="cs-icon-box left">
+                                                
+                                                <div class="cs-media">
+                                                    <figure><a href="#"><i class="fa fa-tripadvisor" style="color:#55a747 !important;"></i></a></figure>
+                                                </div>
+                                                <div class="cs-text">
+                                                    <h4 style="color:#424242 !important;">
+                                                        <a style="color:#424242 !important;" href="#">WORKFORCE DEVELOPMENT TRAININGS</a>
+                                                    </h4><br />
+                                                    <p>iCAN provides customized and  necessary career & workforce development trainings, employability/soft  and workplace skills to  job seekers and employees . 
+                                                        </p> 
+                                                
+                                                </div>
+                                            
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div class="cs-icon-box left">
+                                                <div class="cs-media"><figure><a href="#"><i class="fa fa-briefcase" style="color:#55a747 !important;"></i></a></figure></div>
+                                                
+                                                <div class="cs-text">
+                                                    
+                                                    <h4 style="color:#424242 !important;">
+                                                        <a style="color:#424242 !important;" href="#">HR SERVICES & CONSULTANCY </a>
+                                                    </h4><br />
+                                                    <p>
+                                                            ICAN provides HR consultancy and organizational development strategies that drive value to your business.
+                                                    </p> 
+                                                
+                                                </div>
+                                            
+                                            </div>
+                                        
+                                        </div>
+                                    
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div class="cs-icon-box left">
+                                                <div class="cs-media"><figure><a href="#"><i class="fa fa-gear" style="color:#55a747 !important;"></i></a></figure>
+                                                </div>
+                                                
+                                                <div class="cs-text">
+                                                    <h4 style="color:#424242 !important;"><a style="color:#424242 !important;" href="#">Assessment</a></h4>
+                                                    <br />
+                                                    <p>
+                                                            We customize and help businesses in designing and developing assessment centers that matches their vision and value. 
+                                                    </p> 
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div class="cs-icon-box left">
+                                                <div class="cs-media"><figure><a href="#"><i class="fa fa-users" style="color:#55a747 !important;"></i></a></figure>
+                                                </div>
+                                                <div class="cs-text">
+                                                    <h4 style="color:#424242 !important;"><a style="color:#424242 !important;" href="#">YOUTH CAREER ADVISORY</a></h4>
+                                                    <p style="color:#a4a4a4;">
+                                                            Our certified Career professionals provide career coaching & advisory services , industry linkage and employability skills 
+                                                    </p> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>			    
+            </div>
+    </div>
+
+    <div class="page-section cs-page-sec cs-page-sec-solid ">
+            <!-- Container Start -->
+        <div class="container "> 
+            <div class="row">
+                <div class="section-fullwidth col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="cs-element-title">
+                                <div class="section-inner">
+                                    <h2>iCan Served</h2>
+                                </div>
+                            </div>
+
+                            <div>
+                                <br>
+                                iCAN provided HR consultancy and recruitment services to local and multinational companies, private and public sector. ICAN has also provide  capacity building trainings and workshops such   Soft Skills for Youth workforce Development Across Sectors, Workplace Etiquette, Customer Service /Call Center Etiquette, , personal branding,  The Basics  Of  Success Job Searching, Resume/Writing,  interview  Preparation, Career  advising/coaching, career Management And Leadership , Employability Skills , TOT to  Career Counselors Trainings higher institutions and Employers Engagement Forum In Youth Employment etc. 
+                                <br>
+
+                           
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="">
+                                <div class="image-frame cs-img-frame">
+                                    <figure><img src="http://icanjobs.com/img/background.svg" alt=""></figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>			    
+            </div>
+        </div>
+    </div>
+            
+
+    <div class="page-section cs-page-sec  ">
+
+            <div class="container "> 
+                <div class="row">
+                    <div class="section-fullwidth col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                        <div class="row">
+                           
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="cs-simple ">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                <div class="cs-icon-box left">
+                                                    <div class="cs-text"><h4 class="text-center" style="color:#424242 !important;">
+                                                            OUR VALUE </h4>
+                                                        
+                                                        <br />
+                                                        <p>
+                                                            We invest time to ensure that we understand your business; its organizational make-up, culture, strategic direction, performance goals and competitive position and we conduct our business in professional manner following strict ethical standards, maintaining complete confidentiality for candidates and clients alike. 
+                                                        </p> 
+                                                    </div>
+                                                
+                                                </div>
+                                            
+                                            </div>
+                                            
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div class="cs-icon-box left">
+                                                
+                                                
+                                                <div class="cs-text">
+                                                    <h4 class="text-center" style="color:#424242 !important;">
+                                                       VISION
+                                                    </h4><br />
+                                                    <p>
+                                                        Our Vision is to be the ultimate employment, HR Consultancy, workforce development and Recruitment Solutions partner for all our clients. 
+
+                                                    </p> 
+                                                </div>
+                                                        
+                                            </div>
+                                        
+                                        </div>
+                                       
+                                        
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            
+                                                <div class="cs-icon-box left">
+                                               
+                                                <div class="cs-text">
+                                                    <h4 class="text-center" style="color:#424242 !important;">
+                                                        PHILOSPHY
+                                                    </h4><br />
+                                                    <p>
+                                                        The key to workforce Success and positive workforce outcomes in employment, performance on the job, income, and entrepreneurial success is effective recruitment, workforce development strategies, and mastery of soft skills. 
+                                                    </p> 
+                                                
+                                                </div>
+                                            
+                                            </div>
+                                        </div>
+                                       
+                                    
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>			    
+            </div>
+    </div>
+
+
+	
+
+		<!-- start footer Area -->		
+	{% include 'footer.tmp' %}	
+	</body>
+</html>
+
+
+

@@ -83,13 +83,9 @@
 														{% ifequal application.status 'unread' %}
 															<i class="mail-label" style="border-color: #EA4C89"></i>
 														{% endifequal %}
-														<div class="col-sender">
-
-															{% if application.applicant.profile_pic %}
-																<img src='{{ application.applicant.profile_pic.url }}' />
-															{% else %}
-																<img style='max-width: 25px' class="img img-circle" src='/static/img/default.png' />
-															{% endif %}
+														<div lass="col-sender">
+															<img style='max-width: 25px' class="img img-circle" src='/static/img/default.png' />
+															
 														</div>
 														<div class="col-sender">
 															

@@ -15327,6 +15327,9 @@ html.dark .invoice table.table > tbody tr > td {
 	padding: 13px 17px;
 	vertical-align: bottom;
 }
+.body-sign .panel-sign .panel-title-sign .active {
+	background: #55a747 !important;
+}
 .body-sign .panel-sign .panel-body {
 	background: #FFF;
 	border-top: 5px solid #cccccc;

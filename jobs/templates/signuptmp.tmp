@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="fixed">
+    {% include 'company/admin.header.tmp' %}
+    
+		<!-- start: page -->
+		<section class="body-sign">
+			<div class="center-sign">
+				<a href="/" class="logo pull-left">
+					<img src="/static/img/logo.png" height="54" alt="Porto Admin" />
+				</a>
+
+				<div class="panel panel-sign">
+					<div class="panel-title-sign mt-xl text-right">
+                        <h2 class="title text-uppercase active text-bold m-none"><i class="fa fa-user mr-xs"></i> Job Seeker Signup</h2>
+                        <a href='/company/admin/signup/'> <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Employer Signup</h2></a>
+
+					</div>
+					
+					<div class="panel-body">
+						
+						
+						<form action="/signup/" method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="form-group mb-lg">
+								{%  if user_form.first_name.errors %}
+									<div class="text-danger">{{ user_form.first_name.errors.0 }}</div>
+								{% endif %}
+
+								<label>First Name</label>
+								{{ user_form.first_name }}
+
+                            </div>
+                            <div class="form-group mb-lg">
+                                    {%  if user_form.last_name.errors %}
+                                        <div class="text-danger">{{ user_form.last_name.errors.0 }}</div>
+                                    {% endif %}
+    
+                                    <label>Last Name</label>
+                                    {{ user_form.last_name }}
+    
+                                </div>
+
+							<div class="form-group mb-lg">
+								{%  if userNameForm.username.errors %}
+									<div class="text-danger">{{ userNameForm.username.errors.0 }}</div>
+								{% endif %}
+								<label>Username</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-user"></i>
+									</span>
+									{{ userNameForm.username }}
+								</div>
+							</div>
+							
+
+
+							<div class="form-group mb-none">
+								<div class="row">
+									<div class="col-sm-6 mb-lg">
+										<label>Password</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-key"></i>
+											</span>
+											<input name="pwd" type="password" class="form-control" />
+										</div>
+									</div>
+									<div class="col-sm-6 mb-lg">
+										<label>Password Confirmation</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="fa fa-key"></i>
+											</span>
+											<input name="pwd_confirm" type="repeat_pwd" class="form-control" />
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								
+								<div class="col-sm-offset-8 col-sm-4 text-right">
+									<button type="submit" class="btn btn-primary hidden-xs">Sign Up</button>
+									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign Up</button>
+								</div>
+							</div>
+
+							
+						</form>
+					</div>
+				</div>
+
+				<p class="text-center text-muted mt-md mb-md">iCAN &copy; Copyright 2018. All rights reserved.
+		</section>
+		<!-- end: page -->
+
+        {% include 'company/admin.footer.tmp' %}

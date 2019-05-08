@@ -23,41 +23,7 @@
                                 </div>
                             </div>
                             
-                            <div class="single-slidebar">
-                                <h4>Jobs by Region</h4>
-                                <ul class="cat-list">
-                                    {% for region in regions  %}
-                                        <li><a class="justify-content-between d-flex" href="/jobs/region-{{ region.pk}}/"><p>{{ region.name }}</p><span>{{region.jobs.count }}</span></a></li>
-                                    
-                                    {% endfor %}
-                                   </ul>
-                            </div>					
-    
-                            <div class="single-slidebar">
-                                <h4>Jobs by Sectors</h4>
-                                <ul class="cat-list">
-                                    {% for category in categories %}
-                                        <li><a class="justify-content-between d-flex" href="/jobs/category-{{category.pk}}"><p>{{ category.name }}</p><span>{{ category.job_count }}</span></a></li>
-                                    {% endfor %}
-                                    </ul>
-                            </div>
-    
-                            <div class="single-slidebar">
-                                <h4>Carrer Advice Blogs</h4>
-                                <div class="blog-list">
-                                    {% for blog in recent_blogs %}
-                                    <div class="single-blog " style="background:#000 url(img/blog1.jpg);">
-                                        <a href="/blogs/blog-{{ blog.pk }}/">
-                                            <h4>{{ blog.title }}<br>
-                                       
-                                        <div class="meta justify-content-between d-flex">
-                                            <p>
-                                                {{ blog.created_at }}
-                                            </p>
-                                        </div>
-                                    </div>	
-                                    {% endfor %}																	
-                                </div>
-                            </div>							
+                            
+    							
     
                         </div>

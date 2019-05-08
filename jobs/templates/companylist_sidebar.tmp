@@ -10,29 +10,4 @@
                                    </ul>
                             </div>
     
-                            <div class="single-slidebar">
-                                <h4>Recent Jobs</h4>
-                                    {% if recent_jobs.count > 1 %}
-                                        <div class="active-relatedjob-carusel">
-                                    {% else %}
-                                        <div>
-                                    {% endif %}
-                                    {% for recent_job in recent_jobs %}
-                                    <div class="single-rated">
-
-                                        <img class="img-fluid" src='{{ recent_job.company.profile_pic.url }}' alt="" />
-                                        <a href="single.html"><h4>{{ job.title }}</h4></a>
-                                        <h6> <a href='/companies/company-{{ recent_job.company.id }}'>{{ recent_job.company.name }} </a></h6>
-                                        <p>
-                                            {{ recent_job.summary|truncatechars:300}}
-                                        </p>
-                                        <p class="address">Job Nature: {{ recent_job.employement_type}}</p>
-                                        <p class="address"><span class="lnr lnr-database"></span> Region :  {{ recent_job.region }}</p>
-                                        <a href="#" class="btns text-uppercase">View Detail</a>
-                                    </div>
-                                    {% endfor %}	
-                                    																
-                                </div>
-                            </div>													
-    
-                        </div>
+                    

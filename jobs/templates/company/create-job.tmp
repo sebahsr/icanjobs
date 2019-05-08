@@ -27,7 +27,7 @@
 										<h2 class="panel-title">Create New Job</h2>
 									</header>
 								
-								<form class="form-horizontal" method="POST" action="/company/admin/create-job/" novalidate="novalidate">
+								<form class="form-horizontal" method="POST" {% if jobID %} action="/company/admin/create-job/job-{{jobID}}/" {% else %}  action="/company/admin/create-job/" {% endif %} novalidate="novalidate">
 									{% csrf_token %}
 									<div class="panel-body">
 										<div class="wizard-progress wizard-progress-lg">

@@ -12,7 +12,9 @@
 
 				<div class="panel panel-sign">
 					<div class="panel-title-sign mt-xl text-right">
-						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
+						<h2 class="title active text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Job Seeker Sign In</h2>
+						<a href='/company/admin/login/'><h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Employer Sign In</h2></a>
+					
 					</div>
 					<div class="panel-body">
 						{% if err %}

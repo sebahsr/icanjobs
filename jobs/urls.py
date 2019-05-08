@@ -19,7 +19,9 @@ import views as job_views
 
 urlpatterns = [
     
-    url(r'^$', job_views.jobView),
+    url(r'^$', job_views.homeView),
+    url(r'^about/$', job_views.aboutUs),
+
     url(r'^jobs/(?:job-(?P<jobID>\d+)/)?$', job_views.jobView),
     url(r'^jobs/(?:category-(?P<categoryID>\d+)/)$', job_views.jobView),
     url(r'^jobs/(?:region-(?P<regionID>\d+)/)$', job_views.jobView),
@@ -60,7 +62,7 @@ urlpatterns = [
 
     url(r'^company/admin/login/$', job_views.loginCompanyView),
     url(r'^company/admin/signup/$', job_views.signUpCompanyView),
-    url(r'^company/admin/create-job/$', job_views.createJobView),
+    url(r'^company/admin/create-job/(?:job-(?P<jobID>\d+)/)?$', job_views.createJobView),
 
     url(r'^applications/applicationID-(?P<applicationID>\d+)/$', job_views.applicationRead),
     

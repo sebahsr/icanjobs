@@ -27,7 +27,9 @@
 		<link rel="stylesheet" href="/static/css/nice-select.css">					
 		<link rel="stylesheet" href="/static/css/animate.min.css">
 		<link rel="stylesheet" href="/static/css/owl.carousel.css">
-		<link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel='stylesheet' id='cs_chosen_css-css'  href='http://jobcareer.chimpgroup.com/wp-content/plugins/wp-jobhunt/assets/css/chosen.css?ver=4.8.8' type='text/css' media='all' />
+
 	</head>
 	<body>
 
@@ -35,18 +37,16 @@
 			{% include 'header.tmp' %}
 		<!-- header temp END -->
 
-		<!-- start banner Area -->
 		<section class="banner-area-home banner-area relative" id="home">	
 				<div class="overlay overlay-bg"></div>
 				<div class="container">
 					<div class="row search-page-top d-flex align-items-center justify-content-center">
 						<div class="banner-content col-lg-12">
-							<h1 class="text-white">
-								iCAN Jobs				
-							</h1>
+							
 							<p class="text-white link-nav">
-								<a href="index.html">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/jobs/"> Jobs</a>
-							</p>	
+                                    EXPLORE THOUSAND OF JOBS WITH JUST SIMPLE SEARCH...
+
+                            </p>	
 							<form class="serach-form-area" action="/jobs/search/" method="GET">
 								<div class="row justify-content-center form-wrap">
 									<div class="col-lg-3 form-cols">
@@ -93,98 +93,92 @@
 									</div>								
 								</div>
 							</form>
-							{% if search_result_count is not None and search_result_count >= 0 and search_query %}
-							<p class="text-white">{{ search_result_count }} Results found for <span>"{{ search_query }}"</span></p>
-							{% endif %}
+							
 						</div>											
 					</div>
 				</div>
-			</section>
-			<!-- End banner Area -->	
-			<section class="feature-cat-area pt-100" id="category">
-					<div class="container">
-						<div class="row d-flex justify-content-center">
-							<div class="menu-content pb-60 col-lg-10">
-								<div class="title text-center">
-									<h1 class="mb-10">Featured Sectors</h1>
-									<p>Sectors with the most open jobs.</p>
-								</div>
-							</div>
-						</div>						
-						<div class="row">
-							{% for featured_category in featured_categories %}
-								<div class="col-lg-2 col-md-4 col-sm-6">
-									<div class="single-fcat">
-										<div class='h5'> <a href='/jobs/category-{{ featured_category.pk }}/'>{{ featured_category.name|upper }} </a></div>
-										<p>{{ featured_category.job_count }} Hiring Now</p>
-									</div>
-								</div>
-							{% endfor %}																											
-						</div>
-					</div>	
-				</section>
-
-		<!-- Start post Area -->
-		<section class="post-area section-gap">
-			<div class="container">
-				<div class="row justify-content-center d-flex">
-					<div class="col-lg-8 post-list">
-						{% for job in jobs %}
-							<div class="single-post d-flex flex-row">
-								<div class="thumb col-sm-2">
-									<img style="max-width: 100px" src="{{ job.company.profile_pic.url }}" alt="">
-									
-								</div>
-								<div class="details col-sm-9 col-sm-offset-1">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="/jobs/job-{{ job.id }}/"><h4>{{ job.title }}</h4></a>
-													
-										</div>
-										
-									</div>
-									<p class="address"> {{ job.summary|truncatechars:100 }}</p>
-
-									<p class="address">	
-											<h6> <a href='/companies/company-{{ job.company.pk }}/'>{{ job.company.name }} </a></h6>
-											{% if job.deadline %}
-											<h6> <span class="fa fa-clock-o"></span> Closing On {{ job.deadline }} </a></h6>
-											{% endif %}
-									</p>
-									
-								</div>
-							</div>	
-						{% empty %}
-							<div class="h3"> 
-								No jobs Found 
-							</div>
-						{% endfor %}
-
-						{% if current_page.has_previous %}
-						<a href="?page={{ current_page.previous_page_number }}" class="genric-btn info-border circle arrow">Previous<span class="lnr lnr-arrow-left"></span></a>
-						{% endif %}
-
-						{% if current_page.has_next %}
-							<a href="?page={{ current_page.next_page_number }}" class="genric-btn info-border circle arrow">Next<span class="lnr lnr-arrow-right"></span></a>
-						{% endif %}
-						</div>
-					
-
-					<!-- sidebar -->
-					{% include 'jobs_sidebar.tmp' %}
-					<!-- End side bar -->
-					
-				</div>
-			</div>	
 		</section>
-		<!-- End post Area -->
 
-		{% include 'join_us_section.tmp' %}		
-	
+        <div class="row">
+        <section class="col-sm-1"></section>
+        <section class="col-sm-3  sidebar">
+                <div class="single-slidebar">
+                        <h4>Jobs by Region</h4>
+                        <ul class="cat-list">
+                            {% for region in regions  %}
+                                <li><a class="justify-content-between d-flex" href="/jobs/region-{{ region.pk}}/"><p>{{ region.name }}</p><span>{{region.jobs.count }}</span></a></li>
+                            
+                            {% endfor %}
+                           </ul>
+                    </div>					
+
+                    <div class="single-slidebar">
+                        <h4>Jobs by Sectors</h4>
+                        <ul class="cat-list">
+                            {% for category in categories %}
+                                <li><a class="justify-content-between d-flex" href="/jobs/category-{{category.pk}}"><p>{{ category.name }}</p><span>{{ category.job_count }}</span></a></li>
+                            {% endfor %}
+                            </ul>
+                    </div>
+        </section>
+        <section class='col-sm-6'>
+                
+                <ul class="jobs-listing modern">
+                    {% for job in jobs %}
+                        <li>
+                            <div class="jobs-content row">
+                                <div class="cs-media col-sm-3">
+                                    <figure>
+                                        <a href="/jobs/job-{{job.pk}}/">
+                                            <span class="feature">
+                                                <img alt="" src="{{ job.company.profile_pic.url }}">
+                                            </span>    
+                                    </figure>
+                                </div>
+
+                                <div class="cs-text col-sm-8">
+                                    <div class="cs-post-title">
+                                        <h3>
+                                            <a href="/jobs/job-{{job.pk}}/">
+                                                {{ job.title }}
+                                            </a>
+                                        </h3>
+                                    </div>
+
+                                    <ul>
+                                       <li><span> Posted</span> {{ job.created_at|date}}</li>                                 
+                                       <li><span>Location</span>{{ job.city}}, {{ job.region }} </li>                                                            
+                                    </ul>
+
+                                    <p>
+                                        {{ job.summary|truncatechars:300}}
+                                    </p>
+
+                                    <a class="read-more" href="/jobs/job-{{job.pk}}/">Read more</a>
+                                    
+                                </div>
+
+                            </div>
+                        </li>
+                    {% endfor %}
+                        
+                 
+                </ul>
+                {% if current_page.has_previous %}
+                    <a href="?page={{ current_page.previous_page_number }}" class="genric-btn info-border circle arrow">Previous<span class="lnr lnr-arrow-left"></span></a>
+                    {% endif %}
+
+                    {% if current_page.has_next %}
+                        <a href="?page={{ current_page.next_page_number }}" class="genric-btn info-border circle arrow">Next<span class="lnr lnr-arrow-right"></span></a>
+                    {% endif %}
+
+        </section>
+        </div>
 		<!-- start footer Area -->		
-	{% include 'footer.tmp' %}	
-	</body>
+        {% include 'footer.tmp' %}	
+        <script type='text/javascript' src='http://jobcareer.chimpgroup.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+
+        <script type='text/javascript' src='http://jobcareer.chimpgroup.com/wp-content/plugins/wp-jobhunt/assets/scripts/chosen.jquery.js?ver=4.8.8'></script>
+
+    </body>
 </html>
-
-
-

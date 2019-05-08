@@ -15,11 +15,26 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 
 import datetime
 # Create your views here.
+
+def aboutUs(request):
+    return render(request, 'about.tmp', locals())
+
+def homeView(request, **kwargs):
+
+    template_name = "home.tmp"
+    
+
+    categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
+    featured_categories = categories[:6]
+    recent_jobs = models.Job.objects.all()[:5]
+    employement_types = models.EmployementType.objects.all()
+    recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:3]
+
+    return render(request, template_name, locals())
+
 def jobView(request, **kwargs):
-
-    template_name = "jobs.tmp"
     jobs = None 
-
+    template_name = "jobs.tmp"
     if kwargs.get('regionID', False):
         jobs = jobRegionListHelper(kwargs['regionID'])
 
@@ -47,19 +62,14 @@ def jobView(request, **kwargs):
     # do pagination 
     if jobs: 
         page_number = request.GET.get('page', 1)
-        paginator = Paginator(jobs, constants.PAG_JOB_NUMBER)
+        paginator = Paginator(jobs, constants.RECENT_PAG_JOB_NUMBER)
         current_page = paginator.page(page_number)
         jobs = current_page.object_list
-
     regions = models.Region.objects.all()
     categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
-    featured_categories = categories[:6]
-    recent_jobs = models.Job.objects.all()[:5]
-    employement_types = models.EmployementType.objects.all()
-    recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:3]
+
 
     return render(request, template_name, locals())
-
 #view helper functions for job 
 def jobDetailHelper(jobID, request):
     job = get_object_or_404(models.Job, pk=jobID)
@@ -215,15 +225,21 @@ def employeeSignupView(request):
             err = "Failed to register. Please try again."
             print employee_form.errors, user_form.errors
     
-    return render(request, 'signup.tmp', locals())
+    return render(request, 'signuptmp.tmp', locals())
     
-
+ 
 
 @login_required
-def companyCreateJobView(request):
+def companyCreateJobView(request, jobID=None):
     jobForm = forms.JobForm()
+    job = None
+    if jobID:
+        job = get_object_or_404(models.Job, pk=jobID)
+        jobForm = forms.JobForm(instance=job)
+
+
     if request.method == "POST":
-        jobForm = forms.JobForm(request.POST)
+        jobForm = forms.JobForm(request.POST, instance=job)
         if jobForm.is_valid():
             job = jobForm.save(commit=False);
             job.company = request.user.company
@@ -694,24 +710,30 @@ def signUpCompanyView(request):
 
 @login_required
 @user_passes_test(functions.is_company)
-def createJobView(request):
+def createJobView(request, jobID=None):
     jobForm = forms.JobForm()
+    job = None
+    if jobID:
+        job = get_object_or_404(models.Job, pk=jobID)
+        jobForm = forms.JobForm(instance=job)
+
     company = request.user.company
     if request.method == "POST":
         import datetime
         reqData = request.POST.copy()
 
-        jobForm = forms.JobForm(reqData)
+        jobForm = forms.JobForm(reqData, instance=job)
         if jobForm.is_valid():
             job = jobForm.save(commit=False)
             job.company = company
             job.save()
             jobForm.save_m2m()
             return redirect('/company/admin/jobs/')
-    print jobForm.errors
+
     applications = models.JobApplication.objects.filter(job__in = company.jobs.all())
     unread_applications_count = applications.filter(status='unread').count()
     sidebar_create_job_active = 'nav-active'
+    
     return render(request, 'company/create-job.tmp', locals())
 
 @login_required

@@ -1,45 +1,48 @@
 <footer class="footer-area section-gap">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-3 col-xs-12">
                     <div class="single-footer-widget">
-                        <h6>General</h6>
+                        <h6>Job Seeker</h6>
                         <ul class="footer-nav">
-                            <li><a href="http://icanjobs.com/">Home</a></li>
-                            <li><a href="http://icanjobs.com/about.html">About</a></li>
-                            <li><a href="http://jobs.icanjobs.com/">Search Jobs</a></li>
-                            <li><a href="http://icanjobs.com/construction.html">Marketing Service</a></li>
-                            <li><a href="http://icanjobs.com/construction.html">Career Advisory</a></li>
-                            <li><a href="http://jobs.icanjobs.com/events/">Events</a></li>
+                            <li><a href="/jobs/">Browse Jobs</a></li>
+                            <li><a href="/employee/">Post Your Resume</a></li>
+                            <li><a href="">Job Alert</a></li>
 
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4  col-md-12">
+                <div class="col-lg-3  col-xs-12">
                         <div class="single-footer-widget">
                             <h6>Employer</h6>
                             <ul class="footer-nav">
-                                <li><a href="http://jobs.icanjobs.com/company/admin/create-job/">Post Jobs</a></li>
-                                <li><a href="http://icanjobs.com/construction.html">Recuriements</a></li>
-                                <li><a href="http://icanjobs.com/construction.html">HR Consultancy Services</a></li>
-                                <li><a href="http://icanjobs.com/construction.html">Find Talent</a></li>
-                                <li><a href="http://icanjobs.com/construction.html">Employer Branding</a></li>
+                                <li><a href="/jobs/">Browse Employers</a></li>
+                                <li><a href="/company/admin/create-job/">Post Jobs & Internships</a></li>
+                                <li><a href="/about/">Services</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4  col-md-12">
+                    <div class="col-lg-3  col-xs-12">
                             <div class="single-footer-widget">
-                                <h6>Resources</h6>
+                                <h6>Career Advice</h6>
                                 <ul class="footer-nav">
-                                    <li><a href="http://jobs.icanjobs.com/events/">Blogs</a></li>
-                                    <li><a href="http://jobs.icanjobs.com/events/">News</a></li>
-                                    <li><a href="http://jobs.icanjobs.com/appointmnet/make/">Make An Appointment</a></li>
-                                    <li><a href="http://icanjobs.com/construction.html">Help Center</a></li>
+                                    <li><a href="/appointmnet/make/">Career Advisory</a></li>
+                                    <li><a href="/blogs/">Blogs</a></li>
+                                    <li><a href="/events/">Events</a></li>
                                     <li><a href="http://icanjobs.com/contact.html">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
-
+                        <div class="col-lg-3  col-xs-12">
+                                <div class="single-footer-widget">
+                                    <h6>Others</h6>
+                                    <ul class="footer-nav">
+                                        <li><a href="/jobs/">Create Account</a></li>
+                                        <li><a href="/company/admin/create-job/">Log in</a></li>
+                                        <li><a href="/about/">About iCan</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                 						
             </div>
 
