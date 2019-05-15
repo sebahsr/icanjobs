@@ -15,7 +15,7 @@
 
                         <li class="menu-active"><a href="/employee/">Post your resume</a></li>
                         <li class="menu-active"><a href="/jobalerts/">Job Alerts</a></li>
-                        {% if not request.user.company %}
+                        {% if not request.user.is_authenticated %}
 
                           <li class="menu-has-children"><a href="/login/">Login</a></li> 
                           <li class="menu-has-children"><a href="/signup/">Register</a></li> 
@@ -30,7 +30,7 @@
 
                         <li class="menu-active"><a href="/company/admin/create-job/">Post Jobs & internships  </a></li>
                         <li class="menu-active"><a href="/about/">Services </a></li>
-                        {% if not request.user.company %}
+                        {% if not request.user.is_authenticated %}
 
                           <li class="menu-has-children"><a href="/company/admin/login/">Login</a></li> 
                           <li class="menu-has-children"><a href="/company/admin/signup/">Register</a></li> 

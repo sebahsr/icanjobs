@@ -22,6 +22,9 @@ def aboutUs(request):
 def services(request):
     return render(request, 'services.page.tmp', locals())
 
+def contact(request):
+    return render(request, 'contact.tmp' ,locals())
+    
 def jobAlerts(request):
     jobAlertForm = forms.JobAlertForm()
     if request.method == "POST":
