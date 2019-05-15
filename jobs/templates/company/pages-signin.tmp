@@ -2,6 +2,7 @@
 <html class="fixed">
 	{% include 'company/admin.header.tmp' %}
 
+	
 	<body>
 		<!-- start: page -->
 		<section class="body-sign">
@@ -17,6 +18,9 @@
 						
 					</div>
 					<div class="panel-body">
+						<div style="color:#333" class="h2">Log in as <span style='color:white; background:green'>Employer</span>  </div>
+
+
 						{% if err %}
 							<div class="alert alert-danger">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -67,8 +71,14 @@
 							</div>
 
 						
+							<span class="mt-lg mb-lg line-thru text-center text-uppercase">
+								<span>or</span>
+							</span>
 
-							<p class="text-center">Don't have an account yet? <a href="/company/admin/signup/">Sign Up!</a>
+
+
+						<p class="text-center">Don't have an account yet? <a href="/company/admin/signup/">Sign Up!</a>
+							
 
 						</form>
 					</div>

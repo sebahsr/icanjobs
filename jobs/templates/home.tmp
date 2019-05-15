@@ -101,16 +101,23 @@
 				</div>
 			</section>
 
+			{% include 'services.tmp' %}
+			<hr />
+
 			<section class="feature-cat-area pt-100" id="category">
 					<div class="container">
 						<div class="row d-flex">
 
 							
-							<div class="menu-content pb-60 col-lg-10">
-								<div class="title text-center">
-									<h1 class="mb-10">BROWSE JOBS BY SECTORS</h1>
-									<p>Sectors with the most open jobs.</p>
-								</div>
+							<div class="menu-content pb-60 col-md-12">
+							
+								<div class="cs-heading"><h3 class="cs-fancy">BROWSE JOBS BY SECTORS</h3>
+									<div class="heading-description">
+										Sectors with the most open jobs.
+											<br /> <br />
+									</div>
+							</div>
+
 								<ul class="spatialism-sec row">
 									{% for category in categories %}
 									<li class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><a href="/jobs/category-{{ category.pk }}/">{{ category.name|upper }}<span>({{ category.job_count}} open positions)</span></a>  </li>
@@ -123,62 +130,6 @@
 					</div>	
 				</section>
 
-
-
-		<!-- Start post Area -->
-		<section class="post-area section-gap">
-			<div class="container">
-					<div class="row d-flex">
-							<div class="menu-content pb-60 col-lg-10">
-								<div class="title text-center">
-									<h1 class="mb-10">RECENT JOBS</h1>
-									<p>Sectors with the most open jobs.</p>
-								</div>
-							</div>
-						</div>
-
-				<div class="row d-flex">
-					<div class="row post-list">
-						{% for job in recent_jobs %}
-							<div class="col-lg-6  single-post d-flex flex-row">
-								<div class="thumb col-sm-4">
-									<img style="max-width: 100px" src="{{ job.company.profile_pic.url }}" alt="">
-									
-								</div>
-								<div class="details col-sm-8">
-									<div class="title d-flex flex-row justify-content-between">
-										<div class="titles">
-											<a href="/jobs/job-{{ job.id }}/"><h4>{{ job.title|title }}</h4></a>
-										</div>
-										
-									</div>
-
-									<p class="address">	
-											<h6> <a href='/companies/company-{{ job.company.pk }}/'>{{ job.company.name }} </a></h6>
-											{% if job.deadline %}
-											<h6> <span class="fa fa-clock-o"></span> Closing On {{ job.deadline }} </a></h6>
-											{% endif %}
-									</p>
-									
-								</div>
-							</div>	
-						{% empty %}
-							<div class="h3"> 
-								No jobs Found 
-							</div>
-						{% endfor %}
-						
-						</div>
-					
-
-					<!-- sidebar -->
-					<!-- End side bar -->
-					
-				</div>
-			</div>	
-		</section>
-		<!-- End post Area -->
-		
 
 
 		<section class="solid-section section-gap" >
@@ -207,15 +158,77 @@
 			</div>	
 		</section>
 		
+			<!-- Start post Area -->
+			<section class="post-area section-gap">
+				<div class="container">
+						<div class="row d-flex">
+								<div class="menu-content pb-60 col-md-12">
+									<div class="cs-heading"><h3 class="cs-fancy">BRECENT JOBS</h3>
+										<div class="heading-description">
+											Sectors with the most open jobs.
+										</div>
+								</div>
+								</div>
+	
+							
+	
+							</div>
+	
+					<div class="row d-flex">
+						<div class="row post-list">
+							{% for job in recent_jobs %}
+								<div class="col-lg-6  single-post d-flex flex-row">
+									<div class="thumb col-sm-4">
+										<img style="max-width: 100px" src="{{ job.company.profile_pic.url }}" alt="">
+										
+									</div>
+									<div class="details col-sm-8">
+										<div class="title d-flex flex-row justify-content-between">
+											<div class="titles">
+												<a href="/jobs/job-{{ job.id }}/"><h4>{{ job.title|title }}</h4></a>
+											</div>
+											
+										</div>
+	
+										<p class="address">	
+												<h6> <a href='/companies/company-{{ job.company.pk }}/'>{{ job.company.name }} </a></h6>
+												{% if job.deadline %}
+												<h6> <span class="fa fa-clock-o"></span> Closing On {{ job.deadline }} </a></h6>
+												{% endif %}
+										</p>
+										
+									</div>
+								</div>	
+							{% empty %}
+								<div class="h3"> 
+									No jobs Found 
+								</div>
+							{% endfor %}
+							
+							</div>
+						
+	
+						<!-- sidebar -->
+						<!-- End side bar -->
+						
+					</div>
+				</div>	
+			</section>
+			<!-- End post Area -->
+			
+	
+
 		<section class="post-area section-ga pt-100" >
 				<div class="container section-fullwidth">
 						<div class="row d-flex justify-content-center">
 								<div class="menu-content pb-60 col-lg-10">
-									<div class="title text-center">
-										<h1 class="mb-10">Recent Blog Posts</h1>
-										<p>Sectors with the most open jobs.</p>
+									
+									<div class="cs-heading"><h3 class="cs-fancy">BRECENT BLOG POSTS</h3>
+										<div class="heading-description">
+											Recent Blog posts from iCan. 
+										</div>
+								</div>
 
-									</div>
 								</div>
 						</div>
 						

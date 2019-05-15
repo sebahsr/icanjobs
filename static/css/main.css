@@ -3431,8 +3431,9 @@ ul.spatialism-sec li a span {
   color: #fff;
 }
 
+
 .footer-area .footer-nav li a:hover {
-  color: #036;
+  color: #ddd;
 }
 
 .footer-area .primary-btn {
@@ -3938,9 +3939,9 @@ ul.spatialism-sec li a span {
 .single-title {
   text-transform: uppercase;
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 15px;
   width:auto;
-  font-weight: 200;
+  font-weight: 600;
 }
 .single-title-job-detail {
   text-transform: uppercase;
@@ -4563,6 +4564,7 @@ ul.spatialism-sec li a span {
 .cs-simple.fancy-box [class*="col-"] {
   padding-left: 6px;
   padding-right: 6px;
+  margin-bottom: 40px;
 }
 
 .fancy-box .cs-icon-box {
@@ -4570,6 +4572,10 @@ ul.spatialism-sec li a span {
   border: 1px solid #f4f4f4;
   border-radius: 3px;
   padding: 30px 20px 25px;
+}
+.cs-simple.fancy-box [class*="col-"]:hover{
+  box-shadow: 0px 0px 4px gray;
+  cursor: pointer;
 }
 
 .cs-icon-box {

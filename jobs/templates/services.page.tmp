@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="codepixer">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Job Listing</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+		<!--
+		CSS
+		============================================= -->
+		<link rel="stylesheet" href="/static/css/linearicons.css">
+		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/css/bootstrap.css">
+		<link rel="stylesheet" href="/static/css/magnific-popup.css">
+		<link rel="stylesheet" href="/static/css/nice-select.css">					
+		<link rel="stylesheet" href="/static/css/animate.min.css">
+		<link rel="stylesheet" href="/static/css/owl.carousel.css">
+		<link rel="stylesheet" href="/static/css/main.css">
+	</head>
+	<body>
+
+		<!-- header temp -->
+			{% include 'header.tmp' %}
+		<!-- header temp END -->
+
+		<!-- start banner Area -->
+        <div class="page-section cs-page-sec about-header">
+                    <!-- Container Start -->
+            <div class="container "> 
+                <div class="row">
+                    <div class="section-fullwidth col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                
+                                <div class="cs-heading">
+                                    <h1 style="color:#ffffff !important; font-size: 50px !important; font-weight:  !important; letter-spacing: 2px !important; line-height: 80px !important; text-align:Center; font-style:normal;">
+                                        SERVICES
+                                    </h1>
+                                    <div class="heading-description">
+                                        <span style="color:rgb(255,255,255);">
+                                                List of services provided by iCAN. 
+
+                                        </span> 
+                                        
+                                </div>
+                                    
+                                    <div class="spliter-medium"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>			    
+                </div>
+            </div>
+        </div>
+
+
+   {% include 'services.tmp' %}
+
+
+	
+
+		<!-- start footer Area -->		
+	{% include 'footer.tmp' %}	
+	</body>
+</html>
+
+
+

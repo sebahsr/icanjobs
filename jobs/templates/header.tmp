@@ -6,20 +6,37 @@
               </div>
               <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                  <li class="menu-active"><a href="/"><span class='fa fa-home'></a></li>
+                  <li  class="menu-active"><a href="/"><span style="font-size: 18px;" class='fa fa-home'></a></li>
                   
                     <li class="menu-has-children"><a href="/jobs/">Job Seeker</a>
                       <ul>
                         <li class="menu-active"><a href="/jobs/">Browse Jobs</a></li>
+                        <li class="menu-active"><a href="/companies/">Browse Employers  </a></li>
+
                         <li class="menu-active"><a href="/employee/">Post your resume</a></li>
-                        <li class="menu-active"><a href="/about/">Job Alert</a></li>
+                        <li class="menu-active"><a href="/jobalerts/">Job Alerts</a></li>
+                        {% if not request.user.company %}
+
+                          <li class="menu-has-children"><a href="/login/">Login</a></li> 
+                          <li class="menu-has-children"><a href="/signup/">Register</a></li> 
+
+                          {% endif %}
+
                       </ul>
                     </li>
                     <li class="menu-has-children"><a href="/companies/">Employer</a>
                       <ul>
-                        <li class="menu-active"><a href="/companies/">Browse Employers  </a></li>
+                          
+
                         <li class="menu-active"><a href="/company/admin/create-job/">Post Jobs & internships  </a></li>
                         <li class="menu-active"><a href="/about/">Services </a></li>
+                        {% if not request.user.company %}
+
+                          <li class="menu-has-children"><a href="/company/admin/login/">Login</a></li> 
+                          <li class="menu-has-children"><a href="/company/admin/signup/">Register</a></li> 
+
+                          {% endif %}
+
                       </ul>
                     </li>
 
@@ -35,9 +52,13 @@
                       </ul>
                     </li>
 
-                    <li class="menu-active"><a href="/about/">About Us</a></li>
+                    <li class="menu-has-children"><a href="/about/">About iCAN</a>
+                      <ul>
+                        <li class="menu-active"><a href="/about/">About Us</a></li>
+                        <li class="menu-active"><a href="/services/">Services</a></li>
 
-
+                      </ul>
+                    </li>
                  
                   
                  

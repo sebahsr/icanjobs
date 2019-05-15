@@ -7,6 +7,20 @@ class CategoryForm(forms.ModelForm):
         model = models.Category
         exclude=('id',)
 
+class JobAlertForm(forms.ModelForm):
+    class Meta:
+        model = models.JobAlert
+        fields = '__all__'
+        widgets = {
+            'full_name' : forms.TextInput(attrs={
+                'placeholder' : 'Full Name', 'class' : 'form-control'
+            }),
+
+            'email' : forms.TextInput(attrs={
+                'placeholder' : 'Your Email Adress', 'class' : 'form-control'
+            })
+        }
+
 class JobForm(forms.ModelForm):
     class Meta:
         model = models.Job

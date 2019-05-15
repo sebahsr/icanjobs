@@ -17,7 +17,8 @@
 					</div>
 					
 					<div class="panel-body">
-						
+						<div style="color:#333" class="h2">Create <span style='color:white; background:green'>Job Seeker</span> Account </div>
+
 						
 						<form action="/signup/" method="POST" enctype="multipart/form-data">
 							{% csrf_token %}
@@ -72,7 +73,7 @@
 											<span class="input-group-addon">
 												<i class="fa fa-key"></i>
 											</span>
-											<input name="pwd_confirm" type="repeat_pwd" class="form-control" />
+											<input name="pwd_confirm" type="password" class="form-control" />
 										</div>
 
 									</div>
@@ -86,6 +87,14 @@
 									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign Up</button>
 								</div>
 							</div>
+
+							<span class="mt-lg mb-lg line-thru text-center text-uppercase">
+								<span>or</span>
+							</span>
+
+
+
+						<p class="text-center">Don't have an account yet? <a href="/login/">Sign In!</a>
 
 							
 						</form>

@@ -17,7 +17,7 @@
 					
 					<div class="panel-body">
 						
-						
+						<div style="color:#333" class="h2">Create <span style='color:white; background:green'>Employer</span> Account </div>
 						<form action="/company/admin/signup/" method="POST" enctype="multipart/form-data">
 							{% csrf_token %}
 							<div class="form-group mb-lg">
@@ -134,6 +134,16 @@
 									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign Up</button>
 								</div>
 							</div>
+
+								
+							<span class="mt-lg mb-lg line-thru text-center text-uppercase">
+								<span>or</span>
+							</span>
+
+
+
+						<p class="text-center">Do you have account already?  <a href="/company/admin/login/">Sign In!</a>
+							
 
 							
 						</form>

@@ -19,6 +19,21 @@ import datetime
 def aboutUs(request):
     return render(request, 'about.tmp', locals())
 
+def services(request):
+    return render(request, 'services.page.tmp', locals())
+
+def jobAlerts(request):
+    jobAlertForm = forms.JobAlertForm()
+    if request.method == "POST":
+        jobAlertForm = forms.JobAlertForm(request.POST)
+        if jobAlertForm.is_valid():
+            jobAlertForm.save()
+            suc = "You have subscribed succesfully."
+        else:
+            err = "Failed to save your subscription."
+
+    return render(request, 'jobalert.tmp', locals())
+
 def homeView(request, **kwargs):
 
     template_name = "home.tmp"
@@ -772,7 +787,9 @@ def applications(request, filter=None):
     elif filter=='last7':
         applications = models.JobApplication.last7days(company_jobs)
         application_filter = "Last Seven days"
-    
+    if request.GET.get('query'):
+        applications = applications.filter(job__title__icontains=request.GET.get('query'))
+
     sidebar_applications_active = 'nav-active'
     return render(request, 'company/applications.tmp', locals())
 

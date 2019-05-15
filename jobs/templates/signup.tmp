@@ -57,6 +57,8 @@
 						<div class="row">
 							<div class="col-lg-12 col-md-8">
 								<h3 class="mb-30">Sign Up</h3>
+
+
 								{% if suc %}
 									<div class='txt-succes'> {{ suc }} </div>
 								{% endif %}

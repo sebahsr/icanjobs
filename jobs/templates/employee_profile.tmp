@@ -80,7 +80,7 @@
 								<br /><br />
 
 							</div>
-							<div class="details col-sm-8">
+							<div class="details col-sm-4">
 								<div class="title d-flex flex-row justify-content-between">
 									<div class="titles title-gap">
 										<div class='h4'>{{ employee.user.first_name|title}} {{ employee.user.last_name|title}}</div>					
@@ -89,8 +89,7 @@
 									
 								</div>
 
-                                <p><span class='fa fa-map-marker '></span> Region : {{ employee.region.name |default:"Not specified" }}</p>
-                                <p><span class='fa fa-envelope'></span> City : {{ employee.city|default:"Not specified"  }}</p>
+                                <p><span class='fa fa-map-marker '></span> Location : {{ employee.city|default:"Not specified"  }}, {{ employee.region.name |default:"Not specified" }}</p>
 								
 								<div class='h5'>
 										
@@ -101,6 +100,28 @@
 								</div>
 
 							</div>
+
+							<div class="col-lg-4">
+								<h4>Contact Information</h4>
+								<hr />
+								<p class="address"><span class="fa fa-envelope"></span> {{ employee.user.email | default:"Not specified"  }}</p>
+								<p class="address"><span class="fa fa-phone"></span> {{ employee.phone | default:"Not specified"  }}</p>
+								<p>
+								{% if employee.facebook_url %}
+									<a href='{{ employee.facebook_url }}'><span style="font-size:17px" class="fa fa-facebook"></span></a>
+								{% endif %}
+
+								{% if employee.linkedin_url %}
+									<a href='{{ employee.linkedin_url }}'><span style="font-size:17px" class="fa fa-linkedin-square"></span></a>
+								{% endif %}
+
+								{% if employee.twitter_url %}
+									<a href='{{ employee.twitter_url }}'><span style="font-size:17px" class="fa fa-twitter-square"></span></a>
+								{% endif %}
+								</p>
+								
+							</div>
+
 						</div>	
 						
 						<!--  About me -->
@@ -108,42 +129,36 @@
 								<div id='company-job-list' class="container">
 									<div class="single-post row justify-content-center d-flex">
 										
-										<div class="col-lg-4">
-											<h4>Contact Information</h4>
-											<hr />
-											<p class="address"><span class="fa fa-envelope"></span> {{ employee.user.email | default:"Not specified"  }}</p>
-											<p class="address"><span class="fa fa-phone"></span> {{ employee.phone | default:"Not specified"  }}</p>
-											<p>
-											{% if employee.facebook_url %}
-												<a href='{{ employee.facebook_url }}'><span style="font-size:2.5em" class="fa fa-facebook"></span></a>
-											{% endif %}
-
-											{% if employee.linkedin_url %}
-												<a href='{{ employee.linkedin_url }}'><span style="font-size:2.5em" class="fa fa-linkedin-square"></span></a>
-											{% endif %}
-
-											{% if employee.twitter_url %}
-												<a href='{{ employee.twitter_url }}'><span style="font-size:2.5em" class="fa fa-twitter-square"></span></a>
-											{% endif %}
-											</p>
-											
-										</div>
 										
-										<div class="col-lg-8 post-list">
-
-												<h4 class="single-title"> Profile Summary </h4>
-												<hr />
-	
-												{% if employee.about_me %}
-												{{ employee.about_me }}
-												{% else %}
-												+ Add an introduction about yourself with a brief summary of your experience.
-												{% endif %}
-										</div>
+										
+										
 
 									</div>
 								</div>	
 						</section>
+
+						<section class="single-post post-area section-gap">
+							<div id='employee-skill' class="container">
+								<div class="row justify-content-center d-flex">
+									<div class="col-lg-12 post-list">
+										<h4 class="single-title"> Profile Summary </h4>
+											<hr />
+
+											{% if employee.about_me %}
+											{{ employee.about_me }}
+											{% else %}
+											+ Introduce yourself to employers and allows them to quickly understand who you are and focus on key capabilities and unique experience with an emphasis on results. Make it relevant to the career you are seeking and the value you would add to the employer  
+
+											{% endif %}
+											
+									</div>
+									
+				
+									
+								</div>
+							</div>	
+					</section>
+
 						<!-- End about me -->
 					{% endif %}
 						<!-- Start post Area -->
@@ -152,7 +167,7 @@
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> Experience 
+											<h4 class="single-title"> Professional Experience 
 												{% if is_logged_in_as_emp %}
 													<span style='float:right'><a href='/employee/edit/experience/'><i class='fa fa-plus-square'></i></a></span>
 												{% endif %}
@@ -177,10 +192,8 @@
 												</div>
 												<hr />
 											{% empty %}
-											+ Provide a brief overview of your successes relating to the position’s main responsibilities, including an explanation of the organization if it’s not well known. 
-											<br />+ Outline your most impressive accomplishments using bullet points. Focus on the results of your actions, not just your responsibilities. Showcase not only what you did, but how well you did it. Quantify or qualify claims. 
-											<br />+ Demonstrate how you’ve identified and executed solutions to challenges.
-											<br />+ Start every bullet with a relevant action word, and vary the language throughout your resume. Avoid fancy fonts, clumsy layouts and useless jargon.
+											+ Your current/recent position/Employer comes first  and provide a brief overview of your successes relating to the position’s main responsibilities and most impressive accomplishments with results of your actions. Start every bullet with a relevant action word. 
+
 											{% endfor %}
 											
 										{% if experienceForm %}	
@@ -214,7 +227,7 @@
 											{% for skill in employee.skills.all %}
 											<span class='genric-btn success'>{{ skill.name |title }}</span>
 											{% empty %}
-											+ Enhance your summary and experience while highlighting specific qualifications that are either required for a particular job.
+											+ Highlight specific qualifications/skills including certifications that are either required/relevant for a particular job or are unique about you
 											{% endfor %}
 
 											{% if skillForm %}	
@@ -235,7 +248,7 @@
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> CV
+											<h4 class="single-title"> Add your resume or CV
 
 												{% if is_logged_in_as_emp %}
 													<span style='float:right'><a href='/employee/edit/cv/'><i class='fa fa-plus-square'></i></a></span>
@@ -437,7 +450,7 @@
 											</div>
 											<hr />
 											{% empty %}
-											+ Add Education information about yourself
+											+ Recent Education comes first & Include GPA only if it is above 3.5 or Honors Received within last five years, List relevant Training 
 											{% endfor %}
 											{% if educationForm %}	
 												{% include 'add_education.tmp' %}
@@ -470,7 +483,7 @@
 											</div>
 											<hr />
 											{% else %}
-											+ Memberships and volunteer work show a commitment to your industry and community, especially if relevant and sustained.  Nobody cares if you did a day at a recycling center, but an ongoing commitment to the environment will stand out.  Mention leadership roles and relevant achievements, even if you weren’t paid. 
+											+ Memberships and volunteer work show a commitment to your industry. Mention leadership roles, relevant achievements and recognition received
 											{% endif %}
 										</div>
 										

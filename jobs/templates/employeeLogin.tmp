@@ -17,6 +17,9 @@
 					
 					</div>
 					<div class="panel-body">
+							<div style="color:#333" class="h2">Login as <span style='color:white; background:green'>Job Seeker</span>  </div>
+
+
 						{% if err %}
 							<div class="alert alert-danger">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
