@@ -43,6 +43,7 @@
                     <li class="menu-has-children"><a href="">Career Advice </a>
                       <ul>
                           <li class="menu-active"><a href="/appointmnet/make/">Career Advisory</a></li>
+                          <li class="menu-active"><a href="/youthcareer/">Youth Career</a></li>
                           <li class="menu-active"><a href="/events/">Events</a></li>
                           <li><a href="/blogs/">Blogs</a></li>
                           {% if request.user.employee %}
