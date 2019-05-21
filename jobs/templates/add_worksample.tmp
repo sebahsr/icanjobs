@@ -1,5 +1,5 @@
 
-<form method='POST' action="/employee/edit/worksample/" enctype="multipart/form-data">
+<form method='POST' action="/employee/build-resume/worksample/" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mt-10">
             <label>Name </label>

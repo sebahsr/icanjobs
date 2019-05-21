@@ -21,6 +21,7 @@ urlpatterns = [
     
     url(r'^$', job_views.homeView),
     url(r'^about/$', job_views.aboutUs),
+    url(r'^branding/$', job_views.branding),
     url(r'^services/$', job_views.services),
     url(r'^jobalerts/$', job_views.jobAlerts),
     url(r'^contact/$', job_views.contact),
@@ -46,9 +47,10 @@ urlpatterns = [
     url(r'^employee/(?:employee-(?P<employeeID>\d+))/$',job_views.employeeOtherView),
     url(r'employee/matched-jobs/$', job_views.employeeMatchedJobView),
     url(r'employee/applied-jobs/$', job_views.employeeAppliedJobs),
-    
-    
-    url(r'employee/edit/(?P<section>(skill|experience|general|education|website|cv|reference|worklink|worksample|association))/$', job_views.employeeProfileEditView),
+    url(r'employee/build-resume/$', job_views.buildResume),
+
+
+    url(r'employee/build-resume/(?P<section>(skill|experience|general|education|website|cv|reference|worklink|worksample|association|summary|volunteer))/$', job_views.buildResume),
     url(r'^jobs/applly/job-(?P<jobID>\d+)?/$', job_views.employeeJobApply),
 
     url(r'^blogs/(?:category-(?P<categoryID>\d+)/)?$', job_views.blogListView),

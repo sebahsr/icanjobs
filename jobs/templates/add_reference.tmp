@@ -1,5 +1,5 @@
 
-<form method='POST' action="/employee/edit/reference/">
+<form method='POST' action="/employee/build-resume/reference/">
     {% csrf_token %}
     <div class="mt-10">
             <label>First Name </label>

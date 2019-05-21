@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="codepixer">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Job Listing</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+		<!--
+		CSS
+		============================================= -->
+		<link rel="stylesheet" href="/static/css/linearicons.css">
+		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/css/fontawesome.pro.css">
+
+		<link rel="stylesheet" href="/static/css/bootstrap.css">
+		<link rel="stylesheet" href="/static/css/magnific-popup.css">
+		<link rel="stylesheet" href="/static/css/nice-select.css">					
+		<link rel="stylesheet" href="/static/css/animate.min.css">
+		<link rel="stylesheet" href="/static/css/owl.carousel.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/jquery-ui.css">
+        <link rel="stylesheet" href="/static/css/revisited.css">
+        
+	</head>
+	<body>
+
+		{% include 'header.tmp' %}
+		<!-- start banner Area -->
+		<section class="banner-area relative" id="home">	
+                <div class="overlay overlay-bg"></div>
+                <div class="container">
+                    <div class="row d-flex align-items-center justify-content-center">
+                        <div class="about-content-detail col-lg-12">
+                            <h1 class="text-white">
+                                {{ employee.user.first_name|title }} {{ employee.user.last_name|title }}				
+                            </h1>	
+                            
+                        </div>											
+                    </div>
+                </div>
+            </section>
+            <!-- End banner Area -->	
+
+		<!-- Start post Area -->
+		<section class="post-area section-gap-med">
+			<div class="container">
+				<div class="row  d-flex">
+                    <div class="col-lg-8 post-list">
+                        <div class="single-post-tabs d-flex flex-row">
+                            {% include 'profile_tabs.tmp' %}
+                        </div>	
+                    </div>
+					<div class="justify-content-center col-lg-8 post-list">
+                            <section class="post-area section-gap">
+                                    <div class="container">
+                                        <div class="row justify-content-center d-flex">
+                                            <div class="post-list col-sm-12">
+                                                {% if employeeForm %}
+                                                    {% include 'edit_employee.tmp' %}
+                                                {% elif summaryForm %}
+                                                    {% include 'add_summary.tmp' %}
+                                                
+                                                {% elif volunteerForm %}
+                                                    {% include 'add_volunteer.tmp' %}
+
+                                                {% elif experienceForm %}
+                                                    {% include 'add_experience.tmp' %}
+                                                {% elif  educationForm %}
+                                                    {% include 'add_education.tmp' %}
+                                                {% elif websiteForm %}
+                                                    {% include 'add_website' %}
+                                                {% elif cvForm %}
+                                                    {% include 'add_cv.tmp' %}
+                                                {% elif referenceForm %}
+                                                    {% include 'add_reference.tmp' %}
+                                                {% elif workLinkForm %}
+                                                    {% include 'add_worklink.tmp' %}
+                                                {% elif workSampleForm %}
+                                                    {% include 'add_worksample.tmp' %}
+                                                {% elif associationForm %}
+                                                    {% include 'add_association.tmp' %}
+                                                {% elif skillForm %}
+                                                    {% include 'add_skill.tmp' %}
+                                                {% else %}
+                                                    <div class='build-resume-helper'>
+                                                        <div  class='h3 text-center'>Build your CV/Resume</div><br />
+                                                        <div class="row">
+                                                            <p class="col-sm-6 col-md-3">
+                                                                <img src='/static/img/build-1.svg' />
+                                                                <span class="h5">Quick & easy</span> <br />
+
+                                                                     Professional out-of-the-box resumes, instantly generated by the most advanced resume builder technology available. 
+                                                            </p>
+
+                                                            <p class="col-sm-6 col-md-3">
+                            
+                                                                    <img src='/static/img/build-2.svg' />
+                                                                    <span class="h5">Quick & easy</span> <br />
+                                                                    Keep job hunting simple with all your resumes managed in one place.
+                                                            </p>
+                                                            
+                                                            <p class="col-sm-6 col-md-3">
+                                                                
+                                                                    <img src='/static/img/build-3.svg' />
+                                                                    <span class="h5">Demand attention </span> <br />
+
+                                                                    We give you expert resume writing tips from start to finish. No more worrying about missing jobs or wasting time with the wrong resume content.
+                                                            </p>
+                                                            
+                                                            <p class="col-sm-6 col-md-3">
+                                                                
+                                                                    <img src='/static/img/build-4.svg' />
+                                                                    <span class="h5">Stay organized</span><br/>
+
+                                                                    Your dream job with the perfect resume employers are looking for!
+                                                            </p>
+                                                            <a href='/employee/build-resume/general/'>Start Building your Resume.</a>
+                                                      
+                                                    </div>
+                                                {% endif %}
+                                               
+                                                </div>
+                                            
+                                            
+                                        </div>
+                                    </div>	
+                                </section>
+					</div>
+                    <!-- sidebar -->
+                    
+
+
+					<div class="col-lg-4 sidebar">
+                            <div class="single-slidebar">
+                                <h4>Your CV/Resume Sections</h4>
+                                <div class='{{ build_active_gen }} build-resume-side'><a href='/employee/build-resume/general/'>GENERAL INFORMATION</a></div>
+                                <div class='{{ build_active_sum }} build-resume-side'><a href='/employee/build-resume/summary/'>PROFILE SUMMARY</a></div>
+                                <div class='{{ build_active_prof }} build-resume-side'><a href='/employee/build-resume/experience/'>PROFESSIONAL EXPERIENCE</a></div>
+                                <div class='{{ build_active_skill }} build-resume-side'><a href='/employee/build-resume/skill/'>SKILL/QUALIFICATIONS </a></div>
+                                <div class='{{ build_active_resume }} build-resume-side'><a href='/employee/build-resume/cv/'>ADD YOUR RESUME OR CV</a></div>
+                                <div class='{{ build_active_ref }} build-resume-side'><a href='/employee/build-resume/reference/'>REFERENCES</a></div>
+                                <div class='{{ build_active_worksample }} build-resume-side'><a href='/employee/build-resume/worksample/'>WORK SAMPLES</a></div>
+                                <div class='{{ build_active_assoc }} build-resume-side'><a href='/employee/build-resume/association/'>ASSOCIATION</a></div>
+                                <div class='{{ build_active_edu }} build-resume-side'><a href='/employee/build-resume/education/'>EDUCATION/TRAINING</a></div>
+                                <div class='{{ build_active_vol }} build-resume-side'><a href='/employee/build-resume/volunteer/'>VOLUNTEER EXPERIENCE/MEMBERSHIP/AFFLILATIONS</a></div>
+
+                             </div>
+
+					<!-- End side bar -->
+				</div>
+			</div>	
+		</section>
+		<!-- End post Area -->
+
+
+        <!-- Start callto-action Area -->
+        {%  include 'join_us_section.tmp' %}
+
+		<!-- End calto-action Area -->
+
+    {% include 'footer.tmp' %}	
+    
+	</body>
+</html>
+
+
+

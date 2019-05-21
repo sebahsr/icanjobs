@@ -17,22 +17,22 @@
 					
 					</div>
 					<div class="panel-body">
-							<div style="color:#333" class="h2">Login as <span style='color:white; background:green'>Job Seeker</span>  </div>
+							<div style="color:#333" class="mb-xs ml-lg mr-lg h2">Login as <span style='color:white; background:green'>Job Seeker</span>  </div>
 
 
 						{% if err %}
-							<div class="alert alert-danger">
+							<div class="mb-xs ml-lg mr-lg alert alert-danger">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 								<strong>Faild to login!</strong> Please Try again.
 							</div>
 						{% endif %}
 						<form action="/login/" method="post">
 							{% csrf_token %}
-							<div class="form-group mb-lg">
+							<div class="mb-xs ml-lg mr-lg form-group mb-lg">
 								<label>Username</label>
 								<div class="input-group input-group-icon">
 									
-									<input name="username" type="text" autocomplete="off" class="form-control input-lg" />
+									<input name="username" type="text" placeholder="Username" autocomplete="off" class="form-control input-lg" />
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-user"></i>
@@ -41,10 +41,10 @@
 								</div>
 							</div>
 
-							<div class="form-group mb-lg">
+							<div class="mb-xs ml-lg mr-lg form-group mb-lg">
 								
 								<div class="input-group input-group-icon">
-									<input name="password" type="password" class="form-control input-lg" />
+									<input name="password"  placeholder="Password" type="password" class="form-control input-lg" />
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-lock"></i>
@@ -54,15 +54,20 @@
 							</div>
 
 							<div class="row">
-								<div class="col-sm-8">
-									<div class="checkbox-custom checkbox-default">
+								<div class="col-sm-6">
+									<div class="checkbox-custom checkbox-default mb-xs ml-lg mr-lg">
 										<input id="RememberMe" name="rememberme" type="checkbox"/>
-										<label for="RememberMe">Remember Me</label>
+										<label for="RememberMe">Keep me signed in</label>
 									</div>
 								</div>
-								<div class="col-sm-4 text-right">
-									<button type="submit" class="btn btn-primary hidden-xs">Sign In</button>
-									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>
+								<div class="col-sm-6">
+									<div class="checkbox-custom checkbox-default mb-xs ml-lg mr-lg">
+										<a href='#'>Forgot Password?</a>
+									</div>
+								</div>
+								
+								<div class="col-sm-12 text-right">
+									<button type="submit" class="mb-xs ml-lg mr-lg btn-block btn btn-primary">Sign In</button>
 								</div>
 							</div>
 
@@ -71,12 +76,12 @@
                                 </span>
     
                                 <div class="mb-xs text-center">
-                                    <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook mb-md ml-xs mr-xs">Connect with <i class="fa fa-facebook"></i></a>
-                                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-gplus mb-md ml-xs mr-xs">Connect with <i class="fa fa-google"></i></a>
+                                    <a href="{% url 'social:begin' 'facebook' %}" class="col-xs-12 btn btn-facebook mb-xs ml-lg mr-lg"><b> Sign in with <i class="fa fa-facebook"></i></b></a>
+                                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="col-xs-12 btn btn-gplus mb-xs ml-lg mr-lg"><b> Sign in with <i class="fa fa-google"></i> </b></a>
                                 </div>
     
 
-							<p class="text-center">Don't have an account yet? <a href="/signup/">Sign Up!</a>
+							<p class="text-center h4">New to iCAN? <a href="/signup/">Join us today.</a>
 
 						</form>
 					</div>

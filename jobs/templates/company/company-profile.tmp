@@ -26,8 +26,11 @@
 							<section class="panel">
 								<div class="panel-body">
 									<div class="thumb-info mb-md">
-										<img src="{{ company.profile_pic.url }}" class="rounded img-responsive" alt="John Doe">
-										<div class="thumb-info-title">
+											{% if company.profile_pic %}
+											<img src="{{ company.profile_pic.url }}" class="rounded img-responsive">
+											{% else %}
+											<img src="/static/img/company-default.jpg" class="rounded img-responsive">
+											{% endif %}										<div class="thumb-info-title">
 											<span class="thumb-info-inner">{{ company.name | title }}</span>
 										</div>
 									</div>
@@ -53,11 +56,11 @@
 											<div class="widget-toggle">+</div>
 										</div>
 										<div class="widget-content-expanded">
-											<ul class="">
-												<li> <span class="fa fa-external-link"></span> <a href='{{company.website}}'>{{ company.website }}</a></li>
-												<li class="completed"><span class="fa fa-envelope"></span><a href="malto:{{company.user.email}}">{{ company.user.email }}</a></li>
-												<li class="completed"><span class="fa fa-phone"></span> {{ company.phone }}</li>
-												<li class="completed"><span class="fa  fa-map-marker"></span> {{ company.city|title }}, {{ company.region.name|title}}</li>
+											<ul style="list-style:none">
+												<li> <span class="fa fa-external-link"></span> &nbsp; <a href='{{company.website}}'>{{ company.website }}</a></li>
+												<li class="completed"><span class="fa fa-envelope"></span> &nbsp; <a href="malto:{{company.user.email}}">{{ company.user.email }}</a></li>
+												<li class="completed"><span class="fa fa-phone"></span> &nbsp; {{ company.phone }}</li>
+												<li class="completed"><span class="fa  fa-map-marker"></span> &nbsp; {{ company.city|title }}, {{ company.region.name|title}}</li>
 												
 											</ul>
 										</div>
@@ -122,15 +125,15 @@
 
 							<h4 class="mb-md">Sale Stats</h4>
 							<ul class="simple-card-list mb-xlg">
-								<li class="primary">
+								<li class="company-stat">
 									<h3>{{fact_total_jobs}}</h3>
 									<p>Total Jobs</p>
 								</li>
-								<li class="primary">
+								<li class="company-stat">
 									<h3>{{ fact_open_jobs }}</h3>
 									<p>Open Jobs</p>
 								</li>
-								<li class="primary">
+								<li class="company-stat">
 									<h3>{{ fact_total_applications.company_total_applications }}</h3>
 									<p>Total Applications</p>
 								</li>

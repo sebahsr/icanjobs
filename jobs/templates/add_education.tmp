@@ -1,4 +1,4 @@
-<form method='POST' action="/employee/edit/education/">
+<form method='POST' action="/employee/build-resume/education/">
     {% csrf_token %}
 
     <div class="mt-10">

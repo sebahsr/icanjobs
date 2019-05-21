@@ -18,6 +18,8 @@ import datetime
 
 def aboutUs(request):
     return render(request, 'about.tmp', locals())
+def branding(request):
+    return render(request, 'employer.branding.tmp', locals())
 
 def services(request):
     return render(request, 'services.page.tmp', locals())
@@ -54,10 +56,10 @@ def jobView(request, **kwargs):
     jobs = None 
     template_name = "jobs.tmp"
     if kwargs.get('regionID', False):
-        jobs = jobRegionListHelper(kwargs['regionID'])
+        jobs, region = jobRegionListHelper(kwargs['regionID'])
 
     elif kwargs.get('categoryID', False):
-        jobs = jobCategoryListHelper(kwargs['categoryID'])
+        jobs, category = jobCategoryListHelper(kwargs['categoryID'])
 
     elif kwargs.get('jobID', False):
         job = jobDetailHelper(kwargs['jobID'], request)
@@ -65,15 +67,16 @@ def jobView(request, **kwargs):
 
 
     elif kwargs.get('search', False):
+
         search_query = request.GET.get('q', '')
         cat = request.GET.get('cat', 'all') 
         reg = request.GET.get('reg', 'all') 
         employement_type = request.GET.get('employement_type', 'all')
-        jobs = jobSearchHelper(search_query, cat, reg, employement_type)
+        jobs, category, employement_type, region, search_query = jobSearchHelper(search_query, cat, reg, employement_type)
         search_result_count = jobs.count()
 
     else:
-        jobs = jobCategoryListHelper()
+        jobs, category = jobCategoryListHelper()
     
     #check for response message 
     
@@ -83,6 +86,7 @@ def jobView(request, **kwargs):
         paginator = Paginator(jobs, constants.RECENT_PAG_JOB_NUMBER)
         current_page = paginator.page(page_number)
         jobs = current_page.object_list
+
     regions = models.Region.objects.all()
     categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
 
@@ -105,23 +109,28 @@ def jobCategoryListHelper(categoryID=None):
     else:
         category = get_object_or_404(models.Category, pk=categoryID)
         jobs = category.jobs.all()
+        return jobs, category
 
-    return jobs
+    return jobs, None
 
 def jobRegionListHelper(regionID=None):
     region = get_object_or_404(models.Region, pk=regionID)
     jobs = region.jobs.all()
-    return jobs
+    return jobs, region
 
 def jobSearchHelper(search_query, cat='all', reg='all', employement_type='all'):
     query = Q(title__icontains=search_query)
-    query &= Q(region__id = reg) if reg and reg != 'all' else Q()
+    region = get_object_or_404(models.Region, pk=reg) if reg and reg != 'all' else None
+    query &= Q(region=region) if region else Q()
+    employement_type = get_object_or_404(models.EmployementType, pk=employement_type) if employement_type and employement_type != 'all' else None
+    query &= Q(region=employement_type) if employement_type else Q()
 
-    query &= Q(employement_type__id = employement_type) if employement_type and employement_type != 'all' else Q()
-    query &= Q(categories__id__contains=cat) if cat and cat != 'all' else Q()
+    category=get_object_or_404(models.Category, pk=cat) if cat and cat != 'all' else None
+    query &= Q(categories__pk__contains=category.pk) if category else Q()
+
 
     jobs = models.Job.objects.filter( query )
-    return jobs 
+    return jobs, category, employement_type, region , search_query
 
 def companyView(request, companyID, **kwargs):
     is_logged_in = request.user.is_authenticated and hasattr(request.user, 'company')
@@ -137,7 +146,7 @@ def companyView(request, companyID, **kwargs):
     fact_open_jobs = jobs.filter(status=constants.JOB_STATUS_OPEN).count()
     fact_total_jobs = jobs.count()
     #fact_total_applicants = models.Employee.objects.filter(applications__in = jobs)# jobs.annotate(number_applicants = Count('applicants', distinct=True)).aggregate(company_total_applicants = Sum('number_applicants'))
-    fact_total_applications = jobs.annotate(application_numbers = Count('applications')).aggregate(company_total_applications = Sum('application_numbers'))
+    fact_total_applications = jobs.annotate(application_numbers = Count('applications')).aggregate(company_total_applications = Sum('application_numbers')) or 0
     
     recent_jobs = jobs[:3]
 
@@ -172,7 +181,7 @@ def companyDetailView(request):
     fact_open_jobs = jobs.filter(status=constants.JOB_STATUS_OPEN).count()
     fact_total_jobs = jobs.count()
     #fact_total_applicants = models.Employee.objects.filter(applications__in = jobs)# jobs.annotate(number_applicants = Count('applicants', distinct=True)).aggregate(company_total_applicants = Sum('number_applicants'))
-    fact_total_applications = jobs.annotate(application_numbers = Count('applications')).aggregate(company_total_applications = Sum('application_numbers'))
+    fact_total_applications = jobs.annotate(application_numbers = Count('applications')).aggregate(company_total_applications = Sum('application_numbers')) or 0
     
     recent_jobs = jobs[:3]
 
@@ -295,6 +304,7 @@ def employeeView(request):
     pro_active_tab = 'profile-tab-active'
     return render(request, "employee_profile.tmp", locals())
 
+
 @login_required
 def employeeOtherView(request, employeeID):
     print employeeID, "EMPL ID"
@@ -306,27 +316,33 @@ def employeeOtherView(request, employeeID):
 
 @login_required
 @user_passes_test(functions.is_employee)
-def employeeProfileEditView(request, section):
+def buildResume(request, section=None):
     is_logged_in_as_emp = True
-
+    
     employee = request.user.employee
+    build_active_tab = 'profile-tab-active'
+
     if section == constants.EDIT_SEC_EXPR:
         experienceForm = forms.ExperienceForm()
+        build_active_prof = 'active'
         if request.method == "POST":
             return employeExperienceView(request)
 
     elif section == constants.EDIT_SEC_EDUC:
         educationForm = forms.EducationForm()
+        build_active_edu = 'active'
+
         if request.method=="POST":
             return employeeEducationView(request)
 
     elif section == constants.EDIT_SEC_WEBS:
         websiteForm = forms.WebisteInfoForm()
+        build_active_edu = 'active'
         if request.method == "POST":
             return employeWebsiteInfoView(request)
 
     elif section == constants.EDIT_SEC_GENR:
-        
+        build_active_gen = 'active'
         if request.method == "POST":
             employeeForm = forms.EmployeeForm(request.POST, request.FILES, instance=request.user.employee)
             userForm = forms.UserForm(request.POST, instance=request.user)
@@ -341,6 +357,7 @@ def employeeProfileEditView(request, section):
             userForm = forms.UserForm(instance=request.user)
 
     elif section == constants.EDIT_SEC_CV:
+        build_active_resume = 'active'
         if request.method == "POST":
             cvForm = forms.CVForm(request.POST, request.FILES)
             
@@ -353,11 +370,28 @@ def employeeProfileEditView(request, section):
                 print cvForm.errors
         else:
             cvForm = forms.CVForm()
-    
+    elif section == constants.EDIT_SEC_SUM:
+        build_active_sum = 'active'
+        summaryForm = forms.EmployeeAboutMeForm(instance=request.user.employee)
+        if request.method == 'POST':
+            summaryForm = forms.EmployeeAboutMeForm(request.POST, instance=request.user.employee)
+            if summaryForm.is_valid():
+                summary = summaryForm.save()
+                return redirect('/employee/')
+
+    elif section == constants.EDIT_SEC_VOL:
+        build_active_vol = 'active'
+        volunteerForm = forms.EmployeeVolunteerForm()
+        if request.method == 'POST':
+            volunteerForm = forms.EmployeeVolunteerForm(request.POST, instance=request.user.employee)
+            if volunteerForm.is_valid():
+                summary = volunteerForm.save()
+                return redirect('/employee/')
     elif section == constants.EDIT_SEC_REFER:
+        build_active_ref = 'active'
+
         if request.method == "POST":
             referenceForm = forms.ReferenceForm(request.POST)
-            
             if referenceForm.is_valid() :
                 reference = referenceForm.save(commit=False)
                 reference.employee = request.user.employee
@@ -369,9 +403,10 @@ def employeeProfileEditView(request, section):
             referenceForm = forms.ReferenceForm()
 
     elif section == constants.EDIT_SEC_LINK:
+        build_active_worksample = 'active'
+
         if request.method == "POST":
             workLinkForm = forms.WorkLinkForm(request.POST)
-            
             if workLinkForm.is_valid() :
                 workLink = workLinkForm.save(commit=False)
                 workLink.employee = request.user.employee
@@ -383,9 +418,10 @@ def employeeProfileEditView(request, section):
             workLinkForm = forms.WorkLinkForm()
 
     elif section == constants.EDIT_SEC_SAMP:
+        build_active_worksample = 'active'
+
         if request.method == "POST":
             workSampleForm = forms.WorkSampleForm(request.POST, request.FILES)
-            
             if workSampleForm.is_valid() :
                 workSample = workSampleForm.save(commit=False)
                 workSample.employee = request.user.employee
@@ -397,9 +433,10 @@ def employeeProfileEditView(request, section):
             workSampleForm = forms.WorkSampleForm()
     
     elif section == constants.EDIT_SEC_ASSOC:
+        build_active_assoc = 'active'
+
         if request.method == "POST":
             associationForm = forms.AssociationForm(request.POST)
-            
             if associationForm.is_valid() :
                 association = associationForm.save(commit=False)
                 association.employee = request.user.employee
@@ -411,13 +448,12 @@ def employeeProfileEditView(request, section):
             associationForm = forms.AssociationForm()
 
     elif section == constants.EDIT_SEC_SKILL:
+        build_active_skill = 'active'
         skillForm = forms.SkillForm()
         if request.method == 'POST':
             return employeSkillView(request)
     
-
-    pro_active_tab = 'profile-tab-active'
-    return render(request, "employee_profile.tmp", locals())
+    return render(request, "build.resume.tmp", locals())
 
 @login_required
 @user_passes_test(functions.is_employee)
@@ -614,7 +650,7 @@ def adminCompanyView(request):
     jobs = company.jobs.all()
     fact_open_jobs = jobs.filter(status=constants.JOB_STATUS_OPEN).count()
     fact_total_jobs = jobs.count()
-    fact_total_applications = jobs.annotate(application_numbers = Count('applications')).aggregate(company_total_applications = Sum('application_numbers'))
+    fact_total_applications = jobs.annotate(application_numbers = Count('applications')).aggregate(company_total_applications = Sum('application_numbers')) or 0
     
     companyForm = forms.CompanyForm(instance=company)
     userForm = forms.UserForm(instance=request.user)
@@ -623,8 +659,11 @@ def adminCompanyView(request):
     profile_overview_active = 'active'
 
     if request.method == "POST":
-        companyForm = forms.CompanyForm(instance=company, data=request.POST)
-        userForm = forms.UserForm(instance=request.user, data=request.POST)
+        companyForm = forms.CompanyForm(request.POST, request.FILES, instance=company)
+        userData = request.POST.copy()
+        userData['username'] = request.user.username
+        userForm = forms.UserForm(userData, instance=request.user)
+        
         profile_edit_active = 'active'
         if companyForm.is_valid() and userForm.is_valid():
             company = companyForm.save(commit=False)
@@ -634,7 +673,6 @@ def adminCompanyView(request):
             company.save()
 
             return redirect('/company/admin/')
-
     recent_jobs = jobs[:constants.RECENT_JOBS_NUMBER]
     categories = models.Category.objects.all()
     employement_types = models.EmployementType.objects.all()

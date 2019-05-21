@@ -111,7 +111,7 @@
 											<span class="input-group-addon">
 												<i class="fa fa-key"></i>
 											</span>
-											<input name="pwd" type="password" class="form-control" />
+											<input name="pwd" type="password" placeholder="Password" class="form-control" />
 										</div>
 									</div>
 									<div class="col-sm-6 mb-lg">
@@ -120,7 +120,7 @@
 											<span class="input-group-addon">
 												<i class="fa fa-key"></i>
 											</span>
-											<input name="pwd_confirm" type="password" class="form-control" />
+											<input name="pwd_confirm" type="password" placeholder="Confirm Password" class="form-control" />
 										</div>
 
 									</div>
@@ -129,9 +129,8 @@
 
 							<div class="row">
 								
-								<div class="col-sm-offset-8 col-sm-4 text-right">
-									<button type="submit" class="btn btn-primary hidden-xs">Sign Up</button>
-									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign Up</button>
+								<div class=" text-right">
+									<button type="submit" class="btn btn-primary btn-block  mt-lg">Sign Up</button>
 								</div>
 							</div>
 
@@ -142,7 +141,8 @@
 
 
 
-						<p class="text-center">Do you have account already?  <a href="/company/admin/login/">Sign In!</a>
+						<p class="text-center h4">Already a member? <a href="/company/admin/login/">Sign in.</a> </p>						
+
 							
 
 							
@@ -150,7 +150,7 @@
 					</div>
 				</div>
 
-				<p class="text-center text-muted mt-md mb-md">iCAN &copy; Copyright 2018. All rights reserved.
+				<p class="text-center text-muted mt-md mb-md">iCAN &copy; Copyright 2018. All rights reserved.</p>
 		</section>
 		<!-- end: page -->
 		{% include 'company/admin.footer.tmp' %}

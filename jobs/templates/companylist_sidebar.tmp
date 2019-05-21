@@ -1,10 +1,21 @@
 
-					<div class="col-lg-4 sidebar">
+					<div class="col-lg-3 sidebar">
                             <div class="single-slidebar">
-                                <h4>Companies by Region</h4>
+                                <h4>Employers By Region</h4>
                                 <ul class="cat-list">
-                                    {% for region in regions  %}
-                                        <li><a class="justify-content-between d-flex" href="/companies/region-{{ region.pk}}/"><p>{{ region.name }}</p><span>{{region.companies.count }}</span></a></li>
+                                    {% for aregion in regions  %}
+                                        {% if region %}
+                                            {% ifequal region.pk aregion.pk %}
+                                                <li class="active">
+                                            {% else %}
+                                                <li>
+                                            {% endifequal %}
+                                        
+                                        {% else %}
+                                             <li>
+                                        {% endif %}
+
+                                            <a class="justify-content-between d-flex" href="/companies/region-{{ aregion.pk}}/"><p>{{ aregion.name }}</p><span>{{aregion.companies.count }}</span></a></li>
                                     
                                     {% endfor %}
                                    </ul>

@@ -82,7 +82,7 @@ class JobForm(forms.ModelForm):
                 "data-plugin-multiselect" : True}),
 
             'city' : forms.TextInput(attrs={
-                "placeholder" : "City","class" : "form-control"}),
+                "placeholder" : "Location","class" : "form-control"}),
 
             'summary' : forms.Textarea(attrs={
                 "placeholder" : "Summary" , "class" : "form-control"
@@ -144,7 +144,7 @@ class CompanyForm(forms.ModelForm):
                 'class' : "form-control"}),
 
             'city' : forms.TextInput(attrs={
-                "placeholder" : "City",
+                "placeholder" : "Location",
                 "class" : "form-control"}),
             
             'name' : forms.TextInput(attrs={
@@ -152,9 +152,7 @@ class CompanyForm(forms.ModelForm):
                 "class" : "form-control"}),
             
             'phone' : forms.TextInput(attrs={
-                'data-plugin-masked-input' : True,
-                'data-input-mask':"(999) 999-9999",
-                'placeholder' : "(123) 123-1234",
+                'placeholder' : "Phone Number",
                 "class" : "form-control"}),
             
             'facebook' : forms.TextInput(attrs={
@@ -182,11 +180,28 @@ class CompanyForm(forms.ModelForm):
 
 
 
+class EmployeeAboutMeForm(forms.ModelForm):
+    class Meta:
+        model = models.Employee
+        fields = ('about_me', )
+        widgets = {
+            'about_me' : forms.Textarea(attrs={
+                "placeholder" : "About Me" ,'class' : "form-control"}),
+         }
+
+class EmployeeVolunteerForm(forms.ModelForm):
+    class Meta:
+        model = models.Employee
+        fields = ('volunteer_experience', )
+        widgets = {
+            'volunteer_experience' : forms.Textarea(attrs={
+                "placeholder" : "Volunteer Experience/Memberships/Affilations" ,'class' : "form-control"}),
+         }
 
 class EmployeeForm(forms.ModelForm):
     class Meta:
         model = models.Employee
-        exclude = ('id','applications', 'joined_at', 'user') 
+        exclude = ('id','applications', 'joined_at', 'user', 'about_me', 'volunteer_experience') 
         widgets = {
             'about_me' : forms.Textarea(attrs={
                 "placeholder" : "About Me" ,'class' : "form-control"}),
@@ -194,7 +209,7 @@ class EmployeeForm(forms.ModelForm):
                 "placeholder" : "Volunteer Experience/Memberships/Affilations" ,'class' : "form-control"}),
 
             'city' : forms.TextInput(attrs={
-                "placeholder" : "City" ,
+                "placeholder" : "Location" ,
                 "class" : "form-control"}),
             
             'phone' : forms.TextInput(attrs={
@@ -248,7 +263,7 @@ class ExperienceForm(UserBackgroundForm):
         exclude = ('id', 'employee')
         widgets = {
             'city' : forms.TextInput(attrs={
-                "placeholder" : "City","class" : "form-control"}),
+                "placeholder" : "Location","class" : "form-control"}),
             'region' : forms.Select(),
             'start_year' : forms.TextInput(attrs={
                 "placeholder" : "Start Year" ,"class" : "form-control"}),
@@ -302,7 +317,7 @@ class EducationForm(forms.ModelForm):
         exclude = ('id', 'employee')
         widgets = {
             'city' : forms.TextInput(attrs={
-                "placeholder" : "City" ,"class" : "single-input"}),
+                "placeholder" : "Location" ,"class" : "single-input"}),
             'region' : forms.Select(),
             'start_year' : forms.TextInput(attrs={
                 "placeholder" : "Start Year" ,"class" : "single-input"}),

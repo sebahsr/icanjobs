@@ -82,7 +82,7 @@
 		<section class="post-area section-gap">
 			<div class="container">
 				<div class="row justify-content-center d-flex">
-					<div class="col-lg-8 post-list">
+					<div class="col-lg-9 post-list">
 						{% for company in companies %}
 						<div class="single-post d-flex flex-row">
 								<div class="thumb col-sm-4">
@@ -101,9 +101,9 @@
 								</div>
 							</div>		
 						{% empty %}
-							<div class="h3"> 
-								No jobs Found 
-							</div>
+							<p>
+								No Employer Found 
+							</p>
 						{% endfor %}
 
 						{% if current_page.has_previous %}

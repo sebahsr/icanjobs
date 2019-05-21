@@ -91,13 +91,7 @@
 
                                 <p><span class='fa fa-map-marker '></span> Location : {{ employee.city|default:"Not specified"  }}, {{ employee.region.name |default:"Not specified" }}</p>
 								
-								<div class='h5'>
-										
-										{% if is_logged_in_as_emp %}
-											
-									<a href='/employee/edit/general/'> <i class="fa fa-edit"></i> Edit General information</a>
-										{% endif %}
-								</div>
+							
 
 							</div>
 
@@ -162,15 +156,14 @@
 						<!-- End about me -->
 					{% endif %}
 						<!-- Start post Area -->
+						{% if employee.experiences.all %}
 						<section class="single-post post-area section-gap">
 								<div id='company-job-list' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
 											<h4 class="single-title"> Professional Experience 
-												{% if is_logged_in_as_emp %}
-													<span style='float:right'><a href='/employee/edit/experience/'><i class='fa fa-plus-square'></i></a></span>
-												{% endif %}
+												
 											
 											</h4>
 											<hr />
@@ -208,9 +201,10 @@
 									</div>
 								</div>	
 						</section>
+						{% endif %}
 						<!-- End post Area -->
 						
-						
+						{% if employee.skills.all %}
 						<section class="single-post post-area section-gap">
 								<div id='employee-skill' class="container">
 									<div class="row justify-content-center d-flex">
@@ -218,9 +212,6 @@
 
 											<h4 class="single-title"> Skill/Qualifications 
 
-												{% if is_logged_in_as_emp %}
-													<span style='float:right'><a href='/employee/edit/skill/'><i class='fa fa-plus-square'></i></a></span>
-												{% endif %}
 											</h4>
 											<hr />
 
@@ -242,7 +233,9 @@
 									</div>
 								</div>	
 						</section>
-						
+						{% endif %}
+			
+						{% if employee.cvs.all %}
 						<section class="single-post post-area section-gap">
 								<div id='employee-skill' class="container">
 									<div class="row justify-content-center d-flex">
@@ -250,9 +243,6 @@
 
 											<h4 class="single-title"> Add your resume or CV
 
-												{% if is_logged_in_as_emp %}
-													<span style='float:right'><a href='/employee/edit/cv/'><i class='fa fa-plus-square'></i></a></span>
-												{% endif %}
 											</h4>
 											<hr />
 
@@ -276,7 +266,9 @@
 									</div>
 								</div>	
 						</section>
+						{% endif %}
 
+						{% if employee.references.all %}
 						<section class="single-post post-area section-gap">
 								<div id='employee-skill' class="container">
 									<div class="row justify-content-center d-flex">
@@ -284,9 +276,6 @@
 
 											<h4 class="single-title"> References
 
-												{% if is_logged_in_as_emp %}
-													<span style='float:right'><a href='/employee/edit/reference/'><i class='fa fa-plus-square'></i></a></span>
-												{% endif %}
 											</h4>
 											<hr />
 
@@ -312,7 +301,9 @@
 									</div>
 								</div>	
 						</section>
+						{% endif %}
 
+						{% if employee.worksamples.all %}
 						<section class="single-post post-area section-gap">
 								<div id='employee-skill' class="container">
 									<div class="row justify-content-center d-flex">
@@ -320,9 +311,6 @@
 
 											<h4 class="single-title"> Work Samples
 
-												{% if is_logged_in_as_emp %}
-													<span style='float:right'><a href='/employee/edit/worksample/'><i class='fa fa-plus-square'></i></a></span>
-												{% endif %}
 											</h4>
 											<hr />
 
@@ -348,7 +336,9 @@
 									</div>
 								</div>	
 						</section>
+						{% endif %}
 
+						{% if employee.associations.all %}
 						<section class="single-post post-area section-gap">
 								<div id='employee-skill' class="container">
 									<div class="row justify-content-center d-flex">
@@ -356,9 +346,6 @@
 
 											<h4 class="single-title"> Association
 
-												{% if is_logged_in_as_emp %}
-													<span style='float:right'><a href='/employee/edit/association/'><i class='fa fa-plus-square'></i></a></span>
-												{% endif %}
 											</h4>
 											<hr />
 
@@ -381,18 +368,15 @@
 									</div>
 								</div>	
 						</section>
+						{% endif %}
 
-
+						{% if employee.worklinks.all %}
 						<section class="single-post post-area section-gap">
 								<div id='employee-skill' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
 											<h4 class="single-title"> Links to my Work
-
-												{% if is_logged_in_as_emp %}
-													<span style='float:right'><a href='/employee/edit/worklink/'><i class='fa fa-plus-square'></i></a></span>
-												{% endif %}
 											</h4>
 											<hr />
 
@@ -416,20 +400,15 @@
 									</div>
 								</div>	
 						</section>
+						{% endif %}
 
-
-
+						{% if employee.educations.all %}
 						<section class="single-post post-area section-gap">
 								<div id='company-job-list' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> Education/Training
-												
-												{% if is_logged_in_as_emp %}
-													<span style='float:right'><a href='/employee/edit/education/'><i class='fa fa-plus-square'></i></a></span>
-												{% endif %}
-												</h4>
+											<h4 class="single-title"> Education/Training</h4>
 											<hr />
 
 											{% for education in employee.educations.all %}
@@ -462,7 +441,9 @@
 									</div>
 								</div>	
 						</section>
-
+						{% endif %}
+						
+						{% if employee.volunteer_experience %}
 						<section class="single-post post-area section-gap">
 								<div id='company-job-list' class="container">
 									<div class="row justify-content-center d-flex">
@@ -492,6 +473,7 @@
 									</div>
 								</div>	
 						</section>
+						{% endif %}
 
 					</div>
 					<!-- sidebar -->

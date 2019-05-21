@@ -86,11 +86,11 @@ a:active,
 }
 /* Sign Screens - Wrappers */
 .body-sign .panel-sign .panel-title-sign .title {
-	background-color: #0088cc;
+	background-color: #ecedf0;
 }
 
 .body-sign .panel-sign .panel-body {
-	border-top-color: #55a747;
+	border-top-color: #FFF;
 }
 /* Lock Screen */
 .body-locked .current-user .user-image {
@@ -132,8 +132,8 @@ body .btn-primary.dropdown-toggle {
 body .btn-primary {
 	color: #ffffff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #0088cc;
-	border-color: #0088cc;
+	background-color: #5682a3;
+	border-color: #5682a3;
 }
 
 body .btn-primary:hover {
@@ -314,7 +314,7 @@ p.drop-caps.colored.secundary:first-child:first-letter {
 }
 /* Page Header */
 .page-header h2 {
-	border-bottom-color: #0088cc;
+	border-bottom-color: #55a747;
 }
 
 .page-header .sidebar-right-toggle:hover {
@@ -421,8 +421,8 @@ html.dark .pagination > li.active a {
 }
 
 .timeline.timeline-simple .tm-body .tm-items > li:before {
-	background: #0088cc;
-	box-shadow: 0 0 0 3px #ffffff, 0 0 0 6px #0088cc;
+	background: #55a747;
+	box-shadow: 0 0 0 3px #ffffff, 0 0 0 6px #55a747;
 }
 
 html.dark .timeline.timeline-simple .tm-body .tm-items > li:before {
@@ -566,7 +566,7 @@ html .panel-primary .panel-heading {
 }
 /* Social Icons */
 .social-icons-list a {
-	background: #0088cc;
+	background: #55a747;
 }
 /* Notifications */
 .notifications .notification-menu .notification-title {

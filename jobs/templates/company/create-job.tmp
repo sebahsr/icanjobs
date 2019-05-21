@@ -36,21 +36,21 @@
 											</div>
 											<ul class="wizard-steps">
 												<li class="active">
-													<a href="#w4-account" data-toggle="tab"><span>1</span>Basic Info</a>
+													<a href="#w3-account" data-toggle="tab"><span>1</span>Basic Info</a>
 												</li>
 												<li>
-													<a href="#w4-profile" data-toggle="tab"><span>2</span> Position Summary & Responsibilities</a>
+													<a href="#w3-profile" data-toggle="tab"><span>2</span> Position Summary & Responsibilities</a>
 												</li>
 												<li>
 
 												</li>
 												<li>
-													<a href="#w4-confirm" data-toggle="tab"><span>3</span>Skill Info & How to apply</a>
+													<a href="#w3-confirm" data-toggle="tab"><span>3</span>Skill Info & How to apply</a>
 												</li>
 											</ul>
 										</div>
 											<div class="tab-content">
-												<div id="w4-account" class="tab-pane active">
+												<div id="w3-account" class="tab-pane active">
 													
 													<div class="form-group">
 														
@@ -178,7 +178,7 @@
 			
 
 												</div>
-												<div id="w4-profile" class="tab-pane">
+												<div id="w3-profile" class="tab-pane">
 													<div class="form-group">
 														
 														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.summary.errors.0 }}</div>
@@ -206,7 +206,7 @@
 													</div>
 												</div>
 												
-												<div id="w4-confirm" class="tab-pane">
+												<div id="w3-confirm" class="tab-pane">
 														
 													<div class="form-group">
 													

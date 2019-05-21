@@ -46,9 +46,18 @@
                                 
                                 <div class="cs-heading">
                                     <h1 style="color:#ffffff !important; font-size: 50px !important; font-weight:  !important; letter-spacing: 2px !important; line-height: 80px !important; text-align:Center; font-style:normal;">
-                                        JOB ALERTS
+                                        Employer Branding 
                                     </h1>
                                     
+                                    <div class="heading-description">
+                                            <span style="font-size:16pt; color:rgb(255,255,255);">
+                                                    Join iCAN and Profile your company. <br />
+                                                    <a href='#' class='join-ican'>Sing up </a>
+
+
+                                            </span> 
+                                            
+                                    </div>
                                     
                                     <div class="spliter-medium"></div>
                                 </div>
@@ -66,50 +75,27 @@
             <div class="row">
                 <div class="section-fullwidth col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                     <div class="row">
-                        <div class=" col-sm-5 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="cs-element-title">
                                 <div class="section-inner">
-                                    <h2>Get Free Job Alerts in Your Email – Subscribe Now.</h2>
+                                    <h2>Employer Branding</h2>
                                 </div>
                             </div>
 
-                            <div class="text-justify">
-                                <br>
-                                You will not be charged to receive job alerts in your Email. It’s totally FREE. Why wait subscribe it now.
-                                <br>
-
-                           
-                            </div>
+                            <div>
+                                    <br>
+                                    What makes your company an incredible place to work? How do you showcase your special essence to candidates and employees? Who do you want to attract, what is your story what are you putting at the market place? How do you differentiate from other companies and attract the right talent? Creating differentiation and preference in the minds of future and current employees at each stage of the consideration loop, across a variety of platforms including; iCAN careers site, social media, events and many more will brand as a preferred or an employer of choice for candidates.                                <br>
+    
+                               
+                                </div>
 
                         </div>
 
-                        <div style="border-left:solid 3px #55a747;" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="form-wrap">
-                                {% if err %}
-                                    <div class="text-danger"> {{ err }} </div>
-                                {% endif %}
-
-                                {% if suc %}
-                                    <div class="text-success">{{ suc }} </div>
-                                {% endif %}
-                                <form method="POST" action="/jobalerts/">
-                                {% csrf_token %}
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="">
                                 <div class="image-frame cs-img-frame">
-                                    <div class="form-group">
-                                        <label>Full Name </label>
-                                        {{ jobAlertForm.full_name }}
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Email  </label>
-                                        {{ jobAlertForm.email }}
-                                    </div>
-
-                                    <button class='btn btn-info' type="submit">Get Job Alert</button>
-
+                                    <figure><img src="/static/img/branding.png" alt=""></figure>
                                 </div>
-                            </form>
-
                             </div>
                         </div>
                     </div>

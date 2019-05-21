@@ -18,14 +18,13 @@
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="cs-icon-box left">
-                                        <div class="cs-media"><figure><a href="#">
-                                            <i class="fa fa-paw" style="color:#55a747 !important;"></i>
-                                                    </a></figure>
+                                        <div class="cs-media">
+                                                <i class="fa fa-paw"></i>                                            
                                         </div>
                                         
                                         <div class="cs-text">
-                                            <h4 style="color:#424242 !important;">
-                                                <a style="color:#424242 !important;" href="#">RECRUITMENT</a>
+                                            <h4>
+                                                <a href="#">RECRUITMENT</a>
                                             </h4><br />
                                             <p>
                                                     iCAN assists businesses and organizations find  right  talent:  Complete recruitment  services ,  Executive Search,  Head Hunting, Mass Recruitment,  Assessment Centers, recruitment advisory and more 
@@ -37,8 +36,8 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="cs-icon-box left">
-                                        <div class="cs-media"><figure><a href="#"><i class="fa fa-desktop" style="color:#55a747 !important;"></i></a></figure></div>
-                                        <div class="cs-text"><h4 style="color:#424242 !important;"><a style="color:#424242 !important;" href="#">JOB POSTING & ONLINE JOB MATCHING</a></h4>
+                                        <div class="cs-media"><i class="fa fa-desktop"></i></div>
+                                        <div class="cs-text"><h4><a href="#">JOB POSTING & ONLINE JOB MATCHING</a></h4>
                                             
                                             <br />
                                             <p>
@@ -54,11 +53,13 @@
                                         <div class="cs-icon-box left">
                                         
                                         <div class="cs-media">
-                                            <figure><a href="#"><i class="fa fa-tripadvisor" style="color:#55a747 !important;"></i></a></figure>
+                                            <i class="fa fa-tripadvisor"></i>
+
                                         </div>
+
                                         <div class="cs-text">
-                                            <h4 style="color:#424242 !important;">
-                                                <a style="color:#424242 !important;" href="#">WORKFORCE DEVELOPMENT TRAININGS</a>
+                                            <h4>
+                                                <a href="#">WORKFORCE DEVELOPMENT TRAININGS</a>
                                             </h4><br />
                                             <p>iCAN provides customized and  necessary career & workforce development trainings, employability/soft  and workplace skills to  job seekers and employees . 
                                                 </p> 
@@ -69,12 +70,14 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="cs-icon-box left">
-                                        <div class="cs-media"><figure><a href="#"><i class="fa fa-briefcase" style="color:#55a747 !important;"></i></a></figure></div>
+                                        <div class="cs-media">
+                                            <i class="fa fa-briefcase"></i>
+                                        </div>
                                         
                                         <div class="cs-text">
                                             
-                                            <h4 style="color:#424242 !important;">
-                                                <a style="color:#424242 !important;" href="#">HR SERVICES & CONSULTANCY </a>
+                                            <h4>
+                                                <a href="#">HR SERVICES & CONSULTANCY </a>
                                             </h4><br />
                                             <p>
                                                     ICAN provides HR consultancy and organizational development strategies that drive value to your business.
@@ -88,11 +91,12 @@
                             
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="cs-icon-box left">
-                                        <div class="cs-media"><figure><a href="#"><i class="fa fa-gear" style="color:#55a747 !important;"></i></a></figure>
+                                        <div class="cs-media"><i class="fa fa-gear"></i>
+
                                         </div>
                                         
                                         <div class="cs-text">
-                                            <h4 style="color:#424242 !important;"><a style="color:#424242 !important;" href="#">ASSESMENT</a></h4>
+                                            <h4><a href="#">ASSESMENT</a></h4>
                                             <br />
                                             <p>
                                                     We customize and help businesses in designing and developing assessment centers that matches their vision and value. 
@@ -104,11 +108,12 @@
 
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div class="cs-icon-box left">
-                                        <div class="cs-media"><figure><a href="#"><i class="fa fa-users" style="color:#55a747 !important;"></i></a></figure>
+                                        <div class="cs-media"><i class="fa fa-users"></i>
+
                                         </div>
                                         <div class="cs-text">
-                                            <h4 style="color:#424242 !important;"><a style="color:#424242 !important;" href="#">YOUTH CAREER ADVISORY</a></h4>
-                                            <p style="color:#a4a4a4;">
+                                            <h4><a href="#">YOUTH CAREER ADVISORY</a></h4>
+                                            <p>
                                                     Our certified Career professionals provide career coaching & advisory services , industry linkage and employability skills 
                                             </p> 
                                         </div>

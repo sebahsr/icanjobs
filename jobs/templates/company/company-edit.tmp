@@ -1,7 +1,7 @@
 
 									<div id="edit" class="tab-pane {{ profile_edit_active }}">
 
-                                            <form class="form-horizontal" method="POST" action="/company/admin/edit/">
+                                            <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/company/admin/edit/">
                                                 {% csrf_token %}
                                                 <h4 class="mb-xlg">Personal Information</h4>
                                                 <fieldset>
@@ -11,6 +11,13 @@
                                                             {{ companyForm.name}}
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                            <label class="col-md-3 control-label" for="profileFirstName">Company Logo</label>
+                                                            <div class="col-md-8">
+                                                                {{ companyForm.profile_pic}}
+                                                            </div>
+                                                        </div>
 
                                                     
                                                     
@@ -103,7 +110,7 @@
                                                             </div>
                                                         </div>
                                                 </fieldset>
-                                                <hr class="dotted tall">
+                                                <hr class="dotted">
                                                 <h4 class="mb-xlg">Company Brief Description</h4>
                                                 <fieldset>
                                                     <div class="form-group">
@@ -124,7 +131,7 @@
                                             </form>
                                             <form method="post" action="/company/edit/username/">
                                                 {% csrf_token %}
-                                                    <hr class="dotted tall">
+                                                    <hr class="dotted">
                                                     <h4 class="mb-xlg">Change Username</h4>
                                                     <fieldset class="mb-xl">
                                                         <div class="form-group">
@@ -153,7 +160,7 @@
                                         <form method="post" action="/company/edit/password/">
                                             {% csrf_token %}
 
-                                            <hr class="dotted tall">
+                                            <hr class="dotted">
                                             <h4 class="mb-xlg">Change Password</h4>
                                             <p> If you change your username the system automatically logs you out of the system</p>
                                             {% if passerr %}

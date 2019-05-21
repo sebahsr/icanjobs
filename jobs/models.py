@@ -14,6 +14,9 @@ class Region(models.Model):
 
     def __unicode__(self):
         return self.name
+    
+    class Meta:
+        ordering='name',
 
 class JobLevel(models.Model):
     description = models.CharField(max_length=100)
@@ -57,7 +60,7 @@ class Entity(models.Model):
     
 class Company(Entity):
     name = models.CharField(max_length=100)
-    profile_pic = models.FileField(upload_to=functions.getFileName)
+    profile_pic = models.FileField(upload_to=functions.getFileName, null=True, blank=True)
     brief_description = models.TextField(null=True, blank=True)
     region = models.ForeignKey('Region', related_name='companies')
     city = models.CharField(max_length=100)
@@ -115,7 +118,7 @@ class JobAlert(models.Model):
         return self.full_name
 
 class Employee(Entity):
-    profile_pic = models.FileField(upload_to=functions.getFileName, blank=True)
+    profile_pic = models.FileField(upload_to=functions.getFileName,  blank=True)
     gender = models.CharField(blank=True, max_length=8, null=True, choices=( ('Male', "Male") , ('Female', "Female") ))
     age = models.IntegerField(blank=True, null=True)
 

@@ -1,5 +1,5 @@
 
-<form method='POST' action="/employee/edit/cv/" enctype="multipart/form-data">
+<form method='POST' action="/employee/build-resume/cv/" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mt-10">
             <label>CV Name </label>

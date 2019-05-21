@@ -1,0 +1,14 @@
+<form method="POST" enctype="multipart/form-data" action="/employee/build-resume/summary/">
+    {% csrf_token %}  
+    <div class="mt-10">
+        <label>Profile Summary </label>
+        {{ summaryForm.about_me }}
+    </div>
+
+   
+    <div class='form-group'>
+        <hr />
+        <button type="submit" class="genric-btn primary-border">Save Summary Info</button>
+    </div>
+
+</form>

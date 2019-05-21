@@ -13,7 +13,9 @@
                         <li class="menu-active"><a href="/jobs/">Browse Jobs</a></li>
                         <li class="menu-active"><a href="/companies/">Browse Employers  </a></li>
 
-                        <li class="menu-active"><a href="/employee/">Post your resume</a></li>
+                        {% if not request.user.is_authenticated or request.user.employee %}
+                        <li class="menu-active"><a href="/employee/build-resume/">Build your resume</a></li>
+                        {% endif %}
                         <li class="menu-active"><a href="/jobalerts/">Job Alerts</a></li>
                         {% if not request.user.is_authenticated %}
 
@@ -27,9 +29,11 @@
                     <li class="menu-has-children"><a href="/companies/">Employer</a>
                       <ul>
                           
-
+                        {% if request.user.company %}
                         <li class="menu-active"><a href="/company/admin/create-job/">Post Jobs & internships  </a></li>
-                        <li class="menu-active"><a href="/about/">Services </a></li>
+                        {% endif %}
+                        <li class="menu-active"><a href="/services/">Services </a></li>
+                        <li class="menu-active"><a href="/branding/">Employer Branding </a></li>
                         {% if not request.user.is_authenticated %}
 
                           <li class="menu-has-children"><a href="/company/admin/login/">Login</a></li> 
@@ -74,11 +78,11 @@
                     <li class="menu-has-children"><a href="">{{ request.user.username }}</a>
                     <ul>
                         {% if request.user.employee %}
-                        <li><a href="/employee/"><i class='fa fa-user'></i> profile</a></li>
+                        <li><a href="/employee/"><i class='fa fa-user'></i> My CV</a></li>
                         {% endif %}
 
                         {% if request.user.company %}
-                        <li><a href="/company/admin/"><i class='fa fa-user'></i> profile</a></li>
+                        <li><a href="/company/admin/"><i class='fa fa-user'></i> Company profile</a></li>
                         <li><a href="/company/admin/create-job/"><i class='fa fa-plus-square'></i> Create Job</a></li>
                         
                         {% endif %}

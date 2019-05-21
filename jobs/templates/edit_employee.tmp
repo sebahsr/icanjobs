@@ -1,4 +1,4 @@
-<form method="POST" enctype="multipart/form-data" action="/employee/edit/general/">
+<form method="POST" enctype="multipart/form-data" action="/employee/build-resume/general/">
     {% csrf_token %}
     <div class="mt-10">
         <label>First Name</label>
@@ -34,7 +34,7 @@
 
 
     <div class="input-group-icon  mt-10">
-        <label>City</label>        
+        <label>Location</label>        
         {{ employeeForm.city }}
     </div>    
     <div class="input-group-icon mt-10">
@@ -64,16 +64,7 @@
             {{ employeeForm.twitter_url }}
         </div>
     </div>
-    
-    <div class="mt-10">
-        <label>Profile Summary </label>
-        {{ employeeForm.about_me }}
-    </div>
-
-    <div class="mt-10">
-            <label>Volunteer Experience/Membership/Affilations</label>
-            {{ employeeForm.volunteer_experience }}
-    </div>
+  
 
     <div class="mt-10">
         <p><label>Profile Pic</label></p>

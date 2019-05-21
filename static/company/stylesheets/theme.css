@@ -1432,7 +1432,7 @@ html.fixed .visible-xl-inline-block {
 }
 
 .header .search {
-	width: 170px;
+	width: 70px;
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -2776,7 +2776,7 @@ body a, body a:focus, body a:hover, body a:active, body a:visited {
 ul,
 ol {
 	margin-bottom: 0;
-	padding-left: 27px;
+	padding-left: 7px;
 }
 
 blockquote.primary {
@@ -5026,6 +5026,7 @@ html.header-dark .notifications > li .notification-icon i {
 	font-size: 13px;
 	font-size: 1.3rem;
 	line-height: 1.2em;
+	font-weight: 700;
 }
 
 .userbox .role {
@@ -5081,6 +5082,7 @@ html.header-dark .notifications > li .notification-icon i {
 	line-height: 15px;
 	line-height: 1.5rem;
 	padding: 5px 10px;
+	font-weight: 700;
 }
 
 .userbox.open .dropdown-menu a:hover {
@@ -14664,7 +14666,7 @@ html.dark .CodeMirror pre {
 .mailbox .mailbox-folder .mailbox-header .search {
 	float: right;
 	margin-top: 3px;
-	max-width: 100px;
+	max-width: 200px;
 }
 .mailbox .mailbox-folder .mailbox-header .search input[type="text"] {
 	-webkit-transition-property: width, margin;
@@ -14678,9 +14680,8 @@ html.dark .CodeMirror pre {
 	transition-timing-function: cubic-bezier(0.05, 0.91, 0.25, 0.99);
 }
 .mailbox .mailbox-folder .mailbox-header .search input[type="text"]:focus {
-	margin-left: -150%;
-	width: 250%;
 }
+
 @media only screen and (max-width: 767px) {
 	.mailbox .mailbox-folder .mailbox-header .search input[type="text"]:focus {
 		margin-left: 0;
@@ -15318,7 +15319,7 @@ html.dark .invoice table.table > tbody tr > td {
 .body-sign .panel-sign .panel-title-sign .title {
 	background-color: #cccccc;
 	border-radius: 5px 5px 0 0;
-	color: #FFF;
+	color: #333333;
 	display: inline-block;
 	font-size: 12px;
 	font-size: 1.2rem;
@@ -15328,7 +15329,7 @@ html.dark .invoice table.table > tbody tr > td {
 	vertical-align: bottom;
 }
 .body-sign .panel-sign .panel-title-sign .active {
-	background: #55a747 !important;
+	background: #ffffff !important;
 }
 .body-sign .panel-sign .panel-body {
 	background: #FFF;
@@ -16895,4 +16896,10 @@ html.dark .img-thumbnail,
 html.dark .thumbnail {
 	background-color: #21262d;
 	border-color: #282d36;
+}
+
+
+.company-stat {
+    background: #55a747;
+    color: white;
 }

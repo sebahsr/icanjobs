@@ -1,5 +1,5 @@
 
-<form method='POST' action="/employee/edit/experience/">
+<form method='POST' action="/employee/build-resume/experience/">
     {% csrf_token %}
     <div class="mt-10">
         <label>Job Title</label>
