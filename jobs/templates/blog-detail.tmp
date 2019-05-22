@@ -34,7 +34,7 @@
              {% include 'header.tmp' %}
 
 			<!-- start banner Area -->
-			<section style="background: url({{ blog.image.url }}) center !important;" class="banner-area relative" id="home">	
+			<section style="background: url({{ blog.image.url }}) center no-repeat !important;" class="banner-area relative" id="home">	
 				<div class="overlay overlay-bg-blog"></div>
 				<div class="container">
 					<div class="row d-flex align-items-center justify-content-center">
