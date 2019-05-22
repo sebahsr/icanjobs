@@ -69,6 +69,9 @@ class Blog(models.Model):
     class Meta:
         ordering = ('created_at',)
 
+    def __unicode__(self):
+        return self.title
+
 class AppointmentNeed(models.Model):
     name = models.CharField(max_length=150)
     def __unicode__(self):
@@ -107,3 +110,20 @@ class Appointment(models.Model):
         today_max = datetime.datetime.combine(datetime.date.today(), datetime.time.max)
         return cls.objects.filter(created_on__range=(last7day_min, today_max))
 
+
+ 
+class MenuLinks(models.Model):
+    name = models.CharField(primary_key=True, choices=(
+        ('empskill', 'Employability Skill'),
+        ('youthcareer', 'Youth Career'),
+        ('careerservice', 'Career Service'),
+        ('jobreadines', 'Job Readiness'),
+    ), max_length=100)
+    blog = models.ForeignKey('Blog')
+
+    def __unicode__(self):
+        return self.name 
+    
+    class Meta:
+        verbose_name = 'Menu Link'
+        verbose_name_plural = 'Menu Links'

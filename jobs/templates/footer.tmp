@@ -1,60 +1,78 @@
 <footer class="footer-area section-gap">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-xs-12">
-                    <div class="single-footer-widget">
-                        <h6>Job Seeker</h6>
-                        <ul class="footer-nav">
-                            <li><a href="/jobs/">Browse Jobs</a></li>
-                            <li><a href="/employee/">Post Your Resume</a></li>
-                            <li><a href="">Job Alert</a></li>
-
-                        </ul>
-                    </div>
+                <div class="col-sm-4">
+                    <div class=" text-white h3">iCAN</div>
+                    <p class="text-white"> 
+                            We prepare job seekers with necessary job skills for opportunities and success that drive economic growth.
+                    </p>
                 </div>
-                <div class="col-lg-3  col-xs-12">
-                        <div class="single-footer-widget">
-                            <h6>Employer</h6>
-                            <ul class="footer-nav">
-                                <li><a href="/companies/">Browse Employers</a></li>
-                                <li><a href="/company/admin/create-job/">Post Jobs & Internships</a></li>
-                                <li><a href="/about/">Services</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3  col-xs-12">
-                            <div class="single-footer-widget">
-                                <h6>Career Advice</h6>
-                                <ul class="footer-nav">
-                                    <li><a href="/appointmnet/make/">Career Advisory</a></li>
-                                    <li><a href="/blogs/">Blogs</a></li>
-                                    <li><a href="/events/">Events</a></li>
-                                    <li><a href="/contact/">Contact Us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-3  col-xs-12">
+                <div class="col-sm-8">
+                    <div class="row">
+                            <div class="col-lg-3 col-xs-12">
                                 <div class="single-footer-widget">
-                                    <h6>About Ican</h6>
+                                    <h6>JOB SEEKER</h6>
                                     <ul class="footer-nav">
-                                        <li><a href="/signup/">Register</a></li>
-                                        <li><a href="/login/">Log in</a></li>
-                                        <li><a href="/about/">About iCan</a></li>
+                                        <li><a href="/jobs/">BROWSE JOBS</a></li>
+                                        <li><a href="/employee/">Post Your Resume</a></li>
+                                        <li><a href="">Job Alert</a></li>
+            
                                     </ul>
                                 </div>
                             </div>
-                						
+                            <div class="col-lg-3  col-xs-12">
+                                    <div class="single-footer-widget">
+                                        <h6>EMPLOYER</h6>
+                                        <ul class="footer-nav">
+                                            <li><a href="/companies/">Browse Employers</a></li>
+                                            <li><a href="/company/admin/create-job/">Post Jobs & Internships</a></li>
+                                            <li><a href="/about/">Services</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3  col-xs-12">
+                                        <div class="single-footer-widget">
+                                            <h6>CAREER ADVICE</h6>
+                                            <ul class="footer-nav">
+                                                <li><a href="/appointmnet/make/">Career Advisory</a></li>
+                                                <li><a href="/blogs/">Blogs</a></li>
+                                                <li><a href="/events/">Events</a></li>
+                                                <li><a href="/contact/">Contact Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3  col-xs-12">
+                                            <div class="single-footer-widget">
+                                                <h6>ABOUT iCAN</h6>
+                                                <ul class="footer-nav">
+                                                    <li><a href="/signup/">Register</a></li>
+                                                    <li><a href="/login/">Log in</a></li>
+                                                    <li><a href="/about/">About iCan</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                                    
+                        </div>
+                </div>
             </div>
+            
 
             <div class="row footer-bottom d-flex justify-content-between">
-                <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
+                    <div class="col-lg-3 col-sm-12 footer-social">
+                            <a href="https://www.facebook.com/International-Career-Advisory-Network-187269622191533/"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-telegram"></i></a>
+                            <a href="#"><i class="fa fa-youtube"></i></a>
+                        </div>
+
+                    <div class="col-lg-4"></div>
+
+                <p style="font-size:12px" class="col-lg-4 col-sm-12 footer-text m-0 text-white">
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
                 </p>
-                <div class="col-lg-4 col-sm-12 footer-social">
-                    <a href="https://www.facebook.com/International-Career-Advisory-Network-187269622191533/"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                </div>
+
+
             </div>
         </div>
     </footer>

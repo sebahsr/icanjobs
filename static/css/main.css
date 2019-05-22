@@ -2911,7 +2911,6 @@ ul.spatialism-sec li a span {
 .post-list .single-post {
   padding-top: 10px;
   margin-bottom: 1px;
-  border-bottom: 1px solid #f2f2f2;
 }
 
 .post-list .single-post-detail-job {
@@ -2953,7 +2952,7 @@ ul.spatialism-sec li a span {
 
 .post-list .single-post .address {
   color: #222;
-  margin-bottom: 15px;
+  margin-bottom: 0;
 }
 
 .post-list .single-post .btns li {
@@ -3430,7 +3429,6 @@ ul.spatialism-sec li a span {
 }
 
 .footer-area {
-  padding-top: 100px;
   background-color: #222222;
 }
 
@@ -3516,7 +3514,7 @@ ul.spatialism-sec li a span {
   color: #fff;
   margin-bottom: 25px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 200;
 }
 
 .copy-right-text i, .copy-right-text a {
@@ -3548,6 +3546,7 @@ ul.spatialism-sec li a span {
   height: 40px;
   text-align: center;
   padding-top: 10px;
+  font-size: 22px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -3555,7 +3554,7 @@ ul.spatialism-sec li a span {
 }
 
 .footer-social a:hover {
-  background-color: #036;
+  background-color: #55a747;
 }
 
 .footer-social a:hover i {
@@ -3950,16 +3949,22 @@ ul.spatialism-sec li a span {
 .single-title {
   text-transform: uppercase;
   margin-bottom: 20px;
-  font-size: 15px;
+  font-size: 22px;
   width:auto;
-  font-weight: 600;
+  font-weight: 200;
 }
+
+.highlited-single-title{
+  background: #ccc;
+  padding: 16px 17px;
+}
+
 .single-title-job-detail {
   text-transform: uppercase;
   margin-bottom: 7px;
-  font-size: 15px;
+  font-size: 20px;
   width:auto;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 
@@ -4641,7 +4646,8 @@ ul.spatialism-sec li a span {
 
 .cs-section-title, .cs-element-title {
   display: block; 
-  margin-bottom: 30px;
+  text-transform: uppercase;
+  margin-bottom: 0px;
 }
 
 .main-search [class*="col-sm"] {
@@ -4653,6 +4659,7 @@ ul.spatialism-sec li a span {
 
 .image-frame.cs-img-frame img {
   height: 300px;
+  margin-left: 112px;
 }
 
 /** jobs **/
@@ -4820,10 +4827,7 @@ listing.modern .read-more:before {
   margin-top: 20px;
 }
 
-a.join-ican:hover {
-  background: #5682a3;
-  /* border: solid 1px gray; */
-}
+
 
 a.join-ican {
   color: white;
@@ -4832,4 +4836,22 @@ a.join-ican {
   display: inline-block;
   margin: 12px;
   background: #55a747;
+}
+
+.skill-tags{
+  color: #fff;
+  font-size: 17px;
+  background: #55a747;
+  border: 1px solid transparent;
+}
+
+.page-header-title{
+  padding: 23px 0px;
+  font-size: 28px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.contact-info{
+  font-size: 14px;
 }

@@ -45,8 +45,8 @@
 								iCAN Jobs				
 							</h1>
 							<p class="text-white link-nav">
-								<a href="index.html">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/jobs/"> Jobs</a>
-							</p>	
+									Find Talent. Build Human Capital. 
+								</p>	
 							<form class="serach-form-area" action="/jobs/search/" method="GET">
 								<div class="row justify-content-center form-wrap">
 									<div class="col-lg-3 form-cols">
@@ -102,14 +102,14 @@
 			</section>
 
 			{% include 'services.tmp' %}
-			<hr />
+			
 
-			<section class="feature-cat-area pt-100" id="category">
+			<section class="feature-cat-area pt-10" id="category">
 					<div class="container">
 						<div class="row d-flex">
 
 							
-							<div class="menu-content pb-60 col-md-12">
+							<div class="menu-content pb-20 col-md-12">
 							
 								<div class="cs-heading"><h3 class="cs-fancy">BROWSE JOBS BY SECTORS</h3>
 									<div class="heading-description">
@@ -142,7 +142,7 @@
 						</div>
 
 						<p>
-								<span class="h5">Sara Tadiwos</span>, a passionate workforce development professional and a certified Global Career Development Facilitator, spent extensive years working 
+							Sara Tadiwos, a passionate workforce development professional and a certified Global Career Development Facilitator, spent extensive years working 
 								on training & employment, career advisory, youth employment, workforce development, talent acquisition, leadership and soft skills 
 								training across various sectors. She has worked in Ethiopia, Kenya and the USA in various public and private sectors in the area of employment, youth, women 
 								leadership and workforce development. Sara likes engaging herself in social enterprises, employment creation, human capital development, and trainings 
@@ -162,8 +162,8 @@
 			<section class="post-area section-gap">
 				<div class="container">
 						<div class="row d-flex">
-								<div class="menu-content pb-60 col-md-12">
-									<div class="cs-heading"><h3 class="cs-fancy">BRECENT JOBS</h3>
+								<div class="menu-content pb-20 col-md-12">
+									<div class="cs-heading"><h3 class="cs-fancy">RECENT JOBS</h3>
 										<div class="heading-description">
 											Sectors with the most open jobs.
 										</div>
@@ -218,12 +218,12 @@
 			
 	
 
-		<section class="post-area section-ga pt-100" >
+		<section class="post-area section-ga pt-10" >
 				<div class="container section-fullwidth">
 						<div class="row d-flex justify-content-center">
-								<div class="menu-content pb-60 col-lg-10">
+								<div class="menu-content pb-20 col-lg-10">
 									
-									<div class="cs-heading"><h3 class="cs-fancy">BRECENT BLOG POSTS</h3>
+									<div class="cs-heading"><h3 class="cs-fancy">RECENT BLOG POSTS</h3>
 										<div class="heading-description">
 											Recent Blog posts from iCan. 
 										</div>

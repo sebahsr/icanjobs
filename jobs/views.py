@@ -16,6 +16,19 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 import datetime
 # Create your views here.
 
+build_resume_redirects = {
+    'general' : '/employee/build-resume/summary/',
+    'summary' : '/employee/build-resume/experience/',
+    'experience' : '/employee/build-resume/education/',
+    'education' : '/employee/build-resume/skill/',
+    'skill' : '/employee/build-resume/cv/',
+    'cv' : '/employee/build-resume/worksample/',
+    'worksample' : '/employee/build-resume/worklink/',
+    'worklink' : '/employee/build-resume/volunteer/',
+    'volunteer' : '/employee/build-resume/reference/',
+    'reference' : '/employee/',
+    
+}
 def aboutUs(request):
     return render(request, 'about.tmp', locals())
 def branding(request):
@@ -49,7 +62,7 @@ def homeView(request, **kwargs):
     recent_jobs = models.Job.objects.all()[:5]
     employement_types = models.EmployementType.objects.all()
     recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:3]
-
+    regions = models.Region.objects.all()
     return render(request, template_name, locals())
 
 def jobView(request, **kwargs):
@@ -87,6 +100,8 @@ def jobView(request, **kwargs):
         current_page = paginator.page(page_number)
         jobs = current_page.object_list
 
+    employement_types = models.EmployementType.objects.all()
+
     regions = models.Region.objects.all()
     categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
 
@@ -119,12 +134,12 @@ def jobRegionListHelper(regionID=None):
     return jobs, region
 
 def jobSearchHelper(search_query, cat='all', reg='all', employement_type='all'):
+
     query = Q(title__icontains=search_query)
     region = get_object_or_404(models.Region, pk=reg) if reg and reg != 'all' else None
     query &= Q(region=region) if region else Q()
     employement_type = get_object_or_404(models.EmployementType, pk=employement_type) if employement_type and employement_type != 'all' else None
-    query &= Q(region=employement_type) if employement_type else Q()
-
+    query &= Q(employement_type=employement_type) if employement_type else Q()
     category=get_object_or_404(models.Category, pk=cat) if cat and cat != 'all' else None
     query &= Q(categories__pk__contains=category.pk) if category else Q()
 
@@ -350,7 +365,7 @@ def buildResume(request, section=None):
             if employeeForm.is_valid() and userForm.is_valid():
                 userForm.save()
                 employeeForm.save()
-                return redirect('/employee/')
+                return redirect(build_resume_redirects['general'])
 
         else:
             employeeForm = forms.EmployeeForm(instance = request.user.employee)
@@ -365,7 +380,7 @@ def buildResume(request, section=None):
                 cv = cvForm.save(commit=False)
                 cv.employee = request.user.employee
                 cv.save()
-                return redirect('/employee/')
+                return redirect(build_resume_redirects['cv'])
             else:
                 print cvForm.errors
         else:
@@ -377,7 +392,7 @@ def buildResume(request, section=None):
             summaryForm = forms.EmployeeAboutMeForm(request.POST, instance=request.user.employee)
             if summaryForm.is_valid():
                 summary = summaryForm.save()
-                return redirect('/employee/')
+                return redirect( build_resume_redirects['summary'] )
 
     elif section == constants.EDIT_SEC_VOL:
         build_active_vol = 'active'
@@ -386,7 +401,7 @@ def buildResume(request, section=None):
             volunteerForm = forms.EmployeeVolunteerForm(request.POST, instance=request.user.employee)
             if volunteerForm.is_valid():
                 summary = volunteerForm.save()
-                return redirect('/employee/')
+                return redirect(build_resume_redirects['volunteer'])
     elif section == constants.EDIT_SEC_REFER:
         build_active_ref = 'active'
 
@@ -396,14 +411,14 @@ def buildResume(request, section=None):
                 reference = referenceForm.save(commit=False)
                 reference.employee = request.user.employee
                 reference.save()
-                return redirect('/employee/')
+                return redirect(build_resume_redirects['reference'])
             else:
                 print referenceForm.errors
         else:
             referenceForm = forms.ReferenceForm()
 
     elif section == constants.EDIT_SEC_LINK:
-        build_active_worksample = 'active'
+        build_active_worklink = 'active'
 
         if request.method == "POST":
             workLinkForm = forms.WorkLinkForm(request.POST)
@@ -411,7 +426,7 @@ def buildResume(request, section=None):
                 workLink = workLinkForm.save(commit=False)
                 workLink.employee = request.user.employee
                 workLink.save()
-                return redirect('/employee/')
+                return redirect(build_resume_redirects['worklink'])
             else:
                 print workLinkForm.errors
         else:
@@ -426,7 +441,7 @@ def buildResume(request, section=None):
                 workSample = workSampleForm.save(commit=False)
                 workSample.employee = request.user.employee
                 workSample.save()
-                return redirect('/employee/')
+                return redirect(build_resume_redirects['worksample'])
             else:
                 print workSampleForm.errors
         else:
@@ -464,7 +479,7 @@ def employeExperienceView(request):
             experience = experienceForm.save(commit=False)
             experience.employee = request.user.employee
             experience.save()
-            return redirect('/employee/')
+            return redirect( build_resume_redirects['experience'])
         else:
             print(experienceForm.errors)
     
@@ -480,7 +495,7 @@ def employeeEducationView(request):
             experience = educationForm.save(commit=False)
             experience.employee = request.user.employee
             experience.save()
-            return redirect('/employee/')
+            return redirect(build_resume_redirects['education'])
         else:
             print("EDUCATION FORM ERROS", educationForm.errors)
     
@@ -496,7 +511,7 @@ def employeSkillView(request):
             skill = skillForm.save(commit=False)
             skill.employee = request.user.employee
             skill.save()
-            return redirect('/employee/')
+            return redirect(build_resume_redirects['skill'])
     
     pro_active_tab = 'profile-tab-active'
     return render(request, "employee_profile.tmp", locals())

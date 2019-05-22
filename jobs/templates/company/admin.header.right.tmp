@@ -39,10 +39,21 @@
                                 <ul class="list-unstyled">
                                     <li class="divider"></li>
                                     <li>
-                                        <a role="menuitem" tabindex="-1" href="/company/admin/"><i class="fa fa-user"></i> <b>  Company Profile </a>
+                                        <a role="menuitem" tabindex="-1" href="/company/admin/"><i class="fa fa-user"></i> </b>  Company Profile </a>
                                     </li>
                                     <li>
-                                            <a role="menuitem" tabindex="-1" href="/"><i class="fa fa-eye"></i> View Site</a>
+                                            <a role="menuitem" tabindex="-1" href="/"><i class="fa fa-home"></i> Home</a>
+                                    </li>
+                                    <li>
+                                        <a role="menuitem" tabindex="-1" href="/company/admin/create-job/"><i class="fa fa-plus"></i> </b>  Post Jobs</a>
+                                    </li>
+
+                                    <li>
+                                        <a role="menuitem" tabindex="-1" href="/company/admin/jobs/"><i class="fa fa-list"></i> </b>  Jobs Posted </a>
+                                    </li>
+
+                                    <li>
+                                        <a role="menuitem" tabindex="-1" href="/company/admin/applications/"><i class="fa fa-envelope"></i> </b> Applications </a>
                                     </li>
 
                                     <li>

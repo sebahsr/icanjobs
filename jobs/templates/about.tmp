@@ -45,12 +45,12 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 
                                 <div class="cs-heading">
-                                    <h1 style="color:#ffffff !important; font-size: 50px !important; font-weight:  !important; letter-spacing: 2px !important; line-height: 80px !important; text-align:Center; font-style:normal;">
+                                    <h1 class="pt-20 pb-20" style="color:#ffffff !important; font-size: 50px !important; font-weight:  !important; letter-spacing: 2px !important; line-height: 80px !important; text-align:Center; font-style:normal;">
                                         About Us
                                     </h1>
                                     
                                     <div class="heading-description">
-                                            <span style="color:rgb(255,255,255);">
+                                            <span style="font-size:16px; color:rgb(255,255,255);">
                                                     iCAN is a an executive human capital search  & workforce development  firm well placed to 
                                                     offer  talent  solutions to our clients, whilst maintaining focus on the needs of our candidates. 
                                                      iCAN work across all industry sectors and brings over 10 years of international (US) and local experience in 
@@ -60,7 +60,7 @@
                                             
                                     </div>
                                     
-                                    <div class="spliter-medium"></div>
+                                    <div class="pb-20 pt-20 spliter-medium"></div>
                                 </div>
                             </div>
                         </div>

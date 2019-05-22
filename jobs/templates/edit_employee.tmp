@@ -73,8 +73,8 @@
 
 
     <div class='form-group'>
-        <hr />
-        <button type="submit" class="genric-btn primary-border">Save Changes</button>
+        <hr /><button type="submit" class="genric-btn skill-tags">Save and Continue </button>
+        <a href='/employee/' class="genric-btn skill-tags">Cancel </a>
     </div>
 
 </form>

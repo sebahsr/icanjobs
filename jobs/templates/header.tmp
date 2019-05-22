@@ -44,10 +44,32 @@
                       </ul>
                     </li>
 
-                    <li class="menu-has-children"><a href="">Career Advice </a>
+                    <li class="menu-has-children"><a href="">Employment solutions</a>
                       <ul>
+                        {% for menulink in menulinks %} 
+
+                          {% ifequal menulink.name 'careerservice' %}
+                          <li class="menu-active"><a href="/blogs/blog-{{ menulink.blog.pk }}/">Career Services </a></li>
+                          {% endifequal %}
+
+                          {% ifequal menulink.name 'empskill' %}
+
+                            <li class="menu-active"><a href="/blogs/blog-{{ menulink.blog.pk }}/">Employability Skills</a></li>
+                          {% endifequal %}
+
+                          {% ifequal menulink.name 'jobreadines' %}
+
+                            <li class="menu-active"><a href="/blogs/blog-{{ menulink.blog.pk }}//">Job readiness </a></li>
+                          {% endifequal %}
+
+                          {% ifequal menulink.name 'youthcareer' %}
+                
+                          <li class="menu-active"><a href="/blogs/blog-{{ menulink.blog.pk }}/">Youth Career</a></li>
+                          {% endifequal %}
+
+                        {% endfor %}
                           <li class="menu-active"><a href="/appointmnet/make/">Career Advisory</a></li>
-                          <li class="menu-active"><a href="/youthcareer/">Youth Career</a></li>
+
                           <li class="menu-active"><a href="/events/">Events</a></li>
                           <li><a href="/blogs/">Blogs</a></li>
                           {% if request.user.employee %}

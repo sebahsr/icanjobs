@@ -15,12 +15,12 @@
 
 					<div class="panel panel-sign">
 						<div class="panel-title-sign mt-xl text-right">
-							<a href='/login/'><h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Job Seeker Sign In</h2></a>
-							<h2 class="title text-uppercase text-bold active m-none"><i class="fa fa-user mr-xs"></i> Employer Sign In</h2>
+							<a href='/login/'><h2 class="title text-uppercase  m-none"><i class="fa fa-user mr-xs"></i> Job Seeker Sign In</h2></a>
+							<h2 class="title text-uppercase  active m-none"><i class="fa fa-user mr-xs"></i> Employer Sign In</h2>
 							
 						</div>
 						<div class="panel-body">
-							<div style="color:#333" class="h2">Log in as <span style='color:white; background:green'>Employer</span>  </div>
+							<div style="color:#333" class="h2">Log in as Employer</div>
 
 
 							{% if err %}

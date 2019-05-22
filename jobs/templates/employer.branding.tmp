@@ -48,16 +48,15 @@
                                     <h1 style="color:#ffffff !important; font-size: 50px !important; font-weight:  !important; letter-spacing: 2px !important; line-height: 80px !important; text-align:Center; font-style:normal;">
                                         Employer Branding 
                                     </h1>
-                                    
+                                    {% if not request.user.is_authenticated %}
                                     <div class="heading-description">
                                             <span style="font-size:16pt; color:rgb(255,255,255);">
-                                                    Join iCAN and Profile your company. <br />
-                                                    <a href='#' class='join-ican'>Sing up </a>
-
-
+                                                    Be an Employer of Choice. <br />
+                                                    <a href='/company/admin/signup/' class='join-ican'>Brand Your Company </a>
                                             </span> 
                                             
                                     </div>
+                                    {% endif %}
                                     
                                     <div class="spliter-medium"></div>
                                 </div>

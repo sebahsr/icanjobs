@@ -1,5 +1,5 @@
 
-<form method='POST' action="/employee/edit/worklink/">
+<form method='POST' action="/employee/build-resume/worklink/">
     {% csrf_token %}
     <div class="mt-10">
             <label>Name </label>
@@ -21,6 +21,7 @@
 
     <div class='form-group'>
         <hr />
-        <button type="submit" class="genric-btn primary-border">Add  Work Link</button>
-    </div>
+
+        <button type="submit" class="genric-btn skill-tags">Save and Continue </button>
+        <a href='/employee/' class="genric-btn skill-tags">Cancel </a>    </div>    </div>
 </form>

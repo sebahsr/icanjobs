@@ -11,13 +11,13 @@
 
 				<div class="panel panel-sign">
 					<div class="panel-title-sign mt-xl text-right">
-                        <h2 class="title text-uppercase active text-bold m-none"><i class="fa fa-user mr-xs"></i> Job Seeker Signup</h2>
-                        <a href='/company/admin/signup/'> <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Employer Signup</h2></a>
+                        <h2 class="title text-uppercase active  m-none"><i class="fa fa-user mr-xs"></i> Job Seeker Signup</h2>
+                        <a href='/company/admin/signup/'> <h2 class="title text-uppercase  m-none"><i class="fa fa-user mr-xs"></i> Employer Signup</h2></a>
 
 					</div>
 					
 					<div class="panel-body">
-						<div style="color:#333" class="h2">Create <span style='color:white; background:green'>Job Seeker</span> Account </div>
+						<div style="color:#333" class="h2">Create Job Seeker Account </div>
 
 						
 						<form action="/signup/" method="POST" enctype="multipart/form-data">

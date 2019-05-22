@@ -14,7 +14,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Job Listing</title>
+	<title>{{ job.title }}</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<!--
@@ -41,32 +41,54 @@
 			<div class="container">
 				<div class="row d-flex ">
 					<div class="job-detail-content col-lg-12">
-							<div class="single-title text-white">{{ job.title }}	</div>
-							{% if job.eligible_to_apply %}
-								{% if not job.applied_already %}
-								<a class="btn btn-info" href="/jobs/applly/job-{{ job.pk }}/"><i class='fa fa-send'></i> Apply Now</a>
-
-								{% else %}
-								<span class='btn btn-danger'><i class='fa fa-check-square'></i> Applied</a></span>
-
-								{% endif %}
-						{% endif %}
+							<div class="page-header-title single-title text-white">{{ job.title }}	</div>
+							
 					</div>											
 				</div>
 			</div>
 		</section>
 		<!-- End banner Area -->
 		
+	
 		<!-- Start post Area -->
 		<section class="post-area section-gap">
+			
 			<div class="container">
 				<div class="row justify-content-center d-flex">
 					<div class="col-lg-7 post-list">
-							
+						
+						<section class="pb-5">				
+										<div class="row single-post-detail-job d-flex flex-row">
+											<div class="col-sm-3">
+												<img style="width:100%" class="img img-responsive" src="{{ job.company.profile_pic.url }}" />
+											</div>
+											<div class="col-sm-1"></div>
+											<div class="details col-sm-8 ">
+												<div class="title d-flex flex-row justify-content-between">
+													<div class="titles pb-2">
+														<a href="/companies/company-{{job.company.pk}}/"><h4>{{ job.company.name | title }}</h4></a>					
+													</div>
+													
+												</div>
+				
+												<span class="contact-info"><span class="fa fa-map-marker"></span> {{ job.company.city }}, {{ job.company.region.name }}</span><br/>
+												{% if job.company.user.email %}
+												<span class="contact-info"><span class="fa fa-envelope"></span> {{ job.company.user.email }}</span><br/>
+												{% endif %}
+
+												{% if job.company.phone %}
+												<span class="contact-info"><span class="fa fa-phone"></span> {{ job.company.phone }}</span><br/>
+												{% endif %}
+
+											</div>
+										</div>
+										<hr />
+
+						</section>
 
 						{% if job.summary %}
 						<div class="single-post-detail-job job-details">
-							<div class="single-title-job-detail">Role Overview/Job Duties</div>
+							<div class="pt-2 single-title-job-detail">Role Overview/Job Duties</div>
 							<p>
 								{{ job.summary|linebreaksbr }}
 							</p>
@@ -75,7 +97,7 @@
 
 						{% if job.responsibilities %}
 						<div class="single-post-detail-job job-details">
-								<h4 class="single-title-job-detail">Job Duties and Responsibilities</h4>
+								<h4 class="pt-2 single-title-job-detail">Job Duties and Responsibilities</h4>
 								<p>
 									{{ job.responsibilities|linebreaksbr }}
 								</p>
@@ -83,7 +105,7 @@
 						{% endif %}
 						{% if job.experience %}
 						<div class="single-post-detail-job job-details">
-							<h4 class="single-title-job-detail">Education And Experience</h4>
+							<h4 class="pt-2 single-title-job-detail">Education And Experience</h4>
 							<p>
 								{{ job.experience|linebreaksbr }}
 							</p>
@@ -91,7 +113,7 @@
 						{% endif %}
 						{% if job.requirements %}
 						<div class="single-post-detail-job job-experience">
-							<h4 class="single-title-job-detail">Key Requirements</h4>
+							<h4 class="pt-2 single-title-job-detail">Key Requirements</h4>
 							<p>
 								{{ job.requirements|linebreaksbr }}
 							</p>
@@ -100,7 +122,7 @@
 
 						{% if job.knowledge_skills %}
 						<div class="single-post-detail-job job-experience">
-							<div class="single-title-job-detail">Knowledge And Skills</div>
+							<div class="pt-2 single-title-job-detail">Knowledge And Skills</div>
 							<p>
 								{{ job.knowledge_skills|linebreaksbr }}
 							</p>
@@ -109,7 +131,7 @@
 
 						{% if job.how_to_apply %}
 						<div class="single-post-detail-job job-experience">
-							<h4 class="single-title-job-detail">How To Apply</h4>
+							<h4 class="pt-2 single-title-job-detail">How To Apply</h4>
 							<p>
 								{{ job.how_to_apply|linebreaksbr }}
 							</p>
@@ -118,24 +140,7 @@
 
 						
 						
-						<h4 class="single-title-job-detail">About the Organization</h4>
-
-						<div class="single-post-detail-job d-flex flex-row">
-							
-							<div class="details col-sm-12">
-								<div class="title d-flex flex-row justify-content-between">
-									<div class="titles">
-										<a href="/companies/company-{{job.company.pk}}/"><h4>{{ job.company.name | title }}</h4></a>					
-									</div>
-									
-								</div>
-
-								<p class="address"><span class="fa fa-map-marker"></span> {{ job.company.city }}, {{ job.company.region.name }}</p>
-								<p>
-									{{ job.company.brief_description|truncatechars:400 }}
-								</p>
-							</div>
-						</div>
+					
 						
 
 					</div>
@@ -145,7 +150,19 @@
 							<div class="single-post-detail-job d-flex flex-row">
 
 									<div class="details col-sm-10">
-										<div class="single-title-job-detail">
+										<div class="pb-10">
+											{% if job.eligible_to_apply %}
+													{% if not job.applied_already %}
+													<a class="btn skill-tags" href="/jobs/applly/job-{{ job.pk }}/"><i class='fa fa-send'></i> Apply Now</a>
+					
+													{% else %}
+													<span class='btn btn-danger'><i class='fa fa-check-square'></i> Applied</a></span>
+					
+													{% endif %}
+											{% endif %}
+										</div>
+										
+										<div class="pt-2 single-title-job-detail">
 											Job Detail
 										</div>
 										

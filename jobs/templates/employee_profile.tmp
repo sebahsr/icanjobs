@@ -82,7 +82,7 @@
 							</div>
 							<div class="details col-sm-4">
 								<div class="title d-flex flex-row justify-content-between">
-									<div class="titles title-gap">
+									<div class="titles ">
 										<div class='h4'>{{ employee.user.first_name|title}} {{ employee.user.last_name|title}}</div>					
 									</div>
 									
@@ -97,7 +97,7 @@
 
 							<div class="col-lg-4">
 								<h4>Contact Information</h4>
-								<hr />
+								
 								<p class="address"><span class="fa fa-envelope"></span> {{ employee.user.email | default:"Not specified"  }}</p>
 								<p class="address"><span class="fa fa-phone"></span> {{ employee.phone | default:"Not specified"  }}</p>
 								<p>
@@ -136,14 +136,16 @@
 								<div class="row justify-content-center d-flex">
 									<div class="col-lg-12 post-list">
 										<h4 class="single-title"> Profile Summary </h4>
-											<hr />
-
+											
+											
+										<div style="    font-size: 14px;" class="ml-15 generic-blockquote">
 											{% if employee.about_me %}
 											{{ employee.about_me }}
 											{% else %}
 											+ Introduce yourself to employers and allows them to quickly understand who you are and focus on key capabilities and unique experience with an emphasis on results. Make it relevant to the career you are seeking and the value you would add to the employer  
 
 											{% endif %}
+										</div>
 											
 									</div>
 									
@@ -162,12 +164,12 @@
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> Professional Experience 
+											<h4 class="single-title highlited-single-title"> Professional Experience 
 												
 											
 											</h4>
-											<hr />
-
+											
+											<div class="ml-15">
 											{% for experience in employee.experiences.all %}
 												<div class='row'>
 													<div class='col-sm-7'>
@@ -183,15 +185,13 @@
 															<div><i class='fa fa-calendar-alt'></i> {{ experience.start_month|title }}, {{ experience.start_year }} - {{ experience.end_month|title }}, {{ experience.end_year }} </div>
 													</div>
 												</div>
-												<hr />
+												
 											{% empty %}
 											+ Your current/recent position/Employer comes first  and provide a brief overview of your successes relating to the position’s main responsibilities and most impressive accomplishments with results of your actions. Start every bullet with a relevant action word. 
 
 											{% endfor %}
-											
-										{% if experienceForm %}	
-											{% include 'add_experience.tmp' %}
-										{% endif %}
+											</div>
+									
 
 										</div>
 
@@ -210,21 +210,22 @@
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> Skill/Qualifications 
+											<h4 class="single-title highlited-single-title"> Skill/Qualifications 
 
 											</h4>
-											<hr />
+											
+											<div class="ml-15">
 
-											{% for skill in employee.skills.all %}
-											<span class='genric-btn success'>{{ skill.name |title }}</span>
-											{% empty %}
-											+ Highlight specific qualifications/skills including certifications that are either required/relevant for a particular job or are unique about you
-											{% endfor %}
+												{% for skill in employee.skills.all %}
+												<span class='btn skill-tags'>{{ skill.name |title }}</span>
+												{% empty %}
+												+ Highlight specific qualifications/skills including certifications that are either required/relevant for a particular job or are unique about you
+												{% endfor %}
 
-											{% if skillForm %}	
-												{% include 'add_skill.tmp' %}
-											{% endif %}
-
+												{% if skillForm %}	
+													{% include 'add_skill.tmp' %}
+												{% endif %}
+											</div>
 											
 										</div>
 										
@@ -241,23 +242,26 @@
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> Add your resume or CV
+											<h4 class="single-title highlited-single-title"> Resume / CV
 
 											</h4>
-											<hr />
+											
+											
+											<div class="ml-15">
+												<div class="row">
+													{% for cv in employee.cvs.all %}
+														<div class="col-sm-6">
+															<div class='h4'>{{ cv.name |title }} </div>
+															
+															<a href='{{ cv.document.url }}'>
+																{{ cv.document.name }}</a>
+														</div>
+													
+													{% empty %}
+													{% endfor %}
+												</div>
 
-											{% for cv in employee.cvs.all %}
-											<div class='h4'>{{ cv.name |title }} </div>
-											<a href='{{ cv.document.url }}'>
-												{{ cv.document.name }}</a>
-											<hr />
-											{% empty %}
-											{% endfor %}
-
-											{% if cvForm %}	
-												{% include 'add_cv.tmp' %}
-											{% endif %}
-
+											</div>
 											
 										</div>
 										
@@ -274,25 +278,26 @@
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> References
+											<h4 class="single-title highlited-single-title"> References
 
 											</h4>
-											<hr />
-
-											{% for reference in employee.references.all %}
-											<div class='h4'>{{ reference.first_name |title }} {{ reference.last_name |title }} </div>
-											<span>{{ reference.organization |title }}  </span><br />
-											<span>{{ reference.phone }}  </span><br />
-											<span>{{ reference.email }}  </span><br />
 											
-											<hr />
-											{% empty %}
-											{% endfor %}
 
-											{% if referenceForm %}	
-												{% include 'add_reference.tmp' %}
-											{% endif %}
+											<div class="ml-15">
+												<div class="row">
+													{% for reference in employee.references.all %}
+														<div class="col-sm-6">
+															<div class='h4'>{{ reference.first_name |title }} {{ reference.last_name |title }} </div>
+															<span>{{ reference.organization |title }}  </span><br />
+															<span>{{ reference.phone }}  </span><br />
+															<span>{{ reference.email }}  </span><br />
+														</div>
+														
+													{% empty %}
+													{% endfor %}
+												</div>
 
+											</div>
 											
 										</div>
 										
@@ -309,26 +314,27 @@
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> Work Samples
+											<h4 class="single-title highlited-single-title"> Work Samples
 
 											</h4>
-											<hr />
-
-											{% for worksample in employee.worksamples.all %}
-											<div class='h4'>{{ worksample.name }} </div>
-											<span>{{ worksample.description }}  </span> <br />
-											<a href='{{ worksample.document.url }}'>{{ worksample.document.name }}  </a> <br />
-											<span class="fa fa-calendar-o"></span> {{ worksample.date }}
 											
-											<hr />
-											{% empty %}
-											{% endfor %}
 
-											{% if workSampleForm %}	
-												{% include 'add_worksample.tmp' %}
-											{% endif %}
+											<div class="ml-15">
+												<div class="row">
+													{% for worksample in employee.worksamples.all %}
+														<div class="col-sm-6">
+															<div class='h4'>{{ worksample.name }} </div>
+															<span>{{ worksample.description }}  </span> <br />
+															<a href='{{ worksample.document.url }}'>{{ worksample.document.name }}  </a> <br />
+															<span class="fa fa-calendar-o"></span> {{ worksample.date }}
+														</div>
+													{% empty %}
+													{% endfor %}
+												</div>
 
-											
+
+											</div>
+
 										</div>
 										
 					
@@ -338,37 +344,7 @@
 						</section>
 						{% endif %}
 
-						{% if employee.associations.all %}
-						<section class="single-post post-area section-gap">
-								<div id='employee-skill' class="container">
-									<div class="row justify-content-center d-flex">
-										<div class="col-lg-12 post-list">
-
-											<h4 class="single-title"> Association
-
-											</h4>
-											<hr />
-
-											{% for association in employee.associations.all %}
-											<div class='h6'>{{ association.name }} </div>
-											
-											<hr />
-											{% empty %}
-											{% endfor %}
-
-											{% if associationForm %}	
-												{% include 'add_association.tmp' %}
-											{% endif %}
-
-											
-										</div>
-										
-					
-										
-									</div>
-								</div>	
-						</section>
-						{% endif %}
+						
 
 						{% if employee.worklinks.all %}
 						<section class="single-post post-area section-gap">
@@ -376,23 +352,25 @@
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> Links to my Work
+											<h4 class="single-title highlited-single-title"> Links to my Work
 											</h4>
-											<hr />
-
-											{% for worklink in employee.worklinks.all %}
-											<div class='h4'><a href='{{ worklink.url }}'>{{ worklink.name }} </a></div>
-											<p'>{{ worklink.description }}  </p>
 											
-											<hr />
-											{% empty %}
-											{% endfor %}
-
-											{% if workLinkForm %}	
-												{% include 'add_worklink.tmp' %}
-											{% endif %}
-
 											
+											<div class="ml-15">
+												<div class="row">
+													
+													{% for worklink in employee.worklinks.all %}
+													<div class="col-sm-6">
+														<div class='h4'><a href='{{ worklink.url }}'>{{ worklink.name }} </a></div>
+														<p'>{{ worklink.description }}  </p>
+													</div>
+													
+													{% empty %}
+													{% endfor %}
+												</div>
+
+											</div>
+
 										</div>
 										
 					
@@ -408,32 +386,34 @@
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> Education/Training</h4>
-											<hr />
+											<h4 class="single-title highlited-single-title"> Education/Training</h4>
+											
 
-											{% for education in employee.educations.all %}
-											<div class='row'>
-												<div class='col-sm-7'>
-													<div class='h5'>{{ education.school }} </div>
-													<div class='h5'>{{ education.field_of_study }} </div>
-													<div class='h5'>{{ education.degree.name }} </div>
-													<div><i class='fa fa-map-marker'></i> {{ education.city }}, {{ education.region.name }} </div>
-													
-													<br />
-													<p>{{ education.description}}</p>
-												</div>
+											<div class="ml-15">
+												{% for education in employee.educations.all %}
+												<div class='row'>
+													<div class='col-sm-7'>
+														<div class='h5'>{{ education.school }} </div>
+														<div class='h5'>{{ education.field_of_study }} </div>
+														<div class='h5'>{{ education.degree.name }} </div>
+														<div><i class='fa fa-map-marker'></i> {{ education.city }}, {{ education.region.name }} </div>
+														
+														<br />
+														<p>{{ education.description}}</p>
+													</div>
 
-												<div class='col-sm-4'>
-														<div><i class='fa fa-calendar-alt'></i> {{ education.start_month|title }}, {{ education.start_year }} - {{ education.end_month|title }}, {{ education.end_year }} </div>
+													<div class='col-sm-4'>
+															<div><i class='fa fa-calendar-alt'></i> {{ education.start_month|title }}, {{ education.start_year }} - {{ education.end_month|title }}, {{ education.end_year }} </div>
+													</div>
 												</div>
+												
+												{% empty %}
+												+ Recent Education comes first & Include GPA only if it is above 3.5 or Honors Received within last five years, List relevant Training 
+												{% endfor %}
+												{% if educationForm %}	
+													{% include 'add_education.tmp' %}
+												{% endif %}
 											</div>
-											<hr />
-											{% empty %}
-											+ Recent Education comes first & Include GPA only if it is above 3.5 or Honors Received within last five years, List relevant Training 
-											{% endfor %}
-											{% if educationForm %}	
-												{% include 'add_education.tmp' %}
-											{% endif %}
 										</div>
 										
 					
@@ -449,23 +429,25 @@
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
 
-											<h4 class="single-title"> 
+											<h4 class="single-title highlited-single-title"> 
 												Volunteer Experience/Membership/Afflilations
 												</h4>
-											<hr />
+											
+											
+											<div class="ml-15">
+												{% if employee.volunteer_experience %}
+												<div class='row'>
+													<div class='col-sm-7'>
+														
+														<p>{{ employee.volunteer_experience}}</p>
+													</div>
 
-											{% if employee.volunteer_experience %}
-											<div class='row'>
-												<div class='col-sm-7'>
-													
-													<p>{{ employee.volunteer_experience}}</p>
 												</div>
-
+												
+												{% else %}
+												+ Memberships and volunteer work show a commitment to your industry. Mention leadership roles, relevant achievements and recognition received
+												{% endif %}
 											</div>
-											<hr />
-											{% else %}
-											+ Memberships and volunteer work show a commitment to your industry. Mention leadership roles, relevant achievements and recognition received
-											{% endif %}
 										</div>
 										
 					

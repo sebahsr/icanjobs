@@ -3,7 +3,7 @@
 
                                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/company/admin/edit/">
                                                 {% csrf_token %}
-                                                <h4 class="mb-xlg">Personal Information</h4>
+                                                <h4 class="mb-xlg">Company Information</h4>
                                                 <fieldset>
                                                     <div class="form-group">
                                                         <label class="col-md-3 control-label" for="profileFirstName">Company Name</label>
@@ -63,7 +63,7 @@
                                                             <div class="col-md-8">
                                                                 <div class="input-group">
                                                                         <span class="input-group-addon">
-                                                                            <i class="fa fa-facebook"></i>
+                                                                            <i class="fa fa-globe"></i>
                                                                         </span>
                             
                                                                         {{ companyForm.website }}
@@ -111,7 +111,7 @@
                                                         </div>
                                                 </fieldset>
                                                 <hr class="dotted">
-                                                <h4 class="mb-xlg">Company Brief Description</h4>
+                                                <h4 class="mb-xlg">About the company</h4>
                                                 <fieldset>
                                                     <div class="form-group">
                                                         <div class="col-md-12">
