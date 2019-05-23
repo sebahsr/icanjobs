@@ -77,7 +77,13 @@
 									
 								</div>
 
-								<p class="address"><span class="lnr lnr-map"></span> {{ company.city|title }}, {{ company.region.name|title}}</p>
+								<p class="address"><span class="lnr lnr-map"></span> {{ company.city|title }},
+									{% ifequal company.region.name 'Addis Ababa' %}
+									Ethiopia
+									{% else %}
+										{{ company.region.name }}
+									{% endifequal %}
+								</p>
 								
 								<blockquote class="generic-blockquote">
 									

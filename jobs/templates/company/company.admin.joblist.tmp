@@ -42,14 +42,14 @@
 												</div>
 		
 												<div class="p-md">
-													<h4 class="text-semibold mt-none"><a href='/jobs/job-{{job.pk}}/'>{{ job.title }}</a></h4>
+													<h4 class="text-semibold mt-none"><a style="color:#55a747"  href='/jobs/job-{{job.pk}}/'>{{ job.title }}</a></h4>
 													<p>{{ job.summary | truncatechars:300 }}</p>
 												</div>
 											</div>
 											<div class="panel-footer panel-footer-btn-group">
-												<a href="/company/admin/create-job/job-{{job.pk}}/"><i class="fa fa-pencil mr-xs"></i> Edit</a>
-												<a href="#"><i class="fa fa-project-diagram mr-xs"></i> {{ job.employement_type.name }}</a>
-												<a href="#"><i class="fa fa-map-marker mr-xs"></i> {{ job.city }}, {{ job.region.name }}</a>
+												<a style="color:#55a747"  href="/company/admin/create-job/job-{{job.pk}}/"><i class="fa fa-pencil mr-xs"></i> Edit</a>
+												<a style="color:#55a747"  href="#"><i class="fa fa-project-diagram mr-xs"></i> {{ job.employement_type.name }}</a>
+												<a style="color:#55a747"  href="#"><i class="fa fa-map-marker mr-xs"></i> {{ job.city }}, {{ job.region.name }}</a>
 											</div>
 									</section>
 									{% endfor %}

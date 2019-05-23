@@ -77,7 +77,13 @@
 												</p>
 												{% endif %}
 
-												<span class="contact-info"><span class="fa fa-map-marker"></span> {{ job.company.city }}, {{ job.company.region.name }}</span><br/>
+												<span class="contact-info"><span class="fa fa-map-marker"></span> {{ job.company.city }}, 
+												{% ifequal job.company.region.name 'Addis Ababa' %}
+												Ethiopia
+												{% else %}
+												{{ job.company.region.name }}
+												{% endifequal %}
+											</span><br/>
 												{% if job.company.user.email %}
 												<span class="contact-info"><span class="fa fa-envelope"></span> {{ job.company.user.email }}</span><br/>
 												{% endif %}
@@ -139,13 +145,24 @@
 						<div class="single-post-detail-job job-experience">
 							<h4 class="pt-2 single-title-job-detail">How To Apply</h4>
 							<p>
-								{{ job.how_to_apply|linebreaksbr }}
+						{{ job.how_to_apply|linebreaksbr }}
 							</p>
 							{% if job.application_link %}
 								<a class='btn skill-tags' href='{{ job.application_link }}'>Click Here to Apply <i class='fa fa-forward'></i></a>
-							{% endif %}
-							{% if not request.user.is_authenticated %}
+							{% elif not request.user.is_authenticated %}
 							<a class='btn skill-tags' href='/login/'>Apply Here <i class='fa fa-forward'></i></a>
+							{% else %}
+							<div class="pb-10">
+									{% if job.eligible_to_apply %}
+											{% if not job.applied_already %}
+											<a class="btn skill-tags" href="/jobs/applly/job-{{ job.pk }}/"><i class='fa fa-send'></i> Apply Now</a>
+			
+											{% else %}
+											<span class='btn btn-danger'><i class='fa fa-check-square'></i> Applied</a></span>
+			
+											{% endif %}
+									{% endif %}
+								</div>
 
 							{% endif %}
 						</div>
@@ -163,17 +180,7 @@
 							<div class="single-post-detail-job d-flex flex-row">
 
 									<div class="details col-sm-10">
-										<div class="pb-10">
-											{% if job.eligible_to_apply %}
-													{% if not job.applied_already %}
-													<a class="btn skill-tags" href="/jobs/applly/job-{{ job.pk }}/"><i class='fa fa-send'></i> Apply Now</a>
-					
-													{% else %}
-													<span class='btn btn-danger'><i class='fa fa-check-square'></i> Applied</a></span>
-					
-													{% endif %}
-											{% endif %}
-										</div>
+										
 										
 										<div class="pt-2 single-title-job-detail">
 											Job Detail
