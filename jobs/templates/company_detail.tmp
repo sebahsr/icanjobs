@@ -46,7 +46,6 @@
 							{% else %}
 								{{ company.region.name }}
 							{% endifequal %}
-							{{ company.region }}				
 						</h1>	
 					</div>											
 				</div>

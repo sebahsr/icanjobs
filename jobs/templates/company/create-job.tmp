@@ -181,12 +181,11 @@
 													<div class="form-group">
 														
 														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.summary.errors.0 }}</div>
-														<label class="col-sm-3 control-label" for="w4-first-name">Role overview/about the positon</label> 
+														<label class="col-sm-3 control-label" for="w4-first-name">Job Description</label> 
 														<div class="col-sm-9">
 															{{ jobForm.summary }}
 														</div>
-													</div>
-
+													</div>	
 													<div class="form-group">
 													
 														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.education_experience.errors.0 }}</div>
@@ -206,30 +205,50 @@
 															</div>
 														</div>
 														
+					
+
+													
 													<div class="form-group">
 														
-														<label class="col-sm-3 control-label" for="w4-email">How to Apply</label> 
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.responsibilities.errors.0 }}</div>
+														<label class="col-sm-3 control-label" for="w4-cc">Duties and responsibilities</label> 
 														<div class="col-sm-9">
-															{{ jobForm.how_to_apply }}
+															{{ jobForm.responsibilities}}
 														</div>
 													</div>
-
+													
 													<div class="form-group">
 														
-														<label class="col-sm-3 control-label" for="w4-email">Application Link</label> 
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.requirements.errors.0 }}</div>
+														<label class="col-sm-3 control-label" for="w4-last-name">Key Requirements</label> 
 														<div class="col-sm-9">
-															{{ jobForm.application_link }}
+															{{ jobForm.requirements }}
 														</div>
 													</div>
 
 													<div class="form-group">
 														
-														<label class="col-sm-3 control-label" for="w4-email">Apply through iCAN</label> 
-														<div class="col-sm-4">
-															{{ jobForm.apply_through_portal }}
+															<label class="col-sm-3 control-label" for="w4-email">How to Apply</label> 
+															<div class="col-sm-9">
+																{{ jobForm.how_to_apply }}
+															</div>
 														</div>
-													</div>
-
+	
+														<div class="form-group">
+															
+															<label class="col-sm-3 control-label" for="w4-email">Application Link</label> 
+															<div class="col-sm-9">
+																{{ jobForm.application_link }}
+															</div>
+														</div>
+	
+														<div class="form-group">
+															
+															<label class="col-sm-3 control-label" for="w4-email">Apply through iCAN</label> 
+															<div class="col-sm-4">
+																{{ jobForm.apply_through_portal }}
+															</div>
+														</div>
 													
 													<div class="from-group">
 														<div class="col-sm-4 col-sm-offset-5">
