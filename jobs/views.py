@@ -59,9 +59,9 @@ def homeView(request, **kwargs):
 
     categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
     featured_categories = categories[:6]
-    recent_jobs = models.Job.objects.all()[:5]
+    recent_jobs = models.Job.objects.all()[:constants.RECENT_JOBS_NUMBER]
     employement_types = models.EmployementType.objects.all()
-    recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:3]
+    recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:constants.RECENT_BLOG_NUMBER]
     regions = models.Region.objects.all()
     return render(request, template_name, locals())
 
@@ -83,9 +83,9 @@ def jobView(request, **kwargs):
 
         search_query = request.GET.get('q', '')
         cat = request.GET.get('cat', 'all') 
-        reg = request.GET.get('reg', 'all') 
+        location = request.GET.get('location', '') 
         employement_type = request.GET.get('employement_type', 'all')
-        jobs, category, employement_type, region, search_query = jobSearchHelper(search_query, cat, reg, employement_type)
+        jobs, category, employement_type, region, search_query = jobSearchHelper(search_query, location, cat, employement_type)
         search_result_count = jobs.count()
 
     else:
@@ -133,11 +133,11 @@ def jobRegionListHelper(regionID=None):
     jobs = region.jobs.all()
     return jobs, region
 
-def jobSearchHelper(search_query, cat='all', reg='all', employement_type='all'):
+def jobSearchHelper(search_query, location, cat='all', employement_type='all'):
 
     query = Q(title__icontains=search_query)
-    region = get_object_or_404(models.Region, pk=reg) if reg and reg != 'all' else None
-    query &= Q(region=region) if region else Q()
+    regions = models.Region.objects.filter(name__icontains=location)
+    query &= Q(region__in=regions) | Q(city__icontains=location)
     employement_type = get_object_or_404(models.EmployementType, pk=employement_type) if employement_type and employement_type != 'all' else None
     query &= Q(employement_type=employement_type) if employement_type else Q()
     category=get_object_or_404(models.Category, pk=cat) if cat and cat != 'all' else None
@@ -145,7 +145,7 @@ def jobSearchHelper(search_query, cat='all', reg='all', employement_type='all'):
 
 
     jobs = models.Job.objects.filter( query )
-    return jobs, category, employement_type, region , search_query
+    return jobs, category, employement_type, regions , search_query
 
 def companyView(request, companyID, **kwargs):
     is_logged_in = request.user.is_authenticated and hasattr(request.user, 'company')

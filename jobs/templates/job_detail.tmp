@@ -64,13 +64,19 @@
 											</div>
 											<div class="col-sm-1"></div>
 											<div class="details col-sm-8 ">
+												
 												<div class="title d-flex flex-row justify-content-between">
 													<div class="titles pb-2">
 														<a href="/companies/company-{{job.company.pk}}/"><h4>{{ job.company.name | title }}</h4></a>					
 													</div>
 													
 												</div>
-				
+												{% if  job.company.brief_description %}
+												<p>
+													{{ job.company.brief_description|truncatechars:100 }}
+												</p>
+												{% endif %}
+
 												<span class="contact-info"><span class="fa fa-map-marker"></span> {{ job.company.city }}, {{ job.company.region.name }}</span><br/>
 												{% if job.company.user.email %}
 												<span class="contact-info"><span class="fa fa-envelope"></span> {{ job.company.user.email }}</span><br/>
@@ -135,6 +141,9 @@
 							<p>
 								{{ job.how_to_apply|linebreaksbr }}
 							</p>
+							{% if job.application_link %}
+								<a href='{{ job.application_link }}'>{{ application_link }}</a>
+							{% endif %}
 						</div>
 						{% endif %}
 
@@ -170,14 +179,21 @@
 										
 										<table class="table table-responsive">
 											<tr><th><span class="fa fa-project-diagram"></span> Employement Type </th><td> {{ job.employement_type.name }}</td></td></tr>
-											<tr><th><span class="fa fa-dollar-sign"></span> Salary  </th><td> 
 											{% if job.salary %}
+											<tr><th><span class="fa fa-dollar-sign"></span> Salary  </th><td> 
 												{{ job.salary }} ETB
-											{% else %}
+											</td></td></tr>
+
+											{% elif not job.salary_unpaid %}
+											<tr><th><span class="fa fa-dollar-sign"></span> Salary  </th><td> 
 												Unpaid
+											</td></td></tr>
+											{% elif job.salary_unpaid %}
+											<tr><th><span class="fa fa-dollar-sign"></span> Salary  </th><td> 
+												Salary Not Specified
+											</td></td></tr>
 											{% endif %}
 											
-											</td></td></tr>
 											
 											<tr><th><span class="fa fa-desktop-alt"></span> Career Level </th><td> {{ job.level }}</td></td></tr>
 											<tr><th><span class="fa fa-check-square"></span> Posted On </th><td> {{ job.created_at|date }}</td></td></tr>

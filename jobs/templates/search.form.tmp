@@ -1,0 +1,41 @@
+<form class="serach-form-area" action="/jobs/search/" method="GET">
+								<div class="row justify-content-center form-wrap">
+									<div class="col-lg-3 form-cols">
+										<input type="text" class="form-control" name="q" placeholder="what are you looking for?">
+                                    </div>
+                                    <div class="col-lg-2 form-cols">
+                                            <input type="text" class="form-control" name="location" placeholder="Location">
+                                     </div>
+
+									<div class="col-lg-3 form-cols">
+											<div class="default-select" id="default-selects2">
+												<select name='employement_type'>
+													<option value="all">All Position  types</option>
+													{% for employement_type in employement_types %}
+														<option value="{{ employement_type.pk}}">{{ employement_type.name|upper }}</option>
+													{% endfor %}
+												</select>
+											</div>										
+									</div>
+
+									
+									<div class="col-lg-2 form-cols">
+										<div class="default-select" id="default-selects2">
+											<select name='cat'>
+												<option value="all">All Sectors</option>
+												{% for category in categories %}
+													<option value="{{ category.pk }}">{{ category.name|upper }}</option>
+												{% endfor %}
+											</select>
+										</div>										
+									</div>
+
+									
+									
+									<div class="col-lg-2 form-cols">
+									    <button type="submit" class="btn btn-info">
+									      <span class="lnr lnr-magnifier"></span> Search
+									    </button>
+									</div>								
+								</div>
+							</form>

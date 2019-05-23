@@ -26,6 +26,7 @@ class JobLevel(models.Model):
 
 class EmployementType(models.Model):
     name = models.CharField(max_length=50)
+    color = models.CharField(max_length=20, default='#55a747')
 
     def __unicode__(self):
         return self.name
@@ -63,7 +64,7 @@ class Company(Entity):
     profile_pic = models.FileField(upload_to=functions.getFileName, null=True, blank=True)
     brief_description = models.TextField(null=True, blank=True)
     region = models.ForeignKey('Region', related_name='companies')
-    city = models.CharField(max_length=100)
+    city = models.CharField(max_length=100, default="Addis Ababa")
     website = models.URLField(blank=True, null=True)
     facebook = models.URLField(blank=True, null=True)
     twitter = models.URLField(blank=True, null=True)
@@ -181,7 +182,7 @@ class Job(models.Model):
     how_to_apply = models.TextField(blank=True)
     responsibilities = models.TextField(blank=True)
     department = models.CharField(blank=True, max_length=100)
-
+    salary_unpaid = models.BooleanField(default=False)
     level = models.ForeignKey('JobLevel')
     company = models.ForeignKey('Company', related_name='jobs')
     salary = models.FloatField(blank=True, null=True) #0 means not determined 
@@ -190,12 +191,13 @@ class Job(models.Model):
     status = models.IntegerField(choices=constants.JOB_STATUS, default=constants.JOB_STATUS_OPEN)
     employement_type = models.ForeignKey('EmployementType', blank=True, null=True)
     report_to = models.CharField(blank=True, max_length=100)
-    region = models.ForeignKey('Region', related_name='jobs')
-    city = models.CharField(max_length=100)
+    region = models.ForeignKey('Region', null=True, blank=True, related_name='jobs')
+    city = models.CharField(max_length=100, default="Addis Ababa")
     created_at = models.DateTimeField(auto_now_add=True)
     categories = models.ManyToManyField('Category', blank=True, related_name='jobs')
     views = models.IntegerField(default=0, blank=True)
     apply_through_portal = models.BooleanField(default=True)
+    application_link = models.URLField(blank=True, null=True)
 
     class Meta:
         ordering = ('-created_at', )

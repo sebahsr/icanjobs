@@ -47,52 +47,7 @@
 							<p class="text-white link-nav">
 									Find Talent. Build Human Capital. 
 								</p>	
-							<form class="serach-form-area" action="/jobs/search/" method="GET">
-								<div class="row justify-content-center form-wrap">
-									<div class="col-lg-3 form-cols">
-										<input type="text" class="form-control" name="q" placeholder="what are you looking for?">
-									</div>
-									<div class="col-lg-3 form-cols">
-											<div class="default-select" id="default-selects2">
-												<select name='employement_type'>
-													<option value="all">All Position  types</option>
-													{% for employement_type in employement_types %}
-														<option value="{{ employement_type.pk}}">{{ employement_type.name|upper }}</option>
-													{% endfor %}
-												</select>
-											</div>										
-									</div>
-
-									
-									<div class="col-lg-2 form-cols">
-										<div class="default-select" id="default-selects2">
-											<select name='cat'>
-												<option value="all">All Sectors</option>
-												{% for category in categories %}
-													<option value="{{ category.pk }}">{{ category.name|upper }}</option>
-												{% endfor %}
-											</select>
-										</div>										
-									</div>
-
-									<div class="col-lg-2 form-cols">
-											<div class="default-select" id="default-selects"">
-												<select name='reg'>
-													<option value="all">All Regions</option>
-													{% for region in regions %}
-														<option value="{{ region.pk }}">{{ region.name|upper }}</option>
-													{% endfor %}
-												</select>
-											</div>
-										</div>
-									
-									<div class="col-lg-2 form-cols">
-									    <button type="submit" class="btn btn-info">
-									      <span class="lnr lnr-magnifier"></span> Search
-									    </button>
-									</div>								
-								</div>
-							</form>
+							{% include 'search.form.tmp' %}
 							{% if search_result_count is not None and search_result_count >= 0 and search_query %}
 							<p class="text-white">{{ search_result_count }} Results found for <span>"{{ search_query }}"</span></p>
 							{% endif %}
@@ -101,34 +56,71 @@
 				</div>
 			</section>
 
+						<!-- Start post Area -->
+						<section class="post-area section-gap">
+							<div class="container">
+									<div class="row d-flex">
+											<div class="menu-content pb-20 col-md-12">
+												<div class="cs-heading"><h3 class="cs-fancy">RECENT JOBS</h3>
+													<div class="heading-description">
+														List of jobs recently published on iCAN.
+													</div>
+											</div>
+											</div>
+				
+										
+				
+										</div>
+				
+								<div class="row d-flex">
+									<div class="row post-list">
+										{% for job in recent_jobs %}
+											<div class="col-lg-6  single-post d-flex flex-row">
+												<div class="thumb col-sm-4">
+													<img style="max-width: 100px" src="{{ job.company.profile_pic.url }}" alt="">
+													
+												</div>
+												<div class="details col-sm-8">
+													<div class="title d-flex flex-row justify-content-between">
+														<div class="titles">
+															<a href="/jobs/job-{{ job.id }}/"><h4>{{ job.title|title }}</h4></a>
+														</div>
+														
+													</div>
+													<div>
+														<span style="border-color:{{ job.employement_type.color }}; color:{{ job.employement_type.color }}" class='my-tag'> {{ job.employement_type.name|upper }}</span>
+													</div>
+													
+													<div class="address">	
+															<h6> <a href='/companies/company-{{ job.company.pk }}/'>{{ job.company.name }} </a></h6>
+															{% if job.deadline %}
+															<h6> <span class="fa fa-clock-o"></span> Closing On {{ job.deadline }} </a></h6>
+															{% endif %}
+													</div>
+													
+												</div>
+											</div>	
+										{% empty %}
+											<div class="h3"> 
+												No jobs Found 
+											</div>
+										{% endfor %}
+										
+										</div>
+									
+				
+									<!-- sidebar -->
+									<!-- End side bar -->
+									
+								</div>
+							</div>	
+						</section>
+						<!-- End post Area -->
+			
+						
 			{% include 'services.tmp' %}
 			
 
-			<section class="feature-cat-area pt-10" id="category">
-					<div class="container">
-						<div class="row d-flex">
-
-							
-							<div class="menu-content pb-20 col-md-12">
-							
-								<div class="cs-heading"><h3 class="cs-fancy">BROWSE JOBS BY SECTORS</h3>
-									<div class="heading-description">
-										Sectors with the most open jobs.
-											<br /> <br />
-									</div>
-							</div>
-
-								<ul class="spatialism-sec row">
-									{% for category in categories %}
-									<li class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><a href="/jobs/category-{{ category.pk }}/">{{ category.name|upper }}<span>({{ category.job_count}} open positions)</span></a>  </li>
-									{% endfor %}
-
-									
-								</ul>
-							</div>
-						</div>	
-					</div>	
-				</section>
 
 
 
@@ -158,64 +150,33 @@
 			</div>	
 		</section>
 		
-			<!-- Start post Area -->
-			<section class="post-area section-gap">
-				<div class="container">
-						<div class="row d-flex">
-								<div class="menu-content pb-20 col-md-12">
-									<div class="cs-heading"><h3 class="cs-fancy">RECENT JOBS</h3>
-										<div class="heading-description">
-											Sectors with the most open jobs.
-										</div>
-								</div>
-								</div>
-	
-							
-	
+
+		
+		<section class="feature-cat-area pt-10" id="category">
+			<div class="container">
+				<div class="row d-flex">
+
+					
+					<div class="menu-content pb-20 col-md-12">
+					
+						<div class="cs-heading"><h3 class="cs-fancy">BROWSE JOBS BY SECTORS</h3>
+							<div class="heading-description">
+								Sectors with the most open jobs.
+									<br /> <br />
 							</div>
-	
-					<div class="row d-flex">
-						<div class="row post-list">
-							{% for job in recent_jobs %}
-								<div class="col-lg-6  single-post d-flex flex-row">
-									<div class="thumb col-sm-4">
-										<img style="max-width: 100px" src="{{ job.company.profile_pic.url }}" alt="">
-										
-									</div>
-									<div class="details col-sm-8">
-										<div class="title d-flex flex-row justify-content-between">
-											<div class="titles">
-												<a href="/jobs/job-{{ job.id }}/"><h4>{{ job.title|title }}</h4></a>
-											</div>
-											
-										</div>
-	
-										<p class="address">	
-												<h6> <a href='/companies/company-{{ job.company.pk }}/'>{{ job.company.name }} </a></h6>
-												{% if job.deadline %}
-												<h6> <span class="fa fa-clock-o"></span> Closing On {{ job.deadline }} </a></h6>
-												{% endif %}
-										</p>
-										
-									</div>
-								</div>	
-							{% empty %}
-								<div class="h3"> 
-									No jobs Found 
-								</div>
+					</div>
+
+						<ul class="spatialism-sec row">
+							{% for category in categories %}
+							<li class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><a href="/jobs/category-{{ category.pk }}/">{{ category.name|upper }}<span>({{ category.job_count}} open positions)</span></a>  </li>
 							{% endfor %}
+
 							
-							</div>
-						
-	
-						<!-- sidebar -->
-						<!-- End side bar -->
-						
+						</ul>
 					</div>
 				</div>	
-			</section>
-			<!-- End post Area -->
-			
+			</div>	
+		</section>
 	
 
 		<section class="post-area section-ga pt-10" >

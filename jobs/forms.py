@@ -80,6 +80,10 @@ class JobForm(forms.ModelForm):
             'categories' : forms.SelectMultiple(attrs={
                 "class" : "form-control", 
                 "data-plugin-multiselect" : True}),
+            
+            'salary_unpaid' : forms.CheckboxInput(attrs={
+                "class" : "form-control"
+            }), 
 
             'city' : forms.TextInput(attrs={
                 "placeholder" : "Location","class" : "form-control"}),
@@ -95,6 +99,11 @@ class JobForm(forms.ModelForm):
             }),
             'how_to_apply' : forms.Textarea(attrs={
                 "placeholder" : "How to Apply" , "class" : "form-control"
+            }),
+
+            'application_link' : forms.TextInput(attrs={
+                "class" : "form-control",
+                "placeholder" : "http://example.com"
             }),
 
             'knowledge_skills' : forms.Textarea(attrs={

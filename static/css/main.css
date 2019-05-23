@@ -4845,6 +4845,14 @@ a.join-ican {
   border: 1px solid transparent;
 }
 
+.my-tag{
+  display: inline-block;
+  margin: 2px;
+  padding: 5px;
+  border: 1px solid #55a747;
+  color: #55a747;
+}
+
 .page-header-title{
   padding: 23px 0px;
   font-size: 28px;

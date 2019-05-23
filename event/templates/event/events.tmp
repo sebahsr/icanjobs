@@ -98,7 +98,7 @@
                         </h5>
                             <hr />
                         <p class="blog_word">
-                            {{ event.description|safe | truncatechars:200}}
+                            {{ event.description|striptags | truncatechars:200}}
                         </p>
                         <a class="btn btn-primary" href="/event/event-{{event.pk }}/" class="readmore_btn">Read More</a>
                     </div>
