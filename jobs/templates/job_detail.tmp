@@ -135,14 +135,14 @@
 						</div>
 						{% endif %}
 
-						{% if job.how_to_apply %}
+						{% if job.how_to_apply and not job.applied_already %}
 						<div class="single-post-detail-job job-experience">
 							<h4 class="pt-2 single-title-job-detail">How To Apply</h4>
 							<p>
 								{{ job.how_to_apply|linebreaksbr }}
 							</p>
 							{% if job.application_link %}
-								<a href='{{ job.application_link }}'>{{ application_link }}</a>
+								<a class='btn skill-tags' href='{{ job.application_link }}'>Click Here to Apply <i class='fa fa-forward'></i></a>
 							{% endif %}
 						</div>
 						{% endif %}
