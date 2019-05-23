@@ -109,11 +109,11 @@
 								</p>
 						</div>
 						{% endif %}
-						{% if job.experience %}
+						{% if job.education_experience %}
 						<div class="single-post-detail-job job-details">
 							<h4 class="pt-2 single-title-job-detail">Education And Experience</h4>
 							<p>
-								{{ job.experience|linebreaksbr }}
+								{{ job.education_experience|linebreaksbr }}
 							</p>
 						</div>
 						{% endif %}
