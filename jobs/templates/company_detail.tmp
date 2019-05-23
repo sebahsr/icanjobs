@@ -40,7 +40,13 @@
 				<div class="row d-flex align-items-center justify-content-center">
 					<div class="about-content-detail col-lg-12">
 						<h1 class="text-white">
-							{{ company.name }} - {{ company.city }}, {{ company.region }}				
+							{{ company.name }} - {{ company.city }},  
+							{% ifequal company.region.name 'Addis Ababa' %}
+									Ethiopia
+							{% else %}
+								{{ company.region.name }}
+							{% endifequal %}
+							{{ company.region }}				
 						</h1>	
 					</div>											
 				</div>
