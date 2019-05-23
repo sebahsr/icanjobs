@@ -11134,21 +11134,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 .thumb-info .thumb-info-title {
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
-	background: rgba(36, 27, 28, 0.9);
-	bottom: 10%;
-	color: #FFF;
-	font-size: 18px;
-	font-weight: 700;
-	left: 0;
-	letter-spacing: -1px;
-	padding: 9px 11px 9px;
-	position: absolute;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-	text-transform: uppercase;
-	z-index: 1;
+	.thumb-info .thumb-info-title {
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		transition: all 0.3s;
+		background: rgb(85, 167, 71);
+		/* bottom: 10%; */
+		color: #FFF;
+		font-size: 16px;
+		font-weight: 400;
+		/* left: 0; */
+		overflow-wrap: break-word;
+		display: block;
+		letter-spacing: -1px;
+		padding: 9px 11px 9px;
+		/* position: absolute; */
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+		text-transform: uppercase;
+		z-index: 1;
+	}
 }
 
 .thumb-info .thumb-info-inner {
@@ -11156,7 +11160,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
 	display: block;
-	white-space: nowrap;
+	font-size: 13px;
+	font-weight: 600;
 }
 
 .thumb-info .thumb-info-type {

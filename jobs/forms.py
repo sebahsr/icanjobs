@@ -61,7 +61,7 @@ class JobForm(forms.ModelForm):
                 "class" : "form-control"}),
             
 
-            'salary' : forms.NumberInput(attrs={
+            'salary' : forms.TextInput(attrs={
                 "placeholder" : "Salary","class" : "form-control"}),
 
             'position' : forms.TextInput(attrs={
@@ -81,13 +81,11 @@ class JobForm(forms.ModelForm):
                 "class" : "form-control", 
                 "data-plugin-multiselect" : True}),
             
-            'salary_unpaid' : forms.CheckboxInput(attrs={
-                "class" : "form-control"
-            }), 
+            
 
             'city' : forms.TextInput(attrs={
                 "placeholder" : "Location","class" : "form-control"}),
-
+           
             'summary' : forms.Textarea(attrs={
                 "placeholder" : "Summary" , "class" : "form-control"
             }),

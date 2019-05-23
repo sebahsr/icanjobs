@@ -182,10 +182,9 @@ class Job(models.Model):
     how_to_apply = models.TextField(blank=True)
     responsibilities = models.TextField(blank=True)
     department = models.CharField(blank=True, max_length=100)
-    salary_unpaid = models.BooleanField(default=False)
     level = models.ForeignKey('JobLevel')
     company = models.ForeignKey('Company', related_name='jobs')
-    salary = models.FloatField(blank=True, null=True) #0 means not determined 
+    salary = models.CharField(max_length=200, blank=True, null=True) #0 means not determined 
     number_of_candidates = models.IntegerField(blank=True, null=True) #0 means not determined 
     deadline = models.DateField(blank=True, null=True)
     status = models.IntegerField(choices=constants.JOB_STATUS, default=constants.JOB_STATUS_OPEN)

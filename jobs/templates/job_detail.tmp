@@ -73,7 +73,7 @@
 												</div>
 												{% if  job.company.brief_description %}
 												<p>
-													{{ job.company.brief_description|truncatechars:100 }}
+													{{ job.company.brief_description|truncatechars:100 }} <a style="text-decoration:underline;" href="/companies/company-{{job.company.pk}}/">Read More</a>
 												</p>
 												{% endif %}
 
@@ -101,14 +101,7 @@
 						</div>
 						{% endif %}
 
-						{% if job.responsibilities %}
-						<div class="single-post-detail-job job-details">
-								<h4 class="pt-2 single-title-job-detail">Job Duties and Responsibilities</h4>
-								<p>
-									{{ job.responsibilities|linebreaksbr }}
-								</p>
-						</div>
-						{% endif %}
+						
 						{% if job.experience %}
 						<div class="single-post-detail-job job-details">
 							<h4 class="pt-2 single-title-job-detail">Education And Experience</h4>
@@ -117,14 +110,7 @@
 							</p>
 						</div>
 						{% endif %}
-						{% if job.requirements %}
-						<div class="single-post-detail-job job-experience">
-							<h4 class="pt-2 single-title-job-detail">Key Requirements</h4>
-							<p>
-								{{ job.requirements|linebreaksbr }}
-							</p>
-						</div>
-						{% endif %}
+		
 
 						{% if job.knowledge_skills %}
 						<div class="single-post-detail-job job-experience">
@@ -182,16 +168,7 @@
 											{% if job.salary %}
 											<tr><th><span class="fa fa-dollar-sign"></span> Salary  </th><td> 
 												{{ job.salary }} ETB
-											</td></td></tr>
-
-											{% elif not job.salary_unpaid %}
-											<tr><th><span class="fa fa-dollar-sign"></span> Salary  </th><td> 
-												Unpaid
-											</td></td></tr>
-											{% elif job.salary_unpaid %}
-											<tr><th><span class="fa fa-dollar-sign"></span> Salary  </th><td> 
-												Salary Not Specified
-											</td></td></tr>
+							
 											{% endif %}
 											
 											
@@ -217,7 +194,15 @@
 										
 											</td></td></tr>
 											{% endif %}
-											<tr><th><span class="fa fa-map-marker"></span> Duty Station (Location)  </th><td>  {{ job.city }}, {{ job.region.name }}</td></td></tr>
+											<tr><th><span class="fa fa-map-marker"></span> Duty Station (Location)  </th><td>  
+												{{ job.city }}, 
+												{% ifequal job.region.name 'Addis Ababa' %}
+													 Ethiopia
+												{% else %}
+													{{ job.region.name }}
+												{% endifequal %}
+											
+											</td></td></tr>
 
 										</table>
 										{% if job.categories.all %}

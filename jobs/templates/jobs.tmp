@@ -139,7 +139,14 @@
 
                                     <ul>
                                        <li><span> Posted</span> {{ job.created_at|date}}</li>                                 
-                                       <li><span>Location</span>{{ job.city}}, {{ job.region }} </li>                                                            
+									   <li><span>Location</span>{{ job.city}}, 
+										{% ifequal job.region.name 'Addis Ababa' %}
+													 Ethiopia
+										{% else %}
+											{{ job.region.name }}
+										{% endifequal %}	
+									
+									</li>                                                            
                                     </ul>
 
                                     <p>

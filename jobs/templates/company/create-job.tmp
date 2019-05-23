@@ -36,10 +36,10 @@
 											</div>
 											<ul class="wizard-steps">
 												<li class="active">
-													<a href="#w3-account" data-toggle="tab"><span>1</span>Basic Info</a>
+													<a href="#w3-account" data-toggle="tab"><span>1</span>Step One</a>
 												</li>
 												<li>
-													<a href="#w3-confirm" data-toggle="tab"><span>2</span>Responsibilities, Skill Info & How to apply</a>
+													<a href="#w3-confirm" data-toggle="tab"><span>2</span>Step Two</a>
 												</li>
 											</ul>
 										</div>
@@ -95,15 +95,7 @@
 															
 														</div>
 													</div>
-													<div class="form-group">
-														
-														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.salary.errors.0 }}</div>
-														<label class="col-md-3 control-label">Does the job have Salary?</label> 
-														<div class="col-md-6">
-															{{ jobForm.salary_unpaid }}
-															
-														</div>
-													</div>
+
 													
 												
 													
@@ -186,7 +178,15 @@
 												</div>
 												
 												<div id="w3-confirm" class="tab-pane">
+													<div class="form-group">
 														
+														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.summary.errors.0 }}</div>
+														<label class="col-sm-3 control-label" for="w4-first-name">Role overview/about the positon</label> 
+														<div class="col-sm-9">
+															{{ jobForm.summary }}
+														</div>
+													</div>
+
 													<div class="form-group">
 													
 														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.education_experience.errors.0 }}</div>
@@ -230,31 +230,6 @@
 														</div>
 													</div>
 
-													<div class="form-group">
-														
-														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.summary.errors.0 }}</div>
-														<label class="col-sm-3 control-label" for="w4-first-name">Role overview/about the positon</label> 
-														<div class="col-sm-9">
-															{{ jobForm.summary }}
-														</div>
-													</div>
-													<div class="form-group">
-														
-														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.responsibilities.errors.0 }}</div>
-														<label class="col-sm-3 control-label" for="w4-cc">Duties and responsibilities</label> 
-														<div class="col-sm-9">
-															{{ jobForm.responsibilities}}
-														</div>
-													</div>
-													
-													<div class="form-group">
-														
-														<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ jobForm.requirements.errors.0 }}</div>
-														<label class="col-sm-3 control-label" for="w4-last-name">Key Requirements</label> 
-														<div class="col-sm-9">
-															{{ jobForm.requirements }}
-														</div>
-													</div>
 													
 													<div class="from-group">
 														<div class="col-sm-4 col-sm-offset-5">
