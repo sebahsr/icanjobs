@@ -813,7 +813,7 @@ def companyJobListView(request):
     company = request.user.company
     jobs = company.jobs.all()
     page_number = request.GET.get('page', 1)
-    paginator = Paginator(jobs, 5)
+    paginator = Paginator(jobs, 10)
     current_page = paginator.page(page_number)
     jobs = current_page.object_list
 
