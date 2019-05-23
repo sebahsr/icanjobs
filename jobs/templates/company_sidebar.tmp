@@ -19,7 +19,7 @@
                                             </p>
                                             <p class="address">Job Nature: {{ recent_job.employement_type.name }}</p>
                                             <p class="address"><span class="lnr lnr-database"></span> Region :  {{ recent_job.region }}</p>
-                                            <a href="#" class="btns text-uppercase">View Detail</a>
+                                            <a href="/jobs/job-{{ recent_job.pk }}/" class="skill-tags  text-uppercase">View Detail</a>
                                         </div>
                                         
                                     {% endfor %}																	
