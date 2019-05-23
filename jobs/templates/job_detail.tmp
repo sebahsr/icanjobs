@@ -73,7 +73,7 @@
 												</div>
 												{% if  job.company.brief_description %}
 												<p>
-													{{ job.company.brief_description|truncatechars:100 }} <a style="text-decoration:underline;" href="/companies/company-{{job.company.pk}}/">Read More</a>
+													{{ job.company.brief_description|truncatechars:100 }} <a style="" href="/companies/company-{{job.company.pk}}/">Read More</a>
 												</p>
 												{% endif %}
 
@@ -101,7 +101,14 @@
 						</div>
 						{% endif %}
 
-						
+						{% if job.responsibilities %}
+						<div class="single-post-detail-job job-details">
+								<h4 class="pt-2 single-title-job-detail">Job Duties and Responsibilities</h4>
+								<p>
+									{{ job.responsibilities|linebreaksbr }}
+								</p>
+						</div>
+						{% endif %}
 						{% if job.experience %}
 						<div class="single-post-detail-job job-details">
 							<h4 class="pt-2 single-title-job-detail">Education And Experience</h4>
@@ -110,7 +117,14 @@
 							</p>
 						</div>
 						{% endif %}
-		
+						{% if job.requirements %}
+						<div class="single-post-detail-job job-experience">
+							<h4 class="pt-2 single-title-job-detail">Key Requirements</h4>
+							<p>
+								{{ job.requirements|linebreaksbr }}
+							</p>
+						</div>
+						{% endif %}
 
 						{% if job.knowledge_skills %}
 						<div class="single-post-detail-job job-experience">
@@ -129,6 +143,10 @@
 							</p>
 							{% if job.application_link %}
 								<a class='btn skill-tags' href='{{ job.application_link }}'>Click Here to Apply <i class='fa fa-forward'></i></a>
+							{% endif %}
+							{% if not request.user.is_authenticated %}
+							<a class='btn skill-tags' href='/login/'>Apply Here <i class='fa fa-forward'></i></a>
+
 							{% endif %}
 						</div>
 						{% endif %}
