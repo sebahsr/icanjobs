@@ -62,7 +62,7 @@
 							<div class="thumb col-sm-4">
 								<img style="max-width:100px" src="{{ company.profile_pic.url }}" alt="">
 								<br /><br />
-								<h5>{{ company.name|title}}</h5>
+								<h5>{{ company.name}}</h5>
 
 								<p class="address"><span class="fa fa-external-link"></span> <a href='{{ company.website }}'>{{ company.website }}</a></p>
 								<p class="address"><span class="fa fa-envelope"></span> {{ company.user.email }}</p>

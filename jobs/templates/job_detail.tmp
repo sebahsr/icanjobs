@@ -67,7 +67,7 @@
 												
 												<div class="title d-flex flex-row justify-content-between">
 													<div class="titles pb-2">
-														<a href="/companies/company-{{job.company.pk}}/"><h4>{{ job.company.name | title }}</h4></a>					
+														<a href="/companies/company-{{job.company.pk}}/"><h4>{{ job.company.name  }}</h4></a>					
 													</div>
 													
 												</div>
