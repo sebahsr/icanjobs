@@ -13,6 +13,16 @@
 	<meta name="keywords" content="">
 	<!-- meta character set -->
 	<meta charset="UTF-8">
+	<meta property="og:title" content="{{ job.title }}">
+	<meta property="og:description" content="{{ job.summary }}">
+	<meta property="og:image" content="{{ job.company.profile_pic.url }}">
+
+	<meta property="title" content="{{ job.title }}">
+	<meta property="description" content="{{ job.summary }}">
+	<meta property="image" content="{{ job.company.profile_pic.url }}">
+	<meta name="twitter:card" content="summary_large_image">
+
+
 	<!-- Site Title -->
 	<title>{{ job.title }}</title>
 
