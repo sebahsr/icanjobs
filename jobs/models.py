@@ -74,7 +74,7 @@ class Company(Entity):
     joined_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        verbose_name_plural = 'Companies'
+        verbose_name_plural = 'Employers'
 
     def __unicode__(self):
         return self.name 
@@ -143,6 +143,9 @@ class Employee(Entity):
                                         through='JobApplication',
                                         through_fields=('applicant', 'job'))
     
+    class Meta:
+        verbose_name_plural = 'Job Seekers'
+
     def __unicode__(self):
         return self.user.first_name
 
@@ -152,7 +155,7 @@ class Employee(Entity):
             return application
         return False
 
-
+    
     @property
     def first_name(self):
         return self.user.first_name 

@@ -10,8 +10,7 @@ class CategoryModelAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     list_display = ('name',)
 
-class BlogModelAdmin(admin.ModelAdmin):
-    list_display = ('title', )
+
 class JobModelAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     list_display = ('title', 'region', 'company')
@@ -48,7 +47,7 @@ class DegreeModelAdmin(admin.ModelAdmin):
 
 admin.site.register(models.Category, CategoryModelAdmin)
 #admin.site.register(models.Job, JobModelAdmin)
-#admin.site.register(models.Company, CompanyModelAdmin)
+admin.site.register(models.Company, CompanyModelAdmin)
 admin.site.register(models.Region, RegionModelAdmin)
 admin.site.register(models.EmployementType, EmployementTypeModelAdmin)
 admin.site.register(models.JobLevel, JobLevelModelAdmin)

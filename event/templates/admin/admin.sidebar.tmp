@@ -46,11 +46,15 @@
 													<i class="fa fa-clock-o" aria-hidden="true"></i>Appointments
 												</a>
 											</li>
-
+											<li class="{{ sidebar_setting_active }}">
+												<a href="/settings/employers/" _new>
+													<i class="fa fa-building-o" aria-hidden="true"></i>Employers
+												</a>
+											</li>
 											
 											<li class="{{ sidebar_setting_active }}">
 												<a href="/settings/events/" _new>
-													<i class="fa fa-gear" aria-hidden="true"></i>Appointment and Event Settings
+													<i class="fa fa-gear" aria-hidden="true"></i>Appointment, Blogs and Event Settings
 												</a>
 											</li>
 											<li class="{{ sidebar_setting_active }}">
@@ -58,6 +62,8 @@
 														<i class="fa fa-gear" aria-hidden="true"></i>Job Settings
 													</a>
 												</li>
+								
+
 										</ul>
 									</nav>
 						

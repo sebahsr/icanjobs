@@ -8,9 +8,12 @@ from event import models
 class EventTagModelAdmin(admin.ModelAdmin):
     list_filters = ('name', )
 
+class BlogModelAdmin(admin.ModelAdmin):
+    list_display = ('title', )
 
 admin.site.register(models.EventTag, EventTagModelAdmin)
 admin.site.register(models.PostCategories)
 admin.site.register(models.AppointmentNeed)
 admin.site.register(models.AppointmentSlot)
+admin.site.register(models.Blog, BlogModelAdmin)
 admin.site.register(models.MenuLinks)
