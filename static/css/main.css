@@ -2917,14 +2917,31 @@ ul.spatialism-sec li a span {
   padding-top: 10px;
 }
 
+.single-post-detail-job ul{
+  list-style: circle;
+  font-size: 14px;
+  font-weight: 200;
+  margin-left: 15px;
+
+}
+
+.single-post-detail-job ol{
+  list-style: decimal;
+  font-size: 15px;
+  font-weight: 200;
+  line-height: 1.7em;
+  margin-left: 15px;
+}
+
 .single-post .title h4:hover, .single-post-detail-job .title h4:hover{
   color:#55a747 !important;
 }
 .post-list .single-post h6, .post-list .single-post-detail-job h6 {
   margin-top: 10px;
   color: #222;
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 15px;
+  font-weight: 200;
+  line-height: 1.7em;
   margin-bottom: 15px;
 }
 

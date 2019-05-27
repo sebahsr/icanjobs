@@ -42,7 +42,7 @@
 		
 												<div class="p-md">
 													<h4 class="text-semibold mt-none"><a style="color:#55a747"  href='/jobs/job-{{job.pk}}/'>{{ job.title }}</a></h4>
-													<p>{{ job.summary  }}</p>
+													<p>{{ job.summary|safe  }}</p>
 												</div>
 											</div>
 											<div class="panel-footer panel-footer-btn-group">

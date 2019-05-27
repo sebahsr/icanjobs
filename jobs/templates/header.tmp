@@ -103,7 +103,7 @@
 
                         {% if request.user.company %}
                         <li><a href="/company/admin/"><i class='fa fa-user'></i> Company profile</a></li>
-                        <li><a href="/company/admin/create-job/"><i class='fa fa-plus-square'></i> Create Job</a></li>
+                        <li><a href="/company/admin/create-job/"><i class='fa fa-plus-square'></i> Post Job</a></li>
                         
                         {% endif %}
 
