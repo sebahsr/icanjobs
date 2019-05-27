@@ -20,8 +20,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from jobs.urls import urlpatterns as job_url_patterns
 from event.urls import urlpatterns as event_url_patterns
+import event.views as event_views
 
 urlpatterns = [
+    url(r'^admin/$' , event_views.dashboard),
     url(r'^admin/', admin.site.urls),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),  # <--

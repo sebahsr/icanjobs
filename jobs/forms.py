@@ -1,6 +1,7 @@
 from django import forms
 from jobs import models 
 from django.contrib.auth.models import User 
+from ckeditor.widgets import CKEditorWidget
 
 class CategoryForm(forms.ModelForm):
     class Meta:
@@ -22,6 +23,13 @@ class JobAlertForm(forms.ModelForm):
         }
 
 class JobForm(forms.ModelForm):
+    summary = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
+    requirements = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
+    education_experience = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
+    responsibilities = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
+    how_to_apply = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
+    knowledge_skills = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
+
     class Meta:
         model = models.Job
         exclude = ('id', 'views', 'company', 'status')
@@ -29,14 +37,7 @@ class JobForm(forms.ModelForm):
             'title' : forms.TextInput(attrs={
                 "placeholder" : "Job Title", "class" : "form-control"}),
             
-            'summary' : forms.Textarea(attrs={
-                "placeholder" : "Job Overview","class" : "form-control"}),
-            
-            'requirements' : forms.Textarea(attrs={
-                "placeholder" : "Key Requirements","class" : "form-control"}),
-
-            'education_experience' : forms.Textarea(attrs={
-                "placeholder" : "Educations and Experiences","class" : "form-control"}),
+          
 
             'deadline' : forms.TextInput(attrs={
                 "placeholder" : "Closing On",
@@ -86,27 +87,13 @@ class JobForm(forms.ModelForm):
             'city' : forms.TextInput(attrs={
                 "placeholder" : "Location","class" : "form-control"}),
            
-            'summary' : forms.Textarea(attrs={
-                "placeholder" : "Summary" , "class" : "form-control"
-            }),
-            'requirements' : forms.Textarea(attrs={
-                "placeholder" : "Requirements" , "class" : "form-control"
-            }),
-            'responsibilities' : forms.Textarea(attrs={
-                "placeholder" : "Responsibilities" , "class" : "form-control"
-            }),
-            'how_to_apply' : forms.Textarea(attrs={
-                "placeholder" : "How to Apply" , "class" : "form-control"
-            }),
+           
 
             'application_link' : forms.TextInput(attrs={
                 "class" : "form-control",
                 "placeholder" : "http://example.com"
             }),
 
-            'knowledge_skills' : forms.Textarea(attrs={
-                "placeholder" : "Knowledge and Skills" , "class" : "form-control"
-            })
             
         }
 

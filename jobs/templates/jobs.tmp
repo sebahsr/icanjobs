@@ -150,7 +150,7 @@
                                     </ul>
 
                                     <p>
-                                        {{ job.summary|truncatechars:300}}
+                                        {{ job.summary|striptags|truncatechars:300}}
                                     </p>
 
                                     <a class="read-more" href="/jobs/job-{{job.pk}}/">Read more</a>

@@ -92,7 +92,9 @@
 							
 							</div>
 						</div>	
-						<section class="feature-cat-area pt-100" id="company-facts">
+
+                        {% if  request.user.is_authenticated and request.user.company %}
+							<section class="feature-cat-area pt-100" id="company-facts">
 								<div class="container">
 									<div class="row d-flex justify-content-center">
 										<div class="menu-content pb-60 col-lg-10">
@@ -139,7 +141,8 @@
 									</div>
 								</div>	
 							</section>
-
+						{% endif %}
+						
 						<!-- Start post Area -->
 						<section class="post-area section-gap">
 								<div id='company-job-list' class="container">

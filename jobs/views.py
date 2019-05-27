@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from jobs import models, forms
 from django.db.models import Q,Count, Sum, F
 from django.core.paginator import Paginator
@@ -821,6 +821,20 @@ def companyJobListView(request):
     unread_applications_count = applications.filter(status='unread').count()
     sidebar_job_listing_active = 'nav-active'
     return render(request, 'company/company.admin.joblist.tmp', locals())
+
+@login_required
+@user_passes_test(functions.is_company)
+def jobDelete(request, jobID, confirmed=None):
+    try:
+        job = request.user.company.jobs.get(pk=jobID)
+    except models.Job.DoesNotExist:
+        return HttpResponse('Job Not Found', 404)
+
+    if not confirmed:
+        return render(request, 'company/company.admin.jobremoveconfirm.tmp', locals())
+    else:
+        job.delete()
+        return redirect('/company/admin/jobs/')
 
 @login_required
 @user_passes_test(functions.is_company)

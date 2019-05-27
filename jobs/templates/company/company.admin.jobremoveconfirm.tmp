@@ -13,7 +13,7 @@
 	
 					<section role="main" class="content-body">
 						<header class="page-header">
-							<h2>List of jobs posted</h2>
+							<h2>Do you really want to remove this Job?</h2>
 						
 						</header>
 	
@@ -26,7 +26,6 @@
 							
 							<div class='col-lg-8'>
 								
-								{% for job in jobs %}
 									<section class="panel">
 											<div class="panel-body panel-body-nopadding">
 												<div class="owl-carousel mb-md owl-theme owl-carousel-init" data-plugin-carousel="" data-plugin-options="{ &quot;items&quot;: 1, &quot;autoHeight&quot;: true }" style="display: block; opacity: 1;">
@@ -43,26 +42,16 @@
 		
 												<div class="p-md">
 													<h4 class="text-semibold mt-none"><a style="color:#55a747"  href='/jobs/job-{{job.pk}}/'>{{ job.title }}</a></h4>
-													<p>{{ job.summary |striptags| truncatechars:300 }}</p>
+													<p>{{ job.summary  }}</p>
 												</div>
 											</div>
 											<div class="panel-footer panel-footer-btn-group">
-												<a style="color:#55a747"  href="/company/admin/create-job/job-{{job.pk}}/"><i class="fa fa-pencil mr-xs"></i> Edit</a>
-												<a style="color:#55a747"  href="#"><i class="fa fa-project-diagram mr-xs"></i> {{ job.employement_type.name }}</a>
-												<a style="color:#55a747"  href="#"><i class="fa fa-map-marker mr-xs"></i> {{ job.city }}, {{ job.region.name }}</a>
-												<a style="color:#55a747"  href="/company/admin/confirm-delete/job-{{job.pk}}/"><i class="fa fa-trash-o mr-xs"></i> Delete</a>
+												
+												<a style="font-size:22px; font-weight: 700; color:#a74747"  href="/company/admin/confirm-delete/job-{{job.pk}}/confirmed/"><i class="fa fa-check-square-o mr-lg"></i> YES</a>
+												<a style="font-size:22px; font-weight: 700; color:#55a747"  href="/company/admin/jobs/"><i class="fa fa-times-circle mr-lg"></i> NO</a>
 											</div>
 									</section>
-									{% endfor %}
-
-									{% if current_page.has_previous %}
-									<a href="?page={{ current_page.previous_page_number }}" class="btn btn-default fa  fa-long-arrow-left"> Previous<span class="lnr lnr-arrow-left"></span></a>
-									{% endif %}
-			
-									{% if current_page.has_next %}
-										<a href="?page={{ current_page.next_page_number }}" class="btn btn-default fa  fa-long-arrow-right"> Next<span class="lnr lnr-arrow-right"></span></a>
-									{% endif %}
-
+									
 									</div>
 									
 							<!-- End of list jobs -->

@@ -29,6 +29,8 @@
 								
 								<form class="form-horizontal" method="POST" {% if jobID %} action="/company/admin/create-job/job-{{jobID}}/" {% else %}  action="/company/admin/create-job/" {% endif %} novalidate="novalidate">
 									{% csrf_token %}
+									{{ jobForm.media }}
+
 									<div class="panel-body">
 										<div id='w3' class="wizard-progress wizard-progress-lg">
 											<div class="steps-progress">

@@ -112,7 +112,7 @@
 						<div class="single-post-detail-job job-details">
 							<div class="pt-2 single-title-job-detail">Role Overview/Job Duties</div>
 							<p>
-								{{ job.summary|linebreaksbr }}
+								{{ job.summary|safe }}
 							</p>
 						</div>
 						{% endif %}
@@ -121,7 +121,7 @@
 						<div class="single-post-detail-job job-details">
 								<h4 class="pt-2 single-title-job-detail">Job Duties and Responsibilities</h4>
 								<p>
-									{{ job.responsibilities|linebreaksbr }}
+									{{ job.responsibilities|safe }}
 								</p>
 						</div>
 						{% endif %}
@@ -129,7 +129,7 @@
 						<div class="single-post-detail-job job-details">
 							<h4 class="pt-2 single-title-job-detail">Education And Experience</h4>
 							<p>
-								{{ job.education_experience|linebreaksbr }}
+								{{ job.education_experience|safe }}
 							</p>
 						</div>
 						{% endif %}
@@ -137,7 +137,7 @@
 						<div class="single-post-detail-job job-experience">
 							<h4 class="pt-2 single-title-job-detail">Key Requirements</h4>
 							<p>
-								{{ job.requirements|linebreaksbr }}
+								{{ job.requirements|safe }}
 							</p>
 						</div>
 						{% endif %}
@@ -146,7 +146,7 @@
 						<div class="single-post-detail-job job-experience">
 							<div class="pt-2 single-title-job-detail">Knowledge And Skills</div>
 							<p>
-								{{ job.knowledge_skills|linebreaksbr }}
+								{{ job.knowledge_skills|safe }}
 							</p>
 						</div>
 						{% endif %}
@@ -155,7 +155,7 @@
 						<div class="single-post-detail-job job-experience">
 							<h4 class="pt-2 single-title-job-detail">How To Apply</h4>
 							<p>
-						{{ job.how_to_apply|linebreaksbr }}
+						{{ job.how_to_apply|safe }}
 							</p>
 							{% if job.application_link %}
 								<a class='btn skill-tags' href='{{ job.application_link }}'>Click Here to Apply <i class='fa fa-forward'></i></a>

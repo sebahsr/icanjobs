@@ -5,6 +5,7 @@ from django.db import models
 from jobs import constants, functions
 from django.contrib.auth.models import User
 import datetime
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -175,12 +176,12 @@ class EmployeeJobInterest(models.Model):
 
 class Job(models.Model):
     title = models.CharField(max_length=100)
-    summary = models.TextField(blank=True)
-    requirements = models.TextField(blank=True)
-    knowledge_skills = models.TextField(blank=True)
-    education_experience = models.TextField(blank=True)
-    how_to_apply = models.TextField(blank=True)
-    responsibilities = models.TextField(blank=True)
+    summary = RichTextField(blank=True)
+    requirements =RichTextField(blank=True)
+    knowledge_skills =RichTextField(blank=True)
+    education_experience =RichTextField(blank=True)
+    how_to_apply =RichTextField(blank=True)
+    responsibilities =RichTextField(blank=True)
     department = models.CharField(blank=True, max_length=100)
     level = models.ForeignKey('JobLevel')
     company = models.ForeignKey('Company', related_name='jobs')
