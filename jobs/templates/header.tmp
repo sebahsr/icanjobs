@@ -29,10 +29,8 @@
                     <li class="menu-has-children"><a href="/companies/">Employer</a>
                       <ul>
                           
-                        {% if request.user.company %}
                         <li class="menu-active"><a href="/company/admin/create-job/">Post Jobs & internships  </a></li>
-                        {% endif %}
-                        <li class="menu-active"><a href="/services/">Services </a></li>
+                        <li class="menu-active"><a href="/services/">Employer Services </a></li>
                         <li class="menu-active"><a href="/branding/">Employer Branding </a></li>
                         {% if not request.user.is_authenticated %}
 

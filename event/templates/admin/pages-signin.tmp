@@ -21,7 +21,12 @@
 								<strong>Faild to login!</strong> Please Try again.
 							</div>
 						{% endif %}
-						<form action="/company/admin/login/" method="post">
+					{% if next_url %}
+					<form action="/company/admin/login/?next={{next_url}}" method="post">
+					{% else %}
+					<form action="/company/admin/login/" method="post">
+
+					{% endif %}
 							{% csrf_token %}
 							<div class="form-group mb-lg">
 								<label>Username</label>

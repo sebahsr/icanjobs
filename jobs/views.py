@@ -271,7 +271,7 @@ def employeeSignupView(request):
     
  
 
-@login_required
+@login_required(login_url='/company/admin/login/')
 def companyCreateJobView(request, jobID=None):
     jobForm = forms.JobForm()
     job = None
@@ -301,10 +301,13 @@ def employeeLoginView(request):
 
         if user and hasattr(user, 'employee'):
             login(request, user)
+            if request.GET.get('next'):
+                return redirect(request.GET.get('next'))
+
             return redirect('/employee/')
         
         err = "Login Failed. Try again"
-
+    next_url = request.GET.get('next') if request.GET.get('next') else '/employee/'
     return render(request, "employeeLogin.tmp", locals())
 
 
@@ -658,7 +661,7 @@ def blogDetailView(request, blogID):
     return render(request, 'blog-detail.tmp', locals())
 
 #// Admin views 
-@login_required(login_url='/company/admin/login/')
+@login_required
 @user_passes_test(functions.is_company)
 def adminCompanyView(request):
     company = request.user.company
@@ -744,10 +747,12 @@ def loginCompanyView(request):
         print(user, request.POST.get('username'), request.POST.get('pwd'))
         if user and functions.is_company(user):
             login(request, user)
+            if request.GET.get('next'):
+                return redirect(request.GET.get('next'))
             return redirect('/company/admin/')
         
         err = True
-
+    next_url = request.GET.get('next') if request.GET.get('next') else '/company/admin/'
     return render(request, 'company/pages-signin.tmp', locals())
 
 def signUpCompanyView(request):
@@ -779,7 +784,7 @@ def signUpCompanyView(request):
         return render(request, 'company/pages-signup.tmp', locals())
 
 
-@login_required
+@login_required(login_url='/company/admin/login/')
 @user_passes_test(functions.is_company)
 def createJobView(request, jobID=None):
     jobForm = forms.JobForm()
