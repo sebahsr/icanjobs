@@ -4877,3 +4877,11 @@ a.join-ican {
 .application-link{
   
 }
+
+.job-detail-alert {
+  font-size: 21px;
+  font-weight: 80;
+  color: #fe9706;
+  padding-bottom: 18px;
+  text-transform: uppercase;
+}
