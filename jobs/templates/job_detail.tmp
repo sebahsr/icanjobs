@@ -14,12 +14,12 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<meta property="og:title" content="{{ job.title }}">
-	<meta property="og:description" content="{{ job.summary }}">
+	<meta property="og:description" content="{{ job.summary|striptags }}">
 	<meta property="og:image" content="{{ job.company.profile_pic.url }}">
 	<meta property="og:image:width" content="600">
 	
 	<meta property="title" content="{{ job.title }}">
-	<meta property="description" content="{{ job.summary }}">
+	<meta property="description" content="{{ job.summary|striptags }}">
 	<meta property="image" content="{{ job.company.profile_pic.url }}">
 	<meta property="imag:widthe" content="600">
 	<meta name="twitter:card" content="summary_large_image">
