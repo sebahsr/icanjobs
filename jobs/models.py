@@ -206,7 +206,7 @@ class Job(models.Model):
         ordering = ('-created_at', )
    
     def getuniquelink(self):
-        return '-'.join(self.title.replace('/', '').lower().split(" ")) + '-' + str(self.pk)
+        return '-'.join(self.title.replace('/', '').replace('.', '').replace('(', '').replace(')', '').replace('!', '').replace('>', '').replace('<', '').replace('?', '').replace(':', '').replace('$', '').replace('+', '').replace('-', '').replace('\\','').replace('=','').replace('*','').lower().split(" ")) + '-' + str(self.pk)
 class JobApplication(models.Model):
     applicant = models.ForeignKey('Employee')
     job = models.ForeignKey('Job', related_name='applications')
