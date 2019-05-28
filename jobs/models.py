@@ -70,7 +70,7 @@ class Company(Entity):
     facebook = models.URLField(blank=True, null=True)
     twitter = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
-    phone = models.CharField(max_length=25)
+    phone = models.CharField(max_length=25, blank=True, null=True)
     joined_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:

@@ -17,3 +17,5 @@ def create_employee(strategy, details, backend, user=None, *args, **kwargs):
                 user.employee = models.Employee.objects.create(user=user)
                 user.save()
                 return
+def is_staff(user):
+        return user.is_staff

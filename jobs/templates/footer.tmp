@@ -13,9 +13,20 @@
                                 <div class="single-footer-widget">
                                     <h6>JOB SEEKER</h6>
                                     <ul class="footer-nav">
-                                        <li><a href="/jobs/">BROWSE JOBS</a></li>
-                                        <li><a href="/employee/">Post Your Resume</a></li>
-                                        <li><a href="">Job Alert</a></li>
+                                            <li class="menu-active"><a href="/jobs/">Browse Jobs</a></li>
+                                            <li class="menu-active"><a href="/companies/">Browse Employers  </a></li>
+                    
+                                            {% if not request.user.is_authenticated or request.user.employee %}
+                                            <li class="menu-active"><a href="/employee/build-resume/">Build your resume</a></li>
+                                            {% endif %}
+                                            <li class="menu-active"><a href="/jobalerts/">Job Alerts</a></li>
+                                            {% if not request.user.is_authenticated %}
+                    
+                                              <li class="menu-has-children"><a href="/login/">Login</a></li> 
+                                              <li class="menu-has-children"><a href="/signup/">Register</a></li> 
+                    
+                                              {% endif %}
+                    
             
                                     </ul>
                                 </div>
@@ -24,20 +35,53 @@
                                     <div class="single-footer-widget">
                                         <h6>EMPLOYER</h6>
                                         <ul class="footer-nav">
-                                            <li><a href="/companies/">Browse Employers</a></li>
-                                            <li><a href="/company/admin/create-job/">Post Jobs & Internships</a></li>
-                                            <li><a href="/about/">Services</a></li>
+                                                <li class="menu-active"><a href="/company/admin/create-job/">Post Jobs & internships  </a></li>
+                                                <li class="menu-active"><a href="/services/">Employer Services </a></li>
+                                                <li class="menu-active"><a href="/branding/">Employer Branding </a></li>
+                                                {% if not request.user.is_authenticated %}
+                        
+                                                  <li class="menu-has-children"><a href="/company/admin/login/">Login</a></li> 
+                                                  <li class="menu-has-children"><a href="/company/admin/signup/">Register</a></li> 
+                        
+                                                  {% endif %}
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-lg-3  col-xs-12">
                                         <div class="single-footer-widget">
-                                            <h6>CAREER ADVICE</h6>
+                                            <h6>EMPLOYEMENT SOLUTIONS</h6>
                                             <ul class="footer-nav">
-                                                <li><a href="/appointmnet/make/">Career Advisory</a></li>
+                                                
+                                                {% for menulink in menulinks %} 
+
+                                                {% ifequal menulink.name 'careerservice' %}
+                                                <li class="menu-active"><a href="/blogs/blog-{{ menulink.blog.pk }}/">Career Services </a></li>
+                                                {% endifequal %}
+
+                                                {% ifequal menulink.name 'empskill' %}
+
+                                                <li class="menu-active"><a href="/blogs/blog-{{ menulink.blog.pk }}/">Employability Skills</a></li>
+                                                {% endifequal %}
+
+                                                {% ifequal menulink.name 'jobreadines' %}
+
+                                                <li class="menu-active"><a href="/blogs/blog-{{ menulink.blog.pk }}//">Job readiness </a></li>
+                                                {% endifequal %}
+
+                                                {% ifequal menulink.name 'youthcareer' %}
+                                    
+                                                <li class="menu-active"><a href="/blogs/blog-{{ menulink.blog.pk }}/">Youth Career</a></li>
+                                                {% endifequal %}
+
+                                            {% endfor %}
+                                                <li class="menu-active"><a href="/appointmnet/make/">Career Advisory</a></li>
+
+                                                <li class="menu-active"><a href="/events/">Events</a></li>
                                                 <li><a href="/blogs/">Blogs</a></li>
-                                                <li><a href="/events/">Events</a></li>
-                                                <li><a href="/contact/">Contact Us</a></li>
+                                                {% if request.user.employee %}
+                                                <li><a href="/appointmnets/">View Appointments</a></li>
+                                                
+                                                {% endif %}
                                             </ul>
                                         </div>
                                     </div>
@@ -47,7 +91,8 @@
                                                 <ul class="footer-nav">
                                                     <li><a href="/signup/">Register</a></li>
                                                     <li><a href="/login/">Log in</a></li>
-                                                    <li><a href="/about/">About iCan</a></li>
+                                                    <li class="menu-active"><a href="/about/">About Us</a></li>
+                                                    <li class="menu-active"><a href="/services/">Services</a></li>
                                                 </ul>
                                             </div>
                                         </div>

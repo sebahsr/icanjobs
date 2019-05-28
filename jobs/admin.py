@@ -57,3 +57,5 @@ admin.site.register(models.Employee, EmployeeModelAdmin)
 admin.site.register(models.EmployeeJobInterest, EmployeeJobInterestModelAdmin)
 admin.site.register(models.Degree, DegreeModelAdmin)
 
+
+

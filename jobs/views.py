@@ -293,7 +293,7 @@ def companyCreateJobView(request, jobID=None):
         
 def employeeLoginView(request):
     if request.user.is_authenticated:
-        return redirect('/employee/')
+        return redirect('/jobs/')
 
     if request.method == "POST":
         user = authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
@@ -740,7 +740,7 @@ def adminCompanyChangePasswordView(request):
 
 def loginCompanyView(request):
     if request.user.is_authenticated:
-        return redirect('/company/admin/')
+        return redirect('/jobs/')
 
     if request.method == "POST":
         user = authenticate(username=request.POST.get('username'), password=request.POST.get('pwd'))
@@ -840,6 +840,17 @@ def jobDelete(request, jobID, confirmed=None):
     else:
         job.delete()
         return redirect('/company/admin/jobs/')
+
+@login_required
+@user_passes_test(functions.is_staff)
+def blogDelete(request, blogID, confirmed=None):
+    blog = get_object_or_404(eventModels.Blog, pk=blogID)
+
+    if not confirmed:
+        return render(request, 'company/company.admin.blogremoveconfirm.tmp', locals())
+    else:
+        blog.delete()
+        return redirect('/ican/blogs/')
 
 @login_required
 @user_passes_test(functions.is_company)

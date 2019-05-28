@@ -54,7 +54,7 @@
 											
 											<li class="{{ sidebar_setting_active }}">
 												<a href="/settings/events/" _new>
-													<i class="fa fa-gear" aria-hidden="true"></i>Appointment, Blogs and Event Settings
+													<i class="fa fa-gear" aria-hidden="true"></i>Appointment and Event Settings
 												</a>
 											</li>
 											<li class="{{ sidebar_setting_active }}">

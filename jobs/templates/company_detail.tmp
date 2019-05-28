@@ -4,7 +4,7 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
+	<link rel="shortcut icon" href="/static/img/favicon.png">
 	<!-- Author Meta -->
 	<meta name="author" content="codepixer">
 	<!-- Meta Description -->
@@ -64,9 +64,15 @@
 								<br /><br />
 								<h5>{{ company.name}}</h5>
 
+								{% if company.website %}
 								<p class="address"><span class="fa fa-external-link"></span> <a href='{{ company.website }}'>{{ company.website }}</a></p>
+								{% endif %}
+								{% if company.user.email %}
 								<p class="address"><span class="fa fa-envelope"></span> {{ company.user.email }}</p>
+								{% endif %}
+								{% if company.phone %}
 								<p class="address"><span class="fa fa-phone"></span> {{ company.phone }}</p>
+								{% endif %}
 
 							</div>
 							<div class="details col-sm-8">
@@ -142,7 +148,7 @@
 								</div>	
 							</section>
 						{% endif %}
-						
+
 						<!-- Start post Area -->
 						<section class="post-area section-gap">
 								<div id='company-job-list' class="container">

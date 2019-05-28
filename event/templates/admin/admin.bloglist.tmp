@@ -45,13 +45,16 @@
 		
 												<div class="p-md">
 													<h4 class="text-semibold mt-none"><a href='/ican/blog/blog-{{blog.pk}}/'>{{ blog.title|title }}</a></h4>
+													<i class="fa fa-calendar mr-xs"></i> {{ blog.created_at }}
+
 													<p>{{ blog.content|striptags| truncatechars:300 }}</p>
 												</div>
 											</div>
 											<div class="panel-footer panel-footer-btn-group">
-												<a href="#"><i class="fa fa-calendar mr-xs"></i> {{ blog.created_at }}</a>
 												<a href="/ican/blog/blog-{{blog.pk}}/"><i class="fa fa-edit mr-xs"></i> Edit </a>
 												<a href="/blogs/blog-{{ blog.pk }}/"><i class="fa fa-eye mr-xs"></i> View </a>
+												<a style="color:#55a747"  href="/ican/blog/confirm-delete/blog-{{blog.pk}}/"><i class="fa fa-trash-o mr-xs"></i> Delete</a>
+
 											</div>
 									</section>
 									{% empty %}

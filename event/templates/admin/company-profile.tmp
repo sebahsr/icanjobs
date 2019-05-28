@@ -58,10 +58,20 @@
 										</div>
 										<div class="widget-content-expanded">
 											<ul class="">
+												{% if company.website %}
 												<li> <span class="fa fa-external-link"></span> <a href='{{company.website}}'>{{ company.website }}</a></li>
+												{% endif %}
+												{% if company.user.email %}
+
 												<li class="completed"><span class="fa fa-envelope"></span><a href="malto:{{company.user.email}}">{{ company.user.email }}</a></li>
+												{% endif %}
+												{% if company.phone %}
+
 												<li class="completed"><span class="fa fa-phone"></span> {{ company.phone }}</li>
+												{% endif %}
+
 												<li class="completed"><span class="fa  fa-map-marker"></span> {{ company.city|title }}, {{ company.region.name|title}}</li>
+												
 												
 											</ul>
 										</div>

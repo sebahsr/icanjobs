@@ -57,11 +57,18 @@
 										</div>
 										<div class="widget-content-expanded">
 											<ul style="list-style:none">
-												<li> <span class="fa fa-external-link"></span> &nbsp; <a href='{{company.website}}'>{{ company.website }}</a></li>
-												<li class="completed"><span class="fa fa-envelope"></span> &nbsp; <a href="malto:{{company.user.email}}">{{ company.user.email }}</a></li>
-												<li class="completed"><span class="fa fa-phone"></span> &nbsp; {{ company.phone }}</li>
-												<li class="completed"><span class="fa  fa-map-marker"></span> &nbsp; {{ company.city|title }}, {{ company.region.name|title}}</li>
-												
+													{% if company.website %}
+													<li> <span class="fa fa-external-link"></span> <a href='{{company.website}}'>{{ company.website }}</a></li>
+													{% endif %}
+													{% if company.user.email %}
+	
+													<li class="completed"><span class="fa fa-envelope"></span><a href="malto:{{company.user.email}}">{{ company.user.email }}</a></li>
+													{% endif %}
+													{% if company.phone %}
+	
+													<li class="completed"><span class="fa fa-phone"></span> {{ company.phone }}</li>
+													{% endif %}
+													
 											</ul>
 										</div>
 									</div>
@@ -107,7 +114,7 @@
 														<div class="tm-box">
 															<div class="text-muted h5"><a href='/jobs/job-{{recent_job.pk}}/'>{{ recent_job.title }}</a></div>
 															<p>
-																{{ recent_job.summary | truncatechars:300}}
+																{{ recent_job.summary|striptags | truncatechars:300}}
 															</p>
 														</div>
 													</li>

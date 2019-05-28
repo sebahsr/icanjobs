@@ -1,21 +1,23 @@
 <!doctype html>
 <html class="fixed">
-	{% include 'company/admin.header.tmp' %}
+	{% include 'admin/admin.header.tmp' %}
 	<body>
 		<section class="body">
-			{% include 'company/admin.header.right.tmp' %}
+			{% include 'admin/admin.header.right.tmp' %}
 			<!-- end: header -->
 
 			<div class="inner-wrapper">
 					<!-- start: sidebar -->
-					{% include 'company/company.admin.sidebar.tmp' %}
+					{% include 'admin/admin.sidebar.tmp' %}
 					<!-- end: sidebar -->
 	
 					<section role="main" class="content-body">
 						<header class="page-header">
-							<h2>Do you really want to remove this Job?</h2>
+							<h2>Blogs</h2>
 						
 						</header>
+	
+							
 	
 						<!-- start: page -->
 						
@@ -41,20 +43,24 @@
 												</div>
 		
 												<div class="p-md">
-													<h4 class="text-semibold mt-none"><a style="color:#55a747"  href='/jobs/job-{{job.pk}}/'>{{ job.title }}</a></h4>
-													<p>{{ job.summary  }}</p>
+													<h4 class="text-semibold mt-none"><a href='/ican/blog/blog-{{blog.pk}}/'>{{ blog.title|title }}</a></h4>
+													<i class="fa fa-calendar mr-xs"></i> {{ blog.created_at }}
+
+													<p>{{ blog.content|striptags| truncatechars:300 }}</p>
 												</div>
 											</div>
-											<div class="panel-footer panel-footer-btn-group">
+                                            <div class="panel-footer panel-footer-btn-group">
 												
-												<a style="font-size:22px; font-weight:  color:#55a747"  href="/company/admin/jobs/"><i class="fa fa-check-square-o mr-lg"></i> YES</a>
-												<a style="font-size:22px; font-weight:  color:#a74747"  href="/company/admin/confirm-delete/job-{{job.pk}}/"><i class="fa fa-trash-o mr-lg"></i> NO</a>
-											</div>
+                                                    <a style="font-size:22px; font-weight: 700; color:#a74747"  href="/ican/blog/confirm-delete/blog-{{blog.pk}}/confirmed/"><i class="fa fa-check-square-o mr-lg"></i> YES</a>
+                                                    <a style="font-size:22px; font-weight: 700; color:#55a747"  href="/ican/blogs/"><i class="fa fa-times-circle mr-lg"></i> NO</a>
+                                                </div>
 									</section>
+	
 									
+
 									</div>
 									
-							<!-- End of list jobs -->
+							<!-- End of list blogs -->
 							</div>
 							
 						</div>
@@ -64,4 +70,6 @@
 
 		</section>
 
-	{% include 'company/admin.footer.tmp' %}
+	{% include 'admin/admin.footer.tmp' %}
+    
+   

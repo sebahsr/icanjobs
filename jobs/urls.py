@@ -69,6 +69,7 @@ urlpatterns = [
     url(r'^company/admin/signup/$', job_views.signUpCompanyView),
     url(r'^company/admin/create-job/(?:job-(?P<jobID>\d+)/)?$', job_views.createJobView),
     url(r'^company/admin/confirm-delete/job-(?P<jobID>\d+)/((?P<confirmed>confirmed)/)?$', job_views.jobDelete),
+    url(r'^ican/blog/confirm-delete/blog-(?P<blogID>\d+)/((?P<confirmed>confirmed)/)?$', job_views.blogDelete),
 
     url(r'^applications/applicationID-(?P<applicationID>\d+)/$', job_views.applicationRead),
     

@@ -8,6 +8,7 @@
 		<meta name="keywords" content="Ican Jobs" />
 		<meta name="description" content="Jobs and Events in Ethiopia">
 		<meta name="author" content="">
+		<link rel="shortcut icon" href="/static/img/favicon.png">
 
 		<!-- Mobile Metas -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
