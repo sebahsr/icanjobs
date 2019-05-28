@@ -138,12 +138,15 @@
                                     </div>
 
                                     <ul>
-                                       <li><span> Posted</span> {{ job.created_at|date}}</li>                                 
-									   <li><span>Location</span>{{ job.city}}, 
+									   <li><span> Posted</span> {{ job.created_at|date}}</li> 
+									   {% if job.deadline %}                                
+                                       <li><span> Closing on </span> {{ job.deadline|date}}</li>                                 
+										{% endif %}
+									   <li><span>Location</span>{{ job.city}}
 										{% ifequal job.region.name 'Addis Ababa' %}
-													 Ethiopia
+													 ,Ethiopia
 										{% else %}
-											{{ job.region.name }}
+											,{{ job.region.name }}
 										{% endifequal %}	
 									
 									</li>                                                            

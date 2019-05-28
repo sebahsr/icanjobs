@@ -89,8 +89,6 @@
                                             <div class="single-footer-widget">
                                                 <h6>ABOUT iCAN</h6>
                                                 <ul class="footer-nav">
-                                                    <li><a href="/signup/">Register</a></li>
-                                                    <li><a href="/login/">Log in</a></li>
                                                     <li class="menu-active"><a href="/about/">About Us</a></li>
                                                     <li class="menu-active"><a href="/services/">Services</a></li>
                                                 </ul>

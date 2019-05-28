@@ -293,7 +293,7 @@ def companyCreateJobView(request, jobID=None):
         
 def employeeLoginView(request):
     if request.user.is_authenticated:
-        return redirect('/jobs/')
+        return redirect('/')
 
     if request.method == "POST":
         user = authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
@@ -740,7 +740,7 @@ def adminCompanyChangePasswordView(request):
 
 def loginCompanyView(request):
     if request.user.is_authenticated:
-        return redirect('/jobs/')
+        return redirect('/')
 
     if request.method == "POST":
         user = authenticate(username=request.POST.get('username'), password=request.POST.get('pwd'))
