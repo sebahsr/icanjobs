@@ -68,7 +68,7 @@
 									</h1>
 								</a>
 								<div class="content-wrap">
-									{{ blog.content|safe|linebreaksbr}}
+									{{ blog.content|safe}}
 
 								</div>
 

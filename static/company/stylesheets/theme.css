@@ -4490,6 +4490,11 @@ body .btn-twitter,
 body .btn-twitter:active,
 body .btn-twitter:hover,
 body .btn-twitter:focus,
+body .btn-linkedin,
+body .btn-linkedin:active,
+body .btn-linkedin:hover,
+body .btn-linkedin:focus,
+
 body .btn-gplus,
 body .btn-gplus:active,
 body .btn-gplus:hover,
@@ -4541,9 +4546,24 @@ body .btn-gplus:hover {
 	border-color: #da5635;
 }
 
-body .btn-gplus:active {
-	background: #d04727;
-	border-color: #c34324;
+body .btn-linkedin:active {
+	background: #5682a3;
+	border-color: #5682a3;
+}
+
+body .btn-linkedin, body .btn-linkedin:focus {
+	background: #5682a3;
+	border: 1px solid #5682a3;
+}
+
+body .btn-linkedin:hover {
+	background: #5682a3;
+	border-color: #5682a3;
+}
+
+body .btn-linkedin:active {
+	background: #5682a3;
+	border-color: #5682a3;
 }
 
 body .btn-primary {

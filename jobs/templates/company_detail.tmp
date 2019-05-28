@@ -68,7 +68,7 @@
 								<p class="address"><span class="fa fa-external-link"></span> <a href='{{ company.website }}'>{{ company.website }}</a></p>
 								{% endif %}
 								{% if company.user.email %}
-								<p class="address"><span class="fa fa-envelope"></span> {{ company.user.email }}</p>
+								<p class="address"><span class="fa fa-envelope"></span> <a href='mailto:{{ company.user.email }}'>{{ company.user.email }}</a></p>
 								{% endif %}
 								{% if company.phone %}
 								<p class="address"><span class="fa fa-phone"></span> {{ company.phone }}</p>
@@ -83,12 +83,14 @@
 									
 								</div>
 
-								<p class="address"><span class="lnr lnr-map"></span> {{ company.city|title }},
-									{% ifequal company.region.name 'Addis Ababa' %}
-									Ethiopia
-									{% else %}
-										{{ company.region.name }}
-									{% endifequal %}
+								<p class="address"><span class="fa fa-map-marker"></span> {{ company.city|title }}
+									{% if company.region %}
+										{% ifequal company.region.name 'Addis Ababa' %}
+											,Ethiopia
+										{% else %}
+											,{{ company.region.name }}
+										{% endifequal %}
+									{% endif %}
 								</p>
 								
 								<blockquote class="generic-blockquote">
@@ -168,11 +170,11 @@
 													<div class="details col-sm-12 col-sm-offset-1">
 														<div class="title d-flex flex-row justify-content-between">
 															<div class="titles">
-																<a href="/jobs/job-{{ job.id }}/"><h4>{{ job.title }}</h4></a>
+																<a href="/jobs/job-{{ job.getuniquelink }}/"><h4>{{ job.title }}</h4></a>
 															</div>
 														</div>
 														
-														<p class="address"> {{ job.summary|truncatechars:300 }}</p>
+														<p class="address"> {{ job.summary|striptags|truncatechars:300 }}</p>
 														<h6> <span class="fa fa-clock-o"></span> Closing On {{ job.deadline }} </a></h6>
 
 														

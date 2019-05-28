@@ -83,7 +83,7 @@
 												<div class="details col-sm-8">
 													<div class="title d-flex flex-row justify-content-between">
 														<div class="titles">
-															<a href="/jobs/job-{{ job.id }}/"><h4>{{ job.title|title }}</h4></a>
+															<a href="/jobs/job-{{ job.getuniquelink }}/"><h4>{{ job.title|title }}</h4></a>
 														</div>
 														
 													</div>

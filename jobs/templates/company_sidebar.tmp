@@ -15,11 +15,11 @@
                                             <img class="img-fluid" src='{{ recent_job.company.profile_pic.url }}' alt="" />
                                             <a href="/jobs/job-{{ recent_job.pk }}/"><h4>{{ recent_job.title }}</h4></a>
                                             <p>
-                                                {{ recent_job.summary|truncatechars:300}}
+                                                {{ recent_job.summary|striptags|truncatechars:300}}
                                             </p>
                                             <p class="address">Job Nature: {{ recent_job.employement_type.name }}</p>
                                             <p class="address"><span class="lnr lnr-database"></span> Region :  {{ recent_job.region }}</p>
-                                            <a href="/jobs/job-{{ recent_job.pk }}/" style="padding:5px" class="skill-tags btn">View Detail</a>
+                                            <a href="/jobs/job-{{ recent_job.getuniquelink }}/" style="padding:5px" class="skill-tags btn">View Detail</a>
                                         </div>
                                         
                                     {% endfor %}																	

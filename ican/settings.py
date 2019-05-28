@@ -122,7 +122,8 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
     'social_core.backends.google.GoogleOpenId',  # for Google authentication
     'social_core.backends.google.GoogleOAuth2',  # for Google authentication
-    
+    'social_core.backends.linkedin.LinkedinOAuth',
+    'social_core.backends.linkedin.LinkedinOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -155,17 +156,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 #https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
-#   os.path.join(BASE_DIR, "static"),
+   os.path.join(BASE_DIR, "static"),
 ]
 
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = '/jobs/'
 
+SOCIAL_AUTH_FIELDS_STORED_IN_SESSION = ('usertype', )
 SOCIAL_AUTH_FACEBOOK_KEY = '439542103455579'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '6cd5f46a40af08e6743fb543952f1bd2'  # App Secret
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link'] # add this
@@ -182,6 +184,9 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 # add this
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "43875786120-j0ai9d55rtfb66om4f5acnuhlqqn6f73.apps.googleusercontent.com"
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "fK4fmjS8gNTKc0TYiVNPYgt7"
+
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = 'update me'
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'update me'
 
 #...
 SITE_ID = 1

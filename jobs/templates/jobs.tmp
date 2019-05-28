@@ -121,7 +121,7 @@
                             <div class="jobs-content row">
                                 <div class="cs-media col-sm-3">
                                     <figure>
-                                        <a href="/jobs/job-{{job.pk}}/">
+                                        <a href="/jobs/job-{{job.getuniquelink}}/">
                                             <span class="feature">
                                                 <img alt="" src="{{ job.company.profile_pic.url }}">
                                             </span>    
@@ -131,7 +131,7 @@
                                 <div class="cs-text col-sm-8">
                                     <div class="cs-post-title">
                                         <h3>
-                                            <a href="/jobs/job-{{job.pk}}/">
+                                            <a href="/jobs/job-{{job.getuniquelink}}/">
                                                 {{ job.title }}
                                             </a>
                                         </h3>
@@ -143,11 +143,13 @@
                                        <li><span> Closing on </span> {{ job.deadline|date}}</li>                                 
 										{% endif %}
 									   <li><span>Location</span>{{ job.city}}
+										{% if job.region %}
 										{% ifequal job.region.name 'Addis Ababa' %}
 													 ,Ethiopia
 										{% else %}
 											,{{ job.region.name }}
 										{% endifequal %}	
+										{% endif %}
 									
 									</li>                                                            
                                     </ul>
@@ -156,7 +158,7 @@
                                         {{ job.summary|striptags|truncatechars:300}}
                                     </p>
 
-                                    <a class="read-more" href="/jobs/job-{{job.pk}}/">Read more</a>
+                                    <a class="read-more" href="/jobs/job-{{job.getuniquelink}}/">Read more</a>
                                     
                                 </div>
 

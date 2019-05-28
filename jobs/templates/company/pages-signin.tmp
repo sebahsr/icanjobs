@@ -20,7 +20,7 @@
 							
 						</div>
 						<div class="panel-body">
-							<div style="color:#333" class="h2">Log in as Employer</div>
+							<div style="color:#333" class="h2 ml-lg mr-lg">Log in as Employer</div>
 
 
 							{% if err %}
@@ -35,7 +35,7 @@
 							<form action="/company/admin/login/" method="post">
 	
 							{% endif %}								{% csrf_token %}
-								<div class="form-group mb-lg">
+								<div class="form-group mb-lg ml-lg mr-lg">
 									<label>Username</label>
 									<div class="input-group input-group-icon">
 										
@@ -48,9 +48,9 @@
 									</div>
 								</div>
 
-								<div class="form-group mb-lg">
+								<div class="form-group mb-lg ml-lg mr-lg">
 									
-									<div class="input-group input-group-icon">
+									<div class="input-group  input-group-icon">
 										<input name="pwd" placeholder="Password" type="password" class="form-control input-lg" />
 										<span class="input-group-addon">
 											<span class="icon icon-lg">
@@ -60,9 +60,9 @@
 									</div>
 								</div>
 
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="checkbox-custom checkbox-default">
+								<div class="row  ">
+									<div class="col-sm-6" >
+										<div class="ml-lg mr-lg checkbox-custom checkbox-default">
 											<input id="RememberMe" name="rememberme" type="checkbox"/>
 											<label for="RememberMe">Remember Me</label>
 										</div>
@@ -73,7 +73,7 @@
 										</div>
 									</div>
 									
-									<div class="col-sm-12 text-right">
+									<div class="col-sm-12 ml-lg mr-lg text-right">
 										<button type="submit" class=" btn btn-primary btn-block mt-lg">Sign In</button>
 									</div>
 								</div>
@@ -83,7 +83,10 @@
 									<span>or</span>
 								</span>
 
-
+								<div class="mb-xs text-center">
+										<a href="{% url 'social:begin' backend='linkedin-oauth2' %}?usertype=employer" class="col-xs-12 btn btn-linkedin mb-xs ml-lg mr-lg">Sign in with <i class="fa fa-linkedin"></i></a>
+										<a href="{% url 'social:begin' 'google-oauth2' %}?usertype=employer" class="col-xs-12 btn btn-gplus mb-xs ml-lg mr-lg"> Sign in with <i class="fa fa-google"></i> </a>
+								</div>
 								<p class="text-center h4">New to iCAN? <a href="/company/admin/signup/">Join us today.</a>							
 
 							</form>

@@ -64,8 +64,8 @@ class Company(Entity):
     name = models.CharField(max_length=100)
     profile_pic = models.FileField(upload_to=functions.getFileName, null=True, blank=True)
     brief_description = models.TextField(null=True, blank=True)
-    region = models.ForeignKey('Region', related_name='companies')
-    city = models.CharField(max_length=100, default="Addis Ababa")
+    region = models.ForeignKey('Region', null=True, blank=True, related_name='companies')
+    city = models.CharField(max_length=100, null=True, blank=True, default="Addis Ababa")
     website = models.URLField(blank=True, null=True)
     facebook = models.URLField(blank=True, null=True)
     twitter = models.URLField(blank=True, null=True)
@@ -186,7 +186,7 @@ class Job(models.Model):
     how_to_apply =RichTextField(blank=True)
     responsibilities =RichTextField(blank=True)
     department = models.CharField(blank=True, max_length=100)
-    level = models.ForeignKey('JobLevel')
+    level = models.ForeignKey('JobLevel', null=True, blank=True)
     company = models.ForeignKey('Company', related_name='jobs')
     salary = models.CharField(max_length=200, blank=True, null=True) #0 means not determined 
     number_of_candidates = models.IntegerField(blank=True, null=True) #0 means not determined 
@@ -205,7 +205,8 @@ class Job(models.Model):
     class Meta:
         ordering = ('-created_at', )
    
-
+    def getuniquelink(self):
+        return '-'.join(self.title.lower().split(" ")) + '-' + str(self.pk)
 class JobApplication(models.Model):
     applicant = models.ForeignKey('Employee')
     job = models.ForeignKey('Job', related_name='applications')

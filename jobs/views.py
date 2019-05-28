@@ -75,7 +75,13 @@ def jobView(request, **kwargs):
         jobs, category = jobCategoryListHelper(kwargs['categoryID'])
 
     elif kwargs.get('jobID', False):
-        job = jobDetailHelper(kwargs['jobID'], request)
+        try:
+            jobID = kwargs.get('jobID').split('-')[-1]
+            jobID = int(jobID)
+        except:
+            return HttpResponse('Job Not Found', status=404)
+        
+        job = jobDetailHelper(jobID, request)
         template_name = "job_detail.tmp"
 
 
