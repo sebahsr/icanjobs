@@ -141,8 +141,6 @@
 										<div style="    font-size: 14px;" class="ml-15 generic-blockquote">
 											{% if employee.about_me %}
 											{{ employee.about_me }}
-											{% else %}
-											+ Introduce yourself to employers and allows them to quickly understand who you are and focus on key capabilities and unique experience with an emphasis on results. Make it relevant to the career you are seeking and the value you would add to the employer  
 
 											{% endif %}
 										</div>

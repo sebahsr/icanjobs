@@ -111,7 +111,7 @@ def jobView(request, **kwargs):
     regions = models.Region.objects.all()
     categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
 
-
+    recent_jobs = models.Job.objects.all()[:constants.RECENT_JOBS_SIDEBAR]
     return render(request, template_name, locals())
 #view helper functions for job 
 def jobDetailHelper(jobID, request):
@@ -659,7 +659,7 @@ def blogListView(request, categoryID=None):
     postcategories = eventModels.PostCategories.objects.all()
     recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:5]
 
-    return render(request, 'blogs.tmp', locals())
+    return render(request, 'coming.soon.tmp', locals())
 def blogDetailView(request, blogID):
     blog = get_object_or_404(eventModels.Blog, pk=blogID)
     postcategories = eventModels.PostCategories.objects.all()
