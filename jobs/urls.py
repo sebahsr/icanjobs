@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^services/$', job_views.services),
     url(r'^jobalerts/$', job_views.jobAlerts),
     url(r'^contact/$', job_views.contact),
+    url(r'^privacy/$', job_views.privacy),
 
     url(r'^jobs/(?:job-(?P<jobID>([a-zA-Z\-\d])+)/)?$', job_views.jobView),
     url(r'^jobs/(?:category-(?P<categoryID>\d+)/)$', job_views.jobView),

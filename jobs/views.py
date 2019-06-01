@@ -31,6 +31,10 @@ build_resume_redirects = {
 }
 def aboutUs(request):
     return render(request, 'about.tmp', locals())
+
+def privacy(request):
+    return render(request, 'privacy.policy.tmp', locals())
+    
 def branding(request):
     return render(request, 'employer.branding.tmp', locals())
 
@@ -255,9 +259,10 @@ def employeeSignupView(request):
         employee_form = forms.EmployeeForm(request.POST, request.FILES)
 
         newPassword = request.POST.get('pwd')
-        newPasswordRepeat = request.POST.get('repeat_pwd')
-        
+        newPasswordRepeat = request.POST.get('pwd_confirm')
+        print request.POST, newPassword, newPasswordRepeat
         if newPassword != newPasswordRepeat:
+
             passerr = "The new password doesnt match. Please provide matching password"
         
         elif userNameForm.is_valid() and employee_form.is_valid() and user_form.is_valid():
@@ -268,7 +273,9 @@ def employeeSignupView(request):
             employee = employee_form.save(commit=False)
             employee.user = user
             employee.save()
-            return redirect('/login/')
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+
+            return redirect('/employee/')
         else:
             err = "Failed to register. Please try again."
             print employee_form.errors, user_form.errors

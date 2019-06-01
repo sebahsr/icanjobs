@@ -985,25 +985,25 @@ h1, h2, h3, h4, h5, h6 {
 
 .genric-btn.info {
   color: #fff;
-  color: #55a747;
+  color: #eb7100;
   border: 1px solid transparent;
 }
 
 .genric-btn.info:hover {
-  color: #55a747;
+  color: #eb7100;
   border: 1px solid #38a4ff;
   background: #fff;
 }
 
 .genric-btn.info-border {
-  color: #55a747;
+  color: #eb7100;
   border: 1px solid #38a4ff;
   background: #fff;
 }
 
 .genric-btn.info-border:hover {
   color: #fff;
-  color: #55a747;
+  color: #eb7100;
   border: 1px solid transparent;
 }
 
@@ -2158,7 +2158,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu a:hover{
-  color: #55a747;
+  color: #eb7100;
 }
 .nav-menu > li {
   margin-left: 10px;
@@ -2185,7 +2185,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu ul li:hover > a {
-  color: #55a747;
+  color: #eb7100;
 }
 
 .nav-menu ul ul {
@@ -2348,10 +2348,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 }
 .solid-section, .p1-gradient-bg, .sidebar .single-slidebar .cat-list li:hover, .solid-section,  .callto-action-area, .single-price:hover .price-bottom, .single-service:hover, .submit-right, .submit-left, .contact-btns, .form-area .primary-btn {
-  background: #55a747;
+  background: #eb7100;
 }
 .p1-gradient-bg, .sidebar .single-slidebar .cat-list li.active {
-  background: #55a747;
+  background: #eb7100;
 }
 
 .p1-gradient-bg, .sidebar .single-slidebar .cat-list li.active .sidebar .single-slidebar .cat-list a {
@@ -2427,9 +2427,9 @@ ul.spatialism-sec li a span {
 }
 
 .p1-gradient-color, .feat-txt h1 {
-  background: -moz-linear-gradient(0deg, #bfacff 0%, #55a747 100%);
-  background: -webkit-linear-gradient(0deg, #bfacff 0%, #55a747 100%);
-  background: -ms-linear-gradient(0deg, #bfacff 0%, #55a747 100%);
+  background: -moz-linear-gradient(0deg, #bfacff 0%, #eb7100 100%);
+  background: -webkit-linear-gradient(0deg, #bfacff 0%, #eb7100 100%);
+  background: -ms-linear-gradient(0deg, #bfacff 0%, #eb7100 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -2602,7 +2602,7 @@ ul.spatialism-sec li a span {
 }
 
 .banner-content .form-wrap .btn-info {
-  background-color: #55a747;
+  background-color: #eb7100;
   width: 100%;
   height: 100%;
   color: #fff;
@@ -2879,7 +2879,7 @@ ul.spatialism-sec li a span {
 
 
 .blog-text  .cs-inner-bolg  a{
-  color : #55a747;
+  color : #eb7100;
 }
 
 .blog-text .cs-post-title  a{
@@ -2934,7 +2934,7 @@ ul.spatialism-sec li a span {
 }
 
 .single-post .title h4:hover, .single-post-detail-job .title h4:hover{
-  color:#55a747 !important;
+  color:#eb7100 !important;
 }
 .post-list .single-post h6, .post-list .single-post-detail-job h6 {
   margin-top: 10px;
@@ -3571,7 +3571,7 @@ ul.spatialism-sec li a span {
 }
 
 .footer-social a:hover {
-  background-color: #55a747;
+  background-color: #eb7100;
 }
 
 .footer-social a:hover i {
@@ -4602,7 +4602,7 @@ ul.spatialism-sec li a span {
 
 .fancy-box .cs-icon-box:hover {
   color: #fff;
-  background: #55a747;
+  background: #eb7100;
   cursor: pointer;
   box-shadow: 0 0 0, gray;
 
@@ -4618,7 +4618,7 @@ ul.spatialism-sec li a span {
 }
 
 .search-tag{
-  background: #55a747;
+  background: #eb7100;
   padding:  5px;
   margin:5px;
   font-weight: bolder;
@@ -4651,7 +4651,7 @@ ul.spatialism-sec li a span {
 
 .cs-icon-box .cs-media i {
   font-size: 48px;
-  color: #55a747;
+  color: #eb7100;
 }
 
 .cs-section-title, .cs-element-title {
@@ -4781,7 +4781,7 @@ figure {
 
 .listing.modern .read-more {
   border-bottom: 0;
-  color: #55a747 !important;
+  color: #eb7100 !important;
   display: inline-block;
   font-size: 10px;
   margin: 0 0 0 5px;
@@ -4789,7 +4789,7 @@ figure {
 }
 
 listing.modern .read-more:before {
-  color: #55a747;
+  color: #eb7100;
   content: "\eab1";
   font-family: "icomoon";
   font-size: 14px;
@@ -4806,7 +4806,7 @@ listing.modern .read-more:before {
 }
 
 .build-resume-side:hover, .build-resume-side.active {
-  background: #55a747;
+  background: #eb7100;
   /* color: white; */
 }
 
@@ -4823,7 +4823,7 @@ listing.modern .read-more:before {
 }
 
 .build-resume-helper p .highlited {
-  background: #55a747;
+  background: #eb7100;
   color: white;
   padding: 5px;
 }
@@ -4831,7 +4831,7 @@ listing.modern .read-more:before {
 .build-resume-helper a {
   display: block;
   padding: 10px;
-  background: #55a747;
+  background: #eb7100;
   text-align: center;
   color: white;
   margin-top: 20px;
@@ -4841,17 +4841,17 @@ listing.modern .read-more:before {
 
 a.join-ican {
   color: white;
-  border: 1px solid #55a747;
+  border: 1px solid #eb7100;
   padding: 7px;
   display: inline-block;
   margin: 12px;
-  background: #55a747;
+  background: #eb7100;
 }
 
 .skill-tags{
   color: #fff;
   font-size: 17px;
-  background: #55a747;
+  background: #eb7100;
   border: 1px solid transparent;
 }
 
@@ -4859,8 +4859,8 @@ a.join-ican {
   display: inline-block;
   margin: 2px;
   padding: 5px;
-  border: 1px solid #55a747;
-  color: #55a747;
+  border: 1px solid #eb7100;
+  color: #eb7100;
 }
 
 .page-header-title{
@@ -4902,7 +4902,7 @@ a.join-ican {
 }
 
 .apply-job .like {
-  background: #95cb2d;
+  background: #eb7100;
   cursor: pointer;
 }
 
@@ -4988,4 +4988,10 @@ a.join-ican {
 }
 .sing-recent-job {
   margin-bottom: 12px;
+}
+
+span.build-resume-message {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 200;
 }

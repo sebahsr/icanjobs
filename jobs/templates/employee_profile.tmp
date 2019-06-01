@@ -68,7 +68,9 @@
 
 						{% include 'edit_employee.tmp' %}
 					{% else %}
-						
+						<div class="flew-row">
+							<span class='build-resume-message'>Make sure you build your resume.</span>
+						</div>
 						<div class="single-post d-flex flex-row">
 							<div class="thumb col-sm-4">
 								{% if employee.profile_pic %}
@@ -88,9 +90,14 @@
 									
 									
 								</div>
+								{% if employee.city %}
+								<p><span class='fa fa-map-marker '></span> Location : {{ employee.city|default:"Not specified"  }}
+									{% if employee.region %}
+										, {{ employee.region.name |default:"Not specified" }}
+									{% endif %}
 
-                                <p><span class='fa fa-map-marker '></span> Location : {{ employee.city|default:"Not specified"  }}, {{ employee.region.name |default:"Not specified" }}</p>
-								
+									</p>
+								{% endif %}
 							
 
 							</div>
@@ -130,6 +137,7 @@
 									</div>
 								</div>	
 						</section>
+						{% if employee.about_me %}
 
 						<section class="single-post post-area section-gap">
 							<div id='employee-skill' class="container">
@@ -152,7 +160,7 @@
 								</div>
 							</div>	
 					</section>
-
+					{% endif %}
 						<!-- End about me -->
 					{% endif %}
 						<!-- Start post Area -->

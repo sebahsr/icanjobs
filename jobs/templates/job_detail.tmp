@@ -177,7 +177,7 @@
 							{% elif not request.user.is_authenticated %}
 							<div class="apply-job">
 								<div class="cs-text">
-									<a href='/login/?next=/jobs/job-{{job.pk}}/' class="like applied_icon">  <span><i class="fa fa-thumbs-up"></i></span>Apply Now</a>
+									<a href='/signup/?next=/jobs/job-{{job.pk}}/' class="like applied_icon">  <span><i class="fa fa-thumbs-up"></i></span>Apply Now</a>
 									<a href="{% url 'social:begin' 'google-oauth2' %}?usertype=jobseeker"  class="linkedin social_login_login_linkedin"><div class="linkedin_jobid_apply"></div><i class="fa fa-google-plus"></i><span>Apply with Gmail</span></a>
 									<a href="{% url 'social:begin' 'facebook' %}?usertype=jobseeker" class=" facebook social_login_login_facebook_apply" ><div class="facebook_jobid_apply"></div><i class="fa fa-facebook"></i>Apply with Facebook</a>                                                                                                                    </div>
 							</div>
