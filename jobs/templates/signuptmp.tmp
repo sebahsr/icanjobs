@@ -97,7 +97,7 @@
                                     <a href="{% url 'social:begin' 'google-oauth2' %}?usertype=jobseeker&next=/employee/build-resume/" class="col-xs-12 btn btn-gplus mb-xs ml-lg mr-lg"> Sign in with <i class="fa fa-google"></i> </a>
                                 </div>
 
-						<p class="text-center h4">Already a memeber? <a href="/login/">Sign in.</a>
+						<p class="text-center h4">Already a member? <a href="/login/">Sign in.</a>
 
 							
 						</form>
