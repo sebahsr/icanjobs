@@ -95,6 +95,7 @@
 															
 															<p class="m-none ib"><a href='/applications/applicationID-{{ application.pk }}/?redirect_to=/employee/employee-{{application.applicant.pk}}'>{{ application.applicant.first_name | title }} {{ application.applicant.last_name | title }}</a></p>
 														</div>
+														
 														<div class="col-mail">
 															<p class="m-none mail-content">
 																<span class="subject"><a href='/applications/applicationID-{{ application.pk }}/?redirect_to=/jobs/job-{{application.job.pk}}'>{{ application.job.title | title }} </a> &nbsp;–&nbsp;</span>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="/static/img/favicon.png">
+	<!-- Author Meta -->
+	<meta name="author" content="codepixer">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Job Listing</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+		<!--
+		CSS
+		============================================= -->
+		<link rel="stylesheet" href="/static/css/linearicons.css">
+
+		<link rel="stylesheet" href="/static/css/fontawesome.pro.css">
+
+		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+
+		<link rel="stylesheet" href="/static/css/bootstrap.css">
+		<link rel="stylesheet" href="/static/css/magnific-popup.css">
+		<link rel="stylesheet" href="/static/css/nice-select.css">					
+		<link rel="stylesheet" href="/static/css/animate.min.css">
+		<link rel="stylesheet" href="/static/css/owl.carousel.css">
+		<link rel="stylesheet" href="/static/css/main.css">
+		<link rel="stylesheet" href="/static/company/vendor/bootstrap-datepicker/css/datepicker3.css" />
+		<link rel="stylesheet" href="/static/company/vendor/bootstrap-datepicker/css/datepicker.css" />
+
+	</head>
+	<body>
+
+
+		<!-- start banner Area -->
+		<section class="banner-area relative" id="home">	
+			<div class="overlay overlay-bg"></div>
+			<div class="container">
+				<div class="row d-flex align-items-center justify-content-center">
+					<div class="about-content-detail col-lg-12">
+						<h1 class="text-white">
+							{{ employee.user.first_name|title }} {{ employee.user.last_name|title }}				
+						</h1>	
+						
+					</div>											
+				</div>
+			</div>
+		</section>
+		<!-- End banner Area -->	
+			
+		<!-- Start post Area -->
+		<section class="post-area section-gap">
+			<div class="container">
+				<div class="row justify-content-left d-flex">
+					<div class="profile-main-wrapper col-lg-9 post-list">
+	
+						<div class="flew-row">
+                                <div style="text-transfor:upper" class='h5'>Application to </div><div class='h3'>{{ job_application.job.title }}</div>
+                        </div>
+						<div class="single-post d-flex flex-row">
+							<div class="thumb col-sm-4">
+								{% if employee.profile_pic %}
+								<img style="max-width:100px" src="{{ employee.profile_pic.url }}" alt="">
+								{% else %}
+								<img style="max-width:100px" src="/static/img/default.png" alt="">
+								{% endif %}
+
+								<br /><br />
+
+							</div>
+							<div class="details col-sm-4">
+								<div class="title d-flex flex-row justify-content-between">
+									<div class="titles ">
+										<div class='h4'>{{ employee.user.first_name|title}} {{ employee.user.last_name|title}}</div>					
+									</div>
+									
+									
+								</div>
+								{% if employee.city %}
+								<p><span class='fa fa-map-marker '></span> Location : {{ employee.city|default:"Not specified"  }}
+									{% if employee.region %}
+										, {{ employee.region.name |default:"Not specified" }}
+									{% endif %}
+
+									</p>
+								{% endif %}
+							
+
+							</div>
+
+							<div class="col-lg-4">
+								<h4>Contact Information</h4>
+								
+								<p class="address"><span class="fa fa-envelope"></span> {{ employee.user.email | default:"Not specified"  }}</p>
+								<p class="address"><span class="fa fa-phone"></span> {{ employee.phone | default:"Not specified"  }}</p>
+								<p>
+								{% if employee.facebook_url %}
+									<a href='{{ employee.facebook_url }}'><span style="font-size:17px" class="fa fa-facebook"></span></a>
+								{% endif %}
+
+								{% if employee.linkedin_url %}
+									<a href='{{ employee.linkedin_url }}'><span style="font-size:17px" class="fa fa-linkedin-square"></span></a>
+								{% endif %}
+
+								{% if employee.twitter_url %}
+									<a href='{{ employee.twitter_url }}'><span style="font-size:17px" class="fa fa-twitter-square"></span></a>
+								{% endif %}
+								</p>
+								
+							</div>
+
+						</div>	
+						
+						<!--  About me -->
+						<section class="post-area ">
+								<div id='company-job-list' class="container">
+									<div class="single-post row justify-content-center d-flex">
+										
+										
+										
+										
+
+									</div>
+								</div>	
+						</section>
+						{% if employee.about_me %}
+
+						<section class="single-post post-area section-gap">
+							<div id='employee-skill' class="container">
+								<div class="row justify-content-center d-flex">
+									<div class="col-lg-12 post-list">
+										<h4 class="single-title"> Profile Summary </h4>
+											
+											
+										<div style="    font-size: 14px;" class="ml-15 generic-blockquote">
+											{% if employee.about_me %}
+											{{ employee.about_me }}
+
+											{% endif %}
+										</div>
+											
+									</div>
+									
+				
+									
+								</div>
+							</div>	
+					</section>
+					{% endif %}
+						<!-- End about me -->
+						<!-- Start post Area -->
+						{% if employee.experiences.all %}
+						<section class="single-post post-area section-gap">
+								<div id='company-job-list' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title highlited-single-title"> Professional Experience 
+												
+											
+											</h4>
+											
+											<div class="ml-15">
+											{% for experience in employee.experiences.all %}
+												<div class='row'>
+													<div class='col-sm-7'>
+														<div class='h5'>{{ experience.job_title }} </div>
+														<div class='h5'>{{ experience.company_name }} </div>
+														<div><i class='fa fa-map-marker'></i> {{ experience.city }}, {{ experience.region.name }} </div>
+														
+														<br />
+														<p>{{ experience.description}}</p>
+													</div>
+
+													<div class='col-sm-4'>
+															<div><i class='fa fa-calendar-alt'></i> {{ experience.start_month|title }}, {{ experience.start_year }} - {{ experience.end_month|title }}, {{ experience.end_year }} </div>
+													</div>
+												</div>
+												
+
+											{% endfor %}
+											</div>
+									
+
+										</div>
+
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+						{% endif %}
+						<!-- End post Area -->
+						
+						{% if employee.skills.all %}
+						<section class="single-post post-area section-gap">
+								<div id='employee-skill' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title highlited-single-title"> Skill/Qualifications 
+
+											</h4>
+											
+											<div class="ml-15">
+
+												{% for skill in employee.skills.all %}
+												<span class='btn skill-tags'>{{ skill.name |title }}</span>
+												{% endfor %}
+
+											</div>
+											
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+						{% endif %}
+			
+					
+
+						{% if employee.references.all %}
+						<section class="single-post post-area section-gap">
+								<div id='employee-skill' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title highlited-single-title"> References
+
+											</h4>
+											
+
+											<div class="ml-15">
+												<div class="row">
+													{% for reference in employee.references.all %}
+														<div class="col-sm-6">
+															<div class='h4'>{{ reference.first_name |title }} {{ reference.last_name |title }} </div>
+															<span>{{ reference.organization |title }}  </span><br />
+															<span>{{ reference.phone }}  </span><br />
+															<span>{{ reference.email }}  </span><br />
+														</div>
+														
+													{% endfor %}
+												</div>
+
+											</div>
+											
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+						{% endif %}
+
+						{% if employee.worksamples.all %}
+						<section class="single-post post-area section-gap">
+								<div id='employee-skill' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title highlited-single-title"> Work Samples
+
+											</h4>
+											
+
+											<div class="ml-15">
+												<div class="row">
+													{% for worksample in employee.worksamples.all %}
+														<div class="col-sm-6">
+															<div class='h4'>{{ worksample.name }} </div>
+															<span>{{ worksample.description }}  </span> <br />
+															<a href='{{ worksample.document.url }}'>{{ worksample.document.name }}  </a> <br />
+															<span class="fa fa-calendar-o"></span> {{ worksample.date }}
+														</div>
+													{% endfor %}
+												</div>
+
+
+											</div>
+
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+						{% endif %}
+
+						
+
+						{% if employee.worklinks.all %}
+						<section class="single-post post-area section-gap">
+								<div id='employee-skill' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title highlited-single-title"> Links to my Work
+											</h4>
+											
+											
+											<div class="ml-15">
+												<div class="row">
+													
+													{% for worklink in employee.worklinks.all %}
+													<div class="col-sm-6">
+														<div class='h4'><a href='{{ worklink.url }}'>{{ worklink.name }} </a></div>
+														<p'>{{ worklink.description }}  </p>
+													</div>
+													
+													{% endfor %}
+												</div>
+
+											</div>
+
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+						{% endif %}
+
+						{% if employee.educations.all %}
+						<section class="single-post post-area section-gap">
+								<div id='company-job-list' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title highlited-single-title"> Education/Training</h4>
+											
+
+											<div class="ml-15">
+												{% for education in employee.educations.all %}
+												<div class='row'>
+													<div class='col-sm-7'>
+														<div class='h5'>{{ education.school }} </div>
+														<div class='h5'>{{ education.field_of_study }} </div>
+														<div class='h5'>{{ education.degree.name }} </div>
+														<div><i class='fa fa-map-marker'></i> {{ education.city }}, {{ education.region.name }} </div>
+														
+														<br />
+														<p>{{ education.description}}</p>
+													</div>
+
+													<div class='col-sm-4'>
+															<div><i class='fa fa-calendar-alt'></i> {{ education.start_month|title }}, {{ education.start_year }} - {{ education.end_month|title }}, {{ education.end_year }} </div>
+													</div>
+												</div>
+												
+												{% endfor %}
+											</div>
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+						{% endif %}
+						
+						{% if employee.volunteer_experience %}
+						<section class="single-post post-area section-gap">
+								<div id='company-job-list' class="container">
+									<div class="row justify-content-center d-flex">
+										<div class="col-lg-12 post-list">
+
+											<h4 class="single-title highlited-single-title"> 
+												Volunteer Experience/Membership/Afflilations
+												</h4>
+											
+											
+											<div class="ml-15">
+												{% if employee.volunteer_experience %}
+												<div class='row'>
+													<div class='col-sm-7'>
+														
+														<p>{{ employee.volunteer_experience}}</p>
+													</div>
+
+												</div>
+												
+												{% endif %}
+											</div>
+										</div>
+										
+					
+										
+									</div>
+								</div>	
+						</section>
+						{% endif %}
+
+					</div>
+					<!-- sidebar -->
+					<!-- End side bar -->
+				</div>
+			</div>	
+		</section>
+        <!-- End post Area -->
+           
+        <script>
+            window.print();
+
+        </script>
+

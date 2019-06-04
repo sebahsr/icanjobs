@@ -92,6 +92,11 @@
 							</span>
 
 
+							<div class="mb-xs text-center">
+								<a href="{% url 'social:begin' 'facebook' %}?usertype=jobseeker&next=http://localhost:8000/employee/build-resume/" class="col-xs-12 btn btn-facebook mb-xs"> Register with <i class="fa fa-facebook"></i></a>
+								<a href="{% url 'social:begin' 'google-oauth2' %}?usertype=jobseeker&next=http://localhost:8000/employee/build-resume/" class="col-xs-12 btn btn-gplus mb-xs"> Register with <i class="fa fa-google"></i> </a>
+							</div>
+
 
 						<p class="text-center h4">Already a memeber? <a href="/login/">Sign in.</a>
 

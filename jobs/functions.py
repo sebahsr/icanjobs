@@ -11,7 +11,6 @@ def is_company(user):
         return hasattr(user, 'company')
 
 def create_employee(strategy, details, backend, user=None, *args, **kwargs):
-        print details
         from jobs import models
         if user  and not hasattr(user, 'employee') and not hasattr(user, 'company'):
                 if strategy.session_get('usertype') == 'jobseeker':
@@ -22,5 +21,7 @@ def create_employee(strategy, details, backend, user=None, *args, **kwargs):
                         user.company = models.Company.objects.create(user=user, name='%s' % (details.get('fullname')))
                         user.save()
                         return
+
+
 def is_staff(user):
         return user.is_staff

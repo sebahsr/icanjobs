@@ -69,6 +69,22 @@ def homeView(request, **kwargs):
     regions = models.Region.objects.all()
     return render(request, template_name, locals())
 
+@login_required
+@user_passes_test(functions.is_company)
+def applicationPrint(request, applicationID):
+    job_application = get_object_or_404(models.JobApplication, pk=applicationID)
+    employee = job_application.applicant
+
+    return render(request, 'application.print.tmp', locals())
+
+@login_required
+@user_passes_test(functions.is_company)
+def applicationDelete(request, applicationID):
+    job_application = get_object_or_404(models.JobApplication, pk=applicationID)
+    job_application.delete()
+
+    return redirect('/company/admin/applications/')
+
 def jobView(request, **kwargs):
     jobs = None 
     template_name = "jobs.tmp"
@@ -275,7 +291,7 @@ def employeeSignupView(request):
             employee.save()
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
-            return redirect('/employee/')
+            return redirect('/employee/build-resume/')
         else:
             err = "Failed to register. Please try again."
             print employee_form.errors, user_form.errors
@@ -314,10 +330,8 @@ def employeeLoginView(request):
 
         if user and hasattr(user, 'employee'):
             login(request, user)
-            if request.GET.get('next'):
-                return redirect(request.GET.get('next'))
 
-            return redirect('/employee/')
+            return redirect('/employee/build-resume/')
         
         err = "Login Failed. Try again"
     next_url = request.GET.get('next') if request.GET.get('next') else '/employee/'

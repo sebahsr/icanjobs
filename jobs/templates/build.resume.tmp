@@ -56,12 +56,37 @@
 		<!-- Start post Area -->
 		<section class="post-area section-gap-med">
 			<div class="container">
-				<div class="row  d-flex">
-                    <div class="col-lg-8 post-list">
+				<div class="">
+                <div class="row">
+                    <div class="col-lg-12 post-list">
                         <div class="single-post-tabs d-flex flex-row">
                             {% include 'profile_tabs.tmp' %}
                         </div>	
                     </div>
+				</div>
+                    <div class="row">
+					<div class="col-lg-4 sidebar">
+                        <div class="single-slidebar">
+                            <h4>Your Resume/CV</h4>
+                            <div class='{{ build_active_gen }} build-resume-side'><a href='/employee/build-resume/general/'>GENERAL INFORMATION</a></div>
+                            <div class='{{ build_active_sum }} build-resume-side'><a href='/employee/build-resume/summary/'>PROFILE SUMMARY</a></div>
+                            <div class='{{ build_active_prof }} build-resume-side'><a href='/employee/build-resume/experience/'>PROFESSIONAL EXPERIENCE</a></div>
+                            <div class='{{ build_active_edu }} build-resume-side'><a href='/employee/build-resume/education/'>EDUCATION/TRAINING</a></div>
+
+                            <div class='{{ build_active_skill }} build-resume-side'><a href='/employee/build-resume/skill/'>SKILL/QUALIFICATIONS </a></div>
+                            <div class='{{ build_active_resume }} build-resume-side'><a href='/employee/build-resume/cv/'>ATTACH YOUR RESUME/CV</a></div>
+                            <div class='{{ build_active_worksample }} build-resume-side'><a href='/employee/build-resume/worksample/'>WORK SAMPLES</a></div>
+                            <div class='{{ build_active_worklink }} build-resume-side'><a href='/employee/build-resume/worklink/'>WORK LINKS</a></div>
+                            
+                            <div class='{{ build_active_vol }} build-resume-side'><a href='/employee/build-resume/volunteer/'>VOLUNTEER EXPERIENCE/MEMBERSHIP/AFFLILATIONS</a></div>
+                            <div class='{{ build_active_ref }} build-resume-side'><a href='/employee/build-resume/reference/'>REFERENCES</a></div>
+
+
+                         </div>
+
+                <!-- End side bar -->
+                    </div>
+
 					<div class="justify-content-center col-lg-8 post-list">
                             <section class="post-area section-gap">
                                     <div class="container">
@@ -139,30 +164,11 @@
                                 </section>
 					</div>
                     <!-- sidebar -->
+
+                </div>
                     
 
 
-					<div class="col-lg-4 sidebar">
-                            <div class="single-slidebar">
-                                <h4>Your Resume/CV</h4>
-                                <div class='{{ build_active_gen }} build-resume-side'><a href='/employee/build-resume/general/'>GENERAL INFORMATION</a></div>
-                                <div class='{{ build_active_sum }} build-resume-side'><a href='/employee/build-resume/summary/'>PROFILE SUMMARY</a></div>
-                                <div class='{{ build_active_prof }} build-resume-side'><a href='/employee/build-resume/experience/'>PROFESSIONAL EXPERIENCE</a></div>
-                                <div class='{{ build_active_edu }} build-resume-side'><a href='/employee/build-resume/education/'>EDUCATION/TRAINING</a></div>
-
-                                <div class='{{ build_active_skill }} build-resume-side'><a href='/employee/build-resume/skill/'>SKILL/QUALIFICATIONS </a></div>
-                                <div class='{{ build_active_resume }} build-resume-side'><a href='/employee/build-resume/cv/'>ATTACH YOUR RESUME/CV</a></div>
-                                <div class='{{ build_active_worksample }} build-resume-side'><a href='/employee/build-resume/worksample/'>WORK SAMPLES</a></div>
-                                <div class='{{ build_active_worklink }} build-resume-side'><a href='/employee/build-resume/worklink/'>WORK LINKS</a></div>
-                                
-                                <div class='{{ build_active_vol }} build-resume-side'><a href='/employee/build-resume/volunteer/'>VOLUNTEER EXPERIENCE/MEMBERSHIP/AFFLILATIONS</a></div>
-                                <div class='{{ build_active_ref }} build-resume-side'><a href='/employee/build-resume/reference/'>REFERENCES</a></div>
-
-
-                             </div>
-
-					<!-- End side bar -->
-				</div>
 			</div>	
 		</section>
 		<!-- End post Area -->

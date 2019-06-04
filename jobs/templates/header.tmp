@@ -15,6 +15,7 @@
 
                         {% if not request.user.is_authenticated or request.user.employee %}
                         <li class="menu-active"><a href="/employee/build-resume/">Build your resume</a></li>
+
                         {% endif %}
                         <li class="menu-active"><a href="/jobalerts/">Job Alerts</a></li>
                         {% if not request.user.is_authenticated %}

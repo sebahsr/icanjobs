@@ -59,7 +59,7 @@
 											<li class="ib mr-sm">
 												<div class="btn-group">
 													<a href="#" class="item-action fa fa-chevron-down dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></a>
-								
+							
 													<ul class="dropdown-menu" role="menu">
 														<li><a href="/company/admin/applications/">All</a></li>
 														<li><a href="/company/admin/applications/read/">Read</a></li>
@@ -79,32 +79,37 @@
 								<div id="mailbox-email-list" class="mailbox-email-list">
 									<div class="nano">
 										<div class="nano-content">
-											<ul id="" class="list-unstyled">
+											<table class="table table-striped">
 											{% for application in applications %}
-												<li class="{{ application.status }}">
-													<a href="mailbox-email.html">
-														{% ifequal application.status 'unread' %}
-															<i class="mail-label" style="border-color: #EA4C89"></i>
-														{% endifequal %}
-														<div lass="col-sender">
+												<tr class="{{ application.status }}">
+														
+														<td >
+																{% ifequal application.status 'unread' %}
+																<i class="mail-label" style="border-color: #EA4C89"></i>
+															{% endifequal %}
+
 															<img style='max-width: 25px' class="img img-circle" src='/static/img/default.png' />
 															
-														</div>
-														<div class="col-sender">
-															
-															<p class="m-none ib"><a href='/applications/applicationID-{{ application.pk }}/?redirect_to=/employee/employee-{{application.applicant.pk}}'>{{ application.applicant.first_name | title }} {{ application.applicant.last_name | title }}</a></p>
-														</div>
-														<div class="col-mail">
-															<p class="m-none mail-content">
-																<span class="subject"><a href='/applications/applicationID-{{ application.pk }}/?redirect_to=/jobs/job-{{application.job.pk}}'>{{ application.job.title | title }} </a> &nbsp;–&nbsp;</span>
-															</p>
-															<p class="m-none mail-date">{{ application.applied_on|date:"d M " }}</p>
-														</div>
-													</a>
-												</li>
+														</td>
+														<td >
+															<a href='/applications/applicationID-{{ application.pk }}/?redirect_to=/employee/employee-{{application.applicant.pk}}'>{{ application.applicant.first_name | title }} {{ application.applicant.last_name | title }}</a>
+														</td>
+														<td>
+															<a href='/applications/applicationID-{{ application.pk }}/?redirect_to=/jobs/job-{{application.job.pk}}'>{{ application.job.title | title }} </a>
+														</td>
+
+														<td>
+															{{ application.applied_on|date:"d M " }}
+														</td>
+
+														<Td>
+															<a class='appliaction-action-btn' href='/applications/delete/applicationID-{{ application.pk }}/'>Delete</a>
+															<a class='appliaction-action-btn' href='/applications/print/applicationID-{{ application.pk }}/'>Print</a>
+														</Td>
+												</tr>
 											{% endfor %}
 
-											</ul>
+										</table>
 										</div>
 									</div>
 								</div>

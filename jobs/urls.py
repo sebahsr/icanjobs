@@ -73,6 +73,8 @@ urlpatterns = [
     url(r'^ican/blog/confirm-delete/blog-(?P<blogID>\d+)/((?P<confirmed>confirmed)/)?$', job_views.blogDelete),
 
     url(r'^applications/applicationID-(?P<applicationID>\d+)/$', job_views.applicationRead),
+    url(r'^applications/print/applicationID-(?P<applicationID>\d+)/$', job_views.applicationPrint),
+    url(r'^applications/delete/applicationID-(?P<applicationID>\d+)/$', job_views.applicationDelete),
     
     url(r'^events/(?:tag-(?P<tagID>\d+)/)?', job_views.events),
     url(r'^event/(?:event-(?P<eventID>\d+))/$', job_views.eventDetail),
