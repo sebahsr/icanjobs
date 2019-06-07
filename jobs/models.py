@@ -185,6 +185,9 @@ class EmployeeJobInterest(models.Model):
     pay_period = models.CharField(max_length = 10, blank=True, null=True, choices=constants.PAY_PERIOD)
     employee = models.OneToOneField(Employee, related_name='preference')
 
+class PublishedJobs(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_draft=False)
 
 class Job(models.Model):
     title = models.CharField(max_length=100)
@@ -210,6 +213,8 @@ class Job(models.Model):
     views = models.IntegerField(default=0, blank=True)
     apply_through_portal = models.BooleanField(default=True)
     application_link = models.URLField(blank=True, null=True)
+    is_draft = models.BooleanField(default=False)
+
 
     class Meta:
         ordering = ('-created_at', )

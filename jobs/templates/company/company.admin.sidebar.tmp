@@ -27,9 +27,16 @@
 												
 												<li class="{{ sidebar_job_listing_active }}">
 													<a href="/company/admin/jobs/">
-														<i class="fa fa-list" aria-hidden="true"></i>Jobs Posted
+														<i class="fa fa-list" aria-hidden="true"></i> Posted Jobs
 													</a>
 												</li>
+
+												<li class="{{ sidebar_job_saved_active }}">
+														<a href="/company/admin/jobs/drafts/">
+															<i class="fa fa-mail-reply-all" aria-hidden="true"></i>Saved Jobs
+														</a>
+													</li>
+
 
 											<li class="{{ sidebar_applications_active }}">
 												<a href="/company/admin/applications/">

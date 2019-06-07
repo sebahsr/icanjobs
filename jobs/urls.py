@@ -62,7 +62,7 @@ urlpatterns = [
     url(r'^company/admin/edit/$', job_views.adminCompanyView),
     url(r'^company/edit/username/$', job_views.adminCompanyEditUsernameView),
     url(r'^company/edit/password/$', job_views.adminCompanyChangePasswordView),
-    url(r'^company/admin/jobs/$', job_views.companyJobListView),
+    url(r'^company/admin/jobs/(?P<isDraft>drafts/)?$', job_views.companyJobListView),
     url(r'^company/admin/applications/$', job_views.applications),
     url(r'^company/admin/applications/(?P<filter>(read|unread|today|yesterday|last7))/$', job_views.applications),
 

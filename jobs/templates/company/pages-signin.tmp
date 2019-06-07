@@ -20,7 +20,9 @@
 							
 						</div>
 						<div class="panel-body">
-							<div style="color:#333" class="h2 ml-lg mr-lg">Log in as Employer</div>
+							<div style="color:#333" class=" text-center h2 ml-lg mr-lg">Log in as Employer</div>
+
+								<p  class="h4 text-center ml-lg mr-lg ">New to iCAN? <a href="/company/admin/signup/">Join us today.</a>							
 
 
 							{% if err %}
@@ -87,7 +89,6 @@
 										<a href="{% url 'social:begin' backend='linkedin-oauth2' %}?usertype=employer" class="col-xs-12 btn btn-linkedin mb-xs ml-lg mr-lg">Log in with <i class="fa fa-linkedin"></i></a>
 										<a href="{% url 'social:begin' 'google-oauth2' %}?usertype=employer" class="col-xs-12 btn btn-gplus mb-xs ml-lg mr-lg"> Log in with <i class="fa fa-google"></i> </a>
 								</div>
-								<p class="text-center h4">New to iCAN? <a href="/company/admin/signup/">Join us today.</a>							
 
 							</form>
 						</div>

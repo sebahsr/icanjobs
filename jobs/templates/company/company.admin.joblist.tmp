@@ -53,6 +53,11 @@
 												<a style="color:#55a747"  href="/company/admin/confirm-delete/job-{{job.pk}}/"><i class="fa fa-trash-o mr-xs"></i> Delete</a>
 											</div>
 									</section>
+
+									{% empty %}
+									<section>
+										<div class="h3">No jobs found</div>
+									</section>
 									{% endfor %}
 
 									{% if current_page.has_previous %}

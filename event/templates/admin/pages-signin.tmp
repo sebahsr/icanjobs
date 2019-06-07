@@ -78,7 +78,6 @@
                                     <a href="{% url 'social:begin' 'google-oauth2' %}?usertype=employer" class="col-xs-12 btn btn-gplus mb-xs ml-lg mr-lg"> Log in with <i class="fa fa-google"></i> </a>
                                 </div>
 
-						<p class="text-center">Don't have an account yet? <a href="/signup/">Sign Up!</a>
 
 
 

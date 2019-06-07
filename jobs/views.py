@@ -122,6 +122,7 @@ def jobView(request, **kwargs):
     
     # do pagination 
     if jobs: 
+        jobs = jobs.filter(is_draft=Fale)
         page_number = request.GET.get('page', 1)
         paginator = Paginator(jobs, constants.RECENT_PAG_JOB_NUMBER)
         current_page = paginator.page(page_number)
@@ -136,7 +137,7 @@ def jobView(request, **kwargs):
     return render(request, template_name, locals())
 #view helper functions for job 
 def jobDetailHelper(jobID, request):
-    job = get_object_or_404(models.Job, pk=jobID)
+    job = get_object_or_404(models.Job, pk=jobID, is_draft=False)
     job.eligible_to_apply = request.user.is_authenticated and hasattr(request.user, 'employee') and job.apply_through_portal
     if job.eligible_to_apply:
         job.applied_already = job.applicants.filter(pk = request.user.employee.pk)
@@ -832,6 +833,8 @@ def createJobView(request, jobID=None):
         if jobForm.is_valid():
             job = jobForm.save(commit=False)
             job.company = company
+            print "HERE", reqData.get("save-job")
+            job.is_draft = True if reqData.get('save-job', False) else False
             job.save()
             jobForm.save_m2m()
             return redirect('/company/admin/jobs/')
@@ -844,9 +847,13 @@ def createJobView(request, jobID=None):
 
 @login_required
 @user_passes_test(functions.is_company)
-def companyJobListView(request):
+def companyJobListView(request, isDraft=None):
     company = request.user.company
-    jobs = company.jobs.all()
+    if not isDraft:
+        jobs = company.jobs.filter(is_draft=False)
+    else:
+        jobs = company.jobs.filter(is_draft=True)
+
     page_number = request.GET.get('page', 1)
     paginator = Paginator(jobs, 10)
     current_page = paginator.page(page_number)
