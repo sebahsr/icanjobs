@@ -23,7 +23,7 @@
                                     {% if  company.profile_pic %}
                                     <img src="{{ company.profile_pic.url }}" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
                                     {% else %}
-                                    <img src="/static/img/company-default.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
+                                    <img src="/static/img/default.png" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
 
                                     {% endif %}
                                 </figure>

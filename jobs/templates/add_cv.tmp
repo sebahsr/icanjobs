@@ -2,12 +2,12 @@
 <form method='POST' action="/employee/build-resume/cv/" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mt-10">
-            <label>CV Name </label>
+            <label class="resume-label">Your Position title </label>
         {{ cvForm.name }}
     </div>
 
     <div class="mt-10">
-            <label>CV Document  </label> <br />
+            <label class="resume-label">CV Document  </label> <br />
         {{ cvForm.document }}
     </div>
 

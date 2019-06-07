@@ -57,12 +57,15 @@
 		<!-- Start post Area -->
 		<section class="post-area section-gap-med">
 			<div class="container">
-				<div class="row  d-flex">
-                    <div class="col-lg-8 post-list">
+				<div class="container d-flex">
+				<div class="row">
+					<div class="col-lg-12 post-list">
                         <div class="single-post-tabs d-flex flex-row">
                             {% include 'profile_tabs.tmp' %}
                         </div>	
-                    </div>
+					</div>
+				</div>
+					<div class="row">
 					<div class="col-lg-8">
                             <section class="post-area section-gap">
                                     <div class="container">
@@ -113,7 +116,7 @@
                     <!-- sidebar -->
                     
                     {% include 'matched_sidebar.tmp' %}
-
+					</div>
 					<!-- End side bar -->
 				</div>
 			</div>	

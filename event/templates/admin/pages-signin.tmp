@@ -12,7 +12,7 @@
 
 				<div class="panel panel-sign">
 					<div class="panel-title-sign mt-xl text-right">
-						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
+						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Log in</h2>
 					</div>
 					<div class="panel-body">
 						{% if err %}
@@ -64,8 +64,8 @@
 									</div>
 								</div>
 								<div class="col-sm-4 text-right">
-									<button type="submit" class="btn btn-primary hidden-xs">Sign In</button>
-									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>
+									<button type="submit" class="btn btn-primary hidden-xs">Log in</button>
+									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Log in</button>
 								</div>
 							</div>
 
@@ -74,8 +74,8 @@
 							</span>
 
 							<div class="mb-xs text-center">
-                                    <a href="{% url 'social:begin' 'facebook' %}?usertype=employer" class="col-xs-12 btn btn-facebook mb-xs ml-lg mr-lg"> Sign in with <i class="fa fa-facebook"></i></a>
-                                    <a href="{% url 'social:begin' 'google-oauth2' %}?usertype=employer" class="col-xs-12 btn btn-gplus mb-xs ml-lg mr-lg"> Sign in with <i class="fa fa-google"></i> </a>
+                                    <a href="{% url 'social:begin' 'facebook' %}?usertype=employer" class="col-xs-12 btn btn-facebook mb-xs ml-lg mr-lg"> Log in with <i class="fa fa-facebook"></i></a>
+                                    <a href="{% url 'social:begin' 'google-oauth2' %}?usertype=employer" class="col-xs-12 btn btn-gplus mb-xs ml-lg mr-lg"> Log in with <i class="fa fa-google"></i> </a>
                                 </div>
 
 						<p class="text-center">Don't have an account yet? <a href="/signup/">Sign Up!</a>

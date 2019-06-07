@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="col-lg-3  col-xs-12">
                                         <div class="single-footer-widget">
-                                            <h6>EMPLOYEMENT SOLUTIONS</h6>
+                                            <h6>EMPLOYMENT SOLUTIONS</h6>
                                             <ul class="footer-nav">
                                                 
                                                 {% for menulink in menulinks %} 

@@ -5,7 +5,7 @@
         <li class="text-info btn {{ build_active_tab }}"><a href="/employee/build-resume/"><span class="fa fa-paperclip"></span> Build Resume </a></li>
         <li class='text-info btn {{ build_active_tab }}'><a href='/employee/build-resume/cv/'>Attach YOUR RESUME</a></li>
 
-        <li class="text-info btn {{ mat_active_tab }}" ><a href="/employee/matched-jobs/"><span class="fa fa-handshake-o"></span> Matched Jobs</a></li>
+        <!-- <li class="text-info btn {{ mat_active_tab }}" ><a href="/employee/matched-jobs/"><span class="fa fa-handshake-o"></span> Matched Jobs</a></li> -->
         <li class="text-info btn {{ app_active_tab }}" ><a href="/employee/applied-jobs/"><span class="fa fa-share"></span> Applied Jobs</a></li>
         {% else %}
         <li class="text-info btn {{ pro_active_tab }}"><a href="/employee/employee-{{employee.pk}}/"><span class="fa fa-user"></span> My Resume </a></li>

@@ -29,7 +29,7 @@
 											{% if company.profile_pic %}
 											<img src="{{ company.profile_pic.url }}" class="rounded img-responsive">
 											{% else %}
-											<img src="/static/img/company-default.jpg" class="rounded img-responsive">
+											<img src="/static/img/default.png" class="rounded img-responsive">
 											{% endif %}										<div class="thumb-info-title">
 											<span class="thumb-info-inner">{{ company.name  }}</span>
 										</div>

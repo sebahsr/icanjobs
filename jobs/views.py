@@ -17,12 +17,13 @@ import datetime
 # Create your views here.
 
 build_resume_redirects = {
-    'general' : '/employee/build-resume/summary/',
+    'general' : '/employee/build-resume/cv/',
+    'cv' : '/employee/build-resume/summary/',
+
     'summary' : '/employee/build-resume/experience/',
     'experience' : '/employee/build-resume/education/',
     'education' : '/employee/build-resume/skill/',
-    'skill' : '/employee/build-resume/cv/',
-    'cv' : '/employee/build-resume/worksample/',
+    'skill' : '/employee/build-resume/worksample/',
     'worksample' : '/employee/build-resume/worklink/',
     'worklink' : '/employee/build-resume/volunteer/',
     'volunteer' : '/employee/build-resume/reference/',
@@ -567,7 +568,7 @@ def employeeJobApply(request, jobID):
     job = get_object_or_404(models.Job, pk=jobID)
     if request.user.employee.apply(job):
         return redirect('/jobs/job-%s/' % (str(jobID)))
-    return redirect('/jobs/job-%s/' %(str(jobID)) )
+    return redirect('/employee/build-resume/' )
 
 @login_required
 def applicationRead(request, applicationID):
@@ -791,10 +792,10 @@ def signUpCompanyView(request):
             user_form = forms.UserForm(request.POST)
             company_form = forms.CompanyForm(request.POST, request.FILES)
             username_form = forms.UserNameForm(request.POST, request.FILES)
-
+            print request.POST
             newPassword = request.POST.get('pwd')
             repeatNewPassword = request.POST.get('pwd_confirm')
-
+            print newPassword, repeatNewPassword, "Password confirmatin"
             if newPassword and newPassword == repeatNewPassword:
                 if company_form.is_valid() and username_form.is_valid() and user_form.is_valid():
                     user = user_form.save(commit=False)
@@ -804,9 +805,11 @@ def signUpCompanyView(request):
                     company = company_form.save(commit=False)
                     company.user = user
                     company.save()
-                    return redirect('/company/admin/login/')
+                    login(request, company.user, backend='django.contrib.auth.backends.ModelBackend')
+                    return redirect('/company/admin/')
             else:
                 error = "The password doesnt match"
+            
             print company_form.errors, user_form.errors
         return render(request, 'company/pages-signup.tmp', locals())
 

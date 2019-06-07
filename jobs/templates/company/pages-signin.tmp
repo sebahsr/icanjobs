@@ -15,8 +15,8 @@
 
 					<div class="panel panel-sign">
 						<div class="panel-title-sign mt-xl text-right">
-							<a href='/login/'><h2 class="title text-uppercase  m-none"><i class="fa fa-user mr-xs"></i> Job Seeker Sign In</h2></a>
-							<h2 class="title text-uppercase  active m-none"><i class="fa fa-user mr-xs"></i> Employer Sign In</h2>
+							<a href='/login/'><h2 class="title text-uppercase  m-none"><i class="fa fa-user mr-xs"></i> Job Seeker Log in</h2></a>
+							<h2 class="title text-uppercase  active m-none"><i class="fa fa-user mr-xs"></i> Employer Log in</h2>
 							
 						</div>
 						<div class="panel-body">
@@ -74,7 +74,7 @@
 									</div>
 									
 									<div class="col-sm-12 ml-lg mr-lg text-right">
-										<button type="submit" class=" btn btn-primary btn-block mt-lg">Sign In</button>
+										<button type="submit" class=" btn btn-primary btn-block mt-lg">Log in</button>
 									</div>
 								</div>
 
@@ -84,8 +84,8 @@
 								</span>
 
 								<div class="mb-xs text-center">
-										<a href="{% url 'social:begin' backend='linkedin-oauth2' %}?usertype=employer" class="col-xs-12 btn btn-linkedin mb-xs ml-lg mr-lg">Sign in with <i class="fa fa-linkedin"></i></a>
-										<a href="{% url 'social:begin' 'google-oauth2' %}?usertype=employer" class="col-xs-12 btn btn-gplus mb-xs ml-lg mr-lg"> Sign in with <i class="fa fa-google"></i> </a>
+										<a href="{% url 'social:begin' backend='linkedin-oauth2' %}?usertype=employer" class="col-xs-12 btn btn-linkedin mb-xs ml-lg mr-lg">Log in with <i class="fa fa-linkedin"></i></a>
+										<a href="{% url 'social:begin' 'google-oauth2' %}?usertype=employer" class="col-xs-12 btn btn-gplus mb-xs ml-lg mr-lg"> Log in with <i class="fa fa-google"></i> </a>
 								</div>
 								<p class="text-center h4">New to iCAN? <a href="/company/admin/signup/">Join us today.</a>							
 

@@ -2038,7 +2038,7 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: underline;
 }
 .nav-profile-tabs li a {
-  color: inherit;
+  color: #eb7100;
   text-decoration: none;
   
   font-size: 1.3em;
@@ -2051,10 +2051,9 @@ h1, h2, h3, h4, h5, h6 {
 .nav-profile-tabs li:hover{
   background: white;
   color : #036;
-  border-bottom: solid 1px #036;
 }
 
-.nav-profile-tabs li.profile-tab-active {
+.nav-profile-tabs  {
   border-bottom: solid 1px #036;
 }
 
@@ -2318,7 +2317,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .section-gap-med {
-  padding: 80px 0px;
+  padding: 0px 0px;
 }
 .section-gap {
   padding: 50px 0;
@@ -4850,11 +4849,15 @@ a.join-ican {
   background: #eb7100;
 }
 
-.skill-tags{
+.skill-tags, .skill-tags:hover{
   color: #fff;
   font-size: 17px;
   background: #eb7100;
   border: 1px solid transparent;
+}
+.skill-tags:hover{
+  background: #eb7100;
+  
 }
 
 .my-tag{
@@ -4996,4 +4999,15 @@ span.build-resume-message {
   font-size: 18px;
   text-transform: uppercase;
   font-weight: 200;
+}
+
+.resume-label {
+  font-size: 18px;
+}
+
+a.read-more {
+  background: #eb7100;
+  display: inline-block;
+  padding: 5px;
+  color: white;
 }

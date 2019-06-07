@@ -18,7 +18,14 @@
 					
 					<div class="panel-body">
 						<div style="color:#333" class="h2">Create Job Seeker Account </div>
-
+						<p class="text-center h4">Already a member? <a href="/login/">Log in.</a>
+						
+							{% if error %}
+								<div class="mb-xs ml-lg mr-lg alert alert-danger">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+									<strong>{{error}}</strong> 
+								</div>
+							{% endif %}
 						
 						<form action="/signup/" method="POST" enctype="multipart/form-data">
 							{% csrf_token %}
@@ -83,21 +90,21 @@
 							<div class="row">
 								
 								<div class="text-right">
-									<button type="submit" class="btn btn-primary btn-block  mt-lg">Sign Up</button>
+									<button type="submit" class="btn btn-primary btn-block  ">Sign Up</button>
+								</div>
+							</div>
+							<div class="row">
+								<span class="mb-lg mt-lg line-thru text-center text-uppercase">
+									<span>or</span>
+								</span>
+
+
+								<div class="mb-xs text-center">
+                                    <a href="{% url 'social:begin' 'facebook' %}?usertype=jobseeker&next=/employee/build-resume/" class="col-xs-12 btn btn-block btn-facebook  "> Log in with <i class="fa fa-facebook"></i></a>
+                                    <a href="{% url 'social:begin' 'google-oauth2' %}?usertype=jobseeker&next=/employee/build-resume/" class="col-xs-12 btn btn-block btn-gplus  "> Log in with <i class="fa fa-google"></i> </a>
 								</div>
 							</div>
 
-							<span class="mt-lg mb-lg line-thru text-center text-uppercase">
-								<span>or</span>
-							</span>
-
-
-							<div class="mb-xs text-center">
-                                    <a href="{% url 'social:begin' 'facebook' %}?usertype=jobseeker&next=/employee/build-resume/" class="col-xs-12 btn btn-facebook mb-xs ml-lg mr-lg"> Sign in with <i class="fa fa-facebook"></i></a>
-                                    <a href="{% url 'social:begin' 'google-oauth2' %}?usertype=jobseeker&next=/employee/build-resume/" class="col-xs-12 btn btn-gplus mb-xs ml-lg mr-lg"> Sign in with <i class="fa fa-google"></i> </a>
-                                </div>
-
-						<p class="text-center h4">Already a member? <a href="/login/">Sign in.</a>
 
 							
 						</form>
