@@ -86,7 +86,6 @@ class UserBackGround(models.Model):
     end_month = models.CharField(max_length=10, choices=constants.MONTHS)
     end_year = models.IntegerField()
     description = models.TextField()
-    is_currently = models.BooleanField(default=False)
 
     class Meta:
         abstract = True

@@ -17,8 +17,8 @@ import datetime
 # Create your views here.
 
 build_resume_redirects = {
-    'general' : '/employee/build-resume/cv/',
-    'cv' : '/employee/build-resume/summary/',
+    'general' : '/employee/build-resume/summary/',
+    'cv' : '/employee/',
 
     'summary' : '/employee/build-resume/experience/',
     'experience' : '/employee/build-resume/education/',
@@ -38,6 +38,9 @@ def privacy(request):
     
 def branding(request):
     return render(request, 'employer.branding.tmp', locals())
+
+def aboutFounder(request):
+    return render(request, 'about.founder.tmp', locals())
 
 def services(request):
     return render(request, 'services.page.tmp', locals())
@@ -122,7 +125,7 @@ def jobView(request, **kwargs):
     
     # do pagination 
     if jobs: 
-        jobs = jobs.filter(is_draft=Fale)
+        jobs = jobs.filter(is_draft=False)
         page_number = request.GET.get('page', 1)
         paginator = Paginator(jobs, constants.RECENT_PAG_JOB_NUMBER)
         current_page = paginator.page(page_number)
@@ -363,24 +366,34 @@ def employeeOtherView(request, employeeID):
 
 @login_required
 @user_passes_test(functions.is_employee)
-def buildResume(request, section=None):
+def buildResume(request, section=None, pk=None, add=None):
+    global build_resume_redirects
+    build_resume_redirect_s = build_resume_redirects
     is_logged_in_as_emp = True
-    
     employee = request.user.employee
     build_active_tab = 'profile-tab-active'
 
     if section == constants.EDIT_SEC_EXPR:
-        experienceForm = forms.ExperienceForm()
+        experienceObj = None
+
+        if pk:
+            experienceObj = get_object_or_404(models.Experience, pk=pk)
+
+        experienceForm = forms.ExperienceForm(instance=experienceObj)
         build_active_prof = 'active'
+
         if request.method == "POST":
-            return employeExperienceView(request)
+            return employeExperienceView(request, experienceObj)
 
     elif section == constants.EDIT_SEC_EDUC:
-        educationForm = forms.EducationForm()
         build_active_edu = 'active'
-
+        educationObject = None
+        if pk:
+            educationObject = get_object_or_404(models.Education, pk=pk)
+        
+        educationForm = forms.EducationForm(instance=educationObject)
         if request.method=="POST":
-            return employeeEducationView(request)
+            return employeeEducationView(request, educationObject)
 
     elif section == constants.EDIT_SEC_WEBS:
         websiteForm = forms.WebisteInfoForm()
@@ -397,7 +410,7 @@ def buildResume(request, section=None):
             if employeeForm.is_valid() and userForm.is_valid():
                 userForm.save()
                 employeeForm.save()
-                return redirect(build_resume_redirects['general'])
+                return redirect('/employee/build-resume/general/')
 
         else:
             employeeForm = forms.EmployeeForm(instance = request.user.employee)
@@ -405,18 +418,22 @@ def buildResume(request, section=None):
 
     elif section == constants.EDIT_SEC_CV:
         build_active_resume = 'active'
+        cvObject = None
+        if pk:
+            cvObject = get_object_or_404(models.CV, pk=pk)
+
         if request.method == "POST":
-            cvForm = forms.CVForm(request.POST, request.FILES)
+            cvForm = forms.CVForm(request.POST, request.FILES, instance=cvObject)
             
             if cvForm.is_valid() :
                 cv = cvForm.save(commit=False)
                 cv.employee = request.user.employee
                 cv.save()
-                return redirect(build_resume_redirects['cv'])
+                return redirect('/employee/build-resume/cv')
             else:
                 print cvForm.errors
         else:
-            cvForm = forms.CVForm()
+            cvForm = forms.CVForm(instance=cvObject)
     elif section == constants.EDIT_SEC_SUM:
         build_active_sum = 'active'
         summaryForm = forms.EmployeeAboutMeForm(instance=request.user.employee)
@@ -424,60 +441,71 @@ def buildResume(request, section=None):
             summaryForm = forms.EmployeeAboutMeForm(request.POST, instance=request.user.employee)
             if summaryForm.is_valid():
                 summary = summaryForm.save()
-                return redirect( build_resume_redirects['summary'] )
+                return redirect( '/employee/build-resume/summary' )
 
     elif section == constants.EDIT_SEC_VOL:
         build_active_vol = 'active'
-        volunteerForm = forms.EmployeeVolunteerForm()
+        volunteerForm = forms.EmployeeVolunteerForm(instance=request.user.employee)
         if request.method == 'POST':
             volunteerForm = forms.EmployeeVolunteerForm(request.POST, instance=request.user.employee)
             if volunteerForm.is_valid():
                 summary = volunteerForm.save()
-                return redirect(build_resume_redirects['volunteer'])
+                return redirect('/employee/build-resume/volunteer')
     elif section == constants.EDIT_SEC_REFER:
         build_active_ref = 'active'
-
+        
+        referenceObject = None
+        if pk:
+            referenceObject = get_object_or_404(models.References, pk=pk)
+        
         if request.method == "POST":
-            referenceForm = forms.ReferenceForm(request.POST)
+            referenceForm = forms.ReferenceForm(request.POST, instance=referenceObject)
             if referenceForm.is_valid() :
                 reference = referenceForm.save(commit=False)
                 reference.employee = request.user.employee
                 reference.save()
-                return redirect(build_resume_redirects['reference'])
+                return redirect('/employee/build-resume/reference')
             else:
                 print referenceForm.errors
         else:
-            referenceForm = forms.ReferenceForm()
+            referenceForm = forms.ReferenceForm(instance=referenceObject)
 
     elif section == constants.EDIT_SEC_LINK:
         build_active_worklink = 'active'
 
+        workLinkObj = None
+        if pk:
+            workLinkObj = get_object_or_404(models.WorkLink, pk=pk)
+
         if request.method == "POST":
-            workLinkForm = forms.WorkLinkForm(request.POST)
+            workLinkForm = forms.WorkLinkForm(request.POST, instance=workLinkObj)
             if workLinkForm.is_valid() :
                 workLink = workLinkForm.save(commit=False)
                 workLink.employee = request.user.employee
                 workLink.save()
-                return redirect(build_resume_redirects['worklink'])
+                return redirect('/employee/build-resume/worklink/')
             else:
                 print workLinkForm.errors
         else:
-            workLinkForm = forms.WorkLinkForm()
+            workLinkForm = forms.WorkLinkForm(instance=workLinkObj)
 
     elif section == constants.EDIT_SEC_SAMP:
         build_active_worksample = 'active'
+        worksampleObj = None
+        if pk:
+            worksampleObj = get_object_or_404(models.WorkSample, pk=pk)
 
         if request.method == "POST":
-            workSampleForm = forms.WorkSampleForm(request.POST, request.FILES)
+            workSampleForm = forms.WorkSampleForm(request.POST, request.FILES, instance=worksampleObj)
             if workSampleForm.is_valid() :
                 workSample = workSampleForm.save(commit=False)
                 workSample.employee = request.user.employee
                 workSample.save()
-                return redirect(build_resume_redirects['worksample'])
+                return redirect('/employee/build-resume/worksample')
             else:
                 print workSampleForm.errors
         else:
-            workSampleForm = forms.WorkSampleForm()
+            workSampleForm = forms.WorkSampleForm(instance=worksampleObj)
     
     elif section == constants.EDIT_SEC_ASSOC:
         build_active_assoc = 'active'
@@ -504,34 +532,102 @@ def buildResume(request, section=None):
 
 @login_required
 @user_passes_test(functions.is_employee)
-def employeExperienceView(request):
+def deleteResumeData(request, section, pk):
+    if section == constants.EDIT_SEC_EXPR:
+        try:
+            experienceObject = request.user.employee.experiences.get(pk=pk)
+            experienceObject.delete()
+
+        except models.Experience.DoesNotExist:
+            pass
+            
+        return redirect('/employee/build-resume/experience/')
+    
+    elif section == constants.EDIT_SEC_LINK:
+        try:
+            worklinkObject = request.user.employee.worklinks.get(pk=pk)
+            worklinkObject.delete()
+
+        except models.WorkLink.DoesNotExist:
+            pass
+            
+        return redirect('/employee/build-resume/worklink/')
+    elif section == constants.EDIT_SEC_REFER:
+        try:
+            referenceObject = request.user.employee.references.get(pk=pk)
+            referenceObject.delete()
+
+        except models.References.DoesNotExist:
+            pass
+            
+        return redirect('/employee/build-resume/reference/')
+    
+    elif section == constants.EDIT_SEC_SKILL:
+        try:
+            skill = request.user.employee.skills.get(pk=pk)
+            skill.delete()
+
+        except models.Skill.DoesNotExist:
+            pass
+            
+        return redirect('/employee/build-resume/skill/')  
+
+    elif section == constants.EDIT_SEC_EDUC:
+        try:
+            education = request.user.employee.educations.get(pk=pk)
+            education.delete()
+
+        except models.Education.DoesNotExist:
+            pass
+            
+        return redirect('/employee/build-resume/education/')  
+    
+    elif section == constants.EDIT_SEC_SAMP:
+        try:
+            worksample = request.user.employee.worksamples.get(pk=pk)
+            worksample.delete()
+
+        except models.WorkSample.DoesNotExist:
+            pass
+            
+        return redirect('/employee/build-resume/worksample/')   
+@login_required
+@user_passes_test(functions.is_employee)
+def employeExperienceView(request, experienceObj):
+    global build_resume_redirects
     if request.method == 'POST':
-        experienceForm = forms.ExperienceForm(request.POST)
+        experienceForm = forms.ExperienceForm(request.POST, instance=experienceObj)
         if experienceForm.is_valid():
             experience = experienceForm.save(commit=False)
             experience.employee = request.user.employee
             experience.save()
-            return redirect( build_resume_redirects['experience'])
+            return redirect( '/employee/build-resume/experience')
         else:
             print(experienceForm.errors)
     
     pro_active_tab = 'profile-tab-active'
+    build_resume_redirect_s = build_resume_redirects
     return render(request, "employee_profile.tmp", locals())
 
 @login_required
 @user_passes_test(functions.is_employee)
-def employeeEducationView(request):
+def employeeEducationView(request, educationObject):
+    
+    global build_resume_redirects
+    build_resume_redirect_s = build_resume_redirects
+
     if request.method == 'POST':
-        educationForm = forms.EducationForm(request.POST)
+        educationForm = forms.EducationForm(request.POST, instance=educationObject)
         if educationForm.is_valid():
             experience = educationForm.save(commit=False)
             experience.employee = request.user.employee
             experience.save()
-            return redirect(build_resume_redirects['education'])
+            return redirect('/employee/build-resume/education/')
         else:
             print("EDUCATION FORM ERROS", educationForm.errors)
     
     pro_active_tab = 'profile-tab-active'
+    data_me = "tabor shiferaw"
     return render(request, "employee_profile.tmp", locals())
 
 @login_required
@@ -543,7 +639,7 @@ def employeSkillView(request):
             skill = skillForm.save(commit=False)
             skill.employee = request.user.employee
             skill.save()
-            return redirect(build_resume_redirects['skill'])
+            return redirect('/employee/build-resume/skill')
     
     pro_active_tab = 'profile-tab-active'
     return render(request, "employee_profile.tmp", locals())
@@ -850,8 +946,11 @@ def createJobView(request, jobID=None):
 def companyJobListView(request, isDraft=None):
     company = request.user.company
     if not isDraft:
+        sidebar_job_listing_active = 'nav-active'
+
         jobs = company.jobs.filter(is_draft=False)
     else:
+        sidebar_job_saved_active = 'nav-active'
         jobs = company.jobs.filter(is_draft=True)
 
     page_number = request.GET.get('page', 1)
@@ -861,7 +960,6 @@ def companyJobListView(request, isDraft=None):
 
     applications = models.JobApplication.objects.filter(job__in = company.jobs.all())
     unread_applications_count = applications.filter(status='unread').count()
-    sidebar_job_listing_active = 'nav-active'
     return render(request, 'company/company.admin.joblist.tmp', locals())
 
 @login_required

@@ -1,35 +1,98 @@
+{% if not referenceForm.instance.pk and not add %}
+    {% if employee.references.all %}
 
-<form method='POST' action="/employee/build-resume/reference/">
+        <section class="single-post post-area section-gap">
+                <div id='company-job-list' class="container">
+                    <div class=" d-flex">
+                        
+                        <div class="post-list">
+
+                            <h5 class="single-title "> My References <a class='btn ' href='/employee/build-resume/reference/add/'><i class='fa fa-plus-square'></i> Add New</a>
+                            </h5>
+                            
+                            <div class="row">
+                            {% for reference in employee.references.all %}
+                                <div class='col-sm-12'>
+                                    <div class="row">
+                                        <div class='col-sm-12'>
+                                            <div class='h4 mb-2'>{{ reference.first_name|title }} {{ reference.last_name|title }} </div>
+                                            <div class=''><i class="fa fa-building"></i> {{ reference.organization }} </div>
+                                            <div class=''><i class='fa fa-map-marker'></i> {{ reference.title }} </div>
+                                            <div class=''><i class='fa fa-phone'></i> {{ reference.phone }} </div>
+                                            <div class='mb-2'><i class='fa fa-envelope'></i> {{ reference.email }} </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a class="genric-btn skill-tags " href='/employee/build-resume/reference/{{ reference.pk }}/delete/'> <i class='fa fa-trash'></i> Delete</a>
+                                            <a href='/employee/build-resume/reference/{{ reference.pk }}/' class="genric-btn skill-tags"><i class='fa fa-pencil'></i> Edit</a>
+                                        </div class="col-sm-12">
+                                    </div>
+                                    <hr />
+                                </div>
+
+                            {% empty %}
+
+                            {% endfor %}
+                            </div>
+                    
+
+                        </div>
+
+                        
+
+                        
+                    </div>
+                </div>	
+
+        </section>
+    {% endif %}	
+{% endif %}
+
+{% if referenceForm.instance.pk or add %}
+<div class="h3">
+        {% if referenceForm.instance.pk %}
+        UPDATE REFERENCE
+    
+        {% else %}
+        ADD NEW REFERENCE
+    
+        {% endif %}
+    </div>	
+
+<form method='POST' {% if referenceForm.instance.pk %} action="/employee/build-resume/reference/{{ referenceForm.instance.pk }}/" {% else %} action="/employee/build-resume/reference/"  {% endif %}
+>
     {% csrf_token %}
     <div class="mt-10">
-            <label>First Name </label>
+            <label class="h6">First Name </label>
         {{ referenceForm.first_name }}
     </div>
 
     <div class="mt-10">
-            <label>Last Name </label>
+            <label class="h6">Last Name </label>
         {{ referenceForm.last_name }}
     </div>
 
     <div class="mt-10">
-            <label>Organization </label>
+            <label class="h6">Organization </label>
         {{ referenceForm.organization }}
     </div>
 
     <div class="mt-10">
-            <label>Title </label>
+            <label class="h6">Title </label>
         {{ referenceForm.title }}
     </div>
 
 
     <div class="mt-10">
-            <label>Phone </label>
+            <label class="h6">Phone </label>
         {{ referenceForm.phone }}
     </div>
 
 
     <div class="mt-10">
-            <label>Email </label>
+            <label class="h6">Email </label>
         {{ referenceForm.email }}
     </div>
 
@@ -39,5 +102,7 @@
     <div class='form-group'>
         <hr />
         <button type="submit" class="genric-btn skill-tags">Done </button>
-        <a href='/employee/' class="genric-btn skill-tags">Cancel </a>    </div>
+        <a href='/employee/build-resume/reference/' class="genric-btn skill-tags">Cancel </a>    </div>
 </form>
+
+{% endif %}

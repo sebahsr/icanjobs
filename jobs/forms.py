@@ -258,15 +258,15 @@ class ExperienceForm(UserBackgroundForm):
         widgets = {
             'city' : forms.TextInput(attrs={
                 "placeholder" : "Location","class" : "form-control"}),
-            'region' : forms.Select(),
+            'region' : forms.Select(attrs={"class" : "form-control"}),
             'start_year' : forms.TextInput(attrs={
                 "placeholder" : "Start Year" ,"class" : "form-control"}),
 
             'start_month' : forms.Select(attrs={
-                "placeholder" : "Start Month","class" : "single-input"}),
+                "placeholder" : "Start Month","class" : "form-control"}),
 
             'end_month' : forms.Select(attrs={
-                "placeholder" : "End Month" ,"class" : "single-input"}),
+                "placeholder" : "End Month" ,"class" : "form-control"}),
 
             'end_year' : forms.TextInput(attrs={
                 "placeholder" : "End Year" ,"class" : "form-control"}),
@@ -311,34 +311,34 @@ class EducationForm(forms.ModelForm):
         exclude = ('id', 'employee')
         widgets = {
             'city' : forms.TextInput(attrs={
-                "placeholder" : "Location" ,"class" : "single-input"}),
-            'region' : forms.Select(),
+                "placeholder" : "Location" ,"class" : "form-control"}),
+            'region' : forms.Select(attrs={'class' : 'form-control'}),
             'start_year' : forms.TextInput(attrs={
-                "placeholder" : "Start Year" ,"class" : "single-input"}),
+                "placeholder" : "Start Year" ,"class" : "form-control"}),
 
             'start_month' : forms.Select(attrs={
-                "placeholder" : "Start Month","class" : "single-input"}),
+                "placeholder" : "Start Month","class" : "form-control"}),
 
             'end_month' : forms.Select(attrs={
-                "placeholder" : "End Month" ,"class" : "single-input"}),
+                "placeholder" : "End Month" ,"class" : "form-control"}),
 
             'end_year' : forms.TextInput(attrs={
-                "placeholder" : "End Year","class" : "single-input"}),
+                "placeholder" : "End Year","class" : "form-control"}),
 
             'description' : forms.Textarea(attrs={
-                "placeholder" : "Description" ,'class' : "single-textarea"}),
+                "placeholder" : "Description" ,'class' : "form-control"}),
 
             'is_currently' : forms.CheckboxInput(attrs={}),
 
             'school' : forms.TextInput(
                 attrs={
-                    "placeholder" : "School","class" : "single-input"}),
+                    "placeholder" : "School","class" : "form-control"}),
 
             'field_of_study' : forms.TextInput(
                 attrs={
-                    "placeholder" : "Field Of Study","class" : "single-input"}),
+                    "placeholder" : "Field Of Study","class" : "form-control"}),
             
-            'degree' : forms.Select(attrs={}),
+            'degree' : forms.Select(attrs={"class" : 'form-control'}),
 
         }
 
@@ -348,7 +348,7 @@ class CVForm(forms.ModelForm):
         exclude = ('employee', )
         widgets = {
             'name' : forms.TextInput(attrs={
-                "placeholder" : "Name","class" : "form-control"}),
+                "placeholder" : "Position Title","class" : "form-control"}),
         }
 
 class ReferenceForm(forms.ModelForm):

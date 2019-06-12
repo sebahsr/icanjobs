@@ -14,7 +14,8 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Job Listing</title>
+	<title>Build Resume - {{ employee.user.first_name|title }} {{ employee.user.last_name|title }}				
+        </title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<!--
@@ -68,10 +69,10 @@
                         <div class="single-slidebar">
                             <h4>Your Resume/CV</h4>
                             <div class='{{ build_active_gen }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> <a href='/employee/build-resume/general/'>CONTACT INFORMATION</a></div>
-                            <div class='{{ build_active_resume }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> <a href='/employee/build-resume/cv/'>ATTACH YOUR RESUME/CV</a></div>
 
                             <div class='{{ build_active_sum }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> <a href='/employee/build-resume/summary/'>PROFILE SUMMARY</a></div>
-                            <div class='{{ build_active_prof }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> <a href='/employee/build-resume/experience/'>PROFESSIONAL EXPERIENCE</a></div>
+                            <div class='{{ build_active_prof }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> <a href='/employee/build-resume/experience/'>PROFESSIONAL EXPERIENCE</a>
+                            </div>
                             <div class='{{ build_active_edu }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> <a href='/employee/build-resume/education/'>EDUCATION/TRAINING</a></div>
 
                             <div class='{{ build_active_skill }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> <a href='/employee/build-resume/skill/'>SKILL/QUALIFICATIONS </a></div>
@@ -87,11 +88,11 @@
                 <!-- End side bar -->
                     </div>
 
-					<div class="justify-content-center col-lg-8 post-list">
+					<div class="col-lg-8 post-list">
                             <section class="post-area section-gap">
                                     <div class="container">
-                                        <div class="row justify-content-center d-flex">
-                                            <div class="post-list col-sm-12">
+                                        <div class=" ">
+                                            <div class="post-list ">
                                                 {% if employeeForm %}
                                                     {% include 'edit_employee.tmp' %}
                                                 {% elif summaryForm %}

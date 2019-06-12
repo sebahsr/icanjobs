@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^$', job_views.homeView),
     url(r'^about/$', job_views.aboutUs),
     url(r'^branding/$', job_views.branding),
+    url(r'^founder/$', job_views.aboutFounder),
     url(r'^services/$', job_views.services),
     url(r'^jobalerts/$', job_views.jobAlerts),
     url(r'^contact/$', job_views.contact),
@@ -51,7 +52,10 @@ urlpatterns = [
     url(r'employee/build-resume/$', job_views.buildResume),
 
 
-    url(r'employee/build-resume/(?P<section>(skill|experience|general|education|website|cv|reference|worklink|worksample|association|summary|volunteer))/$', job_views.buildResume),
+    url(r'employee/build-resume/(?P<section>(skill|experience|general|education|website|cv|reference|worklink|worksample|association|summary|volunteer))/((?P<pk>\d+)/)?$', job_views.buildResume),
+    url(r'employee/build-resume/(?P<section>(skill|experience|general|education|website|cv|reference|worklink|worksample|association|summary|volunteer))/(?P<pk>\d+)/delete/$', job_views.deleteResumeData),
+    url(r'employee/build-resume/(?P<section>(skill|experience|general|education|website|cv|reference|worklink|worksample|association|summary|volunteer))/(?P<add>add)/$', job_views.buildResume),
+
     url(r'^jobs/applly/job-(?P<jobID>\d+)?/$', job_views.employeeJobApply),
 
     url(r'^blogs/(?:category-(?P<categoryID>\d+)/)?$', job_views.blogListView),

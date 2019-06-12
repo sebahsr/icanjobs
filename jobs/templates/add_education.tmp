@@ -1,59 +1,117 @@
-<form method='POST' action="/employee/build-resume/education/">
+{% if not educationForm.instance.pk and not add %}
+    {% if employee.educations.all %}
+        <section class="single-post post-area section-gap">
+                <div id='company-job-list' class="container">
+                    <div class=" d-flex">
+                        
+                        <div class="post-list">
+
+                            <h5 class="single-title "> My Educations/Trainings <a class='btn ' href='/employee/build-resume/education/add/'><i class='fa fa-plus-square'></i> Add New</a>
+                            </h5>
+                            
+                            <div class="row">
+                            {% for education in employee.educations.all %}
+                                <div class='col-sm-12'>
+                                        <div class='mb-2 h4'>{{ education.field_of_study|upper }} </div>
+                                        <div><i class="fa fa-building"></i> {{ education.school }} </div>
+                                        <div><i class='fa fa-map-marker'></i> {{ education.city }}, {{ education.region.name }} </div>
+                                        <div><i class='fa fa-calendar'></i> {{ education.start_month|title }}, {{ education.start_year }} - {{ education.end_month|title }}, {{ education.end_year }} </div>
+
+                                        <p class="mt-2"><i ></i> {{ education.description }} </p>
+                                        
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a class="genric-btn skill-tags" href='/employee/build-resume/education/{{ education.pk }}/delete/'> <i class='fa fa-trash'></i> Delete</a>
+                                            <a href='/employee/build-resume/education/{{ education.pk }}/' class="genric-btn skill-tags"><i class='fa fa-pencil'></i> Edit</a>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                </div>
+
+                            {% empty %}
+
+                            {% endfor %}
+                            </div>
+                    
+
+                        </div>
+
+                        
+
+                        
+                    </div>
+                </div>	
+
+        </section>
+    {% endif %}
+{% endif %}
+
+{% if educationForm.instance.pk or add %}
+
+<form method='POST' {% if educationForm.instance.pk %} action="/employee/build-resume/education/{{ educationForm.instance.pk }}/" {% else %} action="/employee/build-resume/education/"  {% endif %}>
     {% csrf_token %}
 
-    <div class="mt-10">
+    <div class="mt-10">            
+        <label class="h6">School Name</label>
+
         {{ educationForm.school }}
     </div>
 
     <div class="mt-10">
+        <label class="h6">Field Of Study</label>
+
         {{ educationForm.field_of_study }}
     </div>
     
 
-    <div class="input-group-icon mt-10">
-        <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
-        <div class="form-select" id="default-select">
-            {{ educationForm.degree }}
-        </div>
+    <div class="mt-10" >
+        <label class="h6">Degree</label>
+
+        {{ educationForm.degree }}
     </div>
 
     
     <div class="mt-10">
+        <label class="h6">Location</label>
         {{ educationForm.city }}
     </div>
     
-    <div class="input-group-icon mt-10">
-        <div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
-        <div class="form-select" id="default-select">
+    <div class="mt-10">
+            <label class="h6">Region</label>
             {{ educationForm.region }}
-        </div>
     </div>
 
     <div class="form-group">
 
         <hr />
-        <label>Start Month</label>
+        <label class="h6">Start Month</label>
         {{ educationForm.start_month}} 
 
+        <label class="h6">Start Year</label>
         {{ educationForm.start_year}}
     </div>
     <div class="mt-10">
         <hr />
-        <label>Start Month</label>
-            {{ educationForm.end_month}} {{ educationForm.end_year}} 
+        <label class="h6">End Month</label>
+        {{ educationForm.end_month}} 
+        
+        <label class="h6">End Year</label>
+        {{ educationForm.end_year}} 
     </div>
 
+    
     <div class="mt-10">
         <hr />
-        I currently study here {{ educationForm.is_currently}}
-    </div>
-    <div class="mt-10">
-        <hr />
+        <label class="h6">Description</label>
         {{ educationForm.description }}
     </div>
 
     <div class='form-group'>
         <hr />
-        <button type="submit" class="genric-btn skill-tags">Save and Continue </button>
-        <a href='/employee/' class="genric-btn skill-tags">Cancel </a>    </div>
+        <button type="submit" class="genric-btn skill-tags"> Save <i class='fa fa-floppy-o'></i></button>
+        <a href='{{ build_resume_redirect_s.education }}'  class="genric-btn skill-tags"> Next <i class='fa fa-long-arrow-right'></i></a>
+        <a href='/employee/build-resume/education/' class="genric-btn skill-tags">Cancel </a>    </div>
 </form>
+
+{% endif %}

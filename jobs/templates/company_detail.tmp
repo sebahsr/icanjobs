@@ -60,7 +60,12 @@
 					<div class="col-lg-8 post-list">
 						<div class="single-post d-flex flex-row">
 							<div class="thumb col-sm-4">
+								{% if company.profile_pic %}
 								<img style="max-width:100px" src="{{ company.profile_pic.url }}" alt="">
+								{% else %}
+								<img style="max-width:100px" src="/static/img/default.png" alt="">
+
+								{% endif %}
 								<br /><br />
 								<h5>{{ company.name}}</h5>
 

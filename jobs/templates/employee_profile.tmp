@@ -14,7 +14,8 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Job Listing</title>
+	<title>Profile - {{ employee.user.first_name|title }} {{ employee.user.last_name|title }}				
+		</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<!--
@@ -258,7 +259,7 @@
 															<div class='h4'>{{ cv.name |title }} </div>
 															
 															<a href='{{ cv.document.url }}'>
-																{{ cv.document.name }}</a>
+																Download <span class="fa fa-download"></span></a>
 														</div>
 													
 													{% empty %}
@@ -401,7 +402,8 @@
 														<div class='h5'>{{ education.field_of_study }} </div>
 														<div class='h5'>{{ education.degree.name }} </div>
 														<div><i class='fa fa-map-marker'></i> {{ education.city }}, {{ education.region.name }} </div>
-														
+														<div><i class='fa fa-calendar'></i> {{ education.start_month|title }}, {{ education.start_year }} - {{ education.end_month|title }}, {{ education.end_year }} </div>
+
 														<br />
 														<p>{{ education.description}}</p>
 													</div>

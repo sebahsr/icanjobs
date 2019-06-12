@@ -100,7 +100,7 @@
                     <li class="menu-has-children"><a href="">{{ request.user.username }}</a>
                     <ul>
                         {% if request.user.employee %}
-                        <li><a href="/employee/"><i class='fa fa-user'></i> My CV</a></li>
+                        <li><a href="/employee/"><i class='fa fa-user'></i> My CV/Resume</a></li>
                         {% endif %}
 
                         {% if request.user.company %}

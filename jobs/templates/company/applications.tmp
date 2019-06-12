@@ -103,8 +103,8 @@
 														</td>
 
 														<Td>
-															<a class='appliaction-action-btn' href='/applications/delete/applicationID-{{ application.pk }}/'>Delete</a>
-															<a class='appliaction-action-btn' href='/applications/print/applicationID-{{ application.pk }}/'>Print</a>
+															<a class='btn btn-danger' data-toggle="modal" data-target="#deleteConfirm{{application.pk}}" href='#'><i class='fa fa-trash-o'></i> Delete</a>
+															<a class='btn btn-info' href='/applications/print/applicationID-{{ application.pk }}/'><i class="fa-print fa"></i> Print</a>
 														</Td>
 												</tr>
 											{% endfor %}
@@ -113,6 +113,28 @@
 										</div>
 									</div>
 								</div>
+
+								{% for application in applications %}
+									<!-- Modal -->
+									<div class="modal fade" id="deleteConfirm{{application.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel"> Are you sure you want to discard this application? </h5>
+												</div>
+												<div class="modal-body">
+														<span class='h5'>{{ application.applicant.first_name }} {{ application.applicant.last_name }} </span> applied to <span class='h5'>{{ application.job.title | title }}</span>
+												</div>
+												<div class="modal-footer">
+												<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+												<a href='/applications/delete/applicationID-{{ application.pk }}/'  class="btn btn-danger" >Remove Application</a>
+
+												</div>
+											</div>
+											</div>
+										</div>
+										
+								{% endfor %}
 							</div>
 						</div>
 					</section>

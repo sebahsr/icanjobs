@@ -1,19 +1,89 @@
+{% if not workLinkForm.instance.pk and not add %}
 
-<form method='POST' action="/employee/build-resume/worklink/">
+    {% if employee.worklinks.all %}
+
+    <section class="single-post post-area section-gap">
+            <div id='company-job-list' class="container">
+                <div class=" d-flex">
+                    
+                    <div class="post-list">
+
+                        <h5 class="single-title "> My Work Links <a class='btn ' href='/employee/build-resume/worklink/add/'><i class='fa fa-plus-square'></i> Add New</a>
+                        </h5>
+                        
+                        <div class="row">
+                        {% for worklink in employee.worklinks.all %}
+                            <div class='col-sm-12'>
+                                <div class="row">
+                                    <div class='col-sm-12'>
+                                        <div class='h4 mb-2'>{{ worklink.name|upper }} </div>
+                                        <div><a href='{{ worklink.url }}'> {{ worklink.url }} </a></div>
+                                        <p>{{ worklink.description }} </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a class="genric-btn skill-tags " href='/employee/build-resume/worklink/{{ worklink.pk }}/delete/'> <i class='fa fa-trash'></i> Delete</a>
+                                        <a href='/employee/build-resume/worklink/{{ worklink.pk }}/' class="genric-btn skill-tags"><i class='fa fa-pencil'></i> Edit</a>
+                                    </div>
+                                </div>
+                                <hr />
+                            </div>
+
+                        {% empty %}
+
+                        {% endfor %}
+                        </div>
+                
+
+                    </div>
+
+                    
+
+                    
+                </div>
+            </div>	
+
+    </section>
+    {% endif %}	
+
+{% endif %}
+
+{% if workLinkForm.instance.pk or add %}
+<div class="h3">
+        {% if workLinkForm.instance.pk %}
+        UPDATE WORK LINK
+    
+        {% else %}
+        ADD NEW WORK LINK
+    
+        {% endif %}
+    </div>	
+
+
+    <form method='POST' 
+
+{% if workLinkForm.instance.pk %}
+    action="/employee/build-resume/worklink/{{workLinkForm.instance.pk}}/" 
+{% else %}
+    action="/employee/build-resume/worklink/" 
+
+{% endif %}>
     {% csrf_token %}
     <div class="mt-10">
-            <label>Name </label>
+            <label class="h6">Name </label>
         {{ workLinkForm.name }}
     </div>
 
     <div class="mt-10">
-            <label>URL </label>
+            <label class="h6">URL </label>
         {{ workLinkForm.url }}
     </div>
 
 
     <div class="mt-10">
-            <label>Description </label>
+            <label class="h6">Description </label>
         {{ workLinkForm.description }}
     </div>
 
@@ -22,6 +92,8 @@
     <div class='form-group'>
         <hr />
 
-        <button type="submit" class="genric-btn skill-tags">Save and Continue </button>
-        <a href='/employee/' class="genric-btn skill-tags">Cancel </a>    </div>    </div>
-</form>
+        <button type="submit" class="genric-btn skill-tags"> Save <i class='fa fa-floppy-o'></i></button>
+        <a href='{{ build_resume_redirect_s.worklink }}'  class="genric-btn skill-tags"> Next <i class='fa fa-long-arrow-right'></i></a>
+        <a href='/employee/build-resume/worklink/' class="genric-btn skill-tags">Cancel </a>    </div>
+    </form>
+{% endif %}

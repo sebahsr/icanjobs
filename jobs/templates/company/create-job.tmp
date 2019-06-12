@@ -172,11 +172,12 @@
 	
 															</div>
 				
-			
+															<div class="col-sm-8 col-sm-offset-3">
+																	<button class='btn  btn-lg btn-primary' name='save-job' value='save-job' type="submit"> Save Job</button>
+																	<button class='btn  btn-lg btn-primary' name='post-job' value='post-job' type="submit"> Post Job</button>
+		
+																</div>
 
-												</div>
-												<div id="w3-profile" class="tab-pane">
-													
 												</div>
 												
 												<div id="w3-confirm" class="tab-pane">

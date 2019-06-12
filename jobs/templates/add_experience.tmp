@@ -1,53 +1,118 @@
+{% if not experienceForm.instance.pk and not add %}
+    {% if employee.experiences.all %}
+        <section class="">
+                <div id='company-job-list' class="container">
+                    <div class=" d-flex">
+                        
+                        <div>
 
-<form method='POST' action="/employee/build-resume/experience/">
+                            <h5 class="single-title "> My Professional Experiences <a class='btn ' href='/employee/build-resume/experience/add/'><i class='fa fa-plus-square'></i> Add New</a>
+                            </h5>
+                            
+                            <div class="row">
+                            {% for experience in employee.experiences.all %}
+                                <div  class='col-sm-12'>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class='mb-2 h4'>{{ experience.job_title|upper }} </div>
+                                            <div><i class="fa fa-building"></i> {{ experience.company_name }} </div>
+                                            <div><i class='fa fa-map-marker'></i> {{ experience.city }}, {{ experience.region.name }} </div>
+                                            <div><i class='fa fa-calendar'></i> {{ experience.start_month|title }}, {{ experience.start_year }} - {{ experience.end_month|title }}, {{ experience.end_year }} </div>
+
+                                            <p class="mt-2"><i ></i> {{ experience.description }} </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a class="genric-btn skill-tags " href='/employee/build-resume/experience/{{ experience.pk }}/delete/'> <i class='fa fa-trash'></i> Delete</a>
+                                            <a href='/employee/build-resume/experience/{{ experience.pk }}/' class="genric-btn skill-tags"><i class='fa fa-pencil'></i> Edit</a>
+                                        </div>
+                                    </div>
+                                    <hr />
+
+                                </div>
+                            {% empty %}
+
+                            {% endfor %}
+                            </div>
+                    
+
+                        </div>
+
+                        
+
+                        
+                    </div>
+                </div>	
+
+        </section>
+    {% endif %}		
+{% endif %}
+{% if experienceForm.instance.pk or add %}
+
+<div class="h3">
+    {% if experienceForm.instance.pk %}
+    UPDATE PROFESSIONAL EXPERIENCE
+
+    {% else %}
+    ADD NEW PROFESSIONAL EXPERIENCE
+
+    {% endif %}
+</div>	
+
+<form method='POST' {% if experienceForm.instance.pk %} action="/employee/build-resume/experience/{{ experienceForm.instance.pk }}/" {% else %} action="/employee/build-resume/experience/" {% endif %}>
     {% csrf_token %}
     <div class="mt-10">
-        <label>Job Title</label>
+        <label class="h6">Job Title</label>
         {{ experienceForm.job_title }}
     </div>
 
     <div class="mt-10">
-        <label>Company Name</label>
+        <label class="h6">Company Name</label>
         {{ experienceForm.company_name }}
     </div>
     
     <div class="mt-10">
-        <label>City</label>
+        <label class="h6">City</label>
         {{ experienceForm.city }}
     </div>
     
-    <div class="input-group-icon mt-10">
-        <label>Region</label>
-        <div class="form-select" id="default-select">
+    <div class="mt-10">
+        <label class="h6">Region</label>
             {{ experienceForm.region }}
-        </div>
     </div>
 
-    <div class="form-group">
+    <div class="mt-10 form-group">
 
-        <label>Start Date</label>
+        <label class="h6">Start Month</label>
         {{ experienceForm.start_month}} 
         
+        <label class="h6">Start Year</label>
 
         {{ experienceForm.start_year}}
     </div>
     <div class="mt-10">
-        <label>End Date</label>
+        <label class="h6">End Month</label>
             {{ experienceForm.end_month}} 
+            <label class="h6">End Year</label>
+
             {{ experienceForm.end_year}} 
     </div>
 
+   
     <div class="mt-10">
         <hr />
-        I currently work here {{ experienceForm.is_currently}}
-    </div>
-    <div class="mt-10">
-        <hr />
+        <label class="h6">Description</label>
+
         {{ experienceForm.description }}
     </div>
 
     <div class='form-group'>
         <hr />
-        <button type="submit" class="genric-btn skill-tags">Save and Continue </button>
-        <a href='/employee/' class="genric-btn skill-tags">Cancel </a>    </div>
+        <button type="submit" class="genric-btn skill-tags"> Save <i class='fa fa-floppy-o'></i></button>
+        <a href='{{ build_resume_redirect_s.experience }}'  class="genric-btn skill-tags"> Next <i class='fa fa-long-arrow-right'></i></a>
+        <a href='/employee/build-resume/experience/' class="genric-btn skill-tags">Cancel </a>    </div>
 </form>
+
+{% endif %}

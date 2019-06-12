@@ -1,18 +1,83 @@
+{% if not cvForm.instance.pk and not add %}
 
-<form method='POST' action="/employee/build-resume/cv/" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="mt-10">
-            <label class="resume-label">Your Position title </label>
-        {{ cvForm.name }}
-    </div>
+    {% if employee.cvs.all %}
 
-    <div class="mt-10">
-            <label class="resume-label">CV Document  </label> <br />
-        {{ cvForm.document }}
-    </div>
+        <section class="single-post post-area section-gap">
+                <div id='company-job-list' class="container">
+                    <div class=" d-flex">
+                        
+                        <div class="post-list">
 
-    <div class='form-group'>
-        <hr />
-        <button type="submit" class="genric-btn skill-tags">Save and Continue </button>
-        <a href='/employee/' class="genric-btn skill-tags">Cancel </a>    </div>
-</form>
+                            <h5 class="single-title "> My CV/Resume  <a class='btn ' href='/employee/build-resume/cv/add/'><i class='fa fa-plus-square'></i> Add New</a>
+                            </h5>
+                            
+                            <div class="row">
+                            {% for cv in employee.cvs.all %}
+                                <div class='col-sm-12'>
+                                    <div class="row">
+
+                                        <div class='mb-2 col-sm-12'>
+                                            <div class='h4 mb-2'>{{ cv.name|upper }} </div>
+                                            <div><a href='{{ cv.document.url }}'><i class="fa fa-download"></i> Download </a></div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a class="genric-btn skill-tags " href='/employee/build-resume/cv/{{ cv.pk }}/delete/'> <i class='fa fa-trash'></i> Delete</a>
+                                            <a href='/employee/build-resume/cv/{{ cv.pk }}/' class="genric-btn skill-tags"><i class='fa fa-pencil'></i> Edit</a>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                </div>
+
+                            {% empty %}
+
+                            {% endfor %}
+                            </div>
+                    
+
+                        </div>
+
+                        
+
+                        
+                    </div>
+                </div>	
+
+        </section>
+    {% endif %}	
+{% endif %}
+
+{% if cvForm.instance.pk or add %}
+
+    <div class="h3">
+        {% if cvForm.instance.pk %}
+        UPDATE CV
+
+        {% else %}
+        ADD NEW CV
+
+        {% endif %}
+    </div>	
+
+    <form method='POST' action="/employee/build-resume/cv/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mt-10">
+                <label class="resume-label">Your Position Title </label>
+            {{ cvForm.name }}
+        </div>
+
+        <div class="mt-10">
+                <label class="resume-label">CV/Resume Document  </label> <br />
+            {{ cvForm.document }}
+        </div>
+
+        <div class='form-group'>
+            <hr />
+            <button type="submit" class="genric-btn skill-tags">Save </button>
+            <a href='/employee/build-resume/cv/' class="genric-btn skill-tags">Cancel </a>    </div>
+    </form>
+
+    {% endif %}
