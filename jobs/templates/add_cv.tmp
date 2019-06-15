@@ -47,7 +47,17 @@
                 </div>	
 
         </section>
-    {% endif %}	
+        {% else %}
+        <section>
+    
+                <h5 class="single-title "> My CV/Resumes </h5>
+            
+            <br />
+            <a  href='/employee/build-resume/cv/add/' class="genric-btn skill-tags"> Attach Resume <i class='fa fa-plus-square'></i></a>
+            <a href='/employee/build-resume/cv/' class="genric-btn skill-tags">Cancel </a>    </div>
+
+        </section>
+        {% endif %}	
 {% endif %}
 
 {% if cvForm.instance.pk or add %}

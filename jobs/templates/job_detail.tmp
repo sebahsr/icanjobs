@@ -265,18 +265,7 @@
 											</td></td></tr>
 
 										</table>
-										{% if job.categories.all %}
-										<h3>Tags</h3>
-										<div class="thumb ">
-												<ul class="tags">
-													{% for category in job.categories.all %}
-													<li>
-														<a href="#">{{category.name }}</a>
-													</li>
-													{% endfor %}
-												</ul>
-											</div>
-										{% endif %}
+				
 										{% if recent_jobs %}
 										<div class="pt-2 single-title-job-detail">
 												 Recent Jobs
@@ -299,6 +288,19 @@
 											</div>
 										{% endfor %}
 
+										{% if job.categories.all %}
+										<h3>Tags</h3>
+										<div class="thumb ">
+												<ul class="tags">
+													{% for category in job.categories.all %}
+													<li>
+														<a href="#">{{category.name }}</a>
+													</li>
+													{% endfor %}
+												</ul>
+											</div>
+										{% endif %}
+										
 										{% endif %}
 										
 				

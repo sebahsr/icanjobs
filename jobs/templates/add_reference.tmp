@@ -47,7 +47,17 @@
                 </div>	
 
         </section>
-    {% endif %}	
+    {% else %}
+        <section>
+
+                <h5 class="single-title "> My References </h5>
+            
+            <br />
+            <a  href='/employee/build-resume/reference/add/' class="genric-btn skill-tags"> Add Reference <i class='fa fa-plus-square'></i></a>
+            <a href='/employee/' class="genric-btn skill-tags">Done <i class="fa fa-check-square"></i></a>    </div>
+
+        </section>
+    {% endif %}		
 {% endif %}
 
 {% if referenceForm.instance.pk or add %}

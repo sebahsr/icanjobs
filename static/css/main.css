@@ -2880,6 +2880,9 @@ ul.spatialism-sec li a span {
 .blog-text  .cs-inner-bolg  a{
   color : #eb7100;
 }
+.blog-text  .cs-inner-bolg  a.read-more{
+  color : #000;
+}
 
 .blog-text .cs-post-title  a{
   color : #000;
@@ -4723,7 +4726,6 @@ ul.spatialism-sec li a span {
 .jobs-listing li .cs-media figure {
 
   margin: 0;
-  text-align: center;
 }
 
 
@@ -4742,11 +4744,7 @@ figure {
 }
 
 .feature {
-  left: -5px;
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  width: 95px;
+
 }
 
 .jobs-listing.modern li .cs-text {
@@ -4906,7 +4904,6 @@ a.join-ican {
   font-size: 14px;
   line-height: 20px;
   margin-bottom: 0;
-  margin-right: 20px;
   padding: 12px 0 12px 50px;
   position: relative;
   vertical-align: top;

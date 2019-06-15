@@ -81,6 +81,7 @@
                     <li class="menu-has-children"><a href="/about/">About iCAN</a>
                       <ul>
                         <li class="menu-active"><a href="/about/">About Us</a></li>
+                        <li class="menu-active"><a href="/founder/">About Founder</a></li>
                         <li class="menu-active"><a href="/services/">Services</a></li>
                         <li class="menu-active"><a href="/contact/">Contact</a></li>
 

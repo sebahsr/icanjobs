@@ -14,6 +14,7 @@
                         <div class="row">
                                 {% for skill in employee.skills.all %}
                                 <span class='btn skill-info '>{{ skill.name |title }} <a href='/employee/build-resume/skill/{{ skill.pk }}/delete/'><i style="color: #eb7100;" class="fa fa-close"></i></i></a> </span>
+                                
                                 {% endfor %}
                         </div>
                 

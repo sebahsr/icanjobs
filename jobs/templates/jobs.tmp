@@ -119,16 +119,15 @@
                     {% for job in jobs %}
                         <li>
                             <div class="jobs-content row">
-                                <div class="cs-media col-sm-3">
+                                <div class="cs-media col-md-3 col-xs-12">
                                     <figure>
-                                        <a href="/jobs/job-{{job.getuniquelink}}/">
-                                            <span class="feature">
+                                             <span class="feature">
                                                 <img alt="" src="{{ job.company.profile_pic.url }}">
                                             </span>    
                                     </figure>
                                 </div>
 
-                                <div class="cs-text col-sm-8">
+                                <div class="cs-text col-md-8 col-xs-12">
                                     <div class="cs-post-title">
                                         <h3>
                                             <a href="/jobs/job-{{job.getuniquelink}}/">

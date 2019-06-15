@@ -14,7 +14,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Job Listing</title>
+	<title>Job Alert</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<!--
@@ -105,7 +105,7 @@
                                         {{ jobAlertForm.email }}
                                     </div>
 
-                                    <button class="btn" style="background:#55a747;color: white;" type="submit">Get Job Alert</button>
+                                    <button class="btn" style="background:#eb7100;color: white;" type="submit">Get Job Alert</button>
 
                                 </div>
                             </form>

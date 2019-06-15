@@ -259,8 +259,8 @@
 													
 													<div class="from-group">
 														<div class="col-sm-8 col-sm-offset-3">
-															<button class='btn btn-block btn-lg btn-primary' name='save-job' value='save-job' type="submit"> Save Job</button>
-															<button class='btn btn-block btn-lg btn-primary' name='post-job' value='post-job' type="submit"> Post Job</button>
+															<button class='btn  btn-lg btn-primary' name='save-job' value='save-job' type="submit"> Save Job</button>
+															<button class='btn  btn-lg btn-primary' name='post-job' value='post-job' type="submit"> Post Job</button>
 
 														</div>
 													</div>

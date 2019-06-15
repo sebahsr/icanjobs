@@ -591,6 +591,16 @@ def deleteResumeData(request, section, pk):
             pass
             
         return redirect('/employee/build-resume/worksample/')   
+    
+    elif section == constants.EDIT_SEC_CV:
+        try:
+            cv = request.user.employee.cvs.get(pk=pk)
+            cv.delete()
+
+        except models.CV.DoesNotExist:
+            pass
+            
+        return redirect('/employee/build-resume/cv/') 
 @login_required
 @user_passes_test(functions.is_employee)
 def employeExperienceView(request, experienceObj):

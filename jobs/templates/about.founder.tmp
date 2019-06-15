@@ -14,7 +14,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Job Listing</title>
+	<title>About Founder</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<!--
@@ -48,15 +48,7 @@
                                     <h1 style="color:#ffffff !important; font-size: 50px !important; font-weight:  !important; letter-spacing: 2px !important; line-height: 80px !important; text-align:Center; font-style:normal;">
                                         About Founder 
                                     </h1>
-                                    {% if not request.user.is_authenticated %}
-                                    <div class="heading-description">
-                                            <span style="font-size:16pt; color:rgb(255,255,255);">
-                                                    Be an Employer of Choice. <br />
-                                                    <a href='/company/admin/signup/' class='join-ican'>Brand Your Company </a>
-                                            </span> 
-                                            
-                                    </div>
-                                    {% endif %}
+                                    
                                     
                                     <div class="spliter-medium"></div>
                                 </div>
@@ -79,9 +71,10 @@
                            
 
                             <p style="text-align:justify">
-                                    <br>
-                                    She the Founder and Managing Director, International Career Advisory Network (iCAN). She is a certified Global Career Development Facilitator (GCDF) and Certified National Workforce Development Professional (NWDP) spent extensive years working as a business strategic partner in workforce development, leadership development, recruitment strategist, talent acquisition, human capital development and trainings, HR consultant and soft skills trainer across various sectors. She also provides workforce development services, career coaching, professional skills trainings and capacity building to Ethiopia’s eager labor force; whilst supporting and strengthening institutions, businesses and organizations through consultancy, training and talent acquisition services and strategy design. . She has worked in Ethiopia, Kenya and the USA in various public institutions and private companies. Sara has a Mphil (MA) in International Development from University of Bergen, Norway and a BA in Sociology from Addis Ababa University.  She has lead, designed programs and facilitated several trainings and TOTs for career counselors for higher institutions in career coaching, workforce development, career development/ readiness and employability/soft skills (trained career counselors from Samara, Jijiga, Mekele, Haramaya, Walayta, Jimma and Addis Ababa Universities) and she has also successfully lead and oversaw recruitment, HR services, business development and youth employment programs. Sara has served as Executive and advisory board member for Association of Women in Business (AWIB) for two years and currently serves as a lead workforce development trainer for women professional’s leaders (AWIB members). She is also part of the Diaspora Rise-up campaign to raise funds in response to emerging humanitarian crises in Africa and the Youth Mentoring Youth program in VA and the Youth Mentoring Youth program in VA and mentoring disadvantaged youth Fresh graduates.    
-                               
+
+                                    Sara Tadiwos, the Founder and Managing Director, International Career Advisory Network (iCAN) is a certified Global Career Development Facilitator (GCDF) and Certified National Workforce Development Professional (NWDP) spent extensive years working as a business strategic partner in workforce development, leadership development, recruitment strategist, talent acquisition, human capital development and trainings, HR consultant and soft skills trainer across various sectors. She also provides workforce development services, career coaching, professional skills trainings and capacity building to Ethiopia’s eager labor force; whilst supporting and strengthening institutions, businesses and organizations through consultancy, training and talent acquisition  services and strategy design. She has worked in Ethiopia, Kenya and the USA in various public institutions and private companies in employment and training.  Sara has a Mphil (MA) in International Development from University of Bergen, Norway and a BA in Sociology from Addis Ababa University.  She has lead, designed programs and facilitated several trainings and TOTs for  career counselors for higher institutions in career coaching, workforce development, career development/ readiness and employability/soft skills (trained career counselors from Samara, Jijiga, Mekele, Haramaya, Walayta, Jimma and Addis Ababa Universities) and she has also  successfully lead  and oversaw recruitment, HR services, business development and youth employment programs. 
+                                    Sara is passionate about youth employment and women leadership and has served as Executive and advisory board member for Association of Women in Business (AWIB) for two years and currently serves as a lead workforce development trainer for women professional’s leaders (AWIB members).  She is also part of the Diaspora Rise-up campaign to raise funds in response to emerging humanitarian crises in Africa and the Youth Mentoring Youth program in VA and mentoring disadvantaged youth Fresh graduates.  
+                                    
                                 </p >
 
                         </div>

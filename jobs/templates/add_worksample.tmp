@@ -48,7 +48,17 @@
                 </div>	
 
         </section>
-    {% endif %}	
+        {% else %}
+        <section>
+    
+                <h5 class="single-title "> My Work Samples </h5>
+            
+            <br />
+            <a  href='/employee/build-resume/worksample/add/' class="genric-btn skill-tags"> Add Work Sample <i class='fa fa-plus-square'></i></a>
+            <a href='{{ build_resume_redirect_s.worksample }}'  class="genric-btn skill-tags"> Next <i class='fa fa-long-arrow-right'></i></a>
+
+        </section>
+        {% endif %}	
 {% endif %}
 
 {% if workSampleForm.instance.pk or add %}
