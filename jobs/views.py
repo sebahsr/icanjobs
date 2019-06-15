@@ -67,7 +67,7 @@ def homeView(request, **kwargs):
 
     categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
     featured_categories = categories[:6]
-    recent_jobs = models.Job.objects.all()[:constants.RECENT_JOBS_NUMBER]
+    recent_jobs = models.Job.objects.filter(is_draft=False)[:constants.RECENT_JOBS_NUMBER]
     employement_types = models.EmployementType.objects.all()
     recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:constants.RECENT_BLOG_NUMBER]
     regions = models.Region.objects.all()
@@ -136,7 +136,7 @@ def jobView(request, **kwargs):
     regions = models.Region.objects.all()
     categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
 
-    recent_jobs = models.Job.objects.all()[:constants.RECENT_JOBS_SIDEBAR]
+    recent_jobs = models.Job.objects.filter(is_draft=False)[:constants.RECENT_JOBS_SIDEBAR]
     return render(request, template_name, locals())
 #view helper functions for job 
 def jobDetailHelper(jobID, request):
@@ -151,17 +151,17 @@ def jobDetailHelper(jobID, request):
 
 def jobCategoryListHelper(categoryID=None):
     if not categoryID:
-        jobs = models.Job.objects.all()
+        jobs = models.Job.objects.filter(is_draft=False)
     else:
         category = get_object_or_404(models.Category, pk=categoryID)
-        jobs = category.jobs.all()
+        jobs = category.jobs.filter(is_draft=False)
         return jobs, category
 
     return jobs, None
 
 def jobRegionListHelper(regionID=None):
     region = get_object_or_404(models.Region, pk=regionID)
-    jobs = region.jobs.all()
+    jobs = region.jobs.filter(is_draft=False)
     return jobs, region
 
 def jobSearchHelper(search_query, location, cat='all', employement_type='all'):
@@ -188,7 +188,7 @@ def companyView(request, companyID, **kwargs):
         company = get_object_or_404(models.Company, pk=companyID)
     
     
-    jobs = company.jobs.all()
+    jobs = company.jobs.filter(is_draft=False)
     fact_open_jobs = jobs.filter(status=constants.JOB_STATUS_OPEN).count()
     fact_total_jobs = jobs.count()
     #fact_total_applicants = models.Employee.objects.filter(applications__in = jobs)# jobs.annotate(number_applicants = Count('applicants', distinct=True)).aggregate(company_total_applicants = Sum('number_applicants'))
@@ -223,7 +223,7 @@ def companyDetailView(request):
         company = get_object_or_404(models.Company, pk=companyID)
     
     
-    jobs = company.jobs.all()
+    jobs = company.jobs.filter(is_draft=False)
     fact_open_jobs = jobs.filter(status=constants.JOB_STATUS_OPEN).count()
     fact_total_jobs = jobs.count()
     #fact_total_applicants = models.Employee.objects.filter(applications__in = jobs)# jobs.annotate(number_applicants = Count('applicants', distinct=True)).aggregate(company_total_applicants = Sum('number_applicants'))
@@ -741,7 +741,7 @@ def employeeMatchedJobView(request):
 
     categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
     featured_categories = categories[:6]
-    recent_jobs = models.Job.objects.all()[:5]
+    recent_jobs = models.Job.objects.filter(is_draft=False)[:5]
     job_statuses = constants.JOB_STATUS
     regions = models.Region.objects.all()
 
@@ -762,7 +762,7 @@ def employeeAppliedJobs(request):
     employee = request.user.employee
     categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
     featured_categories = categories[:6]
-    recent_jobs = models.Job.objects.all()[:5]
+    recent_jobs = models.Job.objects.filter(is_draft=False)[:5]
     job_statuses = constants.JOB_STATUS
     regions = models.Region.objects.all()
 
@@ -800,7 +800,7 @@ def blogDetailView(request, blogID):
 @user_passes_test(functions.is_company)
 def adminCompanyView(request):
     company = request.user.company
-    jobs = company.jobs.all()
+    jobs = company.jobs.filter(is_draft=False)
     fact_open_jobs = jobs.filter(status=constants.JOB_STATUS_OPEN).count()
     fact_total_jobs = jobs.count()
     fact_total_applications = jobs.annotate(application_numbers = Count('applications')).aggregate(company_total_applications = Sum('application_numbers')) or 0
@@ -831,7 +831,7 @@ def adminCompanyView(request):
     employement_types = models.EmployementType.objects.all()
     job_statuses = constants.JOB_STATUS
 
-    applications = models.JobApplication.objects.filter(job__in = company.jobs.all())
+    applications = models.JobApplication.objects.filter(job__in = company.jobs.filter(is_draft=False))
     unread_applications_count = applications.filter(status='unread').count()
     sidebar_profile_info_active = 'nav-active'
     return render(request, 'company/company-profile.tmp', locals())
@@ -945,7 +945,7 @@ def createJobView(request, jobID=None):
             jobForm.save_m2m()
             return redirect('/company/admin/jobs/')
 
-    applications = models.JobApplication.objects.filter(job__in = company.jobs.all())
+    applications = models.JobApplication.objects.filter(job__in = company.jobs.filter(is_draft=False))
     unread_applications_count = applications.filter(status='unread').count()
     sidebar_create_job_active = 'nav-active'
     
@@ -968,7 +968,7 @@ def companyJobListView(request, isDraft=None):
     current_page = paginator.page(page_number)
     jobs = current_page.object_list
 
-    applications = models.JobApplication.objects.filter(job__in = company.jobs.all())
+    applications = models.JobApplication.objects.filter(job__in = company.jobs.filter(is_draft=False))
     unread_applications_count = applications.filter(status='unread').count()
     return render(request, 'company/company.admin.joblist.tmp', locals())
 
@@ -1001,7 +1001,7 @@ def blogDelete(request, blogID, confirmed=None):
 @user_passes_test(functions.is_company)
 def applications(request, filter=None):
     company = request.user.company
-    company_jobs = company.jobs.all()
+    company_jobs = company.jobs.filter(is_draft=False)
     applications = models.JobApplication.objects.filter(job__in = company_jobs)
     unread_applications_count = applications.filter(status='unread').count()
 
