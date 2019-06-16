@@ -372,7 +372,6 @@ def buildResume(request, section=None, pk=None, add=None):
     is_logged_in_as_emp = True
     employee = request.user.employee
     build_active_tab = 'profile-tab-active'
-
     if section == constants.EDIT_SEC_EXPR:
         experienceObj = None
 

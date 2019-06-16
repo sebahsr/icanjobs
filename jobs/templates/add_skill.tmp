@@ -1,6 +1,6 @@
 
 
-{% if employee.references.all %}
+{% if employee.skills.all %}
 
     <section class="single-post post-area section-gap">
             <div id='company-job-list' class="container">
