@@ -86,6 +86,7 @@
 														<div class="col-sender">
 
 															{% if application.applicant.profile_pic %}
+															
 																<img src='{{ application.applicant.profile_pic.url }}' />
 															{% else %}
 																<img style='max-width: 25px' class="img img-circle" src='/static/img/default.png' />

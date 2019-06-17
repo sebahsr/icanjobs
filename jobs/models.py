@@ -150,12 +150,11 @@ class Employee(Entity):
 
     def apply(self, job):
         #check for necessary informatino before applying 
+        
         if self.cvs.count() > 0:
-            return True
-        else:
-
-            if not self.experiences.count() > 0 or not self.educations.count() > 0 or not self.skills.count() > 0: 
-                return False
+            pass
+        elif not self.experiences.count() > 0 or not self.educations.count() > 0 or not self.skills.count() > 0: 
+            return False
 
         if not self.applications.filter(pk = job.pk):
             application = JobApplication.objects.create(applicant=self, job=job)

@@ -164,12 +164,13 @@
 						</div>
 						{% endif %}
 
-						{% if job.how_to_apply and not job.applied_already %}
+						{% if job.how_to_apply %}
 						<div class="single-post-detail-job job-experience">
 							<h4 class="pt-2 single-title-job-detail">How To Apply</h4>
 							<p>
 						{{ job.how_to_apply|safe }}
 							</p>
+
 							{% if job.application_link %}
 								<a class='btn skill-tags' href='{{ job.application_link }}'>Click Here to Apply <i class='fa fa-forward'></i></a>
 							{% elif not request.user.is_authenticated %}
@@ -183,12 +184,13 @@
 
 							{% else %}
 							<div class="pb-10">
-									{% if job.eligible_to_apply %}
+								{% if job.eligible_to_apply %}
+									
 											{% if not job.applied_already %}
 											<a class="btn skill-tags" href="/jobs/applly/job-{{ job.pk }}/"><i class='fa fa-send'></i> Apply Now</a>
 			
 											{% else %}
-											<a class="btn skill-tags" href="#"><i class='fa fa-send'></i> Applied</a>
+											<span class="btn skill-tags" href="#"><i class='fa fa-check-square'></i> Applied</span>
 
 			
 											{% endif %}
@@ -273,7 +275,7 @@
 											<hr />									
 										{% for recent_job in recent_jobs %} 
 											<div class='sing-recent-job'>
-												<div><a href='/jobs/job-{{ job.getuniquelink}}/'><div class='h4'> {{ recent_job.title|upper }} </div> </a> </div>
+												<div><a href='/jobs/job-{{ recent_job.getuniquelink}}/'><div class='h4'> {{ recent_job.title|upper }} </div> </a> </div>
 												<div><i class='fa fa-building-o'></i> <a href='/companies/company-{{ recent_job.company.pk}}/'> {{ recent_job.company.name }} </a></div>
 												<div> <span class="fa fa-map-marker"></span> 
 													Duty Station (Location)    
@@ -287,7 +289,9 @@
 
 											</div>
 										{% endfor %}
-
+										
+										{% endif %}
+										
 										{% if job.categories.all %}
 										<h3>Tags</h3>
 										<div class="thumb ">
@@ -300,9 +304,6 @@
 												</ul>
 											</div>
 										{% endif %}
-										
-										{% endif %}
-										
 				
 									</div>
 									

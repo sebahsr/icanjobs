@@ -164,9 +164,7 @@
 
 										<h4 class="single-title">Jobs From {{ company.name }}</h4>
 										<ul class="cat-list">
-												{% for job_status in job_statuses %}
-													<li class='info'><a href="/companies/company-{{company.pk}}/jobstatus-{{ job_status.0}}/#company-facts">{{ job_status.1 }}</a></li>
-												{% endfor %}
+												
 												
 											</ul>
 											{% for job in jobs %}
