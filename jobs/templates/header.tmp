@@ -92,7 +92,7 @@
                  
 
                   {% if not request.user.is_authenticated %}
-                  <li><a href="/signup/">Join Us</a> </li>
+                  <li><a style="border: solid 3px #ddd;" href="/signup/">Register Now</a> </li>
 
                   <li class="menu-has-children"><a href="/login/">Login</a></li> 
 

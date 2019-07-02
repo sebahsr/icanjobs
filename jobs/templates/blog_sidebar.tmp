@@ -15,9 +15,11 @@
 
                 {% for recent_blog in recent_blogs %}
                 <div class="single-recent-post d-flex flex-row">
-                    <div class="recent-thumb">
-                        <img style="max-width:60px" class="img-fluid" src="{{ recent_blog.image.url }}" alt="">
-                    </div>
+                    {% if recent_blog.image %}
+                        <div class="recent-thumb">
+                            <img style="max-width:60px" class="img-fluid" src="{{ recent_blog.image.url }}" alt="">
+                        </div>
+                    {% endif %}
                     <div class="recent-details">
                         <a href="/blogs/blog-{{ recent_blog.pk }}/">
                             <h4>

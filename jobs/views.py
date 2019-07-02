@@ -787,7 +787,7 @@ def blogListView(request, categoryID=None):
     postcategories = eventModels.PostCategories.objects.all()
     recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:5]
 
-    return render(request, 'coming.soon.tmp', locals())
+    return render(request, 'blogs.tmp', locals())
 def blogDetailView(request, blogID):
     blog = get_object_or_404(eventModels.Blog, pk=blogID)
     postcategories = eventModels.PostCategories.objects.all()

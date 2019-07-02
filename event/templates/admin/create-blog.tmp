@@ -24,7 +24,7 @@
 								<section class="panel form-wizard" id="w4">
 									<header class="panel-heading">
 										
-										<h2 class="panel-title">Create New Post</h2>
+										<h2 class="panel-title"><i  class='fa fa-pencil'></i> Blog Post</h2>
 									</header>
 								{% if blogID  %}
 									<form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/ican/blog/blog-{{ blogID }}/" novalidate="novalidate">
@@ -83,7 +83,7 @@
 											<div class="form-group">
 												<div class="col-md-offset-2">
 
-												<Button type="submit" class="btn btn-primary">Create </Button>
+												<Button type="submit" class="btn btn-primary">Save </Button>
 												</div>
 											</div>
 	

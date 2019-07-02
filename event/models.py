@@ -62,8 +62,8 @@ class Event(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=150)
     content = RichTextUploadingField()
-    categories = models.ManyToManyField('PostCategories', related_name='blogs')
-    image = models.FileField(upload_to=functions.getFileName)
+    categories = models.ManyToManyField('PostCategories', blank=True, related_name='blogs')
+    image = models.FileField(upload_to=functions.getFileName, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:

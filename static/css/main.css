@@ -5016,3 +5016,14 @@ a.read-more {
   padding: 5px;
   color: white;
 }
+
+.btn-home-read-more {
+  margin-top: 20px;
+  color: white;
+  background-color: #eb7100;
+  border: solid 2px white;
+}
+.btn-home-read-more:hover{
+  color: white;
+
+}

@@ -56,7 +56,12 @@
 						<div class="col-lg-8 post-list blog-post-list">
 							{% for blog in blogs %}
 							<div class="single-post">
+								{% if blog.image %}
 								<img class="img-fluid" src="{{ blog.image.url }}" alt="">
+								{% else %}
+								<img class="img-fluid" src="/static/img/logo.png" alt="">
+								{% endif %}
+								
 								<ul class="tags">
 									{% for blog_category in blog.categories.all %}
 										<li><a href="#">{{ blog_category }}, </a></li>

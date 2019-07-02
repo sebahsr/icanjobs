@@ -90,7 +90,10 @@
                                                 <h6>ABOUT iCAN</h6>
                                                 <ul class="footer-nav">
                                                     <li class="menu-active"><a href="/about/">About Us</a></li>
+                                                    <li class="menu-active"><a href="/founder/">About Founder</a></li>
                                                     <li class="menu-active"><a href="/services/">Services</a></li>
+                                                    <li class="menu-active"><a href="/contact/">Contact</a></li>
+                                                    
                                                 </ul>
                                             </div>
                                         </div>

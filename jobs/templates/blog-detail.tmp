@@ -34,7 +34,14 @@
              {% include 'header.tmp' %}
 
 			<!-- start banner Area -->
-			<section style="background: url({{ blog.image.url }}) center no-repeat !important; background-size:cover" class="banner-area relative" id="home">	
+			<section {% if blog.image %} 
+						style="background: url( {{ blog.image.url }}) center no-repeat !important; background-size:cover" 
+					{T else %}
+					
+					style="background: url(/static/img/blog-default.jpg) center no-repeat !important; background-size:cover" 
+
+					{% endif %}
+			class="banner-area relative" id="home">	
 				<div class="overlay overlay-bg-blog"></div>
 				<div class="container">
 					<div class="row d-flex align-items-center justify-content-center">
@@ -55,7 +62,6 @@
 					<div class="row">
 						<div class="col-lg-8 post-list blog-post-list">
 							<div class="single-post">
-								<!-- <img class="img-fluid" src="{{ blog.image.url }}" alt=""> -->
 								<ul class="tags">
                                     {% for blog_category in blog.categories.all %}
                                     <li><a href="#">{{ blog_category }}</a></li>

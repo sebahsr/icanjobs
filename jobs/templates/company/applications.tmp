@@ -80,6 +80,7 @@
 									<div class="nano">
 										<div class="nano-content">
 											<table class="table table-striped">
+												<tr><th></th><th>Applicant Name</th><th>Job Title</th><th>Application Date</th><th></th></tr>
 											{% for application in applications %}
 												<tr class="{{ application.status }}">
 														
@@ -105,6 +106,7 @@
 														<Td>
 															<a class='btn btn-danger' data-toggle="modal" data-target="#deleteConfirm{{application.pk}}" href='#'><i class='fa fa-trash-o'></i> Delete</a>
 															<a class='btn btn-info' href='/applications/print/applicationID-{{ application.pk }}/'><i class="fa-print fa"></i> Print</a>
+															<a class='btn btn-warning' href='/applications/print/applicationID-{{ application.pk }}/'><i class="fa-save fa"></i> Save</a>
 														</Td>
 												</tr>
 											{% endfor %}

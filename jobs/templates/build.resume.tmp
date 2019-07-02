@@ -58,7 +58,7 @@
 			<div class="container">
 				<div class="">
                 <div class="row">
-                    <div class="col-lg-12 post-list">
+                    <div class="col-lg-8 offset-lg-4 post-list">
                         <div class="single-post-tabs d-flex flex-row">
                             {% include 'profile_tabs.tmp' %}
                         </div>	
@@ -124,15 +124,15 @@
                                                         <div  class='h3 text-center'>Build your CV/Resume</div><br />
                                                         <div class="row">
                                                             <p class="col-sm-6 col-md-4">
-                                                                <img src='/static/img/build-1.svg' />
+                                                                <img style="width:80%" src='/static/img/build-1.svg' /><br />
                                                                 <span class="h5">Apply to Jobs</span> <br />
 
-                                                                     Before Applying to any jobs you are required to attach either already prepared Resume/CV or you need to provide your professinal experiences, Educations/Trainings and Skill/Qualifications. 
+                                                                    Provide your professinal experiences, Educations/Trainings and Skill/Qualifications. 
                                                             </p>
 
                                                             <p class="col-sm-6 col-md-4">
                             
-                                                                    <img src='/static/img/build-2.svg' />
+                                                                    <img style="width:80%" src='/static/img/build-2.svg' /><br />
                                                                     <span class="h5">Quick & easy</span> <br />
                                                                     Keep job hunting simple with all your resumes managed in one place.
                                                             </p>
@@ -141,7 +141,7 @@
                                                             
                                                             <p class="col-sm-6 col-md-4">
                                                                 
-                                                                    <img src='/static/img/build-4.svg' />
+                                                                    <img style="width:80%" src='/static/img/build-4.svg' /><br />
                                                                     <span class="h5">Stay organized</span><br/>
 
                                                                     Your dream job with the perfect resume employers are looking for!
