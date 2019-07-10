@@ -36,14 +36,14 @@ PAY_PERIOD = {
 
 MONTHS = (
     ('jan', 'January'),
-    ('feb', 'Febraury'),
+    ('feb', 'February'),
     ('mar', 'March'),
     ('apr', 'April'),
     ('may', 'May'),
     ('jun', 'June'),
     ('jul', 'July'),
     ('aug', 'August'),
-    ('sep', 'Septemeber'),
+    ('sep', 'September'),
     ('oct', 'October'),
     ('nov', 'November'),
     ('dec', 'December')
@@ -64,7 +64,7 @@ EDIT_SEC_VOL = 'volunteer'
 PAG_JOB_NUMBER = 20
 RECENT_PAG_JOB_NUMBER = 8
 PAG_BLOG_NUMBER = 6
-RECENT_JOBS_NUMBER = 10
+RECENT_JOBS_NUMBER = 16
 RECENT_BLOG_NUMBER = 3
 RECENT_JOBS_SIDEBAR = 4
 

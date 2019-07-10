@@ -88,13 +88,18 @@
 
 								</div>
 								<hr />
-								<div class="h4">Comments from users</div>
+								
 								{% for comment in blog.comments.all %}
+								{% if forloop.first %}
+								<div class="h4">Comments from users</div>
+
+								{% endif %}
 								<div class="blog-comment">
 									<span class="h6"><i class="fa fa-user"></i> {{ comment.commented_by.first_name|title }} {{ comment.commented_by.last_name|title }} </span>
 									<span class=" mb-10"><i class="fa fa-clock-o"> {{ comment.commented_at|date }}</i></span>
 									<span>{{ comment.content }}</span>
 								</div>
+								
 								{% endfor %}
 								{% if request.user.is_authenticated %}
 								<hr />
@@ -105,7 +110,17 @@
 										<button class="btn" style="background:#eb7100;color: white;" type="submit">Comment <i class="fa fa-comment-o"></i></button>
 									</form>
 								</div>
-								
+								{% else %}
+								<div class="blog-comment">
+									
+									<div class="apply-job row">
+										
+									
+										<div class='col-md-4 col-sm-6' ><a href='/signup/?next=/jobs/job-{{job.pk}}/' class="like applied_icon">  <span><i class="fa fa-thumbs-up"></i></span>Login with iCAN</a></div>
+										<div class='col-md-4 col-sm-6' style="margin-left:-59px;"><a href="{% url 'social:begin' 'google-oauth2' %}?usertype=jobseeker"  class="linkedin social_login_login_linkedin"><div class="linkedin_jobid_apply"></div><i class="fa fa-google-plus"></i><span>Login with Gmail</span></a></div>
+										<div class='col-md-4 col-sm-6' style="margin-left:-54px;"><a href="{% url 'social:begin' 'facebook' %}?usertype=jobseeker" class=" facebook social_login_login_facebook_apply" ><div class="facebook_jobid_apply"></div><i class="fa fa-facebook"></i>Login with Facebook</a></div>                                                                                                                    
+									</div>
+								</div>
 								{% endif %}
 								
 							</div>																		

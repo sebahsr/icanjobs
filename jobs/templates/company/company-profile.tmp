@@ -114,7 +114,7 @@
 														<div class="tm-box">
 															<div class="text-muted h5"><a href='/jobs/job-{{recent_job.pk}}/'>{{ recent_job.title }}</a></div>
 															<p>
-																{{ recent_job.summary|striptags | truncatechars:300}}
+																{{ recent_job.summary|striptags|truncatechars:300}}
 															</p>
 														</div>
 													</li>

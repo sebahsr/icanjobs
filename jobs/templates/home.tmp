@@ -14,7 +14,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Job Listing</title>
+	<title>iCAN Jobs</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<!--
@@ -181,7 +181,7 @@
 						<div class="row d-flex justify-content-center">
 								<div class="menu-content pb-20 col-lg-10">
 									
-									<div class="cs-heading"><h3 class="cs-fancy">RECENT BLOG POSTS</h3>
+									<div class="cs-heading"><h3 class="cs-fancy">RECENT BLOG</h3>
 										<div class="heading-description">
 											Recent Blog posts from iCan. 
 										</div>

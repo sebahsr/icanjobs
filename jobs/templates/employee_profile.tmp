@@ -222,7 +222,7 @@
 											<div class="ml-15">
 
 												{% for skill in employee.skills.all %}
-												<span class='btn skill-tags'>{{ skill.name |title }}</span>
+												<span class='btn skill-info'>{{ skill.name |title }}</span>
 												{% empty %}
 												+ Highlight specific qualifications/skills including certifications that are either required/relevant for a particular job or are unique about you
 												{% endfor %}

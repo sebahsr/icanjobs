@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="row">
-                            <div class="col-lg-3 col-xs-12">
+                            <div class="col-lg-3 col-sm-6 col-md-3 ">
                                 <div class="single-footer-widget">
                                     <h6>JOB SEEKER</h6>
                                     <ul class="footer-nav">
@@ -31,7 +31,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-lg-3  col-xs-12">
+                            <div class="col-lg-3 col-sm-6 col-md-3  ">
                                     <div class="single-footer-widget">
                                         <h6>EMPLOYER</h6>
                                         <ul class="footer-nav">
@@ -47,7 +47,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-lg-3  col-xs-12">
+                                <div class="col-lg-3 col-sm-6 col-md-3  ">
                                         <div class="single-footer-widget">
                                             <h6>EMPLOYMENT SOLUTIONS</h6>
                                             <ul class="footer-nav">
@@ -85,7 +85,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3  col-xs-12">
+                                    <div class="col-lg-3 col-sm-6 col-md-3  ">
                                             <div class="single-footer-widget">
                                                 <h6>ABOUT iCAN</h6>
                                                 <ul class="footer-nav">
@@ -104,7 +104,7 @@
             
 
             <div class="row footer-bottom d-flex justify-content-between">
-                    <div class="col-lg-3 col-sm-12 footer-social">
+                    <div class="col-lg-3 col-sm-6 col-md-3 col-sm-12 footer-social">
                             <a href="https://www.facebook.com/International-Career-Advisory-Network-187269622191533/"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="https://www.linkedin.com/company/18872207/admin/"><i class="fa fa-linkedin"></i></a>

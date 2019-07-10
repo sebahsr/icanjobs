@@ -34,7 +34,7 @@
                                 <ul class="list-unstyled">
                                     <li class="divider"></li>
                                     <li>
-                                        <a role="menuitem" tabindex="-1" href="/ican/admin/"><i class="fa fa-user"></i> Dashboar</a>
+                                        <a role="menuitem" tabindex="-1" href="/ican/admin/"><i class="fa fa-user"></i> Dashboard</a>
                                     </li>
                                     <li>
                                             <a role="menuitem" tabindex="-1" href="/"><i class="fa fa-eye"></i> View Site</a>

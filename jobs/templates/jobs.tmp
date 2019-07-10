@@ -154,7 +154,7 @@
                                     </ul>
 
                                     <p>
-                                        {{ job.summary|striptags|truncatechars:300}}
+                                        {{ job.summary|striptags|safe|truncatechars:300}}
                                     </p>
 
                                     <a class="read-more" href="/jobs/job-{{job.getuniquelink}}/">Read more</a>
