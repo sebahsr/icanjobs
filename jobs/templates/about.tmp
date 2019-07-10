@@ -45,9 +45,9 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 
                                 <div class="cs-heading">
-                                    <h1 class="pt-20 pb-20" style="color:#ffffff !important; font-size: 50px !important; font-weight:  !important; letter-spacing: 2px !important; line-height: 80px !important; text-align:Center; font-style:normal;">
+                                    <h3 class="pt-20 pb-20" style="color:#ffffff !important; font-size: 50px !important; font-weight:  !important; letter-spacing: 2px !important; line-height: 80px !important; text-align:Center; font-style:normal;">
                                         About Us
-                                    </h1>
+                                    </h3>
                                     
                                     <div class="heading-description">
                                             <span style="font-size:16px; color:rgb(255,255,255);">
@@ -79,7 +79,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="cs-element-title">
                                 <div class="section-inner">
-                                    <h2>iCan Served</h2>
+                                    <h4>iCan Served</h4>
                                 </div>
                             </div>
 
@@ -96,11 +96,33 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="">
                                 <div class="image-frame cs-img-frame">
-                                    <figure><img src="http://icanjobs.com/img/background.svg" alt=""></figure>
+                                    <figure><img src="/static/img/logo.png" alt=""></figure>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                           
+    
+                            
+
+                            <div class="col-sm-10 col-xs-12">
+                                    <div class="cs-element-title">
+                                        <div class="section-inner justify">
+                                            <h4>About the Founder</h4>
+                                        </div>
+                                    </div>
+        
+                                    <div>
+                                        <br />
+                                        
+Sara Tadiwos, the Founder and Managing Director, International Career Advisory Network (iCAN) is a certified Global Career Development Facilitator (GCDF) and Certified National Workforce Development Professional (NWDP) spent extensive years working as a business strategic partner in workforce development, leadership development, recruitment strategist, talent acquisition, human capital development and trainings, HR consultant and soft skills trainer across various sectors. She also provides workforce development services, career coaching, professional skills trainings and capacity building to Ethiopia’s eager labor force; whilst supporting and strengthening institutions, businesses and organizations through consultancy, training and talent acquisition services and strategy design. She has worked in Ethiopia, Kenya and the USA in various public institutions and private companies in employment and training. Sara has a Mphil (MA) in International Development from University of Bergen, Norway and a BA in Sociology from Addis Ababa University.  She has lead, designed programs and facilitated several trainings and TOTs for career counselors for higher institutions in career coaching, workforce development, career development/ readiness and employability/soft skills (trained career counselors from Samara, Jijiga, Mekele, Haramaya, Walayta, Jimma and Addis Ababa Universities) and she has also successfully lead and oversaw recruitment, HR services, business development and youth employment programs. Sara is passionate about youth employment and women leadership and has served as Executive and advisory board member for Association of Women in Business (AWIB) for two years and currently serves as a lead workforce development trainer for women professional’s leaders (AWIB members). She is also part of the Diaspora Rise-up campaign to raise funds in response to emerging humanitarian crises in Africa and the Youth Mentoring Youth program in VA and mentoring disadvantaged youth Fresh graduates.
+                                    </div>
+        
+                            </div>
+                        </div>
+
                 </div>			    
             </div>
         </div>

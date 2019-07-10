@@ -56,6 +56,11 @@
 						<div class="col-lg-6 post-list blog-post-list">
 							{% for blog in blogs %}
 							<div class="single-post">
+								<a href="/blogs/blog-{{ blog.pk }}/">
+									<div class="h4" style="margin-bottom:15px">
+										{{ blog.title }}
+									</div>
+								</a>
 								{% if blog.image %}
 								<img class="img-fluid" src="{{ blog.image.url }}" alt="">
 								{% else %}
@@ -68,11 +73,7 @@
 									{% endfor %}
 									
 								</ul>
-								<a href="/blogs/blog-{{ blog.pk }}/">
-									<div class="h4" style="margin-bottom:15px">
-										{{ blog.title }}
-									</div>
-								</a>
+								
 									<p>
 										{{ blog.content|striptags|safe|truncatechars:400}}
 									</p>

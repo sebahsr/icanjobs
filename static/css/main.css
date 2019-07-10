@@ -2848,8 +2848,7 @@ ul.spatialism-sec li a span {
 }
 
 .cs-blog.blog-grid .cs-media ~ .blog-text {
-  margin: -30px 0 0 0;
-  padding: 0 10px;
+  
   position: relative;
   z-index: 1;
 }
@@ -2876,13 +2875,13 @@ ul.spatialism-sec li a span {
 
 .cs-post-title h3 a, .cs-post-title h2 a {
   font: 700 Normal 16px/28px "Raleway", sans-serif !important;
-  letter-spacing: 1px !important;
+  letter-spacing: 0px !important;
   text-transform: uppercase !important;
 }
 
 .cs-post-title h3 a, .cs-post-title h2 a {
     font: 700 Normal 16px/28px "Raleway", sans-serif !important;
-    letter-spacing: 1px !important;
+    letter-spacing: 0px !important;
     text-transform: uppercase !important;
 }
 
@@ -3468,7 +3467,7 @@ ul.spatialism-sec li a span {
 }
 
 .footer-area {
-  background-color: #222222;
+  background-color: #d6d6d6;
 }
 
 .footer-area .footer-nav li {
@@ -3476,12 +3475,12 @@ ul.spatialism-sec li a span {
 }
 
 .footer-area .footer-nav li a {
-  color: #fff;
+  color: #000;
 }
 
 
 .footer-area .footer-nav li a:hover {
-  color: #ddd;
+  text-decoration: underline;
 }
 
 .footer-area .primary-btn {
@@ -3537,7 +3536,7 @@ ul.spatialism-sec li a span {
 }
 
 .footer-area .primary-btn.white span {
-  color: #fff;
+  color: #000;
 }
 
 .footer-area .primary-btn.white:hover {
@@ -3550,7 +3549,7 @@ ul.spatialism-sec li a span {
 }
 
 .footer-area h6 {
-  color: #fff;
+  color: #000;
   margin-bottom: 5px;
   font-size: 18px;
   font-weight: 200;
