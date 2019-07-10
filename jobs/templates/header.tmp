@@ -27,6 +27,7 @@
 
                       </ul>
                     </li>
+                    
                     <li class="menu-has-children"><a href="/companies/">Employer</a>
                       <ul>
                           
@@ -42,6 +43,8 @@
 
                       </ul>
                     </li>
+                    <li class="menu-has-children"><a href="/blogs/">Blogs</a></li>
+
 
                     <li class="menu-has-children"><a href="">Employment solutions</a>
                       <ul>
@@ -70,7 +73,6 @@
                           <li class="menu-active"><a href="/appointmnet/make/">Career Advisory</a></li>
 
                           <li class="menu-active"><a href="/events/">Events</a></li>
-                          <li><a href="/blogs/">Blogs</a></li>
                           {% if request.user.employee %}
                           <li><a href="/appointmnets/">View Appointments</a></li>
                           
@@ -89,7 +91,7 @@
                     </li>
                  
                   
-                 
+
 
                   {% if not request.user.is_authenticated %}
                   <li><a style="border: solid 3px #ddd;" href="/signup/">Register Now</a> </li>

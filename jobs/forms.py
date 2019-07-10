@@ -1,5 +1,5 @@
 from django import forms
-from jobs import models 
+from jobs import models, constants
 from django.contrib.auth.models import User 
 from ckeditor.widgets import CKEditorWidget
 
@@ -7,6 +7,29 @@ class CategoryForm(forms.ModelForm):
     class Meta:
         model = models.Category
         exclude=('id',)
+
+class RecruitFilterForm(forms.Form):
+    gender = forms.ChoiceField(choices=constants.GENDER_CHOICES)
+    highest_education_level = forms.ChoiceField(required=False, choices=constants.EDUCATION_LEVELS)
+    employement_status = forms.ChoiceField(required=False, choices=constants.EMPLOYEMENT_STATUS)
+    job_type = forms.ModelChoiceField(required=False, queryset=models.JobType.objects.all())
+    ageRange = forms.ModelChoiceField(required=False, queryset=models.AgeRange.objects.all())
+    widgets = {
+            'gender' : forms.Select(attrs={ "class" : "form-control"}),
+            'highest_education_level' : forms.Select(attrs={ "class" : "form-control"}),
+            'employement_status' : forms.Select(attrs={ "class" : "form-control"}),
+            'job_type' : forms.Select(attrs={ "class" : "form-control"}),
+            'services_intersted_in' : forms.Select(attrs={ "class" : "form-control"}),
+    }
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = models.Message
+        fields = ('content', 'subject')
+        widgets = {
+            'content' : forms.Textarea(attrs={'class' : 'form-control', 'placeholder' : 'Message should have more than 50 characters', 'rows' : 4, 'style' : "margin-bottom:10px;height: 125px;padding-top:5px"}),
+            'subject' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'subject', 'style' : "margin-bottom:10px;padding-top:5px"}),
+        }
 
 class JobAlertForm(forms.ModelForm):
     class Meta:
@@ -42,6 +65,7 @@ class JobForm(forms.ModelForm):
             'deadline' : forms.TextInput(attrs={
                 "placeholder" : "Closing On",
                 "class" : "form-control",
+                "data-date-format" : "yyyy-mm-dd",
                 "data-plugin-datepicker" : True}),
                 
             'apply_through_portal' : forms.CheckboxInput(attrs={
@@ -75,7 +99,7 @@ class JobForm(forms.ModelForm):
                 "class" : "form-control", 
                 "data-plugin-multiselect" : True}),
             'region' : forms.Select(attrs={
-                "class" : "form-control", 
+                "class" : "form-control chosen-select-deselect", 
                 "data-plugin-multiselect" : True}),
 
             'categories' : forms.SelectMultiple(attrs={
@@ -163,7 +187,7 @@ class CompanyForm(forms.ModelForm):
 
             'region' : forms.Select(attrs={
                 "placeholder" : "Job Level",
-                "class" : "form-control", 
+                "class" : "form-control chosen-select-deselect", 
                 "data-plugin-multiselect" : True}),
 
             'website' : forms.TextInput(attrs={
@@ -223,7 +247,30 @@ class EmployeeForm(forms.ModelForm):
                 "class" : "form-control"}),
 
 
-            'region' : forms.Select(),
+            'region' : forms.Select(attrs={
+                'class' : 'chosen-select-deselect form-control'
+            }),
+            'gender' : forms.Select( attrs={
+                'class' : 'form-control',
+            }),
+            'age' : forms.Select( attrs={
+                'class' : 'form-control',
+                
+            }),
+
+            'highest_education_level' : forms.Select( attrs={
+                'class' : 'form-control chosen-select-deselect',
+            }),
+            'employement_status' : forms.Select( attrs={
+                'class' : 'form-control chosen-select-deselect',
+            }),
+            'job_types' :  forms.SelectMultiple( attrs={
+                'class' : 'form-control multiselect chosen-select-deselect',
+
+            }),
+            'services_intersted_in' : forms.SelectMultiple( attrs={
+                'class' : 'form-control multiselect chosen-select-deselect',
+            }),
             
         }
 
@@ -246,6 +293,7 @@ class EmployeeJobInterestForm(forms.ModelForm):
             'employement_type' : forms.Select()
             
         }
+
 class UserBackgroundForm(forms.ModelForm):
     class Meta:
         widgets = {}
@@ -258,15 +306,15 @@ class ExperienceForm(UserBackgroundForm):
         widgets = {
             'city' : forms.TextInput(attrs={
                 "placeholder" : "Location","class" : "form-control"}),
-            'region' : forms.Select(attrs={"class" : "form-control"}),
+            'region' : forms.Select(attrs={"class" : "chosen-select-deselect  form-control"}),
             'start_year' : forms.TextInput(attrs={
                 "placeholder" : "Start Year" ,"class" : "form-control"}),
 
             'start_month' : forms.Select(attrs={
-                "placeholder" : "Start Month","class" : "form-control"}),
+                "placeholder" : "Start Month","class" : "chosen-select-deselect form-control"}),
 
             'end_month' : forms.Select(attrs={
-                "placeholder" : "End Month" ,"class" : "form-control"}),
+                "placeholder" : "End Month" ,"class" : "chosen-select-deselect form-control"}),
 
             'end_year' : forms.TextInput(attrs={
                 "placeholder" : "End Year" ,"class" : "form-control"}),
@@ -312,15 +360,15 @@ class EducationForm(forms.ModelForm):
         widgets = {
             'city' : forms.TextInput(attrs={
                 "placeholder" : "Location" ,"class" : "form-control"}),
-            'region' : forms.Select(attrs={'class' : 'form-control'}),
+            'region' : forms.Select(attrs={'class' : 'chosen-select-deselect form-control'}),
             'start_year' : forms.TextInput(attrs={
                 "placeholder" : "Start Year" ,"class" : "form-control"}),
 
             'start_month' : forms.Select(attrs={
-                "placeholder" : "Start Month","class" : "form-control"}),
+                "placeholder" : "Start Month","class" : "chosen-select-deselect form-control"}),
 
             'end_month' : forms.Select(attrs={
-                "placeholder" : "End Month" ,"class" : "form-control"}),
+                "placeholder" : "End Month" ,"class" : "chosen-select-deselect form-control"}),
 
             'end_year' : forms.TextInput(attrs={
                 "placeholder" : "End Year","class" : "form-control"}),

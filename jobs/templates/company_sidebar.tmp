@@ -1,32 +1,52 @@
 
-					<div class="col-lg-4 sidebar">
-                            
-    
-                            <div class="single-slidebar">
-                                {% if recent_jobs %}
-                                <div class="pt-2 single-title-job-detail">
-                                         Recent Jobs
-                                    </div>	
-                                    <hr />									
-                                {% for recent_job in recent_jobs %} 
-                                    <div class='sing-recent-job'>
-                                        <div><a href='/jobs/job-{{ recent_job.getuniquelink}}/'><div class='h4'> {{ recent_job.title|upper }} </div> </a> </div>
-                                        <div><i class='fa fa-building-o'></i> <a href='/companies/company-{{ recent_job.company.pk}}/'> {{ recent_job.company.name }} </a></div>
-                                        <div> <span class="fa fa-map-marker"></span> 
-                                            Duty Station (Location)    
-                                                {{ job.city }}, 
-                                                {% ifequal job.region.name 'Addis Ababa' %}
-                                                     Ethiopia
-                                                {% else %}
-                                                    {{ job.region.name }}
-                                                {% endifequal %}
-                                        </div>
 
-                                    </div>
-                                {% endfor %}
-                                
-                                {% endif %}
+<div class="col-lg-4 sidebar">
+   
+    <div class="single-slidebar">
+            {% if recent_jobs %}
+            <div class="pt-2 single-title-job-detail">
+                        Recent Jobs
+                </div>	
+                <hr />									
+            {% for recent_job in recent_jobs %} 
+                <div class='sing-recent-job'>
+                    <div><a href='/jobs/job-{{ recent_job.getuniquelink}}/'><div class='h4'> {{ recent_job.title|upper }} </div> </a> </div>
+                    <div><i class='fa fa-building-o'></i> <a href='/companies/company-{{ recent_job.company.pk}}/'> {{ recent_job.company.name }} </a></div>
+                    <div> <span class="fa fa-map-marker"></span> 
+                        Duty Station (Location)    
+                            {{ job.city }}, 
+                            {% ifequal job.region.name 'Addis Ababa' %}
+                                    Ethiopia
+                            {% else %}
+                                {{ job.region.name }}
+                            {% endifequal %}
+                    </div>
 
-    						
-    
-                        </div>
+                </div>
+            {% endfor %}
+            
+            {% endif %}
+
+        
+
+    </div>
+    <hr />
+    {% if request.user.is_authenticated and request.user.employee %}    
+    <div class="">
+            <div class="pt-2 single-title-job-detail">
+                    Contact
+            </div>	
+            {% if messageSent %}
+                <div class="text-success">{{ messageSent }}</div>
+            {% endif %}
+            <form  class="employer-contact-form" method="POST" action="/company/company-{{company.pk}}/message/">
+                {% csrf_token %}
+                {{ messageForm.subject }}
+                {{ messageForm.content }}
+                <button class="btn" style="padding: 5px; background:#eb7100;color:white" type="submit">Send Message <i class="fa fa-envelope"></i></button>
+            </form>
+
+        </div>
+    {% endif %}
+
+</div>

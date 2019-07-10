@@ -46,7 +46,7 @@ class DegreeModelAdmin(admin.ModelAdmin):
     list_display = ('name', )
 
 admin.site.register(models.Category, CategoryModelAdmin)
-#admin.site.register(models.Job, JobModelAdmin)
+admin.site.register(models.Job, JobModelAdmin)
 admin.site.register(models.Company, CompanyModelAdmin)
 admin.site.register(models.Region, RegionModelAdmin)
 admin.site.register(models.EmployementType, EmployementTypeModelAdmin)
@@ -56,6 +56,10 @@ admin.site.register(models.Employee, EmployeeModelAdmin)
 #admin.site.register(models.Blog, BlogModelAdmin)
 admin.site.register(models.EmployeeJobInterest, EmployeeJobInterestModelAdmin)
 admin.site.register(models.Degree, DegreeModelAdmin)
+admin.site.register(models.AgeRange)
+admin.site.register(models.JobSeekerService)
+admin.site.register(models.EmployerService)
+admin.site.register(models.JobType)
 
 
 

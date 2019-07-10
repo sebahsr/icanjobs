@@ -39,15 +39,94 @@
 
                             </div>
                             <div class="form-group mb-lg">
-                                    {%  if user_form.last_name.errors %}
-                                        <div class="text-danger">{{ user_form.last_name.errors.0 }}</div>
-                                    {% endif %}
-    
-                                    <label>Last Name</label>
-                                    {{ user_form.last_name }}
-    
-                                </div>
+								{%  if user_form.last_name.errors %}
+									<div class="text-danger">{{ user_form.last_name.errors.0 }}</div>
+								{% endif %}
 
+								<label>Last Name</label>
+								{{ user_form.last_name }}
+
+							</div>
+
+							<div class="form-group mb-lg">
+								{%  if user_form.gender.errors %}
+									<div class="text-danger">{{ user_form.gender.errors.0 }}</div>
+								{% endif %}
+
+								<label>Gender</label>
+								{{ employee_form.gender }}
+
+							</div>
+							<div class="form-group mb-lg">
+								{%  if user_form.phone.errors %}
+									<div class="text-danger">{{ user_form.phone.errors.0 }}</div>
+								{% endif %}
+
+								<label>Phone</label>
+								{{ employee_form.phone }}
+
+							</div>
+							
+							<div class="form-group mb-lg">
+								{%  if user_form.email.errors %}
+									<div class="text-danger">{{ user_form.email.errors.0 }}</div>
+								{% endif %}
+
+								<label>Email</label>
+								{{ employee_form.email }}
+
+							</div>
+							
+							<div class="form-group mb-lg">
+								{%  if user_form.age.errors %}
+									<div class="text-danger">{{ user_form.age.errors.0 }}</div>
+								{% endif %}
+
+								<label>Age Range</label>
+								{{ employee_form.age }}
+
+							</div>
+							
+
+							<div class="form-group mb-lg">
+								{%  if user_form.highest_education_level.errors %}
+									<div class="text-danger">{{ user_form.highest_education_level.errors.0 }}</div>
+								{% endif %}
+
+								<label>What is your highest level of education?</label>
+								{{ employee_form.highest_education_level }}
+
+							</div>
+
+							<div class="form-group mb-lg">
+								{%  if user_form.employement_status.errors %}
+									<div class="text-danger">{{ user_form.employement_status.errors.0 }}</div>
+								{% endif %}
+
+								<label>	What is your employment status?</label>
+								{{ employee_form.employement_status }}
+
+							</div>
+
+							<div class="form-group mb-lg">
+								{%  if user_form.job_types.errors %}
+									<div class="text-danger">{{ user_form.job_types.errors.0 }}</div>
+								{% endif %}
+
+								<label>What type of jobs are you looking for? Please check all that apply</label>
+								{{ employee_form.job_types }}
+
+							</div>
+							
+							<div class="form-group mb-lg">
+								{%  if user_form.services_intersted_in.errors %}
+									<div class="text-danger">{{ user_form.services_intersted_in.errors.0 }}</div>
+								{% endif %}
+
+								<label>What services will you use or are you interested in iCAN?</label>
+								{{ employee_form.services_intersted_in }}
+
+							</div>
 							<div class="form-group mb-lg">
 								{%  if userNameForm.username.errors %}
 									<div class="text-danger">{{ userNameForm.username.errors.0 }}</div>
@@ -115,4 +194,5 @@
 		</section>
 		<!-- end: page -->
 
-        {% include 'company/admin.footer.tmp' %}
+				{% include 'company/admin.footer.tmp' %}
+				{% include 'chosen.include.tmp' %}

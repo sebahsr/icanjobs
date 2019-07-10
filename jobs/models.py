@@ -79,6 +79,56 @@ class Company(Entity):
     def __unicode__(self):
         return self.name 
 
+class AccessToken(models.Model):
+    value = models.CharField(max_length=200, primary_key=True)
+    paramFilter = models.CharField(max_length=100)
+    paramQuery = models.CharField(max_length=300)
+    company = models.ForeignKey('company', related_name='accestokens')
+
+    @staticmethod
+    def generateValue():
+        import hashlib
+        import random
+        m = hashlib.md5()
+        random_data = []
+        for i in range(15):
+            random_data.append( str(random.randint(1,1000)) )
+        
+        random_data = ''.join(random_data)
+        m.update(random_data)
+        return m.hexdigest()
+
+class Message(models.Model):
+    subject = models.CharField(max_length=200)
+    content = models.TextField()
+    company = models.ForeignKey('Company', related_name='messages')
+    sender = models.ForeignKey(User, related_name='messages')
+    status = models.CharField(max_length = 10, default='unread', choices=(constants.SEEN_UNSEEN_STATUS))
+    messaged_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('-status', '-messaged_on' )
+    @classmethod
+    def todays(cls):
+        today_min = datetime.datetime.combine(datetime.date.today(), datetime.time.min)
+        today_max = datetime.datetime.combine(datetime.date.today(), datetime.time.max)
+        return cls.objects.filter(messaged_on__range=(today_min, today_max))
+    
+    @classmethod
+    def yesterdays(cls):
+        yesterday = datetime.date.today() - datetime.timedelta(days=1)
+        yesterday_min = datetime.datetime.combine(yesterday, datetime.time.min)
+        yesterday_max = datetime.datetime.combine(yesterday, datetime.time.max)
+        return cls.objects.filter(messaged_on__range=(yesterday_min, yesterday_max))
+    
+    @classmethod
+    def last7days(cls):
+        last7day = datetime.date.today() - datetime.timedelta(days=7)
+        last7day_min = datetime.datetime.combine(last7day, datetime.time.min)
+        today_max = datetime.datetime.combine(datetime.date.today(), datetime.time.max)
+        return cls.objects.filter(messaged_on__range=(last7day_min, today_max))
+
+
 class UserBackGround(models.Model):
     city = models.CharField(max_length=100)
     start_month = models.CharField( max_length=10, choices=constants.MONTHS)
@@ -118,10 +168,45 @@ class JobAlert(models.Model):
     def __unicode__(self):
         return self.full_name
 
+
+class AgeRange(models.Model):
+    startAge = models.IntegerField(verbose_name='Start Age')
+    endAge = models.CharField(max_length=5, verbose_name='Enda Age')
+
+    def __unicode__(self):
+        if self.endAge.isnumeric():
+            return "%d - %s" %(self.startAge, self.endAge)
+        return "%d%s" %(self.startAge, self.endAge)
+    
+    class Meta:
+        ordering = ('startAge',)
+
+class JobSeekerService(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return self.name
+
+class EmployerService(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return self.name
+
+class JobType(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return self.name
+
 class Employee(Entity):
     profile_pic = models.FileField(upload_to=functions.getFileName,  blank=True)
-    gender = models.CharField(blank=True, max_length=8, null=True, choices=( ('Male', "Male") , ('Female', "Female") ))
-    age = models.IntegerField(blank=True, null=True)
+    gender = models.CharField(blank=True, max_length=8, null=True, choices=constants.GENDER_CHOICES)
+    age = models.ForeignKey('AgeRange', blank=True, null=True, related_name='employees')
+    highest_education_level = models.IntegerField( choices=constants.EDUCATION_LEVELS, null=True, blank=True)
+    employement_status = models.IntegerField(choices=constants.EMPLOYEMENT_STATUS, null=True, blank=True)
+    job_types = models.ManyToManyField('JobType', related_name='jobseekers', blank=True)
+    services_intersted_in = models.ManyToManyField('JobSeekerService', related_name='jobseekers', blank=True)
 
     #location information 
     city = models.CharField(max_length=100, null=True, blank=True)

@@ -14,7 +14,7 @@
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
-		<title>Job Listing</title>
+		<title>Blog - {{ blog.title }}</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
@@ -28,28 +28,30 @@
 			<link rel="stylesheet" href="/static/css/animate.min.css">
 			<link rel="stylesheet" href="/static/css/owl.carousel.css">
 			<link rel="stylesheet" href="/static/css/main.css">
+
+			<style>
+				b, strong {
+					font-weight: bold;
+				}
+			</style>
+			
 		</head>
 		<body>
 
              {% include 'header.tmp' %}
 
 			<!-- start banner Area -->
-			<section {% if blog.image %} 
-						style="background: url( {{ blog.image.url }}) center no-repeat !important; background-size:cover" 
-					{T else %}
-					
-					style="background: url(/static/img/blog-default.jpg) center no-repeat !important; background-size:cover" 
-
-					{% endif %}
+			<section style="background: url(/static/img/mainpic.jpg) center no-repeat !important; background-size:cover" 
 			class="banner-area relative" id="home">	
 				<div class="overlay overlay-bg-blog"></div>
 				<div class="container">
 					<div class="row d-flex align-items-center justify-content-center">
-						<div class="blog-content about-content col-lg-12">
-							<h1 class="text-white">
-								{{ blog.title | title }}			
-							</h1>	
-						</div>											
+							<div class="about-content-blog col-lg-12">
+									<h1 class="text-white">
+										Blog Post				
+									</h1>	
+									<p class="text-white link-nav"><a href="/jobs/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="/blogs/"> Blog Posts</a> <span class="lnr lnr-arrow-right"></span>  <a href="/blogs/"> {{ blog.title | title}}</a></p>
+								</div>										
 					</div>
 				</div>
 			</section>
@@ -57,7 +59,7 @@
 			
 			
 			<!-- Start blog-posts Area -->
-			<section class="blog-posts-area section-gap">
+			<section class="blog-posts-area ">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-8 post-list blog-post-list">
@@ -73,14 +75,39 @@
 										{{ blog.title }}
 									</h1>
 								</a>
+								{% if blog.posted_by %}
+								<div class="h6">By {{ blog.posted_by }}</div>
+								{% endif %}
+								
+								<p>
+									<span>Views <i class="fa fa-eye"></i> {{ blog.view_count }}</span>
+								</p>
+								
 								<div class="content-wrap">
 									{{ blog.content|safe}}
 
 								</div>
-
-                           
-
-
+								<hr />
+								<div class="h4">Comments from users</div>
+								{% for comment in blog.comments.all %}
+								<div class="blog-comment">
+									<span class="h6"><i class="fa fa-user"></i> {{ comment.commented_by.first_name|title }} {{ comment.commented_by.last_name|title }} </span>
+									<span class=" mb-10"><i class="fa fa-clock-o"> {{ comment.commented_at|date }}</i></span>
+									<span>{{ comment.content }}</span>
+								</div>
+								{% endfor %}
+								{% if request.user.is_authenticated %}
+								<hr />
+								<div>
+									<form method="POST" action="/comment/blog-{{blog.pk}}/">
+										{{ commentForm.content }}
+										{% csrf_token %}
+										<button class="btn" style="background:#eb7100;color: white;" type="submit">Comment <i class="fa fa-comment-o"></i></button>
+									</form>
+								</div>
+								
+								{% endif %}
+								
 							</div>																		
 						</div>
 						{% include 'blog_sidebar.tmp' %}

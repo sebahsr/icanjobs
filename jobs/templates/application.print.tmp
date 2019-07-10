@@ -62,7 +62,7 @@
 					<div class="profile-main-wrapper col-lg-9 post-list">
 	
 						<div class="flew-row">
-                                <div style="text-transfor:upper" class='h5'>Application to </div><div class='h3'>{{ job_application.job.title }}</div>
+                                <div style="text-transfor:upper" class='h5'>Application to </div><div class='h3'>{{ job.title }}</div>
                         </div>
 						<div class="single-post d-flex flex-row">
 							<div class="thumb col-sm-4">
@@ -411,9 +411,9 @@
 			</div>	
 		</section>
         <!-- End post Area -->
-           
+        {% if not dont_print %}
         <script>
             window.print();
 
         </script>
-
+		{% endif %}

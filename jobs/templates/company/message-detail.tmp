@@ -1,0 +1,73 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'company/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'company/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				{% include 'company/company.admin.sidebar.tmp' %}
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+						<header class="page-header">
+							<h2>Messages</h2>
+						
+						</header>
+					<!-- start: page -->
+					<section class="content-with-menu mailbox">
+						<div class="content-with-menu-container">
+							
+							
+							<div class="inner-body mailbox-folder">
+								<!-- START: .mailbox-header -->
+								<header class="mailbox-header">
+									<div class="row">
+										<div class="col-sm-6">
+											<h3 class="mailbox-title text-light m-none">
+											
+												 {{ message.subject|title }}
+											</h3>
+										</div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row mt-10">
+                                            <div class="col-sm-6">
+                                                <h5 class="mailbox-title text-light m-none">
+                                                
+                                                     <b><i class="fa fa-user"></i> {{ message.sender.first_name}} {{ message.sender.last_name  }}</b>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <hr />
+                                        <div class="row mt-10">
+                                            <div class="col-sm-12" style="text-align: justify;">
+                                                        {{ message.content }}
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        
+
+
+								</header>
+								<!-- END: .mailbox-header -->
+								
+
+
+								
+							</div>
+						</div>
+					</section>
+					<!-- end: page -->
+				</section>
+			</div>
+
+			
+		</section>
+		{% include 'company/admin.footer.tmp' %}

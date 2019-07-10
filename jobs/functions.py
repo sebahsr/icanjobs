@@ -9,6 +9,10 @@ def is_employee(user):
 
 def is_company(user):
         return hasattr(user, 'company')
+def can_access(request, user):
+        if is_company:
+                return True
+
 
 def create_employee(strategy, details, backend, user=None, *args, **kwargs):
         from jobs import models

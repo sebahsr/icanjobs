@@ -69,15 +69,26 @@ class BlogForm(forms.ModelForm):
     )
     class Meta:
         model = models.Blog
-        fields = '__all__'
+        exclude = ('view_count', )
         widgets = {
             'title' : forms.TextInput(attrs={
                 "placeholder" : "Blog Title", "class" : "form-control"}),
+
+            'posted_by' : forms.TextInput(attrs={
+                "placeholder" : "Posted By", "class" : "form-control"}),
 
 
             'categories' : forms.SelectMultiple(attrs={
                 "class" : "form-control", 
                 "data-plugin-multiselect" : True}),
+        }
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = models.Comment
+        fields = ('content',)
+        widgets = {
+            'content' : forms.Textarea(attrs={
+                "placeholder" : "Message...", 'rows' : 4, "class" : "form-control"}),
         }
 
 class AppointmentForm(forms.ModelForm):
@@ -87,17 +98,20 @@ class AppointmentForm(forms.ModelForm):
         widgets = {
                'slot' : forms.Select(attrs={
                 "placeholder" : "Region",
-                "class" : "form-control"}),
+                "class" : "form-control chosen-select"}),
 
                 'date' : forms.DateInput(attrs={
                     "placeholder" : "Appointment Date",
-                    "class" : "appointment-date single-input"
+                    "class" : "appointment-date form-control",
+                    'data-provide' : "datepicker",
+                    'autocomplete' : 'off'
                 }),
 
                'need' : forms.Select(attrs={
                 "placeholder" : "Region",
-                "class" : "form-control"}),
+                "class" : "form-control chosen-select"}),
         }
+
 
 
 class AppointmentFilterForm(forms.Form):

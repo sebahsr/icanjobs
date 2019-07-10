@@ -44,16 +44,27 @@
                 </div>	
 
         </section>
+        
+        <section class="">
+            <div class="container">
+                    <a  href='/employee/build-resume/education/add/' class="genric-btn skill-tags"> Add Educations/Trainings <i class='fa fa-plus-square'></i></a>
+
+                <a href='{{ build_resume_redirect_s.education }}'  class="genric-btn skill-tags"> Next <i class='fa fa-long-arrow-right'></i></a>
+            </div>
+        </section>
+    
+        
         {% else %}
         <section>
     
                 <h5 class="single-title "> My Educations/Trainings </h5>
             
             <br />
-            <a  href='/employee/build-resume/education/add/' class="genric-btn skill-tags"> Add Educations/Trainingins <i class='fa fa-plus-square'></i></a>
+            <a  href='/employee/build-resume/education/add/' class="genric-btn skill-tags"> Add Educations/Trainings <i class='fa fa-plus-square'></i></a>
             <a href='{{ build_resume_redirect_s.education }}'  class="genric-btn skill-tags"> Next <i class='fa fa-long-arrow-right'></i></a>
 
         </section>
+    
         {% endif %}	
     
 {% endif %}

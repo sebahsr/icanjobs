@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^companies/(?:region-(?P<regionID>\d+)/)$', job_views.companyListView),
     url(r'^company/create-job/$', job_views.companyCreateJobView),
     url(r'^(companies|company)/(?:company-(?P<companyID>\d+)/)?$', job_views.companyView),
+    url(r'^company/company-(?P<companyID>\d+)/message/$', job_views.companyMessage),
     url(r'^company/$', job_views.companyDetailView),
     url(r'^companies/(?:company-(?P<companyID>\d+)/jobstatus-(?P<jobStatus>\d+)/)?$', job_views.companyView),
     url(r'^companies/(?:company-(?P<companyID>\d+)/jobemptype-(?P<jobEmpType>\d+)/)?$', job_views.companyView),
@@ -61,14 +62,22 @@ urlpatterns = [
     url(r'^blogs/(?:category-(?P<categoryID>\d+)/)?$', job_views.blogListView),
     url(r'^blogs/blog-(?P<blogID>\d+)/$', job_views.blogDetailView),
     url(r'^test/$', job_views.testView),
+    url(r'^comment/blog-(?P<blogID>\d+)/$', job_views.commentView),
+    
 
     url(r'^company/admin/$', job_views.adminCompanyView),
     url(r'^company/admin/edit/$', job_views.adminCompanyView),
     url(r'^company/edit/username/$', job_views.adminCompanyEditUsernameView),
     url(r'^company/edit/password/$', job_views.adminCompanyChangePasswordView),
     url(r'^company/admin/jobs/(?P<isDraft>drafts/)?$', job_views.companyJobListView),
+    url(r'^company/recruit/$', job_views.companyRecruitView),
     url(r'^company/admin/applications/$', job_views.applications),
     url(r'^company/admin/applications/(?P<filter>(read|unread|today|yesterday|last7))/$', job_views.applications),
+
+    url(r'^company/admin/messages/$', job_views.messages),
+    url(r'^company/admin/messages/(?P<filter>(read|unread|today|yesterday|last7))/$', job_views.messages),
+    url(r'^company/admin/messages/message-(?P<messageID>\d+)/$', job_views.message_detail),
+    url(r'^message/delete/message-(?P<messageID>\d+)/$', job_views.message_delete),
 
     url(r'^company/admin/login/$', job_views.loginCompanyView),
     url(r'^company/admin/signup/$', job_views.signUpCompanyView),
@@ -78,6 +87,11 @@ urlpatterns = [
 
     url(r'^applications/applicationID-(?P<applicationID>\d+)/$', job_views.applicationRead),
     url(r'^applications/print/applicationID-(?P<applicationID>\d+)/$', job_views.applicationPrint),
+
+    url(r'^applications/print/applicationID-(?P<applicationID>\d+)/accesstoken-(?P<accesstoken>\w+)/$', job_views.applicationPrint),
+    url(r'^applications/viewonly/accesstoken-(?P<accesstoken>\w+)/$', job_views.applicationsViewOnly),
+    url(r'^employee/application-(?P<applicationID>\d+)/viewonly/accesstoken-(?P<accesstoken>\w+)/$', job_views.employeeViewOnly),
+    url(r'^company/admin/createaccestoken/((?P<filter>\w+)/)?', job_views.createAccesToken),
     url(r'^applications/delete/applicationID-(?P<applicationID>\d+)/$', job_views.applicationDelete),
     
     url(r'^events/(?:tag-(?P<tagID>\d+)/)?', job_views.events),

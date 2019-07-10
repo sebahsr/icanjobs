@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'company/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'company/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				{% include 'company/company.admin.sidebar.tmp' %}
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>Recruit Job Seekers</h2>
+						<br />
+					</header>
+
+					<!-- start: page -->
+						
+						<div class="row">
+							<div class="col-xs-12">
+								<section class="panel form-wizard" id="w4">
+									<header class="panel-heading">
+										
+										<h2 class="panel-title">Recruit Job Seekers</h2>
+									</header>
+								
+                                    <div class="panel-body">
+                                        <form method="GET" action="/company/recruit/">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    Gender<br/>
+                                                    {{ recruitFilterForm.gender }}
+                                                </div>
+                                                
+                                                <div class="col-sm-2">
+                                                    <label>Age Range</label><br />
+                                                    {{ recruitFilterForm.ageRange }}
+                                                </div>
+                                                
+                                                <div class="col-sm-3">
+                                                        <label>Employement Status</label><br />
+                                                       {{ recruitFilterForm.employement_status }}
+                                                   </div>
+
+                                                <div class="col-sm-3">
+                                                    <label>Highest Education Level</label><br/>
+                                                    {{ recruitFilterForm.highest_education_level }}
+                                                 </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <button name='query' class='btn btn-primary' value='true' type="submit">Search <i class="fa fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </section>
+                                
+                                <section>
+                                    
+                                
+                                    <div class="panel-body">
+
+                                        <table class="table table-bordered">
+                                            <tr><th>Full Name</th><th>Gender</th><th>Employement Status</th><th>Education Level</th> <th>Age Range</th></tr>
+                                            {% for job_seeker in job_seekers %}
+                                            <tr >
+                                                <td><a href='/employee/employee-{{ job_seeker.pk }}/'>{{job_seeker.user.first_name}} {{job_seeker.user.last_name}}</a></td>
+                                                <td>{{job_seeker.get_gender_display}} </td>
+                                                <td>{{job_seeker.get_employement_status_display}}</td>
+                                                <td>{{job_seeker.get_highest_education_level_display }}</td>
+                                                <td>{{job_seeker.age }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                </section>
+                                
+							</div>
+						</div>
+					<!-- end: page -->
+				</section>
+			</div>
+
+		</section>
+
+{% include 'company/admin.footer.tmp' %}

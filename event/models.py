@@ -61,16 +61,27 @@ class Event(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=150)
+    posted_by = models.CharField(max_length=100, null=True, blank=True)
     content = RichTextUploadingField()
     categories = models.ManyToManyField('PostCategories', blank=True, related_name='blogs')
     image = models.FileField(upload_to=functions.getFileName, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    view_count = models.IntegerField(default=0)
     
     class Meta:
-        ordering = ('created_at',)
+        ordering = ('-created_at',)
 
     def __unicode__(self):
         return self.title
+
+class Comment(models.Model):
+    content = models.TextField()
+    commented_by = models.ForeignKey(User, related_name='comments')
+    blog = models.ForeignKey('Blog', related_name='comments')
+    commented_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('-commented_at',)
 
 class AppointmentNeed(models.Model):
     name = models.CharField(max_length=150)

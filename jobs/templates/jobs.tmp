@@ -186,9 +186,7 @@
         </div>
 		<!-- start footer Area -->		
         {% include 'footer.tmp' %}	
-        <script type='text/javascript' src='http://jobcareer.chimpgroup.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
-
-        <script type='text/javascript' src='http://jobcareer.chimpgroup.com/wp-content/plugins/wp-jobhunt/assets/scripts/chosen.jquery.js?ver=4.8.8'></script>
+		<script src="/static/js/jquery.nice-select.min.js"></script>			
 
     </body>
 </html>

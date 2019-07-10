@@ -47,6 +47,13 @@
                 </div>	
 
         </section>
+
+        <section>
+            <div class="container">
+            <a  href='/employee/build-resume/reference/add/' class="genric-btn skill-tags"> Add Reference <i class='fa fa-plus-square'></i></a>
+            <a href='/employee/' class="genric-btn skill-tags">Done <i class="fa fa-check-square"></i></a>    </div>
+        </div>
+        </section>
     {% else %}
         <section>
 

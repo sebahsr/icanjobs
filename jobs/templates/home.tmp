@@ -63,7 +63,6 @@
 											<div class="menu-content pb-20 col-md-12">
 												<div class="cs-heading"><h3 class="cs-fancy">RECENT JOBS</h3>
 													<div class="heading-description">
-														List of jobs recently published on iCAN.
 													</div>
 											</div>
 											</div>
@@ -94,7 +93,7 @@
 													<div class="address">	
 															<h6> <a href='/companies/company-{{ job.company.pk }}/'>{{ job.company.name }} </a></h6>
 															{% if job.deadline %}
-															<h6> <span class="fa fa-clock-o"></span> Closing On {{ job.deadline }} </a></h6>
+																<h6> <span  class="fa fa-clock-o"></span> Closing On {{ job.deadline }} </a></h6>
 															{% endif %}
 													</div>
 													
@@ -206,6 +205,7 @@
 															{% endif %}
 														</figure>
 												</div>
+												
 												<div class="blog-text">
 														<div class="cs-inner-bolg">
 																<div class="post-option">
@@ -214,7 +214,7 @@
 																<div class="cs-post-title">
 																		<h3><a href="/blogs/blog-{{recent_blog.pk}}/" title="An Overworked Newspaper Editor">{{ recent_blog.title|title}}</a></h3>
 																</div>
-																<p> {{ recent_blog.content|safe|truncatechars:200 }} </p>
+																<p> {{ recent_blog.content|striptags|safe|truncatechars:300 }} </p>
 																		<a href="/blogs/blog-{{recent_blog.pk}}/" class="read-more">Read More</a>
 																 
 														</div>
@@ -233,6 +233,8 @@
 
 		<!-- start footer Area -->		
 	{% include 'footer.tmp' %}	
+	<script src="/static/js/jquery.nice-select.min.js"></script>			
+
 	</body>
 </html>
 

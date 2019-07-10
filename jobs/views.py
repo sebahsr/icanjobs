@@ -8,10 +8,10 @@ from django.db.models import Q,Count, Sum, F
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login, logout
 from jobs import constants, functions
+from jobs.decorators import *
 from event import models as eventModels
 from event import forms as eventForms
 from django.contrib.auth.decorators import login_required,user_passes_test
-
 
 import datetime
 # Create your views here.
@@ -67,19 +67,51 @@ def homeView(request, **kwargs):
 
     categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
     featured_categories = categories[:6]
+    from datetime import date
     recent_jobs = models.Job.objects.filter(is_draft=False)[:constants.RECENT_JOBS_NUMBER]
     employement_types = models.EmployementType.objects.all()
     recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:constants.RECENT_BLOG_NUMBER]
     regions = models.Region.objects.all()
     return render(request, template_name, locals())
 
+
 @login_required
 @user_passes_test(functions.is_company)
-def applicationPrint(request, applicationID):
+def applicationPrint(request, applicationID, dont_print=False, accesstoken=None):
     job_application = get_object_or_404(models.JobApplication, pk=applicationID)
     employee = job_application.applicant
-
+    job = job_application.job
     return render(request, 'application.print.tmp', locals())
+
+@can_view_employee
+def employeeViewOnly(request, applicationID, accesstoken, dont_print=False):
+    job_application =  get_object_or_404(models.JobApplication, pk=applicationID)
+    job = job_application.job
+    employee = job_application.applicant
+    
+    return render(request, 'application.print.tmp', locals())
+
+@login_required
+@user_passes_test(functions.is_company)
+def createAccesToken(request, filter=None):
+    if not filter:
+        filter= ''
+    
+    paramQuery = request.GET.get('query')
+    if not paramQuery:
+        paramQuery = ''
+    try:
+        accesstoken = models.AccessToken.objects.get(company=request.user.company, paramFilter=filter, paramQuery=paramQuery)
+    except:
+        accesstoken = models.AccessToken.objects.create(company=request.user.company, paramFilter=filter, paramQuery=paramQuery,value=models.AccessToken.generateValue())
+    print accesstoken
+    return render(request, 'redirect.email.tmp', locals())
+
+@user_can_acces
+def applicationsViewOnly(request, accesstoken, dont_print=False):
+    application_filter, applications, unread_applications_count = getJobApplications(request.user.company, accesstoken.paramFilter, accesstoken.paramQuery)
+    return render(request, 'applications.view.only.tmp', locals())
+
 
 @login_required
 @user_passes_test(functions.is_company)
@@ -106,6 +138,8 @@ def jobView(request, **kwargs):
             return HttpResponse('Job Not Found', status=404)
         
         job = jobDetailHelper(jobID, request)
+        from datetime import date
+        expired = job.deadline and job.deadline < date.today()
         template_name = "job_detail.tmp"
 
 
@@ -210,7 +244,10 @@ def companyView(request, companyID, **kwargs):
     categories = models.Category.objects.all()
     employement_types = models.EmployementType.objects.all()
     job_statuses = constants.JOB_STATUS
-    
+    if request.GET.get('messageSent'):
+        messageSent = 'Message is sucesfully sent.';
+
+    messageForm = forms.MessageForm()
     return render(request, 'company_detail.tmp', locals())
 
 def companyDetailView(request):
@@ -247,6 +284,19 @@ def companyDetailView(request):
     job_statuses = constants.JOB_STATUS
     
     return render(request, 'company_detail.tmp', locals())
+
+@login_required
+def companyMessage(request, companyID):
+    company = get_object_or_404(models.Company, pk=companyID)
+    if request.method == "POST":
+        messageForm = forms.MessageForm(request.POST)
+        if messageForm.is_valid():
+            message = messageForm.save(commit=False)
+            message.company = company
+            message.sender = request.user
+            message.save()
+
+    return redirect('/companies/company-' + str(companyID) + '/?messageSent=true')
 
 def companyJobStatusHelper(company_jobs, status):
     return company_jobs.filter(status=status)
@@ -410,7 +460,7 @@ def buildResume(request, section=None, pk=None, add=None):
                 userForm.save()
                 employeeForm.save()
                 return redirect('/employee/build-resume/general/')
-
+            print employeeForm.errors, "GENERAL ERRORS"
         else:
             employeeForm = forms.EmployeeForm(instance = request.user.employee)
             userForm = forms.UserForm(instance=request.user)
@@ -790,10 +840,28 @@ def blogListView(request, categoryID=None):
     return render(request, 'blogs.tmp', locals())
 def blogDetailView(request, blogID):
     blog = get_object_or_404(eventModels.Blog, pk=blogID)
+    blog.view_count+=1
+    blog.save()
     postcategories = eventModels.PostCategories.objects.all()
     recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:5]
+    commentForm = eventForms.CommentForm()
+    comments = blog.comments.all()
     return render(request, 'blog-detail.tmp', locals())
 
+
+@login_required
+def commentView(request, blogID):
+    blog = get_object_or_404(eventModels.Blog, pk=blogID)
+    if request.method == "POST":
+        commentForm = eventForms.CommentForm(request.POST)
+        if commentForm.is_valid():
+            print "IAM HERE",request.user
+            comment = commentForm.save(commit=False) 
+            comment.commented_by= request.user
+            comment.blog = blog 
+            comment.save()
+
+    return redirect('/blogs/blog-%d/' % ( blog.pk))
 #// Admin views 
 @login_required
 @user_passes_test(functions.is_company)
@@ -832,6 +900,8 @@ def adminCompanyView(request):
 
     applications = models.JobApplication.objects.filter(job__in = company.jobs.filter(is_draft=False))
     unread_applications_count = applications.filter(status='unread').count()
+    unread_messages_count = request.user.company.messages.filter(status='unread').count()
+
     sidebar_profile_info_active = 'nav-active'
     return render(request, 'company/company-profile.tmp', locals())
 
@@ -938,7 +1008,6 @@ def createJobView(request, jobID=None):
         if jobForm.is_valid():
             job = jobForm.save(commit=False)
             job.company = company
-            print "HERE", reqData.get("save-job")
             job.is_draft = True if reqData.get('save-job', False) else False
             job.save()
             jobForm.save_m2m()
@@ -946,10 +1015,39 @@ def createJobView(request, jobID=None):
 
     applications = models.JobApplication.objects.filter(job__in = company.jobs.filter(is_draft=False))
     unread_applications_count = applications.filter(status='unread').count()
+    unread_messages_count = request.user.company.messages.filter(status='unread').count()
+
     sidebar_create_job_active = 'nav-active'
     
     return render(request, 'company/create-job.tmp', locals())
+@login_required
+@user_passes_test(functions.is_company)
+def companyRecruitView(request):
+    sidebar_recruite_active = True
+    recruitFilterForm = forms.RecruitFilterForm()
+    if request.GET.get('query'):
+        recruitFilterForm = forms.RecruitFilterForm(request.GET)
+        query = Q()
+        if request.GET.get('gender', None):
+            query |= Q(gender=request.GET.get('gender', 'Male'))
+        
+        if request.GET.get('employement_status', None):
+            query |= Q(employement_status = request.GET.get('employement_status', 1) )
+        
+        if request.GET.get('highest_education_level', None):
+            query |= Q(highest_education_level=request.GET.get('highest_education_level'))
+        if request.GET.get('ageRange', None):
+            query |= Q(age=request.GET.get('ageRange'))
 
+        job_seekers = models.Employee.objects.filter(query)
+    
+    applications = models.JobApplication.objects.filter(job__in = request.user.company.jobs.filter(is_draft=False))
+    unread_applications_count = applications.filter(status='unread').count()
+    unread_messages_count = request.user.company.messages.filter(status='unread').count()
+    sidebar_recruit_active = 'nav-active'
+
+    return render(request, 'company/recruit.tmp', locals())
+    
 @login_required
 @user_passes_test(functions.is_company)
 def companyJobListView(request, isDraft=None):
@@ -969,6 +1067,8 @@ def companyJobListView(request, isDraft=None):
 
     applications = models.JobApplication.objects.filter(job__in = company.jobs.filter(is_draft=False))
     unread_applications_count = applications.filter(status='unread').count()
+    unread_messages_count = request.user.company.messages.filter(status='unread').count()
+
     return render(request, 'company/company.admin.joblist.tmp', locals())
 
 @login_required
@@ -996,10 +1096,7 @@ def blogDelete(request, blogID, confirmed=None):
         blog.delete()
         return redirect('/ican/blogs/')
 
-@login_required
-@user_passes_test(functions.is_company)
-def applications(request, filter=None):
-    company = request.user.company
+def getJobApplications(company, filter, paramQuery):
     company_jobs = company.jobs.filter(is_draft=False)
     applications = models.JobApplication.objects.filter(job__in = company_jobs)
     unread_applications_count = applications.filter(status='unread').count()
@@ -1017,11 +1114,71 @@ def applications(request, filter=None):
     elif filter=='last7':
         applications = models.JobApplication.last7days(company_jobs)
         application_filter = "Last Seven days"
-    if request.GET.get('query'):
-        applications = applications.filter(job__title__icontains=request.GET.get('query'))
+    if paramQuery:
+        queryData = paramQuery
+        queries = queryData.split(',')
+        query = Q()
+        for qry in queries:
+            inside_query = Q()
+            
+            for inside_qry in qry.split(' '):
+                inside_query &= Q(job__title__icontains=inside_qry)
 
+            query |= Q(inside_query)
+        applications = applications.filter(query)
+
+    return application_filter, applications, unread_applications_count
+
+@login_required
+@user_passes_test(functions.is_company)
+def applications(request, filter=None):
+    company = request.user.company
+    unread_messages_count = request.user.company.messages.filter(status='unread').count()
+    application_filter, applications, unread_applications_count = getJobApplications(company, filter, request.GET.get('query'))
+    paramQuery = request.GET.get('query')
     sidebar_applications_active = 'nav-active'
     return render(request, 'company/applications.tmp', locals())
+
+@login_required
+@user_passes_test(functions.is_company)
+def messages(request, filter=None):
+    messages = request.user.company.messages.all()
+    unread_messages_count = messages.filter(status='unread').count()
+
+    sidebar_messages_active = 'nav-active'
+    
+    message_filter = 'All'
+    if filter=='read' or filter=='unread':
+        messages = messages.filter(status=filter)
+        message_filter = filter.capitalize()
+    elif filter=='today':
+        messages = models.Message.todays()
+        message_filter = 'Today\'s'
+    elif filter=='yesterday':
+        messages = models.Message.yesterdays()
+        message_filter = "Yesterday's"
+    elif filter=='last7':
+        messages = models.Message.last7days()
+        message_filter = "Last Seven days"
+
+    return render(request, 'company/messages.tmp', locals())
+
+def message_detail(request, messageID):
+    message = get_object_or_404(models.Message, pk=messageID)
+    message.status = 'read'
+    message.save()
+
+    unread_messages_count = request.user.company.messages.filter(status='unread').count()
+
+
+    return render(request, 'company/message-detail.tmp', locals())
+
+def message_delete(request, messageID):
+    message = get_object_or_404(models.Message, pk=messageID)
+    message.delete()
+
+    return redirect('/company/admin/messages/')
+
 
 def logoutView(request):
     logout(request)

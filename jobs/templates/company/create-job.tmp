@@ -367,3 +367,8 @@
 		</section>
 
 {% include 'company/admin.footer.tmp' %}
+
+<script>
+	var dp = $('input[data-plugin-datepicker]').datepicker().data('datepicker');
+	dp.selectDate(new Date());
+</script>

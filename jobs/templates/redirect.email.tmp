@@ -1,0 +1,4 @@
+<meta http-equiv="refresh" content="0;url=mailto:{{ accesstoken.company.user.email }}?subject=Applicant list&body=Click the link below to access applicants list. {{request.get_host}}/applications/viewonly/accesstoken-{{ accesstoken.pk}}/
+">
+
+Redirecting to email ...

@@ -78,7 +78,7 @@ body {
   position: relative;
 }
 
-ol, ul {
+footer ol, footer ul,  .sidebar ol, .sidebar ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -2453,6 +2453,15 @@ ul.spatialism-sec li a span {
   position: relative;
 }
 
+.blog-comment span {
+  display: block;
+
+}
+
+.blog-comment {
+  margin: 10px;
+}
+
 .primary-btn:focus {
   outline: none;
 }
@@ -2881,7 +2890,7 @@ ul.spatialism-sec li a span {
   color : #eb7100;
 }
 .blog-text  .cs-inner-bolg  a.read-more{
-  color : #000;
+  color : #fff;
 }
 
 .blog-text .cs-post-title  a{
@@ -2923,8 +2932,18 @@ ul.spatialism-sec li a span {
   list-style: circle;
   font-size: 14px;
   font-weight: 200;
-  margin-left: 15px;
+  margin-left:-18px !important;
+  
 
+}
+.employer-contact-form form  textarea {
+  border: 1px solid #dcdce0 !important;
+  border-radius: 2px !important;
+  color: #999999 !important;
+  font-size: 13px;
+  height: 42px;
+  padding: 5px 10px;
+  width: 100%;
 }
 
 .single-post-detail-job ol{
@@ -3779,7 +3798,12 @@ ul.spatialism-sec li a span {
   text-align: center;
 }
 
-.about-content-detail {
+.about-content-blog {
+  padding: 59px 0px;
+  text-align: center;
+}
+
+.about-content-detail, .about-content-blog {
   padding-top: 100px;
   text-align: center;
 }
@@ -3798,7 +3822,7 @@ ul.spatialism-sec li a span {
   font-weight: 300;
 }
 
-.about-content a {
+.about-content a, .about-content-blog a {
   color: #fff;
   font-weight: 300;
   font-size: 14px;
@@ -4804,7 +4828,7 @@ listing.modern .read-more:before {
 
 .build-resume-side:hover, .build-resume-side.active {
   background: #eb7100;
-  /* color: white; */
+  color: white;
 }
 
 .build-resume-side:hover a, .build-resume-side.active a {

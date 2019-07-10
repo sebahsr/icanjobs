@@ -11,10 +11,20 @@
             {{ userForm.last_name }}
     </div>
 
-    <div class="mt-10">
-            <label class="h6">Username</label>
+    
+    <div class="input-group-icon mt-10">
+        <label class="h6">Gender</label>
+        <div class="form-select">
+            {{ employeeForm.gender }}
+        </div>
+    </div>
+    
 
-            {{ userForm.username }}
+    <div class="input-group-icon mt-10">
+        <label class="h6">Age Range</label>
+        <div class="form-select" >
+            {{ employeeForm.age }}
+        </div>
     </div>
 
 
@@ -31,6 +41,40 @@
 
         {{ employeeForm.phone }}
     </div>
+
+
+    <div class="input-group-icon mt-10">
+        <label class="h6">Highest Education Level</label>
+        <div class="form-select" id="default-select">
+            {{ employeeForm.highest_education_level }}
+        </div>
+    </div>
+    
+    <div class="input-group-icon mt-10">
+        <label class="h6">What is your employment status?</label>
+        <div class="form-select" id="default-select">
+            {{ employeeForm.employement_status }}
+        </div>
+    </div>
+    <div class="input-group-icon mt-10">
+        <label class="h6">What type of jobs are you looking for? Please check all that apply</label>
+        <div >
+            {{ employeeForm.job_types }}
+        </div>
+    </div>
+    
+    <div class="input-group-icon mt-10">
+        <label class="h6">What services will you use or are you interested in iCAN?</label>
+        <div >
+            {{ employeeForm.services_intersted_in }}
+        </div>
+    </div>
+    <div class="mt-10">
+            <label class="h6">Username</label>
+
+            {{ userForm.username }}
+    </div>
+
 
 
     <div class="input-group-icon  mt-10">

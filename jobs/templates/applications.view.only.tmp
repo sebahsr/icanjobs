@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'company/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			
+			<!-- start: header -->
+			<header class="header">
+                    <div class="logo-container">
+                        <a href="/" class="logo">
+                            <img src="/static/img/logo.png" height="35" alt="JSOFT Admin" />
+                        </a>
+                        <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+                            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+                        </div>
+                    </div>
+                
+                    <!-- start: search & user box -->
+                    <div class="header-right">
+                
+                
+                
+                        <span class="separator"></span>
+                
+                        <div id="userbox" class="userbox">
+                            <a href="#" data-toggle="dropdown">
+                                <figure class="profile-picture">
+                                    {% if  company.profile_pic %}
+                                    <img src="{{ company.profile_pic.url }}" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
+                                    {% else %}
+                                    <img src="/static/img/default.png" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
+
+                                    {% endif %}
+                                </figure>
+                                <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@JSOFT.com">
+                                    <span class="name">{{ request.user.company.name | title }}</span>
+                                </div>
+                
+                            </a>
+                
+                        </div>
+                    </div>
+                    <!-- end: search & user box -->
+				</header>
+				
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body" style="margin-left:0px">
+						<header class="page-header" style="left:0px">
+							<h2>Applications</h2>
+						
+						</header>
+					<!-- start: page -->
+					<section class="content-with-menu mailbox">
+						<div class="content-with-menu-container">
+							
+							
+							<div class="inner-body">
+								
+
+								<div class="mailbox-email-list" style="top:0px">
+									<div class="nano">
+										<div class="nano-content">
+											<table class="table table-striped">
+												<tr><th></th><th>Applicant Name</th><th>Job Title</th><th>Application Date</th><th></th></tr>
+											{% for application in applications %}
+												<tr>
+														
+														<td >
+											
+															<img style='max-width: 25px' class="img img-circle" src='/static/img/default.png' />
+															
+														</td>
+														<td >
+															<a href='/employee/application-{{ application.pk }}/viewonly/accesstoken-{{ accesstoken.value }}/'>{{ application.applicant.first_name | title }} {{ application.applicant.last_name | title }}</a>
+														</td>
+														<td>
+															<a href='/jobs/job-{{application.job.pk}}'>{{ application.job.title | title }} </a>
+														</td>
+
+														<td>
+															{{ application.applied_on|date:"d M " }}
+														</td>
+
+												</tr>
+											{% endfor %}
+
+										</table>
+										</div>
+									</div>
+								</div>
+
+								{% for application in applications %}
+									<!-- Modal -->
+									<div class="modal fade" id="deleteConfirm{{application.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel"> Are you sure you want to discard this application? </h5>
+												</div>
+												<div class="modal-body">
+														<span class='h5'>{{ application.applicant.first_name }} {{ application.applicant.last_name }} </span> applied to <span class='h5'>{{ application.job.title | title }}</span>
+												</div>
+												<div class="modal-footer">
+												<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+												<a href='/applications/delete/applicationID-{{ application.pk }}/'  class="btn btn-danger" >Remove Application</a>
+
+												</div>
+											</div>
+											</div>
+										</div>
+										
+								{% endfor %}
+							</div>
+						</div>
+					</section>
+					<!-- end: page -->
+				</section>
+			</div>
+
+			
+		</section>
+		{% include 'company/admin.footer.tmp' %}

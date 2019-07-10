@@ -34,7 +34,7 @@ PAY_PERIOD = {
     ('hour', 'Per Hour'),
 }
 
-MONTHS = {
+MONTHS = (
     ('jan', 'January'),
     ('feb', 'Febraury'),
     ('mar', 'March'),
@@ -47,7 +47,7 @@ MONTHS = {
     ('oct', 'October'),
     ('nov', 'November'),
     ('dec', 'December')
-}
+)
 
 EDIT_SEC_SKILL = 'skill'
 EDIT_SEC_EXPR = 'experience'
@@ -72,3 +72,56 @@ SEEN_UNSEEN_STATUS = (
     ('read', 'Seen'),
     ('unread', 'Not Seen')
 )
+
+GENDER_MALE = 1;
+GENDER_FEMALE = 2
+
+EDUCATION_LEVELS = (
+
+    (1, 'TVET'),
+    (2, 'Diploma'),
+    (3, "Bachelor's Degree"),
+    (4, "Graduate/Professional Degree"),
+)
+
+EMPLOYEMENT_STATUS = (
+
+    (1, 'Student'),
+    (2, 'Fresh graduate'),
+    (3, 'Unemployed'),
+    (4, 'Employed Part-Time'),
+    (5, 'Employed Full-Time')
+)
+
+JOB_TYPES = (
+    (1, 'Fresh graduate'),
+	(2,	'Internship' ),
+	(3,	'Volunteer opportunities '),
+	(4,	'Junior level positions'),
+	(5,	'Senior level positions(management  and leadership )'),
+	(6,	'C-level positions'  )
+)
+
+JOB_SEEKER_SERVICES = (
+	(1, 'Career Coaching'),
+	(2,	'Employment Counseling'),
+	(3,	'Job Search strategies'),
+	(4,	'Interview coaching'),
+	(5,	'Resume Assistance/critique'),
+	(6,	'Assessment'),
+	(7,	'Workshop or Training'),
+	(8,	'Job Fair' ),
+	(9,	'Industry linkage'  )
+)
+
+EMPLOYER_SERVICES = (
+
+	(1,	'Recruitment services /Talent acquisition'),
+	(2,	'Head hunting'),
+	(3,	'Job Fair' ),
+	(4, 'Industry linkage' ),
+	(5,	'Workshop or Training'),
+	(6,	'Other, please specify' )
+)
+
+GENDER_CHOICES = ( ('Male', "Male") , ('Female', "Female") )

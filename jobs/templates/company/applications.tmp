@@ -42,7 +42,7 @@
 											<div class="search">
 												<form method="GET">
 												<div class="input-group input-search">
-													<input type="text" class="form-control" name="query" id="q" placeholder="Search...">
+													<input type="text" class="form-control" {% if queryData %} value="{{ queryData }}" {% endif %} name="query" id="q" placeholder="Search...">
 													<span class="input-group-btn">
 														<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
 													</span>
@@ -73,6 +73,11 @@
 											<li class="ib mr-sm">
 												<a class="item-action fa fa-refresh" href=""></a>
 											</li>
+
+											<li class="ib mr-sm">
+												<a class="item-action fa fa-floppy-o" href="/company/admin/createaccestoken/{% if filter %}{{filter}}/{% endif %}{% if paramQuery %}?query={{paramQuery}} {% endif %}"></a>
+											</li>
+											
 										</ul>
 								</div>
 
@@ -106,7 +111,6 @@
 														<Td>
 															<a class='btn btn-danger' data-toggle="modal" data-target="#deleteConfirm{{application.pk}}" href='#'><i class='fa fa-trash-o'></i> Delete</a>
 															<a class='btn btn-info' href='/applications/print/applicationID-{{ application.pk }}/'><i class="fa-print fa"></i> Print</a>
-															<a class='btn btn-warning' href='/applications/print/applicationID-{{ application.pk }}/'><i class="fa-save fa"></i> Save</a>
 														</Td>
 												</tr>
 											{% endfor %}

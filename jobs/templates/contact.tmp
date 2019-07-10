@@ -74,7 +74,7 @@
 								<span class='fa fa-map-marker'> </span> <b>Address:</b>
 								Addis Ababa, Wolo sefer, HMM Building, 8 th floor <br />
 								<span class='fa fa-phone'> </span> <b>Phone:</b> +251 913 200 505 <br />
-								<span class='fa fa-envelope'></span> <b>Email: </b> Info@icanjobs.com <br />
+								<span class='fa fa-envelope'></span> <b>Email: </b> <b ><a style="color:#eb7100;" href='mailto:info@icanjobs.com'>info@icanjobs.com</a> or <a  style="color:#eb7100;" href='mailto:icanjobs3@gmail.com'>icanjobs3@gmail.com</a> </b><br />
 
 								<br>
 
@@ -110,7 +110,7 @@
 										</div>
 									</div>
 
-                                    <button class='btn btn-danger' type="submit">Send Message</button>
+                                    <button class='btn' style="background:#eb7100;color:white" type="submit">Send Message</button>
 
                                 </div>
                             </form>
