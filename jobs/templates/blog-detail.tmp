@@ -15,6 +15,27 @@
 		<meta charset="UTF-8">
 		<!-- Site Title -->
 		<title>Blog - {{ blog.title }}</title>
+		<meta property="og:title" content="{{ blog.title }}">
+		<meta property="og:description" content="{{ blog.content|striptags|safe|truncatechars:400}}">
+		{% if blog.image %}
+		<meta property="og:image" content="{{ blog.image.url }}">
+		{% else %}
+		<meta property="og:image" content="/static/img/logo.png">
+		{% endif %}
+		<meta property="og:image:width" content="600">
+		
+		<meta property="title" content="{{ blog.title }}">
+		<meta property="description" content="{{ blog.content|striptags|safe|truncatechars:400}}">
+		{% if blog.image %}
+		<meta property="image" content="{{ blog.image.url }}">
+		{% else %}
+		<meta property="image" content="/static/img/logo.png">
+		{% endif %}
+
+		<meta property="imag:width" content="600">
+		<meta name="twitter:card" content="summary_large_image">
+
+		
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
@@ -107,6 +128,7 @@
 									<form method="POST" action="/comment/blog-{{blog.pk}}/">
 										{{ commentForm.content }}
 										{% csrf_token %}
+										<br />
 										<button class="btn" style="background:#eb7100;color: white;" type="submit">Comment <i class="fa fa-comment-o"></i></button>
 									</form>
 								</div>

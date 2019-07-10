@@ -2,10 +2,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <div class="  h3">iCAN</div>
+                    <div class="  h3">iCANJOBS</div>
                     <p style="color: black"> 
-                            We prepare job seekers with necessary job skills for opportunities and success that drive economic growth.
-                    </p>
+                            CANJOBS provides an online platform aiming to connect talent with employers. We also provide recruitment, talent acquisition, career services, youth employment advisory, customized trainings/workshops, and HR Consulting. Registered members are able to post their CV/resume, access and match jobs and employers can post jobs and search for a talent. We look forward to interacting online with you on ICANJOBS.                    </p>
                 </div>
                 <div class="col-sm-8">
                     <div class="row">
@@ -90,7 +89,6 @@
                                                 <h6>ABOUT iCAN</h6>
                                                 <ul class="footer-nav">
                                                     <li class="menu-active"><a href="/about/">About Us</a></li>
-                                                    <li class="menu-active"><a href="/founder/">About Founder</a></li>
                                                     <li class="menu-active"><a href="/services/">Services</a></li>
                                                     <li class="menu-active"><a href="/contact/">Contact</a></li>
                                                     

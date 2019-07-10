@@ -88,7 +88,7 @@ class CommentForm(forms.ModelForm):
         fields = ('content',)
         widgets = {
             'content' : forms.Textarea(attrs={
-                "placeholder" : "Message...", 'rows' : 4, "class" : "form-control"}),
+                "placeholder" : "Add a comment...", 'rows' : 4, "class" : "form-control"}),
         }
 
 class AppointmentForm(forms.ModelForm):
