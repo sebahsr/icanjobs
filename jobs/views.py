@@ -171,7 +171,7 @@ def jobView(request, **kwargs):
     if jobs: 
         jobs = jobs.filter(is_draft=False)
         page_number = request.GET.get('page', 1)
-        paginator = Paginator(jobs, constants.RECENT_PAG_JOB_NUMBER)
+        paginator = Paginator(jobs, constants.PAG_JOB_NUMBER)
         current_page = paginator.page(page_number)
         jobs = current_page.object_list
 
