@@ -76,6 +76,7 @@ def homeView(request, **kwargs):
         if not recent_job.expired and recent_job.deadline:
             delta_days = recent_job.deadline - date.today()             
             recent_job.is_soon = delta_days.days < 7
+            recent_job.remaining = delta_days.days
 
     employement_types = models.EmployementType.objects.all()
     recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:constants.RECENT_BLOG_NUMBER]

@@ -98,8 +98,17 @@
 																{% else %}
 																	
 																	{% if job.is_soon is True %}
-																		<h6> <span  class="fa fa-clock-o"></span> Closing After {{ job.deadline|timeuntil }} </a></h6>
-																	{% else %}
+																		{% ifequal job.remaining 0 %}
+																		<h6> <span  class="fa fa-clock-o"></span> Closing today </a></h6>
+																		{% else %}
+																			{% ifequal job.remaining 1 %}
+																				<h6> <span  class="fa fa-clock-o"></span> Closing tommorow </a></h6>
+																			{% else %}
+																				<h6> <span  class="fa fa-clock-o"></span> Closing After {{ job.deadline|timeuntil }} </a></h6>
+																			{% endifequal %}
+																		{% endifequal %}
+																		
+																		{% else %}
 																		<h6> <span  class="fa fa-clock-o"></span> Closing On {{ job.deadline}} </a></h6>
 
 																	{% endif %}
