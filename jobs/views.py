@@ -70,6 +70,13 @@ def homeView(request, **kwargs):
     featured_categories = categories[:6]
     from datetime import date
     recent_jobs = models.Job.objects.filter(is_draft=False)[:constants.RECENT_JOBS_NUMBER]
+    
+    for recent_job in recent_jobs:
+        recent_job.expired = recent_job.deadline and recent_job.deadline < date.today()
+        if not recent_job.expired and recent_job.deadline:
+            delta_days = recent_job.deadline - date.today()             
+            recent_job.is_soon = delta_days.days < 7
+
     employement_types = models.EmployementType.objects.all()
     recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:constants.RECENT_BLOG_NUMBER]
     regions = models.Region.objects.all()

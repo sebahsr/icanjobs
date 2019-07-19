@@ -93,7 +93,20 @@
 													<div class="address">	
 															<h6> <a href='/companies/company-{{ job.company.pk }}/'>{{ job.company.name }} </a></h6>
 															{% if job.deadline %}
-																<h6> <span  class="fa fa-clock-o"></span> Closing On {{ job.deadline }} </a></h6>
+																{% if job.expired %}
+																	<div style="color:#eb7100" class="h5">CLOSED</div>
+																{% else %}
+																	
+																	{% if job.is_soon is True %}
+																		<h6> <span  class="fa fa-clock-o"></span> Closing After {{ job.deadline|timeuntil }} </a></h6>
+																	{% else %}
+																		<h6> <span  class="fa fa-clock-o"></span> Closing On {{ job.deadline}} </a></h6>
+
+																	{% endif %}
+																{% endif %}
+															{% else %}
+																<h6> <span  class="fa fa-clock-o"></span> On Going </a></h6>
+
 															{% endif %}
 													</div>
 													
@@ -181,7 +194,7 @@
 						<div class="row d-flex justify-content-center">
 								<div class="menu-content pb-20 col-lg-10">
 									
-									<div class="cs-heading"><h3 class="cs-fancy">RECENT BLOG</h3>
+									<div class="cs-heading"><h3 class="cs-fancy">RECENT NEWS & BLOGS</h3>
 										<div class="heading-description">
 										</div>
 								</div>
@@ -211,9 +224,9 @@
 																	<span class="post-date">{{ recent_blog.created_at|date}} </span>
 																</div>
 																<div class="cs-post-title">
-																		<h3><a href="/blogs/blog-{{recent_blog.pk}}/" title="An Overworked Newspaper Editor">{{ recent_blog.title|title}}</a></h3>
+																		<h3><a href="/blogs/blog-{{recent_blog.pk}}/" title="An Overworked Newspaper Editor">{{ recent_blog.title|title|truncatechars:70}}</a></h3>
 																</div>
-																<p> {{ recent_blog.content|striptags|safe|truncatechars:300 }} </p>
+																<p> {{ recent_blog.content|safe|striptags|truncatechars:300 }} </p>
 																<a href="/blogs/blog-{{recent_blog.pk}}/" class="read-more">Read More</a>
 																 
 														</div>

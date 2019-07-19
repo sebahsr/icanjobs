@@ -2895,6 +2895,8 @@ ul.spatialism-sec li a span {
 
 .blog-text .cs-post-title  a{
   color : #000;
+  display: inline-block;
+  height: 70px;
 }
 
 .ad-detail{

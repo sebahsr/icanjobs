@@ -80,6 +80,10 @@ class BlogForm(forms.ModelForm):
             'article_type' : forms.Select(attrs={
                 'class' : 'form-control'
             }),
+            
+            'is_draft' : forms.CheckboxInput(attrs={
+            }),
+
             'categories' : forms.SelectMultiple(attrs={
                 "class" : "form-control", 
                 "data-plugin-multiselect" : True}),

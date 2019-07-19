@@ -83,14 +83,15 @@ def createBlog(request, blogID=None):
 
 @login_required(login_url='/admin/login/')
 @user_passes_test(lambda u: u.is_staff)
-def blogs(request, articleType='blogs'):
+def blogs(request, articleType='blogs', articleStatus='posted'):
     articleType = {
         'news' : constants.ARTICLE_NEWS,
         'blogs' : constants.ARTICLE_BLOG
     }[articleType]
+    is_draft = True if articleStatus=='draft' else False
 
     is_news_article = True if articleType == constants.ARTICLE_NEWS else False
-    blogs = models.Blog.objects.filter(article_type=articleType)
+    blogs = models.Blog.objects.filter(article_type=articleType, is_draft=is_draft)
     paginator = Paginator(blogs, constants.PAG_BLOG_NUMBER)
 
     page_number = request.GET.get('page', 1)

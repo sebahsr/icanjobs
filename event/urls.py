@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^ican/events/$', event_views.events),
 
     url(r'^ican/blog/(?:blog-(?P<blogID>\d+)/)?$', event_views.createBlog),
-    url(r'^ican/(?P<articleType>(blogs|news))/$', event_views.blogs),
+    url(r'^ican/(?P<articleType>(blogs|news))/((?P<articleStatus>(posted|draft))/)?$', event_views.blogs),
     url(r'^ican/appointmnets/$', event_views.appointments),
     url(r'^ican/appointmnets/(?P<filter>(read|unread|today|yesterday|last7))/$', event_views.appointments),
     url(r'^ican/appointmnets/json/$', event_views.appointmentsjson),

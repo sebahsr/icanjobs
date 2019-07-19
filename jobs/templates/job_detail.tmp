@@ -45,7 +45,7 @@
 
 		 {% include 'header.tmp' %}
 
-
+		
 		<!-- start banner Area -->
 		<section class="job-detail-banner-area relative" id="home">	
 			<div class="overlay overlay-bg"></div>
@@ -65,6 +65,7 @@
 		<section class="post-area section-gap">
 				
 			<div class="container">
+					
 				<div class="row justify-content-center d-flex">
 					<div class="col-lg-7 post-list">
 		
@@ -110,17 +111,17 @@
 										<hr />
 
 						</section>
+						<div class="row mb-20">
+								<div class="apply-job">
+									<div class="cs-text">
+										<a href='/signup/?next=/jobs/job-{{job.pk}}/' class="like applied_icon">  <span><i class="fa fa-thumbs-up"></i></span>Apply through iCAN</a>
 						
-<!-- AddToAny BEGIN -->
-<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-		<a class="a2a_button_facebook"></a>
-		<a class="a2a_button_twitter"></a>
-		<a class="a2a_button_linkedin"></a>
-		<a class="a2a_button_telegram"></a>
-		</div>
-		<script async src="https://static.addtoany.com/menu/page.js"></script>
-		
-		<!-- AddToAny END -->
+										<a href="{% url 'social:begin' 'google-oauth2' %}?usertype=jobseeker"  class="linkedin social_login_login_linkedin"><div class="linkedin_jobid_apply"></div><i class="fa fa-google-plus"></i><span>Apply with Gmail</span></a>
+										<a href="{% url 'social:begin' 'facebook' %}?usertype=jobseeker" class=" facebook social_login_login_facebook_apply" ><div class="facebook_jobid_apply"></div><i class="fa fa-facebook"></i>Apply with Facebook</a>                                                                                                                    </div>
+								</div>
+							</div>
+						
+
 						{% if job.summary %}
 						<div class="single-post-detail-job job-details">
 							<div class="pt-2 single-title-job-detail">Role Overview</div>
@@ -211,9 +212,20 @@
 					<!-- sidebar -->
 					<div class="col-lg-5">
 							<div class="single-post-detail-job d-flex flex-row">
-
+									<!-- AddToAny END -->
+									
 									<div class="details col-sm-10">
-										
+										<div class="mb-20">
+											<!-- AddToAny BEGIN -->
+											<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+											<a class="a2a_button_facebook"></a>
+											<a class="a2a_button_twitter"></a>
+											<a class="a2a_button_linkedin"></a>
+											<a class="a2a_button_telegram"></a>
+											</div>
+											<script async src="https://static.addtoany.com/menu/page.js"></script>
+										</div>
+														
 										
 										<div class="pt-2 single-title-job-detail">
 											Job Detail
@@ -332,6 +344,8 @@
 					</div>
 					<!-- End side bar -->
 				</div>
+
+				
 			</div>	
 		</section>
 		<!-- End post Area -->

@@ -52,12 +52,12 @@ class JobAlertForm(forms.ModelForm):
         }
 
 class JobForm(forms.ModelForm):
-    summary = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
-    requirements = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
-    education_experience = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
-    responsibilities = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
-    how_to_apply = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
-    knowledge_skills = forms.CharField(required=False, widget=CKEditorWidget(  config_name='jobpost'))
+    summary = forms.CharField(required=False, widget=CKEditorWidget(attrs={'spellcheck' : "true"},  config_name='jobpost'))
+    requirements = forms.CharField(required=False, widget=CKEditorWidget(attrs={'spellcheck' : "true"},  config_name='jobpost'))
+    education_experience = forms.CharField(required=False, widget=CKEditorWidget( attrs={'spellcheck' : "true"}, config_name='jobpost'))
+    responsibilities = forms.CharField(required=False, widget=CKEditorWidget(attrs={'spellcheck' : "true"},  config_name='jobpost'))
+    how_to_apply = forms.CharField(required=False, widget=CKEditorWidget(attrs={'spellcheck' : "true"},  config_name='jobpost'))
+    knowledge_skills = forms.CharField(required=False, widget=CKEditorWidget(attrs={'spellcheck' : "true"},  config_name='jobpost'))
 
     class Meta:
         model = models.Job

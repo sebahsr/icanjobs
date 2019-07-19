@@ -68,6 +68,7 @@ class Blog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     view_count = models.IntegerField(default=0)
     article_type = models.IntegerField(default=constants.ARTICLE_NEWS, choices=constants.ARTICLE_TYPES)
+    is_draft = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('-created_at',)

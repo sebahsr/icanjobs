@@ -91,11 +91,10 @@
                                     {% endfor %}
 								</ul>
 								<div class="sharethis-inline-share-buttons"></div>
-								<a href="#">
 									<h1>
 										{{ blog.title }}
 									</h1>
-								</a>
+							
 								{% if blog.posted_by %}
 								<div class="h6">By {{ blog.posted_by }}</div>
 								{% endif %}

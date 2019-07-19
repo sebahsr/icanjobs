@@ -50,16 +50,17 @@
 											</li>
 
 											<li class="{{ sidebar_job_listing_active }}">
+												<a href="/ican/blogs/draft/">
+													<i class="fa fa-spinner" aria-hidden="true"></i>Draft Articles
+												</a>
+											</li>
+											
+
+											<li class="{{ sidebar_job_listing_active }}">
 												<a href="/ican/news/">
 													<i class="fa fa-list" aria-hidden="true"></i>News Listing
 												</a>
 											</li>
-
-											<li class="{{ sidebar_job_listing_active }}">
-													<a href="/ican/ads/">
-														<i class="fa fa-adn" aria-hidden="true"></i>Advertisement
-													</a>
-												</li>
 
 
 											<li class="{{ sidebar_setting_active }}">
@@ -75,7 +76,7 @@
 											
 											<li class="{{ sidebar_setting_active }}">
 												<a href="/settings/events/" _new>
-													<i class="fa fa-gear" aria-hidden="true"></i>Appointment, Blog & Event Settings
+													<i class="fa fa-gear" aria-hidden="true"></i>Appointment,Articles, & Advertisements
 												</a>
 											</li>
 											<li class="{{ sidebar_setting_active }}">
