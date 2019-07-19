@@ -112,7 +112,7 @@
 													{% for recent_job in recent_jobs %}
 													<li>
 														<div class="tm-box">
-															<div class="text-muted h5"><a href='/jobs/job-{{recent_job.pk}}/'>{{ recent_job.title }}</a></div>
+															<div class="text-muted h5"><a href='/company/admin/create-job/job-{{recent_job.pk}}/'>{{ recent_job.title }}</a></div>
 															<p>
 																{{ recent_job.summary|striptags|truncatechars:300}}
 															</p>
