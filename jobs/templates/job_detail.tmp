@@ -271,6 +271,23 @@
 											</td></td></tr>
 
 										</table>
+
+										{% if job_side_ads %}
+										<div class="col-sm-12">
+										<div class="pt-2 single-title-job-detail">
+											Advertisements
+										</div>
+										{% for job_side_ad in job_side_ads %}
+											<div style="background:url('{{ job_side_ad.image.url }}'); " class="ad-widget">
+												<div class="ad-detail">	
+													{{ job_side_ad.description}}
+													<a class='btn' href='{{ job_side_ad.link }}'>Visit</a>
+												</div>
+											</div>
+										{% endfor %}
+										</div>
+										{% endif %}
+										
 										
 										{% if recent_jobs %}
 										<div class="pt-2 single-title-job-detail">

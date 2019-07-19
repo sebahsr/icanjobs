@@ -72,15 +72,25 @@ def createBlog(request, blogID=None):
         blogForm = forms.BlogForm(request.POST, request.FILES, instance=blog)
 
         if blogForm.is_valid():
-            blogForm.save()
+            article = blogForm.save()
+            article.save()
+                
             return redirect('/ican/blogs/')
         print blogForm.errors
     return render(request, 'admin/create-blog.tmp', locals())
 
+
+
 @login_required(login_url='/admin/login/')
 @user_passes_test(lambda u: u.is_staff)
-def blogs(request):
-    blogs = models.Blog.objects.all()
+def blogs(request, articleType='blogs'):
+    articleType = {
+        'news' : constants.ARTICLE_NEWS,
+        'blogs' : constants.ARTICLE_BLOG
+    }[articleType]
+
+    is_news_article = True if articleType == constants.ARTICLE_NEWS else False
+    blogs = models.Blog.objects.filter(article_type=articleType)
     paginator = Paginator(blogs, constants.PAG_BLOG_NUMBER)
 
     page_number = request.GET.get('page', 1)

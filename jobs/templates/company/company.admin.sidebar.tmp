@@ -61,7 +61,7 @@
 
 											<li class="{{ sidebar_recruit_active }}">
 												<a href="/company/recruit/">
-													<i class="fa fa-paper-plane-o" aria-hidden="true"></i>Recruit
+													<i class="fa fa-paper-plane-o" aria-hidden="true"></i>Employee DB
 												</a>
 											</li>
 

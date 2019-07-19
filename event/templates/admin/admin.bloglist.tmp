@@ -13,7 +13,11 @@
 	
 					<section role="main" class="content-body">
 						<header class="page-header">
+							{% if not is_news_article %}
 							<h2>Blogs</h2>
+							{% else %}
+							<h2>News</h2>
+							{% endif %}
 						
 						</header>
 	
@@ -47,7 +51,7 @@
 													<h4 class="text-semibold mt-none"><a href='/ican/blog/blog-{{blog.pk}}/'>{{ blog.title|title }}</a></h4>
 													<i class="fa fa-calendar mr-xs"></i> {{ blog.created_at }}
 
-													<p>{{ blog.content|striptags| truncatechars:300 }}</p>
+													<p>{{ blog.content|striptags|safe| truncatechars:300 }}</p>
 												</div>
 											</div>
 											<div class="panel-footer panel-footer-btn-group">

@@ -40,7 +40,7 @@
 										</div>
 										<div class="col-sm-6">
 											<div class="search">
-												<form method="GET">
+												<form method="GET" >
 												<div class="input-group input-search">
 													<input type="text" class="form-control" {% if queryData %} value="{{ queryData }}" {% endif %} name="query" id="q" placeholder="Search...">
 													<span class="input-group-btn">
@@ -54,71 +54,78 @@
 									</div>
 								</header>
 								<!-- END: .mailbox-header -->
-								<div class="mailbox-actions">
-										<ul class="list-unstyled m-none pt-lg pb-lg">
-											<li class="ib mr-sm">
-												<div class="btn-group">
-													<a href="#" class="item-action fa fa-chevron-down dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></a>
-							
-													<ul class="dropdown-menu" role="menu">
-														<li><a href="/company/admin/applications/">All</a></li>
-														<li><a href="/company/admin/applications/read/">Read</a></li>
-														<li><a href="/company/admin/applications/unread/">Unread</a></li>
-														<li><a href="/company/admin/applications/today/">Today</a></li>
-														<li><a href="/company/admin/applications/yesterday/">Yesterday</a></li>
-														<li><a href="/company/admin/applications/last7/">Last 7 days</a></li>
-													</ul>
-												</div>
-											</li>
-											<li class="ib mr-sm">
-												<a class="item-action fa fa-refresh" href=""></a>
-											</li>
+								<form method="GET" action="/applications/save/">
+									<div class="mailbox-actions">
+											<ul class="list-unstyled m-none pt-lg pb-lg">
+												<li class="ib mr-sm">
+													<div class="btn-group">
+														<a href="#" class="item-action fa fa-chevron-down dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></a>
+								
+														<ul class="dropdown-menu" role="menu">
+															<li><a href="/company/admin/applications/">All</a></li>
+															<li><a href="/company/admin/applications/read/">Read</a></li>
+															<li><a href="/company/admin/applications/unread/">Unread</a></li>
+															<li><a href="/company/admin/applications/today/">Today</a></li>
+															<li><a href="/company/admin/applications/yesterday/">Yesterday</a></li>
+															<li><a href="/company/admin/applications/last7/">Last 7 days</a></li>
+														</ul>
+													</div>
+												</li>
+												<li class="ib mr-sm">
+													<a class="item-action fa fa-refresh" href=""></a>
+												</li>
 
-											<li class="ib mr-sm">
-												<a class="item-action fa fa-floppy-o" href="/company/admin/createaccestoken/{% if filter %}{{filter}}/{% endif %}{% if paramQuery %}?query={{paramQuery}} {% endif %}"></a>
-											</li>
-											
-										</ul>
-								</div>
+												<li class="ib mr-sm">
+													<Button class="item-action " type="submit"> <i class="fa fa-floppy-o"></i></Button>
+												</li>
+												
+											</ul>
+									</div>
 
-								<div id="mailbox-email-list" class="mailbox-email-list">
-									<div class="nano">
-										<div class="nano-content">
-											<table class="table table-striped">
-												<tr><th></th><th>Applicant Name</th><th>Job Title</th><th>Application Date</th><th></th></tr>
-											{% for application in applications %}
-												<tr class="{{ application.status }}">
-														
-														<td >
-																{% ifequal application.status 'unread' %}
-																<i class="mail-label" style="border-color: #EA4C89"></i>
-															{% endifequal %}
+									<div id="mailbox-email-list" class="mailbox-email-list">
+										<div class="nano">
+											<div class="nano-content">
+												<table class="table table-striped">
+													<tr><th></th><th></th><th>Applicant Name</th><th>Job Title</th><th>Application Date</th><th></th></tr>
+												
+												
+													{% for application in applications %}
+														<tr class="{{ application.status }}">
+																<td><input type="checkbox" name='applicatinID' value='{{application.pk}}'></td>
 
-															<img style='max-width: 25px' class="img img-circle" src='/static/img/default.png' />
-															
-														</td>
-														<td >
-															<a href='/applications/applicationID-{{ application.pk }}/?redirect_to=/employee/employee-{{application.applicant.pk}}'>{{ application.applicant.first_name | title }} {{ application.applicant.last_name | title }}</a>
-														</td>
-														<td>
-															<a href='/applications/applicationID-{{ application.pk }}/?redirect_to=/jobs/job-{{application.job.pk}}'>{{ application.job.title | title }} </a>
-														</td>
+																<td >
+																		{% ifequal application.status 'unread' %}
+																		<i class="mail-label" style="border-color: #EA4C89"></i>
+																	{% endifequal %}
 
-														<td>
-															{{ application.applied_on|date:"d M " }}
-														</td>
+																	<img style='max-width: 25px' class="img img-circle" src='/static/img/default.png' />
+																	
+																</td>
+																<td >
+																	<a href='/applications/applicationID-{{ application.pk }}/?redirect_to=/employee/employee-{{application.applicant.pk}}'>{{ application.applicant.first_name | title }} {{ application.applicant.last_name | title }}</a>
+																</td>
+																<td>
+																	<a href='/applications/applicationID-{{ application.pk }}/?redirect_to=/jobs/job-{{application.job.pk}}'>{{ application.job.title | title }} </a>
+																</td>
 
-														<Td>
-															<a class='btn btn-danger' data-toggle="modal" data-target="#deleteConfirm{{application.pk}}" href='#'><i class='fa fa-trash-o'></i> Delete</a>
-															<a class='btn btn-info' href='/applications/print/applicationID-{{ application.pk }}/'><i class="fa-print fa"></i> Print</a>
-														</Td>
-												</tr>
-											{% endfor %}
+																<td>
+																	{{ application.applied_on|date:"d M " }}
+																</td>
 
-										</table>
+																<Td>
+																	<a class='btn btn-danger' data-toggle="modal" data-target="#deleteConfirm{{application.pk}}" href='#'><i class='fa fa-trash-o'></i> Delete</a>
+																	<a class='btn btn-info' href='/applications/print/applicationID-{{ application.pk }}/'><i class="fa-print fa"></i> Print</a>
+																</Td>
+														</tr>
+													{% endfor %}
+													
+
+											</table>
+											</div>
 										</div>
 									</div>
-								</div>
+
+								</form>
 
 								{% for application in applications %}
 									<!-- Modal -->

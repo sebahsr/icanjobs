@@ -29,3 +29,8 @@ def create_employee(strategy, details, backend, user=None, *args, **kwargs):
 
 def is_staff(user):
         return user.is_staff
+
+from django.template.defaulttags import register
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)

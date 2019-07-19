@@ -67,12 +67,22 @@ class Blog(models.Model):
     image = models.FileField(upload_to=functions.getFileName, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     view_count = models.IntegerField(default=0)
-    
+    article_type = models.IntegerField(default=constants.ARTICLE_NEWS, choices=constants.ARTICLE_TYPES)
+
     class Meta:
         ordering = ('-created_at',)
 
     def __unicode__(self):
         return self.title
+
+class Advertisement(models.Model):
+    description = models.CharField(max_length=150)
+    placement = models.IntegerField(choices=constants.AD_PLACES)
+    image = models.FileField(upload_to=functions.getFileName, null=True, blank=True)
+    link = models.URLField()
+
+    def __unicode__(self):
+        return self.description
 
 class Comment(models.Model):
     content = models.TextField()

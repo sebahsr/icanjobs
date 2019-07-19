@@ -56,7 +56,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
-
 ROOT_URLCONF = 'ican.urls'
 
 TEMPLATES = [
@@ -95,6 +94,9 @@ DATABASES = {
     }
 }
 
+GOOGLE_ANALYTICS = {
+    'google_analytics_id': 'UA-144161506-1',
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

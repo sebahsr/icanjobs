@@ -34,13 +34,34 @@
                                                 <a href="/ican/blog/">
                                                         <i class="fa fa-plus" aria-hidden="true"></i> Create Blog
                                                 </a>
-                                            </li>
+											</li>
+											
+											<li class="{{ sidebar_create_blog_active }}">
+                                                <a href="/ican/news/">
+                                                        <i class="fa fa-plus" aria-hidden="true"></i> Create News
+                                                </a>
+											</li>
+											
                                             
                                             <li class="{{ sidebar_job_listing_active }}">
                                                 <a href="/ican/blogs/">
-                                                    <i class="fa fa-list" aria-hidden="true"></i>Blog Listing
+                                                    <i class="fa fa-wordpress" aria-hidden="true"></i>Blog Listing
                                                 </a>
 											</li>
+
+											<li class="{{ sidebar_job_listing_active }}">
+												<a href="/ican/news/">
+													<i class="fa fa-list" aria-hidden="true"></i>News Listing
+												</a>
+											</li>
+
+											<li class="{{ sidebar_job_listing_active }}">
+													<a href="/ican/ads/">
+														<i class="fa fa-adn" aria-hidden="true"></i>Advertisement
+													</a>
+												</li>
+
+
 											<li class="{{ sidebar_setting_active }}">
 												<a href="/ican/appointmnets/">
 													<i class="fa fa-clock-o" aria-hidden="true"></i>Appointments

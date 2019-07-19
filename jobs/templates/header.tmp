@@ -43,7 +43,8 @@
 
                       </ul>
                     </li>
-                    <li class="menu-has-children"><a href="/blogs/">News & Blogs</a></li>
+                    <li class="menu-has-children"><a href="/blogs/">Blogs</a></li>
+                    <li class="menu-has-children"><a href="/news/">News</a></li>
 
 
                     <li class="menu-has-children"><a href="">Employment solutions</a>

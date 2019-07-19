@@ -14,13 +14,19 @@ class RecruitFilterForm(forms.Form):
     employement_status = forms.ChoiceField(required=False, choices=constants.EMPLOYEMENT_STATUS)
     job_type = forms.ModelChoiceField(required=False, queryset=models.JobType.objects.all())
     ageRange = forms.ModelChoiceField(required=False, queryset=models.AgeRange.objects.all())
-    widgets = {
-            'gender' : forms.Select(attrs={ "class" : "form-control"}),
-            'highest_education_level' : forms.Select(attrs={ "class" : "form-control"}),
-            'employement_status' : forms.Select(attrs={ "class" : "form-control"}),
-            'job_type' : forms.Select(attrs={ "class" : "form-control"}),
-            'services_intersted_in' : forms.Select(attrs={ "class" : "form-control"}),
-    }
+    educationTitle = forms.CharField(required=False)
+    experience = forms.CharField(required=False)
+    class Meta:
+        fields = '__all__'
+        widgets = {
+                'gender' : forms.Select(attrs={ "class" : "form-control"}),
+                'highest_education_level' : forms.Select(attrs={ "class" : "form-control"}),
+                'employement_status' : forms.Select(attrs={ "class" : "form-control"}),
+                'job_type' : forms.Select(attrs={ "class" : "form-control"}),
+                'services_intersted_in' : forms.Select(attrs={ "class" : "form-control"}),
+                'educationTitle' : forms.TextInput(attrs={'class' : "form-control", 'placeholder' : 'Education Title'}),
+                'experience' : forms.TextInput(attrs={'class' : "form-control", 'placeholder' : 'Experience ( Greater than or equal to)'}),
+        }
 
 class MessageForm(forms.ModelForm):
     class Meta:

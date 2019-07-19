@@ -2194,9 +2194,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Mobile Nav Toggle */
 #mobile-nav-toggle {
   position: fixed;
-  right: 15px;
+  left: 20px;
   z-index: 999;
-  top: 16px;
+  top: 8px;
   border: 0;
   background: none;
   font-size: 24px;
@@ -2842,8 +2842,7 @@ ul.spatialism-sec li a span {
 }
 
 .cs-blog.blog-grid figure img {
-  width: 100%;
-  max-height: 236px;
+  height: 236px;
   vertical-align: middle;
 }
 
@@ -2891,10 +2890,35 @@ ul.spatialism-sec li a span {
 }
 .blog-text  .cs-inner-bolg  a.read-more{
   color : #fff;
+
 }
 
 .blog-text .cs-post-title  a{
   color : #000;
+}
+
+.ad-detail{
+  background-color: rgba(0,0,0,0.5);
+  padding: 20px;
+  color: white;
+}
+.ad-detail:hover{
+  background-color: rgba(0,0,0,0.8);
+
+}
+.ad-detail a{
+  display: block;
+  font-size: 14px;
+  position: relative;
+  color: white;
+  background: #eb7100;
+  margin-top: 10px;
+}
+.ad-widget{
+  margin-top: 15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
 }
 
 .cs-blog.blog-grid .read-more{

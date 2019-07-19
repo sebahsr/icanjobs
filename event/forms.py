@@ -72,12 +72,14 @@ class BlogForm(forms.ModelForm):
         exclude = ('view_count', )
         widgets = {
             'title' : forms.TextInput(attrs={
-                "placeholder" : "Blog Title", "class" : "form-control"}),
+                "placeholder" : "Article Title", "class" : "form-control"}),
 
             'posted_by' : forms.TextInput(attrs={
                 "placeholder" : "Posted By", "class" : "form-control"}),
 
-
+            'article_type' : forms.Select(attrs={
+                'class' : 'form-control'
+            }),
             'categories' : forms.SelectMultiple(attrs={
                 "class" : "form-control", 
                 "data-plugin-multiselect" : True}),

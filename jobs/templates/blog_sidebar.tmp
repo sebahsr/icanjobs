@@ -8,9 +8,31 @@
                 {% endfor %}
             </ul>
         </div>
+        
+        {% if blog_side_ads %}
+        <div class="single-widget">
+        <div class="title">
+            Advertisements
+        </div>
+        {% for blog_side_ad in blog_side_ads %}
+            <div style="background:url('{{ blog_side_ad.image.url }}'); " class="ad-widget">
+                <div class="ad-detail">	
+                    {{ blog_side_ad.description}}
+                    <a class='btn' href='{{ blog_side_ad.link }}'>Visit</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        {% endif %}
+        
 
         <div class="single-widget recent-posts-widget">
+            {% if is_news_article %}
+            <h4 class="title">Recent News</h4>
+
+            {% else %}
             <h4 class="title">Recent Posts</h4>
+            {% endif %}
             <div class="blog-list ">
 
                 {% for recent_blog in recent_blogs %}
@@ -28,6 +50,8 @@
                         </a>
                     </div>
                 </div> 
+                {% empty %}
+                    No Article Found
                 {% endfor %}                                                                                                                                                
             </div>                              
         </div>

@@ -73,7 +73,7 @@
 								{% endif %}
 
 								<label>Email</label>
-								{{ employee_form.email }}
+								{{ user_form.email }}
 
 							</div>
 							

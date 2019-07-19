@@ -13,7 +13,7 @@
 
 				<section role="main" class="content-body">
 					<header class="page-header">
-						<h2>Recruit Job Seekers</h2>
+						<h2>Search Job Seekers</h2>
 						<br />
 					</header>
 
@@ -24,7 +24,7 @@
 								<section class="panel form-wizard" id="w4">
 									<header class="panel-heading">
 										
-										<h2 class="panel-title">Recruit Job Seekers</h2>
+										<h2 class="panel-title">Search Job Seekers</h2>
 									</header>
 								
                                     <div class="panel-body">
@@ -50,6 +50,16 @@
                                                     {{ recruitFilterForm.highest_education_level }}
                                                  </div>
 
+                                                 <div class="col-sm-3">
+                                                    <label>Education Title</label><br/>
+                                                    {{ recruitFilterForm.educationTitle }}
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <label>Education Experience(Greater than or equal)</label><br/>
+                                                    {{ recruitFilterForm.experience }}
+                                                </div>
+
                                             </div>
 
                                             <div class="row">
@@ -66,15 +76,22 @@
                                 
                                     <div class="panel-body">
 
-                                        <table class="table table-bordered">
-                                            <tr><th>Full Name</th><th>Gender</th><th>Employement Status</th><th>Education Level</th> <th>Age Range</th></tr>
-                                            {% for job_seeker in job_seekers %}
+                                        <table class="table table-bordered table-responsive">
+                                            <tr><th>Full Name</th><th>Gender</th><th>Employement Status</th><th>Education Level</th> <th>Age Range</th> <th>Educations</th> <th>Experience</th></tr>
+                                            {% for job_seeker in job_seekers_arr %}
                                             <tr >
-                                                <td><a href='/employee/employee-{{ job_seeker.pk }}/'>{{job_seeker.user.first_name}} {{job_seeker.user.last_name}}</a></td>
+                                                <td><a href='/employee/employee-{{ job_seeker.pk }}/'>{{job_seeker.user.first_name|title}} {{job_seeker.user.last_name|title}}</a></td>
                                                 <td>{{job_seeker.get_gender_display}} </td>
                                                 <td>{{job_seeker.get_employement_status_display}}</td>
                                                 <td>{{job_seeker.get_highest_education_level_display }}</td>
                                                 <td>{{job_seeker.age }}</td>
+                                                <td>
+                                                    {% for education in job_seeker.educations.all %}
+                                                    
+                                                        {{education.field_of_study|upper }} {% if not forloop.last %} ,{% endif %}
+                                                    {% endfor %} 
+                                                </td>
+                                                <td>{{job_seeker_experiences_dict|get_item:job_seeker.pk }} Years</td>
                                             </tr>
                                             {% endfor %}
                                         </table>

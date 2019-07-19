@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 import views as job_views
 
@@ -59,7 +59,7 @@ urlpatterns = [
 
     url(r'^jobs/applly/job-(?P<jobID>\d+)?/$', job_views.employeeJobApply),
 
-    url(r'^blogs/(?:category-(?P<categoryID>\d+)/)?$', job_views.blogListView),
+    url(r'^(?P<articleType>(blogs|news))/(?:category-(?P<categoryID>\d+)/)?$', job_views.blogListView),
     url(r'^blogs/blog-(?P<blogID>\d+)/$', job_views.blogDetailView),
     url(r'^test/$', job_views.testView),
     url(r'^comment/blog-(?P<blogID>\d+)/$', job_views.commentView),
@@ -87,6 +87,7 @@ urlpatterns = [
 
     url(r'^applications/applicationID-(?P<applicationID>\d+)/$', job_views.applicationRead),
     url(r'^applications/print/applicationID-(?P<applicationID>\d+)/$', job_views.applicationPrint),
+    url(r'^applications/save/$', job_views.saveApplications),
 
     url(r'^applications/print/applicationID-(?P<applicationID>\d+)/accesstoken-(?P<accesstoken>\w+)/$', job_views.applicationPrint),
     url(r'^applications/viewonly/accesstoken-(?P<accesstoken>\w+)/$', job_views.applicationsViewOnly),
@@ -97,6 +98,6 @@ urlpatterns = [
     url(r'^events/(?:tag-(?P<tagID>\d+)/)?', job_views.events),
     url(r'^event/(?:event-(?P<eventID>\d+))/$', job_views.eventDetail),
     url(r'^appointmnet/make/$', job_views.makeAppointment),
-    url(r'^appointmnets/$', job_views.appointments)
+    url(r'^appointmnets/$', job_views.appointments),
 
 ]

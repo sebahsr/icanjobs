@@ -14,7 +14,7 @@
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
-		<title>Job Listing</title>
+		<title>Article Listing</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
@@ -40,9 +40,13 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content-blog col-lg-12">
 							<h1 class="text-white">
-								Blog Posts				
+								{% if is_news_article %}
+								News Article
+								{% else %}
+								Blog Posts
+								{% endif %}				
 							</h1>	
-							<p class="text-white link-nav"><a href="/jobs/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href=""> Blog Posts</a></p>
+							<p class="text-white link-nav"><a href="/jobs/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href=""> Articles</a></p>
 						</div>											
 					</div>
 				</div>
@@ -78,6 +82,8 @@
 										{{ blog.content|striptags|safe|truncatechars:400}}
 									</p>
 							</div>	
+							{% empty %}
+								<div class="h5">No article found</div>
 							{% endfor %}
 							{% if current_page.has_previous %}
 							<a href="?page={{ current_page.previous_page_number }}" class="genric-btn info-border circle arrow">Previous<span class="lnr lnr-arrow-left"></span></a>

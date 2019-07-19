@@ -12,6 +12,7 @@ from jobs.decorators import *
 from event import models as eventModels
 from event import forms as eventForms
 from django.contrib.auth.decorators import login_required,user_passes_test
+from django.db.models import Sum,F
 
 import datetime
 # Create your views here.
@@ -140,6 +141,7 @@ def jobView(request, **kwargs):
         job = jobDetailHelper(jobID, request)
         from datetime import date
         expired = job.deadline and job.deadline < date.today()
+        job_side_ads = eventModels.Advertisement.objects.filter(placement=constants.AD_PLACE_JOBDETAIL_SIDE)
         template_name = "job_detail.tmp"
 
 
@@ -821,13 +823,19 @@ def employeeAppliedJobs(request):
     return render(request, 'emplooyee_applied_jobs.tmp', locals())
 
 
-def blogListView(request, categoryID=None):
-    
+def blogListView(request, articleType='blogs', categoryID=None):
+    articleType={
+        'news' : constants.ARTICLE_NEWS,
+        'blogs' : constants.ARTICLE_BLOG
+    }[articleType]
+
     if categoryID:
         blogs = eventModels.Blog.objects.filter(categories__id__contains = categoryID)
     else:
         blogs = eventModels.Blog.objects.all() 
 
+    blogs = blogs.filter(article_type=articleType)
+    is_news_article = True if articleType == constants.ARTICLE_NEWS else False
     paginator = Paginator(blogs, constants.PAG_BLOG_NUMBER)
 
     page_number = request.GET.get('page', 1)
@@ -835,9 +843,10 @@ def blogListView(request, categoryID=None):
     blogs = current_page.object_list
 
     postcategories = eventModels.PostCategories.objects.all()
-    recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:5]
+    recent_blogs = eventModels.Blog.objects.filter(article_type=articleType).order_by('-created_at')[:5]
 
     return render(request, 'blogs.tmp', locals())
+
 def blogDetailView(request, blogID):
     blog = get_object_or_404(eventModels.Blog, pk=blogID)
     blog.view_count+=1
@@ -846,6 +855,7 @@ def blogDetailView(request, blogID):
     recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:5]
     commentForm = eventForms.CommentForm()
     comments = blog.comments.all()
+    blog_side_ads = eventModels.Advertisement.objects.filter(placement=constants.AD_PLACE_BLOGDETAIL_SIDE)
     return render(request, 'blog-detail.tmp', locals())
 
 
@@ -1028,19 +1038,49 @@ def companyRecruitView(request):
     if request.GET.get('query'):
         recruitFilterForm = forms.RecruitFilterForm(request.GET)
         query = Q()
-        if request.GET.get('gender', None):
-            query |= Q(gender=request.GET.get('gender', 'Male'))
-        
+        gender_query = None
         if request.GET.get('employement_status', None):
             query |= Q(employement_status = request.GET.get('employement_status', 1) )
         
         if request.GET.get('highest_education_level', None):
             query |= Q(highest_education_level=request.GET.get('highest_education_level'))
+
         if request.GET.get('ageRange', None):
             query |= Q(age=request.GET.get('ageRange'))
+        
+        if request.GET.get('educationTitle', None):
+            query |= Q(educations__field_of_study__icontains=request.GET.get('educationTitle'))
+        
+        if request.GET.get('gender', None):
+            gender_query = Q(gender=request.GET.get('gender', 'Male'))
+        
 
-        job_seekers = models.Employee.objects.filter(query)
-    
+        job_seekers = models.Employee.objects.filter(query ).distinct()
+        job_seeker_experiences = models.Experience.objects.filter(employee__in=job_seekers).values('employee').annotate(exp=Sum(F('end_year')-F('start_year')))
+        
+        print job_seekers,job_seeker_experiences
+
+        if request.GET.get('experience', None):
+            try:
+                experience = float(request.GET.get('experience'))
+                job_seeker_experiences = job_seeker_experiences.filter(exp__gte=experience)
+            except ValueError:
+                pass
+        job_seeker_experiences_dict = {}
+
+        for job_seeker_experience in job_seeker_experiences:
+            job_seeker_experiences_dict[job_seeker_experience['employee']] = job_seeker_experience['exp']
+
+        job_seekers_arr = []
+        for job_seeker in job_seekers:
+            if job_seeker_experiences_dict.get(job_seeker.pk, False):
+                job_seekers_arr.append( job_seeker)
+
+
+        if gender_query:
+            job_seekers.filter( gender_query)
+
+        
     applications = models.JobApplication.objects.filter(job__in = request.user.company.jobs.filter(is_draft=False))
     unread_applications_count = applications.filter(status='unread').count()
     unread_messages_count = request.user.company.messages.filter(status='unread').count()
@@ -1139,6 +1179,14 @@ def applications(request, filter=None):
     sidebar_applications_active = 'nav-active'
     return render(request, 'company/applications.tmp', locals())
 
+def saveApplications(request):
+    print request.GET.getlist('applicatinID')
+    applications = models.JobApplication.objects.filter(pk__in=request.GET.getlist('applicatinID'))
+    
+    return render(request, 'applications.save.tmp', locals())
+
+def advertisement(request):
+    advertisement = models.Advertisement.objects.filter()
 @login_required
 @user_passes_test(functions.is_company)
 def messages(request, filter=None):
