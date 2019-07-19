@@ -48,7 +48,7 @@
 												</div>
 		
 												<div class="p-md">
-													<h4 class="text-semibold mt-none"><a href='/ican/blog/blog-{{blog.pk}}/'>{{ blog.title|title }}</a></h4>
+													<h4 class="text-semibold mt-none"><a href='/ican/blog/blog-{{blog.pk}}/'>{{ blog.title }}</a></h4>
 													<i class="fa fa-calendar mr-xs"></i> {{ blog.created_at }}
 
 													<p>{{ blog.content|striptags|safe| truncatechars:300 }}</p>

@@ -68,6 +68,13 @@
 													<i class="fa fa-clock-o" aria-hidden="true"></i>Appointments
 												</a>
 											</li>
+
+											<li class="{{ sidebar_recruit_active }}">
+												<a href="/company/recruit/">
+													<i class="fa fa-paper-plane-o" aria-hidden="true"></i>Employee DB
+												</a>
+											</li>
+											
 											<li class="{{ sidebar_setting_active }}">
 												<a href="/settings/employers/" _new>
 													<i class="fa fa-building-o" aria-hidden="true"></i>Employers

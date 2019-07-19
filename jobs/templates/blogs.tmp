@@ -68,15 +68,8 @@
 								{% if blog.image %}
 								<img class="img-fluid" src="{{ blog.image.url }}" alt="">
 								{% else %}
-								<img class="img-fluid" src="/static/img/logo.png" alt="">
+								<img class="img-fluid" src="/static/img/blog-default.jpg" alt="">
 								{% endif %}
-								
-								<ul class="tags">
-									{% for blog_category in blog.categories.all %}
-										<li><a href="#">{{ blog_category }}, </a></li>
-									{% endfor %}
-									
-								</ul>
 								
 									<p>
 										{{ blog.content|striptags|safe|truncatechars:400}}

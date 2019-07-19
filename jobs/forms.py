@@ -9,13 +9,13 @@ class CategoryForm(forms.ModelForm):
         exclude=('id',)
 
 class RecruitFilterForm(forms.Form):
-    gender = forms.ChoiceField(choices=constants.GENDER_CHOICES)
-    highest_education_level = forms.ChoiceField(required=False, choices=constants.EDUCATION_LEVELS)
-    employement_status = forms.ChoiceField(required=False, choices=constants.EMPLOYEMENT_STATUS)
-    job_type = forms.ModelChoiceField(required=False, queryset=models.JobType.objects.all())
-    ageRange = forms.ModelChoiceField(required=False, queryset=models.AgeRange.objects.all())
-    educationTitle = forms.CharField(required=False)
-    experience = forms.CharField(required=False)
+    gender = forms.ChoiceField(choices=constants.GENDER_CHOICES, widget=forms.Select(attrs={ "class" : "form-control"}))
+    highest_education_level = forms.ChoiceField(required=False, choices=constants.EDUCATION_LEVELS, widget=forms.Select(attrs={ "class" : "form-control"}))
+    employement_status = forms.ChoiceField(required=False, choices=constants.EMPLOYEMENT_STATUS, widget=forms.Select(attrs={ "class" : "form-control"}))
+    job_type = forms.ModelChoiceField(required=False, queryset=models.JobType.objects.all(), widget=forms.Select(attrs={ "class" : "form-control"}))
+    ageRange = forms.ModelChoiceField(required=False, queryset=models.AgeRange.objects.all(), widget=forms.Select(attrs={ "class" : "form-control"}))
+    educationTitle = forms.CharField(required=False, widget=forms.TextInput(attrs={'class' : "form-control", 'placeholder' : 'Education Title'}))
+    experience = forms.CharField(required=False, widget=forms.TextInput(attrs={'class' : "form-control", 'placeholder' : 'Experience ( Greater than or equal to)'}))
     class Meta:
         fields = '__all__'
         widgets = {

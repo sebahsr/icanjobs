@@ -203,7 +203,7 @@
 						<div class="row d-flex justify-content-center">
 								<div class="menu-content pb-20 col-lg-10">
 									
-									<div class="cs-heading"><h3 class="cs-fancy">RECENT NEWS & BLOGS</h3>
+									<div class="cs-heading"><h3 class="cs-fancy">NEWS & BLOGS</h3>
 										<div class="heading-description">
 										</div>
 								</div>
@@ -214,14 +214,14 @@
 						<div class="row"> 
 
 							{% for recent_blog in recent_blogs %}
-								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<div style="margin:0 10px;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 										<div class="cs-blog blog-grid">
 												<div class="cs-media">
 														<figure>
 															{%  if recent_blog.image %}
 																<img alt="An Overworked Newspaper Editor" src="{{ recent_blog.image.url }}">
 															{% else %}
-															<img alt="An Overworked Newspaper Editor" src="/static/img/logo.png">
+															<img alt="An Overworked Newspaper Editor" src="/static/img/blog-default.jpg">
 
 															{% endif %}
 														</figure>
@@ -233,7 +233,7 @@
 																	<span class="post-date">{{ recent_blog.created_at|date}} </span>
 																</div>
 																<div class="cs-post-title">
-																		<h3><a href="/blogs/blog-{{recent_blog.pk}}/" title="An Overworked Newspaper Editor">{{ recent_blog.title|title|truncatechars:70}}</a></h3>
+																		<h3><a href="/blogs/blog-{{recent_blog.pk}}/" title="An Overworked Newspaper Editor">{{ recent_blog.title|truncatechars:70}}</a></h3>
 																</div>
 																<p> {{ recent_blog.content|safe|striptags|truncatechars:300 }} </p>
 																<a href="/blogs/blog-{{recent_blog.pk}}/" class="read-more">Read More</a>

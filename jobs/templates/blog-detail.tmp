@@ -71,7 +71,7 @@
 									<h1 class="text-white">
 										Blog Post				
 									</h1>	
-									<p class="text-white link-nav"><a href="/jobs/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="/blogs/"> Blog Posts</a> <span class="lnr lnr-arrow-right"></span>  <a href="/blogs/"> {{ blog.title | title}}</a></p>
+									<p class="text-white link-nav"><a href="/jobs/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="/blogs/"> Blog Posts</a> <span class="lnr lnr-arrow-right"></span>  <a href="/blogs/"> {{ blog.title }}</a></p>
 								</div>										
 					</div>
 				</div>
@@ -85,16 +85,15 @@
 					<div class="row">
 						<div class="col-lg-8 post-list blog-post-list">
 							<div class="single-post">
-								<ul class="tags">
-                                    {% for blog_category in blog.categories.all %}
-                                    <li><a href="#">{{ blog_category }}</a></li>
-                                    {% endfor %}
-								</ul>
+								
 								<div class="sharethis-inline-share-buttons"></div>
-									<h1>
-										{{ blog.title }}
-									</h1>
-							
+								<h1>{{ blog.title }}</h1>
+								<div class="categories">
+									{% for blog_category in blog.categories.all %}
+									<span class="category"><a href="/blogs/category-{{ blog_category.pk }}/">{{ blog_category.name }}</a></span>
+									{% endfor %}
+								</div>
+								
 								{% if blog.posted_by %}
 								<div class="h6">By {{ blog.posted_by }}</div>
 								{% endif %}

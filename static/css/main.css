@@ -2194,7 +2194,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Mobile Nav Toggle */
 #mobile-nav-toggle {
   position: fixed;
-  left: 20px;
+  left: -6px;
   z-index: 999;
   top: 8px;
   border: 0;
@@ -2207,7 +2207,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-nav-toggle i {
-  color: #036;
+  color: #fe9706;
   font-weight: 900;
 }
 
@@ -2521,10 +2521,11 @@ ul.spatialism-sec li a span {
 .job-detail-banner-area {
   background: url(../img/banner-back.jpg) center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .banner-area-home {
-  background: url(../img/back.jpg) center !important;
+  background: url(../img/home-back.jpg) center !important;
   background-size: cover;
 }
 
@@ -2835,6 +2836,7 @@ ul.spatialism-sec li a span {
 
 .cs-blog {
   margin-bottom: 30px;
+  padding-left: 16px;
 }
 
 .cs-blog .cs-media figure {
@@ -5074,5 +5076,22 @@ a.read-more {
 }
 .btn-home-read-more:hover{
   color: white;
+
+}
+div.categories {
+  margin: 10px 0;
+}
+div.categories span.category{
+
+  font-weight: 600;
+  _border: solid 1px gray;
+  padding: 5px;
+  
+  background: #eb7100;
+
+}
+
+span.category a {
+  color: white !important;
 
 }

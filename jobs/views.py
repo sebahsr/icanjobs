@@ -1039,7 +1039,6 @@ def createJobView(request, jobID=None):
     
     return render(request, 'company/create-job.tmp', locals())
 @login_required
-@user_passes_test(functions.is_company)
 def companyRecruitView(request):
     sidebar_recruite_active = True
     recruitFilterForm = forms.RecruitFilterForm()
@@ -1060,7 +1059,7 @@ def companyRecruitView(request):
             query |= Q(educations__field_of_study__icontains=request.GET.get('educationTitle'))
         
         if request.GET.get('gender', None):
-            gender_query = Q(gender=request.GET.get('gender', 'Male'))
+            query |= Q(gender=request.GET.get('gender', 'Male'))
         
 
         job_seekers = models.Employee.objects.filter(query ).distinct()
@@ -1085,13 +1084,8 @@ def companyRecruitView(request):
                 job_seekers_arr.append( job_seeker)
 
 
-        if gender_query:
-            job_seekers.filter( gender_query)
-
         
-    applications = models.JobApplication.objects.filter(job__in = request.user.company.jobs.filter(is_draft=False))
-    unread_applications_count = applications.filter(status='unread').count()
-    unread_messages_count = request.user.company.messages.filter(status='unread').count()
+        
     sidebar_recruit_active = 'nav-active'
 
     return render(request, 'company/recruit.tmp', locals())
