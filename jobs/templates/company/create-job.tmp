@@ -279,9 +279,14 @@
 													
 													<div class="from-group">
 														<div class="col-sm-8 col-sm-offset-3">
-															<button class='btn  btn-lg btn-primary' name='save-job' value='save-job' type="submit"> Save Job</button>
-															<button class='btn  btn-lg btn-primary' name='post-job' value='post-job' type="submit"> Post Job</button>
+																{% if not jobID %} 
+																<button class='btn  btn-lg btn-primary' name='post-job' value='post-job' type="submit"> Post job</button>
 
+																<button class='btn  btn-lg btn-primary' name='save-job' value='save-job' type="submit"> Save as draft job</button>
+																{% else %}
+																<button class='btn  btn-lg btn-primary' name='post-job' value='post-job' type="submit"> Update job</button>
+
+																{% endif %}
 														</div>
 													</div>
 												</div>
