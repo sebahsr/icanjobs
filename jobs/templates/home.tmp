@@ -214,7 +214,7 @@
 						<div class="row"> 
 
 							{% for recent_blog in recent_blogs %}
-								<div style="margin:0 10px;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 										<div class="cs-blog blog-grid">
 												<div class="cs-media">
 														<figure>
