@@ -77,13 +77,16 @@ class Blog(models.Model):
         return self.title
 
 class Advertisement(models.Model):
-    description = models.CharField(max_length=150)
+    description = models.CharField(max_length=150, null=True, blank=True)
     placement = models.IntegerField(choices=constants.AD_PLACES)
     image = models.FileField(upload_to=functions.getFileName, null=True, blank=True)
     link = models.URLField()
 
     def __unicode__(self):
-        return self.description
+        if self.description:
+            return self.description
+        
+        return "No description"
 
 class Comment(models.Model):
     content = models.TextField()
@@ -133,7 +136,6 @@ class Appointment(models.Model):
         return cls.objects.filter(created_on__range=(last7day_min, today_max))
 
 
- 
 class MenuLinks(models.Model):
     name = models.CharField(primary_key=True, choices=(
         ('empskill', 'Employability Skill'),

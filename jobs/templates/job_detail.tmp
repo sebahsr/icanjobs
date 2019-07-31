@@ -111,6 +111,7 @@
 										<hr />
 
 						</section>
+						{% if not job.applied_already %}
 						<div class="row mb-20">
 								<div class="apply-job">
 									<div class="cs-text">
@@ -120,7 +121,7 @@
 										<a href="{% url 'social:begin' 'facebook' %}?usertype=jobseeker" class=" facebook social_login_login_facebook_apply" ><div class="facebook_jobid_apply"></div><i class="fa fa-facebook"></i>Apply with Facebook</a>                                                                                                                    </div>
 								</div>
 							</div>
-						
+						{% endif %}
 
 						{% if job.summary %}
 						<div class="single-post-detail-job job-details">
@@ -290,12 +291,20 @@
 											Advertisements
 										</div>
 										{% for job_side_ad in job_side_ads %}
-											<div style="background:url('{{ job_side_ad.image.url }}'); " class="ad-widget">
-												<div class="ad-detail">	
-													{{ job_side_ad.description}}
-													<a class='btn' href='{{ job_side_ad.link }}'>Visit</a>
+											{% if  job_side_ad.description %}
+
+												<div style="background:url('{{ job_side_ad.image.url }}'); " class="ad-widget">
+													<div class="ad-detail">	
+														{{ job_side_ad.description}}
+														<a class='btn' href='{{ job_side_ad.link }}'>Visit</a>
+													</div>
 												</div>
-											</div>
+											{% else %}
+                
+												<div class="row ad-widget">
+													<img src="{{ job_side_ad.image.url }}" width="100%">
+												</div>
+											{% endif %}
 										{% endfor %}
 										</div>
 										{% endif %}

@@ -84,6 +84,9 @@ urlpatterns = [
     url(r'^company/admin/create-job/(?:job-(?P<jobID>\d+)/)?$', job_views.createJobView),
     url(r'^company/admin/confirm-delete/job-(?P<jobID>\d+)/((?P<confirmed>confirmed)/)?$', job_views.jobDelete),
     url(r'^ican/blog/confirm-delete/blog-(?P<blogID>\d+)/((?P<confirmed>confirmed)/)?$', job_views.blogDelete),
+    url(r'^ican/messages/$', job_views.contactMessages),
+    url(r'^ican/messages/(?P<filter>(read|unread|today|yesterday|last7))/$', job_views.contactMessages),
+    url(r'^ican/messages/message-(?P<messageID>\d+)/$', job_views.contact_message_detail),
 
     url(r'^applications/applicationID-(?P<applicationID>\d+)/$', job_views.applicationRead),
     url(r'^applications/print/applicationID-(?P<applicationID>\d+)/$', job_views.applicationPrint),

@@ -5,12 +5,13 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from django.shortcuts import render, get_object_or_404, redirect
 from event import forms, models
 from jobs import models as jobModels
+from jobs import forms as jobForms
 from jobs import constants
 from django.core.paginator import Paginator
 from event import serializers
 from rest_framework.renderers import JSONRenderer
 from rest_framework.request import Request
-
+import datetime
 from django.http import HttpResponse,JsonResponse
 
 # Create your views here.
@@ -26,6 +27,18 @@ def dashboard(request):
     recent_companies = jobModels.Company.objects.all()[:5]
     sidebar_dashboard_active = 'profile-tab-active'
     return render(request, 'admin/dashboard.tmp', locals())
+
+@login_required(login_url='/admin/login/')
+@user_passes_test(lambda u: u.is_staff)
+def visitCount(request):
+    vistCountForm = jobForms.VisitForm(request.GET)
+    if vistCountForm.is_valid():
+        startDate = vistCountForm.cleaned_data['start_date'] or datetime.date.today()
+        endDate = vistCountForm.cleaned_data['end_date'] or datetime.date.today()
+        visitCounts = jobModels.VisitCount.objects.filter(visitDate__gte=startDate, visitDate__lte=endDate)
+        uniqueHitCount = sum([visitCount.uniqueHitCount for visitCount in visitCounts])
+        totalHitCount = sum([visitCount.totalHitCount for visitCount in visitCounts])
+    return render(request, 'admin/visit.count.tmp', locals())
 
 
 @login_required(login_url='/admin/login/')
@@ -143,3 +156,6 @@ def settingEvent(request):
 
 def settingEmployer(request):
     return render(request, 'event/employersetting.tmp') 
+
+def settingAd(request):
+    return render(request, 'event/ad.settings.tmp') 

@@ -122,7 +122,7 @@
                                 <div class="cs-media col-md-3 col-xs-12">
                                     <figure>
                                              <span class="feature">
-                                                <img alt="" src="{{ job.company.profile_pic.url }}">
+                                                <img style="max-width:100%" alt="" src="{{ job.company.profile_pic.url }}">
                                             </span>    
                                     </figure>
                                 </div>

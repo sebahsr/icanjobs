@@ -20,6 +20,7 @@ import views as event_views
 urlpatterns = [
     
     url(r'^ican/admin/$', event_views.dashboard),
+    url(r'^ican/visitcount/$', event_views.visitCount),
     url(r'^ican/event/(?:event-(?P<eventID>\d+)/)?$', event_views.createEvent),
     url(r'^ican/events/$', event_views.events),
 
@@ -32,6 +33,7 @@ urlpatterns = [
     url(r'^appointments/appointmentID-(?P<appointmentID>\d+)/$', event_views.appointmentRead, name='appointment-detail'),
     url(r'^settings/jobs/$', event_views.settingJob),
     url(r'^settings/events/$', event_views.settingEvent),
+    url(r'^settings/ads/$', event_views.settingAd),
     url(r'^settings/employers/$', event_views.settingEmployer),
 
 

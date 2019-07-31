@@ -2,13 +2,13 @@
         <div class="container">
             <div class="row align-items-center justify-content-between d-flex">
               <div id="logo">
-                <a href="/"><img style="max-width:100px" src="/static/img/logo.png" alt="" title="" /></a>
+                <a href="/"><img style="max-width:150px" src="/static/img/logo-new.jpg" alt="" title="" /></a>
               </div>
               <nav id="nav-menu-container">
                 <ul class="nav-menu">
                   <li  class="menu-active"><a href="/"><span style="font-size: 18px;" class='fa fa-home'></a></li>
                   
-                    <li class="menu-has-children"><a href="/jobs/">Job Seeker</a>
+                    <li class="menu-has-children"><a href="/jobs/">Job Seeker <i class="fa fa-caret-down"></i></a>
                       <ul>
                         <li class="menu-active"><a href="/jobs/">Browse Jobs</a></li>
                         <li class="menu-active"><a href="/companies/">Browse Employers  </a></li>
@@ -28,7 +28,7 @@
                       </ul>
                     </li>
                     
-                    <li class="menu-has-children"><a href="/companies/">Employer</a>
+                    <li class="menu-has-children"><a href="/companies/">Employer <i class="fa fa-caret-down"></i></a>
                       <ul>
                           
                         <li class="menu-active"><a href="/company/admin/create-job/">Post Jobs & internships  </a></li>
@@ -47,7 +47,7 @@
                     <li class="menu-has-children"><a href="/news/">News</a></li>
 
 
-                    <li class="menu-has-children"><a href="">Employment solutions</a>
+                    <li class="menu-has-children"><a href="">Employment solutions <i class="fa fa-caret-down"></i></a>
                       <ul>
                         {% for menulink in menulinks %} 
 
@@ -81,7 +81,7 @@
                       </ul>
                     </li>
 
-                    <li class="menu-has-children"><a href="/about/">About iCAN</a>
+                    <li class="menu-has-children"><a href="/about/">About iCAN <i class="fa fa-caret-down"></i> </a>
                       <ul>
                         <li class="menu-active"><a href="/about/">About Us</a></li>
                         <li class="menu-active"><a href="/services/">Services</a></li>
@@ -100,7 +100,7 @@
 
                   {% else %}
 
-                    <li class="menu-has-children"><a href="">{{ request.user.username }}</a>
+                    <li class="menu-has-children"><a href="">{{ request.user.username }} <i class="fa fa-caret-down"></i></a>
                     <ul>
                         {% if request.user.employee %}
                         <li><a href="/employee/"><i class='fa fa-user'></i> My CV/Resume</a></li>

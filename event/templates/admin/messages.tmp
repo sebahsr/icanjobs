@@ -1,0 +1,154 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'company/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'company/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				{% include 'admin/admin.sidebar.tmp' %}
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+						<header class="page-header">
+							<h2>Messages</h2>
+						
+						</header>
+					<!-- start: page -->
+					<section class="content-with-menu mailbox">
+						<div class="content-with-menu-container">
+							
+							
+							<div class="inner-body mailbox-folder">
+								<!-- START: .mailbox-header -->
+								<header class="mailbox-header">
+									<div class="row">
+										<div class="col-sm-6">
+											<h1 class="mailbox-title text-light m-none">
+												<a id="mailboxToggleSidebar" class="sidebar-toggle-btn trigger-toggle-sidebar">
+													<span class="line"></span>
+													<span class="line"></span>
+													<span class="line"></span>
+													<span class="line line-angle1"></span>
+													<span class="line line-angle2"></span>
+												</a>
+							
+												<span class='text-info'>{{ message_filter }}</span> messages
+											</h1>
+										</div>
+										<div class="col-sm-6">
+											<div class="search">
+												<form method="GET">
+												<div class="input-group input-search">
+													<input type="text" class="form-control" {% if queryData %} value="{{ queryData }}" {% endif %} name="query" id="q" placeholder="Search...">
+													<span class="input-group-btn">
+														<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+													</span>
+												</div>
+											</form>
+
+											</div>
+										</div>
+									</div>
+								</header>
+								<!-- END: .mailbox-header -->
+								<div class="mailbox-actions">
+										<ul class="list-unstyled m-none pt-lg pb-lg">
+											<li class="ib mr-sm">
+												<div class="btn-group">
+													<a href="#" class="item-action fa fa-chevron-down dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></a>
+							
+													<ul class="dropdown-menu" role="menu">
+														<li><a href="/ican/messages/">All</a></li>
+														<li><a href="/ican/messages/read/">Read</a></li>
+														<li><a href="/ican/messages/unread/">Unread</a></li>
+														<li><a href="/ican/messages/today/">Today</a></li>
+														<li><a href="/ican/messages/yesterday/">Yesterday</a></li>
+														<li><a href="/ican/messages/last7/">Last 7 days</a></li>
+													</ul>
+												</div>
+											</li>
+											<li class="ib mr-sm">
+												<a class="item-action fa fa-refresh" href=""></a>
+											</li>
+
+											
+										</ul>
+								</div>
+
+								<div id="mailbox-email-list" class="mailbox-email-list">
+									<div class="nano">
+										<div class="nano-content">
+											<table class="table table-striped">
+												<tr><th></th> <th>Sender Name</th> <th>Subject </th> <th>Email</th> <th>Message Date</th><th></th> </tr>
+											{% for message in messages %}
+												<tr class="{{ application.status }}">
+														
+														<td >
+                                                            {% ifequal message.status 'unread' %}
+                                                                <i class="fa fa-envelope"></i>
+                                                            {% else %}
+                                                                <i class="fa fa-envelope-o"></i>
+															{% endifequal %}
+															
+														</td>
+														<td >
+															{{ message.full_name | title }} 
+														</td>
+														<td>
+															{{ message.subject | title }} 
+                                                        </td>
+                                                        
+                                                        <td>
+															{{ message.email | title }} 
+														</td>
+
+														<td>
+															{{ message.messaged_on|date:"d M Y" }}
+														</td>
+
+														<Td>
+															<a class='btn btn-danger' data-toggle="modal" data-target="#deleteConfirm{{message.pk}}" href='#'><i class='fa fa-trash-o'></i> Delete</a>
+															<a class='btn btn-info' href='/ican/messages/message-{{ message.pk }}/'><i class="fa-eye fa"></i> View</a>
+														</Td>
+												</tr>
+											{% endfor %}
+
+										</table>
+										</div>
+									</div>
+								</div>
+
+								{% for message in messages %}
+									<!-- Modal -->
+									<div class="modal fade" id="deleteConfirm{{message.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel"> Are you sure you want to discard this message? </h5>
+												</div>
+												<div class="modal-body">
+														<span class='h5'>{{ message.sender.first_name }} {{ message.sender.last_name }} </span> Subject <span class='h5'>{{ message.Subject | title }}</span>
+												</div>
+												<div class="modal-footer">
+												<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+												<a href='/message/delete/message-{{ message.pk }}/'  class="btn btn-danger" >Remove Message</a>
+
+												</div>
+											</div>
+											</div>
+										</div>
+										
+								{% endfor %}
+							</div>
+						</div>
+					</section>
+					<!-- end: page -->
+				</section>
+			</div>
+
+			
+		</section>
+		{% include 'company/admin.footer.tmp' %}

@@ -36,7 +36,17 @@ class MessageForm(forms.ModelForm):
             'content' : forms.Textarea(attrs={'class' : 'form-control', 'placeholder' : 'Message should have more than 50 characters', 'rows' : 4, 'style' : "margin-bottom:10px;height: 125px;padding-top:5px"}),
             'subject' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'subject', 'style' : "margin-bottom:10px;padding-top:5px"}),
         }
-
+        
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = models.Contact
+        fields = 'full_name', 'email', 'subject', 'message'
+        widgets = {
+            'full_name' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Full Name'}),
+            'email' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Your Email'}),
+            'subject' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Subject'}),
+            'message' : forms.Textarea(attrs={'class' : 'form-control', 'placeholder' : 'Message'}),
+        }
 class JobAlertForm(forms.ModelForm):
     class Meta:
         model = models.JobAlert
@@ -50,6 +60,18 @@ class JobAlertForm(forms.ModelForm):
                 'placeholder' : 'Your Email Adress', 'class' : 'form-control'
             })
         }
+
+class VisitForm(forms.Form):
+    start_date = forms.DateField(required=False, widget=forms.TextInput(attrs={
+                "placeholder" : "Start Date",
+                "class" : "form-control",
+                'autocomplete' : False,
+                "data-plugin-datepicker" : True}))
+    end_date = forms.DateField(required=False, widget=forms.TextInput(attrs={
+                "placeholder" : "End Date",
+                "class" : "form-control",
+                  'autocomplete' : False,
+                "data-plugin-datepicker" : True}) )
 
 class JobForm(forms.ModelForm):
     summary = forms.CharField(required=False, widget=CKEditorWidget(attrs={'spellcheck' : "true"},  config_name='jobpost'))

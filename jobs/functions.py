@@ -34,3 +34,22 @@ from django.template.defaulttags import register
 @register.filter
 def get_item(dictionary, key):
     return dictionary.get(key)
+
+
+def calc_emp_percent(employee):
+        information_count = 0
+        single_fields = ['profile_pic', 'gender', 'age', 'highest_education_level', 'employement_status', 'city', 'region', 'about_me', 'volunteer_experience', 'phone' ]
+        multiple_fields = ['job_types', 'services_intersted_in','references','worklinks','worksamples','skills', 'educations','experiences']
+        
+        for single_field in single_fields:
+                if getattr(employee, single_field):
+                        information_count +=1
+        for multiple_field in multiple_fields:
+                if getattr(employee, multiple_field):
+                        if getattr(employee, multiple_field).count() > 0:
+                                information_count +=1
+
+        total_count = len(single_fields) + len(multiple_fields)
+        percent = (float(information_count)/total_count)*100
+        return '%.0f' % (percent)
+

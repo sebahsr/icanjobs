@@ -7,8 +7,13 @@
 			<!-- end: header -->
 
 			<div class="inner-wrapper">
-				<!-- start: sidebar -->
-				{% include 'company/company.admin.sidebar.tmp' %}
+                <!-- start: sidebar -->
+                {% if admin %}
+                {% include 'admin/admin.sidebar.tmp' %}
+
+                {% else %}
+                {% include 'company/company.admin.sidebar.tmp' %}
+                {% endif %}
 				<!-- end: sidebar -->
 
 				<section role="main" class="content-body">

@@ -69,6 +69,17 @@
 												</a>
 											</li>
 
+											<li class="{{ sidebar_messages_active }}">
+												<a href="/ican/messages/">
+													{% if unread_messages_count %}
+													<span class="pull-right label label-primary">{{ unread_messages_count }}</span>
+													{% endif %}
+													<i class="fa fa-envelope" aria-hidden="true"></i>
+													<span>Messages</span>
+												</a>
+											</li>
+
+
 											<li class="{{ sidebar_recruit_active }}">
 												<a href="/company/recruit/">
 													<i class="fa fa-paper-plane-o" aria-hidden="true"></i>Employee DB
@@ -80,10 +91,20 @@
 													<i class="fa fa-building-o" aria-hidden="true"></i>Employers
 												</a>
 											</li>
-											
+											<li class="{{ sidebar_setting_active }}">
+												<a href="/settings/ads/" _new>
+													<i class="fa fa-gear" aria-hidden="true"></i>Advertisements
+												</a>
+											</li>
+											<li class="{{ sidebar_setting_active }}">
+												<a href="/ican/visitcount/" _new>
+													<i class="fa fa-eye" aria-hidden="true"></i> Visit Stats
+												</a>
+											</li>
+
 											<li class="{{ sidebar_setting_active }}">
 												<a href="/settings/events/" _new>
-													<i class="fa fa-gear" aria-hidden="true"></i>Appointment,Articles, & Advertisements
+													<i class="fa fa-gear" aria-hidden="true"></i>Appointments, & Articles
 												</a>
 											</li>
 											<li class="{{ sidebar_setting_active }}">

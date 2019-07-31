@@ -98,6 +98,40 @@ class AccessToken(models.Model):
         m.update(random_data)
         return m.hexdigest()
 
+class Contact(models.Model):
+    full_name = models.CharField(max_length=200)
+    email = models.EmailField()
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    status = models.CharField(max_length = 10, default='unread', choices=(constants.SEEN_UNSEEN_STATUS))
+    messaged_on = models.DateTimeField(auto_now_add=True)
+    
+    @classmethod
+    def todays(cls):
+        today_min = datetime.datetime.combine(datetime.date.today(), datetime.time.min)
+        today_max = datetime.datetime.combine(datetime.date.today(), datetime.time.max)
+        return cls.objects.filter(messaged_on__range=(today_min, today_max))
+    
+    @classmethod
+    def yesterdays(cls):
+        yesterday = datetime.date.today() - datetime.timedelta(days=1)
+        yesterday_min = datetime.datetime.combine(yesterday, datetime.time.min)
+        yesterday_max = datetime.datetime.combine(yesterday, datetime.time.max)
+        return cls.objects.filter(messaged_on__range=(yesterday_min, yesterday_max))
+    
+    @classmethod
+    def last7days(cls):
+        last7day = datetime.date.today() - datetime.timedelta(days=7)
+        last7day_min = datetime.datetime.combine(last7day, datetime.time.min)
+        today_max = datetime.datetime.combine(datetime.date.today(), datetime.time.max)
+        return cls.objects.filter(messaged_on__range=(last7day_min, today_max))
+
+    class Meta:
+        ordering = ('-status', '-messaged_on' )
+
+    def __unicode__(self):
+        return self.subject
+
 class Message(models.Model):
     subject = models.CharField(max_length=200)
     content = models.TextField()
@@ -368,3 +402,9 @@ class WorkLink(models.Model):
     employee = models.ForeignKey('Employee', related_name='worklinks')
 
 
+
+class VisitCount(models.Model):
+
+    uniqueHitCount = models.IntegerField()
+    totalHitCount = models.IntegerField()
+    visitDate = models.DateField(auto_now_add=True)

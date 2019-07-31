@@ -70,6 +70,8 @@
 						{% include 'edit_employee.tmp' %}
 					{% else %}
 						
+						
+
 						<div class="single-post d-flex flex-row">
 							<div class="thumb col-sm-4">
 								{% if employee.profile_pic %}
@@ -465,9 +467,7 @@
 
 					</div>
 					<!-- sidebar -->
-						{% comment %}
 						{% include 'employee_sidebar.tmp' %}
-						{% endcomment %}
 					<!-- End side bar -->
 				</div>
 			</div>	

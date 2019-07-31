@@ -42,38 +42,38 @@
 
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
-  color: #777777;
+  color: #000;
   font-weight: 300;
 }
 
 :-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  color: #777777;
+  color: #000;
   opacity: 1;
   font-weight: 300;
 }
 
 ::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: #777777;
+  color: #000;
   opacity: 1;
   font-weight: 300;
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #777777;
+  color: #000;
   font-weight: 300;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: #777777;
+  color: #000;
   font-weight: 300;
 }
 
 body {
-  color: #777777;
+  color: #000;
   font:Normal  13px/23px  sans-serif !important;
   position: relative;
 }
@@ -2111,7 +2111,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Nav Menu Arrows */
 .sf-arrows .sf-with-ul {
-  padding-right: 30px;
+  padding-right: 5px;
 }
 
 .sf-arrows .sf-with-ul:after {
@@ -2149,7 +2149,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 6px 10px;
   text-decoration: none;
   display: inline-block;
-  color: #777;
+  color: #000;
   font-weight: bold;
   font-size: 12px;
   text-transform: uppercase;
@@ -2525,7 +2525,7 @@ ul.spatialism-sec li a span {
 }
 
 .banner-area-home {
-  background: url(../img/home-back.jpg) center !important;
+  background: url(../img/backpic.jpg) center !important;
   background-size: cover;
 }
 
@@ -2845,6 +2845,7 @@ ul.spatialism-sec li a span {
 
 .cs-blog.blog-grid figure img {
   height: 236px;
+  max-width: 100%;
   vertical-align: middle;
 }
 
@@ -4750,6 +4751,7 @@ ul.spatialism-sec li a span {
 .jobs-listing.modern .jobs-content {
   border: none;
   padding: 15px 0;
+  margin: 10px;
 }
 .jobs-listing li .jobs-content {
   background: #fff;
@@ -4770,7 +4772,7 @@ ul.spatialism-sec li a span {
 }
 .jobs-listing.modern .cs-media figure img{
   border: 1px solid #f2f2f2;
-  width: 130px;
+  max-width: 70%;
 }
 
 
@@ -5094,4 +5096,142 @@ div.categories span.category{
 span.category a {
   color: white !important;
 
+}
+
+
+.team_box {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.team_box .team_img img {
+  width: 100%;
+  -webkit-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+}
+
+.team_box .team_img .info_box {
+  position: absolute;
+  bottom: 25px;
+  background-color: #eb7100;
+  padding: 10px 30px;
+  -webkit-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+}
+
+.team_box .team_img .info_box .name {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 0;
+  font-weight: 600;
+  text-transform: capitalize;
+  -webkit-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+}
+
+.team_box .team_img .info_box .position {
+  font-size: 14px;
+  color: #ffffff;
+  text-transform: capitalize;
+}
+.team_box:hover .team_img .info_box {
+  background-color: #eb7100;
+  -webkit-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+}
+
+.team_box:hover .team_img img {
+  width: 100%;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+}
+
+.team_box:hover .team_img .info_box {
+  background-color: #000;
+  -webkit-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+}
+
+.team_box:hover .team_img .info_box .name {
+  color: #eb7100;
+  -webkit-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+}
+
+
+.mb50 {
+  margin-bottom: 50px !important;
+}
+
+.section_title .title {
+  text-transform: uppercase;
+  padding: 10px 0;
+  font-size: 36px;
+}
+
+.section_title .title:before {
+  width: 60px;
+  content: " ";
+  position: absolute;
+  border-top: solid 3px #eb7100;
+  left: 0;
+  top: 0;
+}
+
+.profile-status {
+  font-size: 15px;
+  color: black;
+  padding: 10px;
+  margin: 10px 5px;
+  font-weight: 400;
+  box-shadow: 0 0 0,1, gray;
+}
+
+.profile-status-icon, .profile-status-icon-suc {
+  text-align: center;
+  font-size: 65px;
+}
+.profile-status-icon {
+  color: #ee8935;
+}
+.profile-status-icon-suc {
+  color: #037f25;
+}
+
+
+.profile-status-info {
+  text-align: center;
+}
+span.percent, span.percent-suc {
+  font-weight: bolder;
+}
+
+span.percent {
+  color: #ee8935;
+}
+
+
+
+.my-progress-bar {
+  border: solid 1px #ee8935;
+}
+
+.my-progress-bar-suc{
+  border: solid 1px #037f25;
+}
+.my-progress-bar .spinner , .my-progress-bar-suc .spinner {
+  padding: 5px;
+  display: block;
+
+}
+
+.my-progress-bar .spinner{
+  background: #ee8935;
+}
+
+.my-progress-bar-suc .spinner{
+  background: #037f25;
 }

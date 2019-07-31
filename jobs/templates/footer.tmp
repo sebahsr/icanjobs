@@ -4,7 +4,7 @@
                 <div class="col-sm-4">
                     <div class="  h3">iCANJOBS</div>
                     <p style="color: black"> 
-                            iCANJOBS provides an online platform aiming to connect talent with employers. We also provide recruitment, talent acquisition, career services, youth employment advisory, customized trainings/workshops, and HR Consulting. Registered members are able to post their CV/resume, access and match jobs and employers can post jobs and search for a talent. We look forward to interacting online with you on ICANJOBS.                    </p>
+                            iCANJOBS provides an online platform aiming to connect talent with employers. We also provide recruitment, talent acquisition, career services, youth employment advisory, customized trainings/workshops, and HR Consulting. Registered members are able to post their CV/resume, access and match jobs and employers can post jobs and search for a talent. We look forward to interacting online with you on iCANJOBS.                    </p>
                 </div>
                 <div class="col-sm-8">
                     <div class="row">
@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="col-lg-3 col-sm-6 col-md-3  ">
                                             <div class="single-footer-widget">
-                                                <h6>ABOUT iCAN</h6>
+                                                <h6>ABOUT iCAN                                                </h6>
                                                 <ul class="footer-nav">
                                                     <li class="menu-active"><a href="/about/">About Us</a></li>
                                                     <li class="menu-active"><a href="/services/">Services</a></li>

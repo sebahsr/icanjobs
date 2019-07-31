@@ -15,12 +15,21 @@
             Advertisements
         </div>
         {% for blog_side_ad in blog_side_ads %}
-            <div style="background:url('{{ blog_side_ad.image.url }}'); " class="ad-widget">
-                <div class="ad-detail">	
-                    {{ blog_side_ad.description}}
-                    <a class='btn' href='{{ blog_side_ad.link }}'>Visit</a>
+            
+            {% if blog_side_ad.description %}
+                <div style="background:url('{{ blog_side_ad.image.url }}'); " class="ad-widget">
+                    <div class="ad-detail">	
+                        {{ blog_side_ad.description}}
+                        <a class='btn' href='{{ blog_side_ad.link }}'>Visit</a>
+                    </div>
                 </div>
-            </div>
+            {% else %}
+                
+                <div class="row">
+                    <img src="{{ blog_side_ad.image.url }}" width="100%">
+                </div>
+            {% endif %}
+
         {% endfor %}
         </div>
         {% endif %}

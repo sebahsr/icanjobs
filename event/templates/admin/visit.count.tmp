@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'admin/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'admin/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+					<!-- start: sidebar -->
+					{% include 'admin/admin.sidebar.tmp' %}
+					<!-- end: sidebar -->
+	
+					<section role="main" class="content-body">
+						<header class="page-header">
+							<h2>Visit Count Stat </h2>
+						
+						</header>
+	
+							
+                        <div class="row">
+                                <section class="panel form-wizard" id="w4">
+                                        <header class="panel-heading">
+                                            
+                                            <h2 class="panel-title">Visit Count Filter</h2>
+                                        </header>
+                                    
+                                        <div class="panel-body">
+                                            <form method="GET" action="/ican/visitcount/">
+                                                <div class="row">
+                                                    <div class="col-sm-2">
+                                                        Start Date<br/>
+                                                        {{ vistCountForm.start_date }}
+                                                    </div>
+                                                    
+                                                    <div class="col-sm-2">
+                                                        <label>End Date</label><br />
+                                                        {{ vistCountForm.end_date }}
+                                                    </div>
+                                                    
+    
+                                                </div>
+    
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <button name='query' class='btn btn-primary' value='true' type="submit">Search <i class="fa fa-search"></i></button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </section>
+                        </div>
+						<!-- start: page -->
+						<div class="row">
+								<div class="col-md-6">
+									<section class="panel panel-featured-left panel-featured-primary">
+										<div class="panel-body">
+											<div class="widget-summary">
+												<div class="widget-summary-col widget-summary-col-icon">
+													<div class="summary-icon bg-primary">
+														<i class="fa fa-users"></i>
+													</div>
+												</div>
+												<div class="widget-summary-col">
+													<div class="summary">
+														<h4 class="title">Unique Visitors</h4>
+														<div class="info">
+															<strong class="amount">{{ uniqueHitCount}}</strong>															</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>
+								</div>
+								<div class="col-md-6 ">
+									<section class="panel panel-featured-left panel-featured-secondary">
+										<div class="panel-body">
+											<div class="widget-summary">
+												<div class="widget-summary-col widget-summary-col-icon">
+													<div class="summary-icon bg-secondary">
+														<i class="fa fa-bullseye"></i>
+													</div>
+												</div>
+												<div class="widget-summary-col">
+													<div class="summary">
+														<h4 class="title">Total Website Hit</h4>
+														<div class="info">
+															<strong class="amount">{{ totalHitCount }}</strong>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>
+								</div>
+							</div>
+						
+						<!-- end: page -->
+					</section>
+				</div>
+
+		</section>
+
+	{% include 'admin/admin.footer.tmp' %}

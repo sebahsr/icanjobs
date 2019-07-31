@@ -90,27 +90,27 @@
                                 {% endif %}
 
                                 {% if suc %}
-                                    <div class="text-success">{{ suc }} </div>
+                                    <div class="text-success">{{ succ }} </div>
                                 {% endif %}
-                                <form method="POST" action="/jobalerts/">
-                                {% csrf_token %}
-                                <div class="image-frame cs-img-frame">
-									
+                                <form method="POST" action="/contact/">
+									{% csrf_token %}
+									<div class="image-frame cs-img-frame">
+										
 										<div class="form-group">
-										<input type="text" placeholder="Full Name" class="form-control">
+											{{contactForm.full_name}}
 										</div>
 										<div class="form-group">
-										<input type="text" placeholder="Your Email" class="form-control">
+											{{contactForm.email}}
 										</div>
 										<div class="form-group">
-										<input type="text" placeholder="Subject" class="form-control">
+											{{contactForm.subject}}
 										</div>
 										<div class="form-group">
-										<textarea class="form-control" placeholder="Message"></textarea>
+											{{contactForm.message}}
 										</div>
 									</div>
 
-                                    <button class='btn' style="background:#eb7100;color:white" type="submit">Send Message</button>
+									<button class='btn' style="background:#eb7100;color:white" type="submit">Send Message</button>
 
                                 </div>
                             </form>

@@ -14,6 +14,8 @@ from event import forms as eventForms
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.db.models import Sum,F
 
+
+
 import datetime
 # Create your views here.
 
@@ -47,6 +49,15 @@ def services(request):
     return render(request, 'services.page.tmp', locals())
 
 def contact(request):
+    contactForm = forms.ContactForm()
+    if request.method == "POST":
+        contactForm = forms.ContactForm(request.POST)
+        if contactForm.is_valid():
+            succ = "Your message succesfully sent to ican."
+            contactForm.save()
+        else:
+            err = "Unable to send your message. Please make sure you provided value to all fields."
+        
     return render(request, 'contact.tmp' ,locals())
     
 def jobAlerts(request):
@@ -404,7 +415,6 @@ def employeeLoginView(request):
 
 
 
-
 @login_required
 @user_passes_test(functions.is_employee)
 def employeeView(request):
@@ -412,6 +422,7 @@ def employeeView(request):
     
     employee = request.user.employee
     pro_active_tab = 'profile-tab-active'
+    empPercent = functions.calc_emp_percent(employee)
     return render(request, "employee_profile.tmp", locals())
 
 
@@ -864,6 +875,7 @@ def blogDetailView(request, blogID):
     commentForm = eventForms.CommentForm()
     comments = blog.comments.all()
     blog_side_ads = eventModels.Advertisement.objects.filter(placement=constants.AD_PLACE_BLOGDETAIL_SIDE)
+    
     return render(request, 'blog-detail.tmp', locals())
 
 
@@ -1041,6 +1053,7 @@ def createJobView(request, jobID=None):
 @login_required
 def companyRecruitView(request):
     sidebar_recruite_active = True
+    admin = request.user.is_staff
     recruitFilterForm = forms.RecruitFilterForm()
     if request.GET.get('query'):
         recruitFilterForm = forms.RecruitFilterForm(request.GET)
@@ -1213,6 +1226,39 @@ def messages(request, filter=None):
 
     return render(request, 'company/messages.tmp', locals())
 
+@login_required
+def contactMessages(request, filter=None):
+    messages = models.Contact.objects.all()
+    unread_messages_count = messages.filter(status='unread').count()
+
+    sidebar_messages_active = 'nav-active'
+    
+    message_filter = 'All'
+    if filter=='read' or filter=='unread':
+        messages = messages.filter(status=filter)
+        message_filter = filter.capitalize()
+    elif filter=='today':
+        messages = models.Message.todays()
+        message_filter = 'Today\'s'
+    elif filter=='yesterday':
+        messages = models.Message.yesterdays()
+        message_filter = "Yesterday's"
+    elif filter=='last7':
+        messages = models.Message.last7days()
+        message_filter = "Last Seven days"
+
+    return render(request, 'admin/messages.tmp', locals())
+@login_required
+def contact_message_detail(request, messageID):
+    message = get_object_or_404(models.Contact, pk=messageID)
+    message.status = 'read'
+    message.save()
+
+    unread_messages_count = models.Contact.objects.filter(status='unread').count()
+
+    return render(request, 'admin/contact.message.detail.tmp', locals())
+
+@login_required
 def message_detail(request, messageID):
     message = get_object_or_404(models.Message, pk=messageID)
     message.status = 'read'
@@ -1223,6 +1269,7 @@ def message_detail(request, messageID):
 
     return render(request, 'company/message-detail.tmp', locals())
 
+@login_required
 def message_delete(request, messageID):
     message = get_object_or_404(models.Message, pk=messageID)
     message.delete()

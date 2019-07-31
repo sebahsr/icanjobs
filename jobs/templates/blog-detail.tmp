@@ -133,13 +133,15 @@
 								{% else %}
 								<div class="blog-comment">
 									
-									<div class="apply-job row">
+										<div class="row mb-20">
+												<div class="apply-job">
+													<div class="cs-text">
+														<a href='/signup/?next=/jobs/job-{{job.pk}}/' class="like applied_icon">  <span><i class="fa fa-thumbs-up"></i></span>Apply through iCAN</a>
 										
-									
-										<div class='col-md-4 col-sm-6' ><a href='/signup/?next=/jobs/job-{{job.pk}}/' class="like applied_icon">  <span><i class="fa fa-thumbs-up"></i></span>Login with iCAN</a></div>
-										<div class='col-md-4 col-sm-6' style="margin-left:-59px;"><a href="{% url 'social:begin' 'google-oauth2' %}?usertype=jobseeker"  class="linkedin social_login_login_linkedin"><div class="linkedin_jobid_apply"></div><i class="fa fa-google-plus"></i><span>Login with Gmail</span></a></div>
-										<div class='col-md-4 col-sm-6' style="margin-left:-54px;"><a href="{% url 'social:begin' 'facebook' %}?usertype=jobseeker" class=" facebook social_login_login_facebook_apply" ><div class="facebook_jobid_apply"></div><i class="fa fa-facebook"></i>Login with Facebook</a></div>                                                                                                                    
-									</div>
+														<a href="{% url 'social:begin' 'google-oauth2' %}?usertype=jobseeker"  class="linkedin social_login_login_linkedin"><div class="linkedin_jobid_apply"></div><i class="fa fa-google-plus"></i><span>Apply with Gmail</span></a>
+														<a href="{% url 'social:begin' 'facebook' %}?usertype=jobseeker" class=" facebook social_login_login_facebook_apply" ><div class="facebook_jobid_apply"></div><i class="fa fa-facebook"></i>Apply with Facebook</a>                                                                                                                    </div>
+												</div>
+											</div>
 								</div>
 								{% endif %}
 								

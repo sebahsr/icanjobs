@@ -114,8 +114,9 @@
                                     <div>
                                         <br />
                                         
-Sara Tadiwos, the Founder and Managing Director, International Career Advisory Network (iCAN) is a certified Global Career Development Facilitator (GCDF) and Certified National Workforce Development Professional (NWDP) spent extensive years working as a business strategic partner in workforce development, leadership development, recruitment strategist, talent acquisition, human capital development and trainings, HR consultant and soft skills trainer across various sectors. She also provides workforce development services, career coaching, professional skills trainings and capacity building to Ethiopia’s eager labor force; whilst supporting and strengthening institutions, businesses and organizations through consultancy, training and talent acquisition services and strategy design. She has worked in Ethiopia, Kenya and the USA in various public institutions and private companies in employment and training. Sara has a Mphil (MA) in International Development from University of Bergen, Norway and a BA in Sociology from Addis Ababa University.  She has lead, designed programs and facilitated several trainings and TOTs for career counselors for higher institutions in career coaching, workforce development, career development/ readiness and employability/soft skills (trained career counselors from Samara, Jijiga, Mekele, Haramaya, Walayta, Jimma and Addis Ababa Universities) and she has also successfully lead and oversaw recruitment, HR services, business development and youth employment programs. Sara is passionate about youth employment and women leadership and has served as Executive and advisory board member for Association of Women in Business (AWIB) for two years and currently serves as a lead workforce development trainer for women professional’s leaders (AWIB members). She is also part of the Diaspora Rise-up campaign to raise funds in response to emerging humanitarian crises in Africa and the Youth Mentoring Youth program in VA and mentoring disadvantaged youth Fresh graduates.
-                                    </div>
+                                        Sara Tadiwos, the Founder and Managing Director, International Career Advisory Network (iCAN) is a certified Global Career Development Facilitator (GCDF) and Certified National Workforce Development Professional (NWDP) spent extensive years working as a business strategic partner in workforce development, leadership development, recruitment strategist, talent acquisition, human capital development and trainings, HR consultant and soft skills trainer across various sectors. She also provides workforce development services, career coaching, professional skills trainings and capacity building to Ethiopia’s eager labor force; whilst supporting and strengthening institutions, businesses and organizations through consultancy, training and talent acquisition  services and strategy design. She has worked in Ethiopia, Kenya and the USA in various public institutions and private companies in employment and training.  Sara has a Mphil (MA) in International Development from University of Bergen, Norway and a BA in Sociology from Addis Ababa University.  She has lead, designed programs and facilitated several trainings and TOTs for  career counselors for higher institutions in career coaching, workforce development, career development/ readiness and employability/soft skills (trained career counselors from Samara, Jijiga, Mekele, Haramaya, Walayta, Jimma and Addis Ababa Universities) and she has also  successfully lead  and oversaw recruitment, HR services, business development and youth employment programs. 
+                                        Sara is passionate about youth employment and women leadership and has served as Executive and advisory board member for Association of Women in Business (AWIB) for two years and currently serves as a lead workforce development trainer for women professional’s leaders (AWIB members).  She is also part of the Diaspora Rise-up campaign to raise funds in response to emerging humanitarian crises in Africa and the Youth Mentoring Youth program in VA and mentoring disadvantaged youth Fresh graduates.  
+                                                                            </div>
         
                             </div>
                         </div>
@@ -194,7 +195,86 @@ Sara Tadiwos, the Founder and Managing Director, International Career Advisory N
                             </div>
                         </div>
                     </div>
-                </div>			    
+                </div>	
+                
+               
+                <div class="row">
+                        <div class="section-fullwidth col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                            <div class="row">
+                               
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="cs-simple ">
+                                        <div class="container">
+                                            <div class="section_title mb50">
+                                                <h3 class="title">
+                                                    The Team
+                                                </h3>
+                                            </div>
+                                        </div>
+            
+                                        
+                                        <div class="row">
+                                                <div class="col-md-4 col-sm-6">
+                                                        <div class="team_box">
+                                                            <div class="team_img">
+                                                                <img src="/static/img/sara.jpg" alt="team name">
+                                                                <div class="info_box">
+                                                                    <h5 class="name">Sara Tadiwos</h5>
+                                                                    <p class="position">Founder and Managing Director</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4 col-sm-6">
+                                                            <div class="team_box">
+                                                                <div class="team_img">
+                                                                    <img src="/static/img/saray.jpg" alt="team name">
+                                                                    <div class="info_box">
+                                                                        <h5 class="name">Sara</h5>
+                                                                        <p class="position">HR Associate</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                         
+                                                        <div class="col-md-4 col-sm-6">
+                                                                <div class="team_box">
+                                                                    <div class="team_img">
+                                                                        <img src="/static/img/betty.jpg" alt="team name">
+                                                                        <div class="info_box">
+                                                                            <h5 class="name">Betelhem Dessie</h5>
+                                                                            <p class="position">Software Developer</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        <div class="col-md-4 col-sm-6">
+                                                                <div class="team_box">
+                                                                    <div class="team_img">
+                                                                        <img src="/static/img/tabor.jpg" alt="team name">
+                                                                        <div class="info_box">
+                                                                            <h5 class="name">Tabor Nekatibeb</h5>
+                                                                            <p class="position">Software Developer</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                       
+
+
+                                           
+                                        
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>	
+
             </div>
     </div>
 

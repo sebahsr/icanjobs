@@ -75,11 +75,11 @@
 									<div class="row post-list">
 										{% for job in recent_jobs %}
 											<div class="col-lg-6  single-post d-flex flex-row">
-												<div class="thumb col-sm-4">
-													<img style="max-width: 100px" src="{{ job.company.profile_pic.url }}" alt="">
+												<div class="thumb col-sm-4 col-xs-4">
+													<img style="max-width: 70%" src="{{ job.company.profile_pic.url }}" alt="">
 													
 												</div>
-												<div class="details col-sm-8">
+												<div class="details col-sm-8 col-xs-8">
 													<div class="title d-flex flex-row justify-content-between">
 														<div class="titles">
 															<a href="/jobs/job-{{ job.getuniquelink }}/"><h4>{{ job.title|title }}</h4></a>
@@ -148,22 +148,22 @@
 		<section class="solid-section section-gap" >
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6 col-sm-offset-1">
+					<div class="col-lg-6">
 				
 						<div class="h2">
 						ABOUT THE FOUNDER
 						</div>
 
 						<p>
-								Sara Tadiwos, the Founder and Managing Director, International Career Advisory Network (iCAN) is a certified Global Career Development Facilitator (GCDF) and Certified National Workforce Development Professional (NWDP) spent extensive years working as a business strategic partner in workforce development, leadership development, recruitment strategist, talent acquisition, human capital development and trainings, HR consultant and soft skills trainer across various sectors. She also provides workforce development services, career coaching, professional skills trainings and capacity building to Ethiopia’s eager labor force; whilst supporting and strengthening institutions, businesses and organizations through consultancy, training and talent acquisition  services and strategy design. She has worked in Ethiopia, Kenya and the USA in various public institutions and private companies in employment and training.  
-								<br />
-								<a class="btn btn-home-read-more" href='/founder/'>Read More</a>
+								Sara Tadiwos, the Founder and Managing Director, International Career Advisory Network (iCAN) is a certified Global Career Development Facilitator (GCDF) and Certified National Workforce Development Professional (NWDP) spent extensive years working as a business strategic partner in workforce development, leadership development, recruitment strategist, talent acquisition, human capital development and trainings, HR consultant and soft skills trainer across various sectors. She also provides workforce development services, career coaching, professional skills trainings and capacity building to Ethiopia’s eager labor force; whilst supporting and strengthening institutions, businesses and organizations through consultancy, training and talent acquisition  services and strategy design. 
+																<br />
+								<a class="btn btn-home-read-more" href='/about/'>Read More</a>
 								
 						</p>
 					</div>
 
-					<div class="col-sm-4">
-						<img height="330px" src="/static/img/findjobs.jpg">
+					<div class="col-lg-6">
+						<img style="max-width:100%;" src="/static/img/findjobs.jpg">
 					</div>
 				</div>
 			</div>	
@@ -214,7 +214,7 @@
 						<div class="row"> 
 
 							{% for recent_blog in recent_blogs %}
-								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<div class="col-lg-4 col-sm-12">
 										<div class="cs-blog blog-grid">
 												<div class="cs-media">
 														<figure>
