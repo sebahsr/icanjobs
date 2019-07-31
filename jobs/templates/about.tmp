@@ -217,7 +217,7 @@
                                                 <div class="col-md-4 col-sm-6">
                                                         <div class="team_box">
                                                             <div class="team_img">
-                                                                <img src="/static/img/sara.jpg" alt="team name">
+                                                                <img src="/static/img/sara.jpg" alt="Sara Tadiwos">
                                                                 <div class="info_box">
                                                                     <h5 class="name">Sara Tadiwos</h5>
                                                                     <p class="position">Founder and Managing Director</p>
@@ -229,9 +229,9 @@
                                                     <div class="col-md-4 col-sm-6">
                                                             <div class="team_box">
                                                                 <div class="team_img">
-                                                                    <img src="/static/img/saray.jpg" alt="team name">
+                                                                    <img src="/static/img/saray.jpg" alt="Sara Abdureshid">
                                                                     <div class="info_box">
-                                                                        <h5 class="name">Sara</h5>
+                                                                        <h5 class="name">Sara Abdureshid</h5>
                                                                         <p class="position">HR Associate</p>
                                                                     </div>
                                                                 </div>
@@ -250,7 +250,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                         <div class="col-md-4 col-sm-6">
                                                                 <div class="team_box">
                                                                     <div class="team_img">
