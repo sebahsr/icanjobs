@@ -53,3 +53,38 @@ def calc_emp_percent(employee):
         percent = (float(information_count)/total_count)*100
         return '%.0f' % (percent)
 
+def getSavedResumeSections(employee):
+        information_count = 0
+        single_fields = ['about_me', 'volunteer_experience']
+        multiple_fields = ['references','worklinks','worksamples','skills', 'educations','experiences']
+
+        multiple_mul_fields = {'profile' : ['job_types', 'services_intersted_in',]}
+        single_mul_fields   = {'profile' : ['profile_pic', 'gender', 'age', 'highest_education_level', 'employement_status', 'city', 'region',  'phone' ]}
+        
+        done_fields = {}
+        for single_field in single_fields:
+                if getattr(employee, single_field):
+                        done_fields[single_field] = True
+        for multiple_field in multiple_fields:
+                if getattr(employee, multiple_field):
+                        if getattr(employee, multiple_field).count() > 0:
+                                done_fields[multiple_field] = True
+        
+        for multiple_mul_field_key in multiple_mul_fields:
+                done_fields[multiple_mul_field_key] = True
+        for multiple_mul_field_key in multiple_mul_fields:
+                
+                for multiple_mul_field in multiple_mul_fields[multiple_mul_field_key]:
+                        if not getattr(employee, multiple_mul_field).count():
+                                done_fields[multiple_mul_field_key] = False
+                                break
+
+        for single_mul_field_key in single_mul_fields:
+                for single_mul_field in single_mul_fields[single_mul_field_key]:
+                        if not getattr(employee, single_mul_field):
+                                done_fields[single_mul_field_key] = False
+                                break
+
+
+        print done_fields
+        return done_fields

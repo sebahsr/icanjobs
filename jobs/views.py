@@ -433,7 +433,7 @@ def employeeOtherView(request, employeeID):
     pro_active_tab = 'profile-tab-active'
     return render(request, "employee_profile.tmp", locals())
 
-
+    
 
 @login_required
 @user_passes_test(functions.is_employee)
@@ -598,6 +598,7 @@ def buildResume(request, section=None, pk=None, add=None):
         if request.method == 'POST':
             return employeSkillView(request)
     
+    done_sections = functions.getSavedResumeSections(employee)
     return render(request, "build.resume.tmp", locals())
 
 @login_required

@@ -68,20 +68,116 @@
 					<div class="col-lg-4 sidebar">
                         <div class="single-slidebar">
                             <h4>Your Resume/CV</h4>
-                            <a href='/employee/build-resume/general/'><div class='{{ build_active_gen }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> 
-                                CONTACT INFORMATION</div></a>
+                            done_sections
+                            <a href='/employee/build-resume/general/'>
+                                <div class='{{ build_active_gen }} build-resume-side'>
+                                        {% if done_sections.profile %}
+                                        <i style="color:green" class="fa fa-check" ></i> 
+    
+                                        {% else %}
+                                        <i style="color:#eb7100" class="fa fa-arrow-right" ></i> 
+                                        {% endif %}
+                                    CONTACT INFORMATION
+                                </div>
+                            </a>
 
-                                <a href='/employee/build-resume/summary/'><div class='{{ build_active_sum }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> PROFILE SUMMARY</div></a>
-                            <a href='/employee/build-resume/experience/'><div class='{{ build_active_prof }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> PROFESSIONAL EXPERIENCE
-                            </div></a>
-                            <a href='/employee/build-resume/education/'><div class='{{ build_active_edu }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> EDUCATION/TRAINING</div></a>
+                            <a href='/employee/build-resume/summary/'>
+                                <div class='{{ build_active_sum }} build-resume-side'>
+                                    {% if done_sections.about_me %}
+                                    <i style="color:green" class="fa fa-check" ></i> 
 
-                            <a href='/employee/build-resume/skill/'><div class='{{ build_active_skill }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> SKILL/QUALIFICATIONS </div></a>
-                            <a href='/employee/build-resume/worksample/'><div class='{{ build_active_worksample }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> WORK SAMPLES</div></a>
-                            <a href='/employee/build-resume/worklink/'><div class='{{ build_active_worklink }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> WORK LINKS</div></a>
+                                    {% else %}
+                                    <i style="color:#eb7100" class="fa fa-arrow-right" ></i> 
+                                    {% endif %}
+                                        PROFILE SUMMARY
+                                </div>
+                            </a>
+
+                            <a href='/employee/build-resume/experience/'>
+                                <div class='{{ build_active_prof }} build-resume-side'>
+                                        {% if done_sections.experiences %}
+                                        <i style="color:green" class="fa fa-check" ></i> 
+    
+                                        {% else %}
+                                        <i style="color:#eb7100" class="fa fa-arrow-right" ></i> 
+                                        {% endif %}
+                                        PROFESSIONAL EXPERIENCE
+                                </div>
+                            </a>
+
+                            <a href='/employee/build-resume/education/'>
+                                <div class='{{ build_active_edu }} build-resume-side'>
+                                    {% if done_sections.educations %}
+                                    <i style="color:green" class="fa fa-check" ></i> 
+
+                                    {% else %}
+                                    <i style="color:#eb7100" class="fa fa-arrow-right" ></i> 
+                                    {% endif %}
+
+                                    EDUCATION/TRAINING
+                                </div>
+                            </a>
+
+                            <a href='/employee/build-resume/skill/'>
+                                <div class='{{ build_active_skill }} build-resume-side'>
+                                    {% if done_sections.skills %}
+                                    <i style="color:green" class="fa fa-check" ></i> 
+
+                                    {% else %}
+                                    <i style="color:#eb7100" class="fa fa-arrow-right" ></i> 
+                                    {% endif %}
+                                    SKILL/QUALIFICATIONS 
+                                </div>
+                            </a>
+
+                            <a href='/employee/build-resume/worksample/'>
+                                <div class='{{ build_active_worksample }} build-resume-side'>
+                                    {% if done_sections.worksamples %}
+                                    <i style="color:green" class="fa fa-check" ></i> 
+
+                                    {% else %}
+                                    <i style="color:#eb7100" class="fa fa-arrow-right" ></i> 
+                                    {% endif %}
+                                    
+                                    WORK SAMPLES
+                                </div>
+                            </a>
+
+                            <a href='/employee/build-resume/worklink/'>
+                                <div class='{{ build_active_worklink }} build-resume-side'>
+                                    {% if done_sections.worklinks %}
+                                    <i style="color:green" class="fa fa-check" ></i> 
+
+                                    {% else %}
+                                    <i style="color:#eb7100" class="fa fa-arrow-right" ></i> 
+                                    {% endif %}
+                                    WORK LINKS
+                                </div>
+                            </a>
                             
-                            <a href='/employee/build-resume/volunteer/'><div class='{{ build_active_vol }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> VOLUNTEER EXPERIENCE/MEMBERSHIP/AFFLILATIONS</div></a>
-                            <a href='/employee/build-resume/reference/'><div class='{{ build_active_ref }} build-resume-side'><i style="color:#eb7100" class="fa fa-arrow-right" ></i> REFERENCES</div></a>
+                            <a href='/employee/build-resume/volunteer/'>
+                                <div class='{{ build_active_vol }} build-resume-side'>
+                                    {% if done_sections.volunteer_experience %}
+                                    <i style="color:green" class="fa fa-check" ></i> 
+
+                                    {% else %}
+                                    <i style="color:#eb7100" class="fa fa-arrow-right" ></i> 
+                                    {% endif %}
+                                    VOLUNTEER EXPERIENCE/MEMBERSHIP/AFFLILATIONS
+                                </div>
+                            </a>
+
+                            <a href='/employee/build-resume/reference/'>
+                                <div class='{{ build_active_ref }} build-resume-side'>
+                                    {% if done_sections.references %}
+                                    <i style="color:green" class="fa fa-check" ></i> 
+
+                                    {% else %}
+                                    <i style="color:#eb7100" class="fa fa-arrow-right" ></i> 
+                                    {% endif %}
+                                    REFERENCES
+                                </div>
+                            </a>
 
 
                          </div>

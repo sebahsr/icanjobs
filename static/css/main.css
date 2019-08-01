@@ -2117,7 +2117,7 @@ h1, h2, h3, h4, h5, h6 {
 .sf-arrows .sf-with-ul:after {
   content: "\f107";
   position: absolute;
-  right: 15px;
+  right: -5px;
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
@@ -2284,7 +2284,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-nav ul .menu-item-active {
-  color: #036;
+  color: #eb7100;
 }
 
 #mobile-body-overly {
@@ -4723,8 +4723,7 @@ ul.spatialism-sec li a span {
 }
 
 .image-frame.cs-img-frame img {
-  height: 300px;
-  margin-left: 112px;
+  width: 100%;
 }
 
 /** jobs **/

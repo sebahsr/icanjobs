@@ -8,10 +8,13 @@
                 <ul class="nav-menu">
                   <li  class="menu-active"><a href="/"><span style="font-size: 18px;" class='fa fa-home'></a></li>
                   
-                    <li class="menu-has-children"><a href="/jobs/">Job Seeker <i class="fa fa-caret-down"></i></a>
+                    <li class="menu-has-children"><a href="/jobs/">Job Seeker </a>
                       <ul>
-                        <li class="menu-active"><a href="/jobs/">Browse Jobs</a></li>
-                        <li class="menu-active"><a href="/companies/">Browse Employers  </a></li>
+                          {% if request.user.employee %}
+                          <li><a href="/employee/"><i class='fa fa-user'></i> My CV/Resume</a></li>
+                          {% endif %}
+                        <li ><a href="/jobs/">Browse Jobs</a></li>
+                        <li ><a href="/companies/">Browse Employers  </a></li>
 
                         {% if not request.user.is_authenticated or request.user.employee %}
                         <li class="menu-active"><a href="/employee/build-resume/">Build your resume</a></li>
@@ -20,15 +23,15 @@
                         <li class="menu-active"><a href="/jobalerts/">Job Alerts</a></li>
                         {% if not request.user.is_authenticated %}
 
-                          <li class="menu-has-children"><a href="/login/">Login</a></li> 
-                          <li class="menu-has-children"><a href="/signup/">Register</a></li> 
+                          <li class=""><a href="/login/">Login</a></li> 
+                          <li class=""><a href="/signup/">Register</a></li> 
 
                           {% endif %}
 
                       </ul>
                     </li>
                     
-                    <li class="menu-has-children"><a href="/companies/">Employer <i class="fa fa-caret-down"></i></a>
+                    <li class="menu-has-children"><a href="/companies/">Employer </a>
                       <ul>
                           
                         <li class="menu-active"><a href="/company/admin/create-job/">Post Jobs & internships  </a></li>
@@ -36,18 +39,18 @@
                         <li class="menu-active"><a href="/branding/">Employer Branding </a></li>
                         {% if not request.user.is_authenticated %}
 
-                          <li class="menu-has-children"><a href="/company/admin/login/">Login</a></li> 
-                          <li class="menu-has-children"><a href="/company/admin/signup/">Register</a></li> 
+                          <li class=""><a href="/company/admin/login/">Login</a></li> 
+                          <li class=""><a href="/company/admin/signup/">Register</a></li> 
 
                           {% endif %}
 
                       </ul>
                     </li>
-                    <li class="menu-has-children"><a href="/blogs/">Career Advice</a></li>
-                    <li class="menu-has-children"><a href="/news/">News</a></li>
+                    <li class=""><a href="/blogs/">Career Advice</a></li>
+                    <li class=""><a href="/news/">News</a></li>
 
 
-                    <li class="menu-has-children"><a href="">Employment solutions <i class="fa fa-caret-down"></i></a>
+                    <li class="menu-has-children"><a href="">Employment solutions </a>
                       <ul>
                         {% for menulink in menulinks %} 
 
@@ -81,7 +84,7 @@
                       </ul>
                     </li>
 
-                    <li class="menu-has-children"><a href="/about/">About iCAN <i class="fa fa-caret-down"></i> </a>
+                    <li class="menu-has-children"><a href="/about/">About iCAN </a>
                       <ul>
                         <li class="menu-active"><a href="/about/">About Us</a></li>
                         <li class="menu-active"><a href="/services/">Services</a></li>
@@ -100,7 +103,7 @@
 
                   {% else %}
 
-                    <li class="menu-has-children"><a href="">{{ request.user.username }} <i class="fa fa-caret-down"></i></a>
+                    <li class="menu-has-children"><a href="">{{ request.user.username }} </a>
                     <ul>
                         {% if request.user.employee %}
                         <li><a href="/employee/"><i class='fa fa-user'></i> My CV/Resume</a></li>
