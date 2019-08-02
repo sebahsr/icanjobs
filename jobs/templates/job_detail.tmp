@@ -111,17 +111,37 @@
 										<hr />
 
 						</section>
-						{% if not job.applied_already %}
-						<div class="row mb-20">
-								<div class="apply-job">
-									<div class="cs-text">
-										<a href='/signup/?next=/jobs/job-{{job.pk}}/' class="like applied_icon">  <span><i class="fa fa-thumbs-up"></i></span>Apply through iCAN</a>
-						
-										<a href="{% url 'social:begin' 'google-oauth2' %}?usertype=jobseeker"  class="linkedin social_login_login_linkedin"><div class="linkedin_jobid_apply"></div><i class="fa fa-google-plus"></i><span>Apply with Gmail</span></a>
-										<a href="{% url 'social:begin' 'facebook' %}?usertype=jobseeker" class=" facebook social_login_login_facebook_apply" ><div class="facebook_jobid_apply"></div><i class="fa fa-facebook"></i>Apply with Facebook</a>                                                                                                                    </div>
-								</div>
+
+						<!-- job apply section -->
+						<div class="single-post-detail-job job-experience"">
+							
+							{% if not request.user.is_authenticated %}
+							<div class="apply-job">
+								<div class="cs-text">
+									<a href='/signup/?next=/jobs/job-{{job.pk}}/' class="like applied_icon">  <span><i class="fa fa-thumbs-up"></i></span>Apply through iCAN</a>
+
+									<a href="{% url 'social:begin' 'google-oauth2' %}?usertype=jobseeker"  class="linkedin social_login_login_linkedin"><div class="linkedin_jobid_apply"></div><i class="fa fa-google-plus"></i><span>Apply with Gmail</span></a>
+									<a href="{% url 'social:begin' 'facebook' %}?usertype=jobseeker" class=" facebook social_login_login_facebook_apply" ><div class="facebook_jobid_apply"></div><i class="fa fa-facebook"></i>Apply with Facebook</a>                                                                                                                    </div>
 							</div>
-						{% endif %}
+
+							{% else %}
+							<div class="pb-10">
+								{% if job.eligible_to_apply %}
+									
+											{% if not job.applied_already %}
+											<a class="btn skill-tags" href="/jobs/applly/job-{{ job.pk }}/"><i class='fa fa-send'></i> Apply Now</a>
+			
+											{% else %}
+											<span class="btn skill-tags" href="#"><i class='fa fa-check-square'></i> Applied</span>
+
+			
+											{% endif %}
+									{% endif %}
+								</div>
+
+							{% endif %}
+						</div>
+						<!-- end job apply section -->
 
 						{% if job.summary %}
 						<div class="single-post-detail-job job-details">
@@ -172,10 +192,11 @@
 							<p>
 						{{ job.how_to_apply|safe }}
 							</p>
-
-							{% if job.application_link %}
-								<a class='btn skill-tags' href='{{ job.application_link }}'>Click Here to Apply <i class='fa fa-forward'></i></a>
-							{% elif not request.user.is_authenticated %}
+						</div>
+						{% endif %}
+						<div class="single-post-detail-job job-experience"">
+							
+							{% if not request.user.is_authenticated %}
 							<div class="apply-job">
 								<div class="cs-text">
 									<a href='/signup/?next=/jobs/job-{{job.pk}}/' class="like applied_icon">  <span><i class="fa fa-thumbs-up"></i></span>Apply through iCAN</a>
@@ -201,11 +222,6 @@
 
 							{% endif %}
 						</div>
-						{% endif %}
-
-						
-						
-					
 						
 
 					</div>

@@ -5326,9 +5326,10 @@ span.percent {
 }
 
 .event .event-time i {
-  color: #eb7100;
+  color: #000;
+  font-weight: bold;
 }
 
 .event .event-content a {
-  color: #eb7100;
+  color: #000;
 }
