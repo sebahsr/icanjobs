@@ -92,6 +92,7 @@ def homeView(request, **kwargs):
     employement_types = models.EmployementType.objects.all()
     recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:constants.RECENT_BLOG_NUMBER]
     regions = models.Region.objects.all()
+    recent_events = eventModels.Event.objects.all().order_by('-event_start_date')[:constants.RECENT_BLOG_NUMBER]
     return render(request, template_name, locals())
 
 

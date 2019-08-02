@@ -197,8 +197,46 @@
 			</div>	
 		</section>
 	
+		<!-- events -->
+		<section class="feature-cat-area pt-10" id="category">
+			<div class="container">
+				<div class="row d-flex">
+					<div class="cs-heading cs-heading menu-content pb-20 col-md-12">
+						<h3 class="cs-fancy">Upcoming Event Schedule							</h3>
+						
+					</div>
 
-		<section class="post-area section-ga pt-10" >
+					<div class="events-wrapper">
+
+						{% for recent_event in recent_events %}
+						<!-- event -->
+						<div class="event">
+							<div class="event-day">
+								<div>
+									<span class="day">{{ recent_event.event_start_date}}</span>
+									<span class="year">{{ recent_event.event_end_date }}</span>
+								</div>
+							</div>
+							<div class="event-content">
+								<p class="event-time"><i class="fa fa-clock-o"></i> {{ recent_event.start_time}} - {{ recent_event.end_time}}</p>
+								<h3 class="event-title"><a href='/event/event-{{ recent_event.pk }}/'>{{ recent_event.title|title}}</a></h3>
+								<p>{{ recent_event.description|safe|striptags|truncatechars:200}}</p>
+							</div>
+
+							
+						</div>
+						<!-- /event -->
+
+						{% endfor %}
+
+					
+						<!-- /event -->
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="post-area section-gap pt-10" >
 				<div class="container section-fullwidth">
 						<div class="row d-flex justify-content-center">
 								<div class="menu-content pb-20 col-lg-10">
