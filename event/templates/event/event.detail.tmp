@@ -64,16 +64,15 @@
         <div class="row justify-content-center">
             <!--blog section start -->
 
-            <div class="col-12 col-md-8">
+            <div class="col-12 col-lg-8">
                 
                 <div class="row">
                     <div class="sharethis-inline-share-buttons"></div>
                 </div>
-                <br>
-                <div class="row">
-                        <div style="padding-top:3px; border-right:solid 1px black" class="col-sm-8">
+
+                <div class="row event-detail-info">
+                        <div style="padding-top:3px;" class="col-sm-6">
                             <div class="h3">Date Information</div>
-                            <hr />
 
                             <p><i class="fa fa-calendar"></i> {{ event.event_start_date}} - {{ event.event_end_date }}</p>
                             <p><i class="fa fa-clock"></i> {{ event.start_time}} - {{ event.end_time }}</p>
@@ -81,19 +80,18 @@
                             
                         </div>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                                 <div class="h3"><i class="fa fa-address-card"></i> Event Address</div>
-                                <hr />
                                 <p> {{ event.address}}</p>
                                 <p>{{ event.city}}, {{ event.region}}</p>
                                
                         </div>
-                    </div>
+                </div>
+               
                 <div class="row">
                     
                     
-                    <div class="col-sm-12 text-justify">
-                            <hr />
+                    <div class="col-md-12 col-lg-10 text-justify">
                         {{ event.description|safe }}
                     </div>
                    
@@ -108,7 +106,7 @@
                         </div>
                     
                 </div>
-                <br /> 
+
                 {% if event.latitude and event.longitude %}
                 <div class="row">
                     <div class="h3">Map Information</div>

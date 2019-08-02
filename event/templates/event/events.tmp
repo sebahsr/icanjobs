@@ -14,7 +14,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Job Listing</title>
+	<title>iCAN - Event Listing</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<!--
@@ -63,7 +63,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <!--blog section start -->
-            <div class="col-12 col-md-8">
+            <div class="col-lg-8">
                 <div class="row">
                 <style>
                         .event-thumbnail-container {
@@ -76,7 +76,7 @@
                         }
                     </style>
                 {% for event in events %}
-                <div style="height:700px; border-bottom: solid 1px black;" class="col-sm-6">
+                <div class="event-widget col-lg-6">
                     
 
                     <div style="background-image: url('{{event.image.url}}');" class="event-thumbnail-container"></div>
@@ -92,11 +92,9 @@
                             {{ event.event_start_date }} - {{ event.event_end_date }}
                             {% endif %}
                         </span>
-                        <hr />
                         <h5>
                            {{ event.title|title }}
                         </h5>
-                            <hr />
                         <p class="blog_word">
                             {{ event.description|striptags | truncatechars:200}}
                         </p>

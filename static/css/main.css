@@ -5333,3 +5333,11 @@ span.percent {
 .event .event-content a {
   color: #000;
 }
+
+.event-widget{
+  margin-bottom: 10px;
+}
+
+.event-detail-info {
+  margin-bottom: 13px;
+}
