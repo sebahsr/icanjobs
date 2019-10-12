@@ -68,7 +68,6 @@
 					<div class="col-lg-4 sidebar">
                         <div class="single-slidebar">
                             <h4>Your Resume/CV</h4>
-                            done_sections
                             <a href='/employee/build-resume/general/'>
                                 <div class='{{ build_active_gen }} build-resume-side'>
                                         {% if done_sections.profile %}

@@ -46,11 +46,7 @@
 
                       </ul>
                     </li>
-                    <li class=""><a href="/blogs/">Career Advice</a></li>
-                    <li class=""><a href="/news/">News</a></li>
-
-
-                    <li class="menu-has-children"><a href="">Employment solutions </a>
+                    <li class="menu-has-children"><a href="/blogs/">Career Advice</a>
                       <ul>
                         {% for menulink in menulinks %} 
 
@@ -77,15 +73,22 @@
                           <li class="menu-active"><a href="/appointmnet/make/">Career Advisory</a></li>
 
                           <li class="menu-active"><a href="/events/">Events</a></li>
+                          <li class="menu-active"><a href="/blogs/">Blogs</a></li>
                           {% if request.user.employee %}
                           <li><a href="/appointmnets/">View Appointments</a></li>
                           
                           {% endif %}
                       </ul>
+
                     </li>
 
-                    <li class="menu-has-children"><a href="/about/">About iCAN </a>
+
+                      
+                    </li>
+
+                    <li class="menu-has-children"><a href="/about/">About Us </a>
                       <ul>
+                          <li class=""><a href="/news/">News</a></li>
                         <li class="menu-active"><a href="/about/">About Us</a></li>
                         <li class="menu-active"><a href="/services/">Services</a></li>
                         <li class="menu-active"><a href="/contact/">Contact</a></li>

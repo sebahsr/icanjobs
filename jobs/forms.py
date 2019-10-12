@@ -8,6 +8,13 @@ class CategoryForm(forms.ModelForm):
         model = models.Category
         exclude=('id',)
 
+class JobSortForm(forms.Form):
+    sort_type = forms.ChoiceField(choices=(
+        ('posted_date_rec','Posted Date (Recent)'),
+        ('posted_date_old','Posted Date (Oldest)'),
+        ('deadline_asc','Deadline (Ascending)'),
+        ('deadline_desc','Deadline (Descending)'),
+    ))
 class RecruitFilterForm(forms.Form):
     gender = forms.ChoiceField(choices=constants.GENDER_CHOICES, widget=forms.Select(attrs={ "class" : "form-control"}))
     highest_education_level = forms.ChoiceField(required=False, choices=constants.EDUCATION_LEVELS, widget=forms.Select(attrs={ "class" : "form-control"}))
@@ -179,6 +186,59 @@ class UserNameForm(forms.ModelForm):
             'username' : forms.TextInput(attrs={
                 "placeholder" : "Username","class" : "single-input form-control"}),    
         }
+
+class PassWordForm(forms.Form):
+    oldPassword = forms.CharField(min_length=8, required=True,
+            widget = forms.TextInput(attrs={
+                'placholder' : "Old Password", 
+                'class' : 'form-control'}) )
+
+    newPassword = forms.CharField(min_length=8, required=True,
+            widget = forms.TextInput(attrs={
+                'placholder' : "New Password", 
+                'class' : 'form-control'}) )
+    
+    conPassword = forms.CharField(min_length=8, required=True,
+            widget = forms.TextInput(attrs={
+                'placholder' : "Repeat New Password", 
+                'class' : 'form-control'}) )
+
+    username = forms.CharField(required=True)
+    
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        try:
+            user = User.objects.get(username=username)
+        except:
+            raise forms.ValidationError('Cant find user') 
+
+        return user 
+
+    def clean(self):
+        
+        cleaned_data = super( PassWordForm, self).clean()
+        oldPassword = cleaned_data.get('oldPassword')
+        newPassword = cleaned_data.get('newPassword')
+        conPassword = cleaned_data.get('conPassword')
+        user = cleaned_data.get('username')
+        
+        if not user.check_password( oldPassword ):
+            raise forms.ValidationError("Invalid old password.")
+        if not newPassword:
+            raise forms.ValidationError("Please provide new password of atleast 8 characters long.")
+        if not newPassword == conPassword:
+            raise forms.ValidationError("Your new password doesnt match")
+        
+        
+        
+        return cleaned_data
+    
+    def save(self):
+        user = self.cleaned_data['username']
+        user.set_password( self.cleaned_data.get('newPassword'))
+        user.save()
+        return user
+
 
 class CompanyForm(forms.ModelForm):
     class Meta:

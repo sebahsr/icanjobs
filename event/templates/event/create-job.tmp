@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'company/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'admin/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+                {% include 'admin/admin.sidebar.tmp' %}
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+						<header class="page-header">
+							<h2>Job Configurations</h2>
+						
+						</header>
+					<!-- start: page -->
+					<section class="content-with-menu mailbox">
+                            <iframe class="col-sm-12" style="height:700px" src="/admin/jobs/job/" />
+
+					</section>
+					<!-- end: page -->
+				</section>
+			</div>
+
+
+		</section>
+
+		
+		{% include 'company/admin.footer.tmp' %}

@@ -1,0 +1,136 @@
+<!doctype html>
+<html class="fixed">
+	{% include 'admin/admin.header.tmp' %}
+	<body>
+		<section class="body">
+			{% include 'admin/admin.header.right.tmp' %}
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				{% include 'admin/admin.sidebar.tmp' %}
+				<!-- end: sidebar -->
+
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>New Article</h2>
+						<br />
+					</header>
+
+					<!-- start: page -->
+						
+						<div class="row">
+							<div class="col-xs-12">
+								<section class="panel form-wizard" id="w4">
+									<header class="panel-heading">
+										<h2 class="panel-title"><i  class='fa fa-pencil'></i> Article Post</h2>
+										
+									</header>
+								{% if blogID  %}
+									<form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/ican/blog/blog-{{ blogID }}/" novalidate="novalidate">
+								{% else %}
+									<form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/ican/blog/" novalidate="novalidate">
+								{% endif %}
+
+									{% csrf_token %}
+									<div class="panel-body">
+										
+										<div id="w4-account" class="tab-pane active">
+											{{ blogForm.media }}
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ blogForm.title.errors.0 }}</div>
+												<label class="col-sm-3 control-label" for="w4-username">Title</label>
+												<div class="col-sm-6">
+													{{ blogForm.title }}
+												</div>
+											</div>
+
+											<div class="form-group">
+												
+													<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ blogForm.posted_by.errors.0 }}</div>
+													<label class="col-sm-3 control-label" for="w4-username">Posted By</label>
+													<div class="col-sm-6">
+														{{ blogForm.posted_by }}
+													</div>
+												</div>
+
+
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ blogForm.content.errors.0 }}</div>
+												<label class="col-md-3 control-label">content</label>
+												<div class="col-md-6">
+													{{ blogForm.content }}
+													
+												</div>
+											</div>
+
+											
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ blogForm.longitude.errors.0 }}</div>
+												<label class="col-md-3 control-label">Thumbnail</label>
+												<div class="col-md-6">
+													{{ blogForm.image }}
+													
+												</div>
+											</div>
+									
+											
+											
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ blogForm.categories.errors.0 }}</div>
+												<label class="col-md-3 control-label">Categories</label>
+												<div class="col-md-9">
+													{{ blogForm.categories }}
+													
+												</div>
+											</div>
+
+											
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ blogForm.is_draft.errors.0 }}</div>
+												<label class="col-md-3 control-label">Is Draft?</label>
+												<div class="col-md-9">
+													{{ blogForm.is_draft }}
+													
+												</div>
+											</div>
+
+										
+											<div class="form-group">
+												
+												<div class="text-danger col-sm-9 col-sm-offset-3 ">{{ blogForm.article_type.errors.0 }}</div>
+												<label class="col-md-3 control-label">Article Type</label>
+												<div class="col-md-9">
+													{{ blogForm.article_type }}
+													
+												</div>
+											</div>
+	
+											<div class="form-group">
+												<div class="col-md-offset-2">
+
+												<Button type="submit" class="btn btn-primary">Save </Button>
+												</div>
+											</div>
+	
+
+										</div>
+											
+									</div>
+									
+								</form>
+								</section>
+							</div>
+						</div>
+					<!-- end: page -->
+				</section>
+			</div>
+
+		</section>
+
+{% include 'admin/admin.footer.tmp' %}

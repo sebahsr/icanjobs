@@ -13,6 +13,7 @@ from event import models as eventModels
 from event import forms as eventForms
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.db.models import Sum,F
+from django.utils import timezone
 
 
 
@@ -80,15 +81,22 @@ def homeView(request, **kwargs):
     categories = models.Category.objects.filter(jobs__status = constants.JOB_STATUS_OPEN).annotate(job_count=Count('jobs')).order_by('-job_count')
     featured_categories = categories[:6]
     from datetime import date
-    recent_jobs = models.Job.objects.filter(is_draft=False)[:constants.RECENT_JOBS_NUMBER]
+    recent_jobs_ = models.Job.objects.filter(is_draft=False)[:constants.RECENT_JOBS_NUMBER]
     
-    for recent_job in recent_jobs:
+    recent_jobs = []
+
+    for recent_job in recent_jobs_:
         recent_job.expired = recent_job.deadline and recent_job.deadline < date.today()
+        if recent_job.expired:
+            continue
+
         if not recent_job.expired and recent_job.deadline:
             delta_days = recent_job.deadline - date.today()             
             recent_job.is_soon = delta_days.days < 7
             recent_job.remaining = delta_days.days
 
+        recent_jobs.append( recent_job)
+        
     employement_types = models.EmployementType.objects.all()
     recent_blogs = eventModels.Blog.objects.all().order_by('-created_at')[:constants.RECENT_BLOG_NUMBER]
     regions = models.Region.objects.all()
@@ -145,6 +153,15 @@ def applicationDelete(request, applicationID):
 def jobView(request, **kwargs):
     jobs = None 
     template_name = "jobs.tmp"
+    jobSortForm = forms.JobSortForm(request.GET) 
+    jobSortForm.is_valid() 
+    job_sort_type = jobSortForm.cleaned_data.get('sort_type') or 'posted_date_rec'
+    sort_by_field = {
+        'posted_date_rec' : '-created_at',
+        'posted_date_old' : 'created_at',
+        'deadline_asc' : '-deadline',
+        'deadline_desc' : 'deadline',
+    }[job_sort_type]
     if kwargs.get('regionID', False):
         jobs, region = jobRegionListHelper(kwargs['regionID'])
 
@@ -181,12 +198,14 @@ def jobView(request, **kwargs):
     
     # do pagination 
     if jobs: 
+        jobs = jobs.order_by(sort_by_field)
+
         jobs = jobs.filter(is_draft=False)
         page_number = request.GET.get('page', 1)
         paginator = Paginator(jobs, constants.PAG_JOB_NUMBER)
         current_page = paginator.page(page_number)
         jobs = current_page.object_list
-
+    
     employement_types = models.EmployementType.objects.all()
 
     regions = models.Region.objects.all()
@@ -907,24 +926,6 @@ def adminCompanyView(request):
     companyForm = forms.CompanyForm(instance=company)
     userForm = forms.UserForm(instance=request.user)
     userNameForm = forms.UserNameForm(instance=request.user)
-    
-    profile_overview_active = 'active'
-
-    if request.method == "POST":
-        companyForm = forms.CompanyForm(request.POST, request.FILES, instance=company)
-        userData = request.POST.copy()
-        userData['username'] = request.user.username
-        userForm = forms.UserForm(userData, instance=request.user)
-        
-        profile_edit_active = 'active'
-        if companyForm.is_valid() and userForm.is_valid():
-            company = companyForm.save(commit=False)
-            user = userForm.save()
-            company.user = user
-
-            company.save()
-
-            return redirect('/company/admin/')
     recent_jobs = jobs[:constants.RECENT_JOBS_NUMBER]
     categories = models.Category.objects.all()
     employement_types = models.EmployementType.objects.all()
@@ -935,6 +936,51 @@ def adminCompanyView(request):
     unread_messages_count = request.user.company.messages.filter(status='unread').count()
 
     sidebar_profile_info_active = 'nav-active'
+
+    profile_overview_active = 'active'
+    password_form = forms.PassWordForm(request.POST)
+
+    if request.method == "POST":
+        profile_edit_active = 'active'
+        profile_overview_active='nonactive'
+        
+        if request.POST.get('change-password', False):
+            request_data = request.POST.copy() 
+            request_data['username'] = request.user.username
+            password_form = forms.PassWordForm(request_data)
+            
+            if password_form.is_valid():
+                password_form.save()
+                passsuc = "Your password information is successfully changed. "
+                return redirect('/company/admin/')
+
+            else:
+                passerr = password_form.errors.get('__all__')
+        
+        if request.POST.get('change-username', False):
+            userNameForm = forms.UserNameForm(request.POST, instance=request.user)
+            if userNameForm.is_valid():
+                userNameForm.save() 
+                usernamesuc = 'Your username is changed succesfully.'
+            else:
+                usernameerr = "Failed to change username. Please try again."
+
+
+        else:
+            companyForm = forms.CompanyForm(request.POST, request.FILES, instance=company)
+            userData = request.POST.copy()
+            userData['username'] = request.user.username
+            userForm = forms.UserForm(userData, instance=request.user)
+            
+            if companyForm.is_valid() and userForm.is_valid():
+                company = companyForm.save(commit=False)
+                user = userForm.save()
+                company.user = user
+
+                company.save()
+
+                return redirect('/company/admin/')
+    
     return render(request, 'company/company-profile.tmp', locals())
 
 @login_required(login_url='/company/admin/login/')
@@ -970,8 +1016,10 @@ def adminCompanyChangePasswordView(request):
             passerr = "Invalid Old Password"
         
         profile_edit_active = True
-        return redirect('/company/admin/edit/')
-
+        if passerr: 
+            return redirect('/company/admin/edit/?passerr=' + str(passerr))
+        else:
+             return redirect('/company/admin/edit/')
     return redirect('/company/admin/')
 
 def loginCompanyView(request):
@@ -1198,7 +1246,7 @@ def applications(request, filter=None):
 
 def saveApplications(request):
     print request.GET.getlist('applicatinID')
-    applications = models.JobApplication.objects.filter(pk__in=request.GET.getlist('applicatinID'))
+    applications = models.JobApplication.objects.filter(pk__in=request.GET.getlist('applicatinID')).order_by('job')
     
     return render(request, 'applications.save.tmp', locals())
 

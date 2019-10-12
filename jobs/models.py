@@ -307,6 +307,7 @@ class PublishedJobs(models.Manager):
         return super().get_queryset().filter(is_draft=False)
 
 class Job(models.Model):
+    
     title = models.CharField(max_length=100)
     summary = RichTextField(blank=True)
     requirements =RichTextField(blank=True)

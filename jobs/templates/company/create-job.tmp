@@ -387,6 +387,5 @@
 {% include 'company/admin.footer.tmp' %}
 
 <script>
-	var dp = $('input[data-plugin-datepicker]').datepicker().data('datepicker');
-	dp.selectDate(new Date());
+	var dp = $('input[data-plugin-datepicker]').datepicker("setDate", 'now').data('datepicker');
 </script>

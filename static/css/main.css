@@ -2361,9 +2361,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 
 }
-.solid-section, p{
+ p{
   font-size: 15px;
   font-weight: 200;
+  line-height: 1.7em;
+}
+.solid-section { 
+  font-size: 15px;
   line-height: 1.7em;
 }
 ul.spatialism-sec {
@@ -4729,6 +4733,7 @@ ul.spatialism-sec li a span {
 /** jobs **/
 .jobs-listing.modern {
   padding: 0;
+  margin-top: 51px;
 }
 
 .jobs-listing.modern > li {
@@ -5340,4 +5345,33 @@ span.percent {
 
 .event-detail-info {
   margin-bottom: 13px;
+}
+
+.sort-by-class{
+  position: absolute;
+  right: 0;
+}
+
+.job-filter {
+  position: relative;
+}
+
+.btn-orange {
+  background-color: #eb7100;
+    color: #fff;
+    margin-left:10px;
+    border-radius: 0;
+    border: none;
+    text-transform: uppercase;
+}
+
+.square-select {
+  border-radius: 0px;
+}
+
+
+.application-list-name {
+  padding: 20px;
+  background: black;
+  color: white;
 }

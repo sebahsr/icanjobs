@@ -21,7 +21,7 @@
 									
 									<div class="col-lg-2 form-cols">
 										<div class="default-select" id="default-selects2">
-											<select name='cat'>
+											<select class="square-select" name='cat'>
 												<option value="all">All Sectors</option>
 												{% for category in categories %}
 													<option value="{{ category.pk }}">{{ category.name|upper }}</option>

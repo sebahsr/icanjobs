@@ -129,10 +129,24 @@
                                                 </div>
     
                                             </form>
-                                            <form method="post" action="/company/edit/username/">
+                                            <form method="post" action="/company/admin/">
                                                 {% csrf_token %}
                                                     <hr class="dotted">
                                                     <h4 class="mb-xlg">Change Username</h4>
+                                                    {% if usernameerr %}
+                                                        <div class="alert alert-danger">
+                                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                            {{usernameerr}}
+                                                        </div>
+                                                    {% endif %}
+
+                                                    {% if usernamesuc %}
+                                                        <div class="alert alert-success">
+                                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                            {{usernamesuc}}
+                                                        </div>
+                                                    {% endif %}
+                                                    
                                                     <fieldset class="mb-xl">
                                                         <div class="form-group">
                                                             <label class="col-md-3 control-label" for="profileLastName">Username </label>
@@ -146,6 +160,7 @@
                                                             </div>
                                                         </div>
                                                         
+                                                        <input type="hidden" name="change-username" value='true' />
                                                         <div class="panel-footer">
                                                             <div class="row">
                                                                 <div class="col-md-9 ">
@@ -157,37 +172,43 @@
                                                     </fieldset>
                                             </form>
 
-                                        <form method="post" action="/company/edit/password/">
+                                        <form method="post" action="/company/admin/">
                                             {% csrf_token %}
 
                                             <hr class="dotted">
                                             <h4 class="mb-xlg">Change Password</h4>
-                                            <p> If you change your username the system automatically logs you out of the system</p>
+                                            <p> If you change your password the system automatically logs you out of the system</p>
                                             {% if passerr %}
                                                 <div class="alert alert-danger">
                                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                                     {{passerr}}
                                                 </div>
                                             {% endif %}
+
+
+
                                             <fieldset class="mb-xl">
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label" for="profileNewPassword">Old Password</label>
                                                     <div class="col-md-8">
-                                                        <input type="text" class="form-control" placeholder="Old Password" name='oldPassword' id="profileNewPassword">
+                                                            {{ password_form.oldPassword }}
+
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label" for="profileNewPasswordRepeat">New Password</label>
                                                     <div class="col-md-8">
-                                                        <input type="text" class="form-control" placeholder="New Password" name='newPassword' id="profileNewPasswordRepeat">
+                                                        {{ password_form.newPassword }}
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-3 control-label" for="profileNewPasswordRepeat">Repeat New Password</label>
                                                     <div class="col-md-8">
-                                                        <input type="text" class="form-control" placeholder="Repeat New Password" name='newPasswordRepeat' id="profileNewPasswordRepeat">
-                                                    </div>
+                                                            {{ password_form.conPassword }}
+                                                        </div>
                                                 </div>
+                                                
+                                                <input type="hidden" name='change-password' value="true" />
                                                 
                                                 <div class="panel-footer">
                                                     <div class="row">
@@ -196,6 +217,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 
                                             </fieldset>
                                         </form>

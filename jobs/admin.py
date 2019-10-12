@@ -14,7 +14,27 @@ class CategoryModelAdmin(admin.ModelAdmin):
 class JobModelAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     list_display = ('title', 'region', 'company')
-    exclude = ('views',)
+    filter_vertical = 'categories',
+    exclude = ('views','status')
+    fieldsets = (
+        ('Basic Information', 
+        {
+            'fields' : ( 'is_draft', 'title','company','level','employement_type','deadline', 'department', 'salary','number_of_candidates', 'report_to', 'categories',  'application_link', 'apply_through_portal')
+        }),
+
+        ('Address Information', 
+        {
+            'fields' : (
+                'city', 'region'
+            )
+        }),
+
+        ('Detail Informations', {
+            'classes': ('collapse',),
+            'fields': ('summary', 'requirements','knowledge_skills', 'education_experience','how_to_apply','responsibilities'),
+        }),
+    )
+    
 
 class CompanyModelAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'

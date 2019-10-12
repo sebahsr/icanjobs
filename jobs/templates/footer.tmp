@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="col-lg-3 col-sm-6 col-md-3  ">
                                         <div class="single-footer-widget">
-                                            <h6>EMPLOYMENT SOLUTIONS</h6>
+                                            <h6>CAREER ADVICE</h6>
                                             <ul class="footer-nav">
                                                 
                                                 {% for menulink in menulinks %} 
@@ -90,6 +90,7 @@
                                                 <ul class="footer-nav">
                                                     <li class="menu-active"><a href="/about/">About Us</a></li>
                                                     <li class="menu-active"><a href="/services/">Services</a></li>
+                                                    <li class="menu-active"><a href="/news/">News</a></li>
                                                     <li class="menu-active"><a href="/contact/">Contact</a></li>
                                                     
                                                 </ul>
@@ -103,10 +104,10 @@
 
             <div class="row footer-bottom d-flex justify-content-between">
                     <div class="col-lg-3 col-sm-6 col-md-3 col-sm-12 footer-social">
-                            <a href="https://www.facebook.com/International-Career-Advisory-Network-187269622191533/"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.facebook.com/icanjobsethiopia/"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="https://www.linkedin.com/company/18872207/admin/"><i class="fa fa-linkedin"></i></a>
-                            <a href="https://t.me/JobsiCAN"><i class="fa fa-telegram"></i></a>
+                            <a href="https://t.me/iCANJOB"><i class="fa fa-telegram"></i></a>
                             <a href="#"><i class="fa fa-youtube"></i></a>
                         </div>
 

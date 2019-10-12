@@ -29,7 +29,13 @@
                                                 <a href="/ican/events/">
                                                     <i class="fa fa-list" aria-hidden="true"></i>Event Listing
                                                 </a>
-                                            </li>
+											</li>
+											<li class="{{ sidebar_create_blog_active }}">
+													<a href="/ican/jobs/">
+															<i class="fa fa-plus" aria-hidden="true"></i> Create Jobs
+													</a>
+												</li>
+												
 											<li class="{{ sidebar_create_blog_active }}">
                                                 <a href="/ican/blog/">
                                                         <i class="fa fa-plus" aria-hidden="true"></i> Create Blog
@@ -42,6 +48,8 @@
                                                 </a>
 											</li>
 											
+											
+
                                             
                                             <li class="{{ sidebar_job_listing_active }}">
                                                 <a href="/ican/blogs/">

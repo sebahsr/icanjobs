@@ -55,63 +55,23 @@
 		</section>
 
         <div class="row">
-        <!-- <section class="col-sm-3  sidebar">
-
-			<div class="single-slidebar">
-
-				<h4>Jobs by Region</h4>
-					
-				<div class="col-lg-12 form-cols">
-					<div class="default-select" id="default-selects2">
-						<select name='cat'>
-							{% for region in regions  %}
-							<option>{{ region.name }} ({{region.jobs.count }}) </option>
-						
-							{% endfor %}
-							
-						</select>
-					</div>										
-				</div>
-			</div>
-
-			<div class="single-slidebar">
-
-					<h4>Jobs by Region</h4>
-						
-					<div class="col-lg-12 form-cols">
-						<div class="default-select" id="default-selects2">
-							<select name='cat'>
-								{% for category in categories %}
-									<option>{{ category.name }} ({{ category.job_count }})</option>
-								{% endfor %}
-								
-							</select>
-						</div>										
-					</div>
-				</div>
- 
-        </section> -->
+		
+		
 		<section class="col-sm-2 sidebar">  </section>
-		<section class='col-sm-8 well'>
-				<div class="row container">
-					{% if category %}
-						<span class='search-tag'> {{ category.name }}</span>
-						{% endif %}
-					{% if region %}
-
-						<span class='search-tag'>  {{ region.name }}</span>
-					{% endif %}
+		<section class='job-filter col-sm-8 well'>
+				<div class="row">
 					
-					{% if employement_type %}
-
-						<span class='search-tag'> {{ employement_type.name }}</span>
-					{% endif %}
+					<div class="sort-by-class">
+						<form  action="/jobs/search/" method="GET">
+							{{ jobSortForm.sort_type }}
+							
+							<button type="submit" class="btn-orange btn">
+								<span class="fa fa-sort"></span> Sort
+							</button>
+						</form>
+					</div>
 					
-					{% if search_query %}
-
-						<span class='search-tag'><i>"{{ search_query }}"</i></span>
-					{% endif %}
-
+					
 				</div>
 				{% if jobs %}
                 <ul class="jobs-listing modern">

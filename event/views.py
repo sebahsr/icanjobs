@@ -151,6 +151,7 @@ def appointmentRead(request, appointmentID):
 
 def settingJob(request):
     return render(request, 'event/jobsettings.tmp') 
+
 def settingEvent(request):
     return render(request, 'event/eventsettings.tmp') 
 
@@ -159,3 +160,6 @@ def settingEmployer(request):
 
 def settingAd(request):
     return render(request, 'event/ad.settings.tmp') 
+
+def createJob(request):
+    return render(request, 'event/create-job.tmp')

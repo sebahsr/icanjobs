@@ -31,14 +31,17 @@
 
         {% for application in applications %}
 		<!-- start banner Area -->
-		<section class="banner-area relative" id="home">	
-			<div class="overlay overlay-bg"></div>
+		<section class="post-area" id="home">	
 			<div class="container">
-				<div class="row d-flex align-items-center justify-content-center">
-					<div class="about-content-detail col-lg-12">
-						<h1 class="text-white">
-							{{ application.applicant.user.first_name|title }} {{ application.applicant.user.last_name|title }}				
-						</h1>	
+				<div class="align-items-center justify-content-center">
+					<div class="application-list-name col-lg-9">
+						<h3>
+							<i class='fa fa-arrow-right'></i>
+
+							Full Name - {{ application.applicant.user.first_name|title }} {{ application.applicant.user.last_name|title }}				
+						</h3>	
+
+                        <h5>Job - {{ application.job.title }}</h5>
 						
 					</div>											
 				</div>
@@ -52,9 +55,7 @@
 				<div class="row justify-content-left d-flex">
 					<div class="profile-main-wrapper col-lg-9 post-list">
 	
-						<div class="flew-row">
-                                <div style="text-transfor:upper" class='h5'>Application to </div><div class='h3'>{{ application.job.title }}</div>
-                        </div>
+						
 						<div class="single-post d-flex flex-row">
 							<div class="thumb col-sm-4">
 								{% if application.applicant.profile_pic %}
@@ -123,7 +124,7 @@
 						</section>
 						{% if application.applicant.about_me %}
 
-						<section class="single-post post-area section-gap">
+						<section class="single-post post-area">
 							<div id='employee-skill' class="container">
 								<div class="row justify-content-center d-flex">
 									<div class="col-lg-12 post-list">
@@ -148,7 +149,7 @@
 						<!-- End about me -->
 						<!-- Start post Area -->
 						{% if application.applicant.experiences.all %}
-						<section class="single-post post-area section-gap">
+						<section class="single-post post-area">
 								<div id='company-job-list' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
@@ -192,7 +193,7 @@
 						<!-- End post Area -->
 						
 						{% if application.applicant.skills.all %}
-						<section class="single-post post-area section-gap">
+						<section class="single-post post-area">
 								<div id='employee-skill' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
@@ -221,7 +222,7 @@
 					
 
 						{% if application.applicant.references.all %}
-						<section class="single-post post-area section-gap">
+						<section class="single-post post-area">
 								<div id='employee-skill' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
@@ -256,7 +257,7 @@
 						{% endif %}
 
 						{% if application.applicant.worksamples.all %}
-						<section class="single-post post-area section-gap">
+						<section class="single-post post-area">
 								<div id='employee-skill' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
@@ -293,7 +294,7 @@
 						
 
 						{% if application.applicant.worklinks.all %}
-						<section class="single-post post-area section-gap">
+						<section class="single-post post-area">
 								<div id='employee-skill' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
@@ -326,7 +327,7 @@
 						{% endif %}
 
 						{% if application.applicant.educations.all %}
-						<section class="single-post post-area section-gap">
+						<section class="single-post post-area">
 								<div id='company-job-list' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
@@ -364,7 +365,7 @@
 						{% endif %}
 						
 						{% if application.applicant.volunteer_experience %}
-						<section class="single-post post-area section-gap">
+						<section class="single-post post-area">
 								<div id='company-job-list' class="container">
 									<div class="row justify-content-center d-flex">
 										<div class="col-lg-12 post-list">
@@ -404,3 +405,6 @@
         
         {% endfor %}
         
+<script>
+	window.print();
+</script>

@@ -32,6 +32,7 @@ urlpatterns = [
     
     url(r'^appointments/appointmentID-(?P<appointmentID>\d+)/$', event_views.appointmentRead, name='appointment-detail'),
     url(r'^settings/jobs/$', event_views.settingJob),
+    url(r'^ican/jobs/$', event_views.createJob),
     url(r'^settings/events/$', event_views.settingEvent),
     url(r'^settings/ads/$', event_views.settingAd),
     url(r'^settings/employers/$', event_views.settingEmployer),
